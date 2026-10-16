@@ -3,38 +3,1576 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Horton's Creek Cocktails</title>
+  <title>The Coastal Garrison — Horton's Creek Cocktails</title>
+  <meta name="description" content="Horton's Creek Cocktails: The Coastal Garrison (October 2026). Inspired by rugged New England island outposts, maritime fog, and historic stone fortifications.">
+  <meta name="theme-color" content="#0b1116">
+
+  <!-- Open Graph / QR Scan Preview -->
+  <meta property="og:title" content="The Coastal Garrison — Horton's Creek Cocktails">
+  <meta property="og:description" content="A three-course coastal progression: The Casco Bay Crossing, The Granite Bastion, and The Parapet Nightcap.">
+  <meta property="og:image" content="https://hortonscreekcocktails.com/assets/hero-coastal-garrison.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      color-scheme: dark light;
+      color-scheme: dark;
+      --bg-abyss: #090e13;
+      --bg-granite: #111820;
+      --bg-granite-elevated: #17212b;
+      --bg-glass: rgba(20, 29, 38, 0.78);
+      --border-stone: rgba(168, 187, 204, 0.14);
+      --border-brass: rgba(212, 168, 95, 0.35);
+
+      --text-parchment: #f2efe9;
+      --text-mist: #b5c1cc;
+      --text-slate: #7d8d9c;
+
+      --accent-lantern: #d4a85f;
+      --accent-lantern-glow: #e8be75;
+      --accent-ember: #c87a41;
+      --accent-seafoam: #7fa69b;
+
+      --font-serif: "Cormorant Garamond", Georgia, serif;
+      --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+      --shadow-card:
+        0 4px 12px rgba(0, 0, 0, 0.35),
+        0 18px 40px -8px rgba(0, 0, 0, 0.65),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+      /* Modern Web Guidance: Color space interpolation fallback variables */
+      --in-oklab: ;
+      --in-oklch: ;
     }
+
+    @supports (background: linear-gradient(in oklab, white, black)) {
+      :root {
+        --in-oklab: in oklab;
+        --in-oklch: in oklch;
+      }
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      min-height: 100vh;
+      background-color: var(--bg-abyss);
+      background-image:
+        radial-gradient(circle at 50% 0% var(--in-oklab), rgba(40, 62, 82, 0.35), transparent 65%),
+        linear-gradient(to bottom var(--in-oklab), var(--bg-abyss), #0d131a 50%, var(--bg-abyss));
+      color: var(--text-parchment);
+      font-family: var(--font-sans);
+      font-size: 1rem;
+      line-height: 1.6;
+      text-align: start;
+      overflow-wrap: break-word;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    p {
+      text-wrap: pretty;
+      max-width: 72ch;
+    }
+
+    h1, h2, h3, th {
+      text-wrap: balance;
+    }
+
+    /* Sticky Top Navigation & Mode Bar */
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(9, 14, 19, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-stone);
+      padding: 0.65rem 1.25rem;
+    }
+
+    .top-bar-inner {
+      max-width: 72rem;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand-lockup {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      text-decoration: none;
+      color: var(--text-parchment);
+    }
+
+    .brand-compass {
+      width: 1.65rem;
+      height: 1.65rem;
+      color: var(--accent-lantern);
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-family: var(--font-serif);
+      font-weight: 600;
+      font-size: 1.15rem;
+      line-height: 1.1;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-sub {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--accent-lantern);
+      letter-spacing: 0.1em;
+    }
+
+    .nav-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .course-pills {
+      display: flex;
+      gap: 0.35rem;
+    }
+
+    .course-pill {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-mist);
+      text-decoration: none;
+      padding: 0.35rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .course-pill:hover,
+    .course-pill:focus-visible {
+      color: var(--text-parchment);
+      border-color: var(--border-stone);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    /* Mode Switcher (Guest Menu vs Bartender Specs) */
+    .mode-switch {
+      display: inline-flex;
+      background: var(--bg-granite);
+      border: 1px solid var(--border-brass);
+      border-radius: 999px;
+      padding: 0.2rem;
+      gap: 0.15rem;
+    }
+
+    .mode-btn {
+      appearance: none;
+      border: none;
+      background: transparent;
+      color: var(--text-mist);
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .mode-btn[aria-pressed="true"] {
+      background: linear-gradient(135deg var(--in-oklab), var(--accent-lantern), var(--accent-ember));
+      color: #090e13;
+      font-weight: 600;
+      box-shadow: 0 2px 8px rgba(212, 168, 95, 0.3);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      isolation: isolate;
+      min-height: 34rem;
+      display: flex;
+      align-items: flex-end;
+      padding: clamp(3rem, 7vw, 6rem) 1.25rem clamp(2.5rem, 5vw, 4.5rem);
+      border-bottom: 1px solid var(--border-stone);
+      overflow: hidden;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      filter: brightness(0.75) contrast(1.06);
+      transform: scale(1.02);
+    }
+
+    .hero-vignette {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(to top var(--in-oklab), var(--bg-abyss) 6%, rgba(9, 14, 19, 0.72) 48%, rgba(9, 14, 19, 0.38) 100%),
+        radial-gradient(circle at 70% 35% var(--in-oklab), rgba(212, 168, 95, 0.14), transparent 55%);
+    }
+
+    .hero-content {
+      max-width: 58rem;
+      margin: 0 auto;
+      width: 100%;
+      text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      background: #111418;
-      color: #e6edf3;
+    }
+
+    .hero-kicker {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      color: var(--accent-lantern-glow);
+      margin-bottom: 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .hero-kicker::before,
+    .hero-kicker::after {
+      content: "";
+      width: 2rem;
+      height: 1px;
+      background: var(--border-brass);
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.6rem, 1.5rem + 5vw, 4.75rem);
+      font-weight: 600;
+      line-height: 1.05;
+      margin: 0 0 1rem;
+      letter-spacing: -0.01em;
+      color: var(--text-parchment);
+      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.75);
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: clamp(1.15rem, 0.95rem + 0.9vw, 1.45rem);
+      line-height: 1.45;
+      color: #dce4ec;
+      margin: 0 0 1.5rem;
+      max-width: 54ch;
+    }
+
+    .hero-description {
+      font-size: clamp(0.95rem, 0.9rem + 0.25vw, 1.08rem);
+      color: var(--text-mist);
+      margin: 0 0 2rem;
+      max-width: 62ch;
+    }
+
+    /* Progression Timeline Strip */
+    .progression-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      width: 100%;
+      max-width: 50rem;
+      margin-top: 0.5rem;
+    }
+
+    .progression-step {
+      background: rgba(17, 24, 32, 0.78);
+      border: 1px solid var(--border-stone);
+      border-radius: 0.75rem;
+      padding: 0.85rem 1rem;
+      text-decoration: none;
+      color: inherit;
+      text-align: start;
+      transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .progression-step:hover,
+    .progression-step:focus-visible {
+      transform: translateY(-2px);
+      border-color: var(--border-brass);
+      background: rgba(23, 33, 43, 0.92);
+    }
+
+    .step-number {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--accent-lantern);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .step-name {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 600;
+      display: block;
+      line-height: 1.2;
+      color: var(--text-parchment);
+    }
+
+    .step-role {
+      font-size: 0.78rem;
+      color: var(--text-slate);
+      display: block;
+      margin-top: 0.15rem;
+    }
+
+    /* Main Content Container */
+    .container {
+      max-width: 70rem;
+      margin: 0 auto;
+      padding: clamp(2.5rem, 5vw, 4.5rem) 1.25rem;
+    }
+
+    /* Bartender Batch Controls Banner (visible in Bartender mode) */
+    .bartender-toolbar {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      background: linear-gradient(135deg var(--in-oklab), rgba(212, 168, 95, 0.12), rgba(23, 33, 43, 0.85));
+      border: 1px solid var(--border-brass);
+      border-radius: 0.85rem;
+      padding: 0.9rem 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+
+    body[data-mode="bartender"] .bartender-toolbar {
+      display: flex;
+    }
+
+    .toolbar-label {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      color: var(--text-parchment);
+    }
+
+    .toolbar-label strong {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      color: var(--accent-lantern-glow);
+    }
+
+    .scale-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .scale-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-mist);
+      margin-right: 0.35rem;
+    }
+
+    .scale-btn {
+      appearance: none;
+      background: rgba(9, 14, 19, 0.65);
+      border: 1px solid var(--border-stone);
+      color: var(--text-mist);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      padding: 0.3rem 0.65rem;
+      border-radius: 0.4rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .scale-btn[aria-pressed="true"] {
+      background: var(--accent-lantern);
+      color: #090e13;
+      border-color: var(--accent-lantern);
+      font-weight: 600;
+    }
+
+    /* Cocktail Cards Stack */
+    .cocktails-stack {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(2.5rem, 5vw, 4rem);
+    }
+
+    .cocktail-card {
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      background: linear-gradient(160deg var(--in-oklab), var(--bg-granite-elevated), var(--bg-granite));
+      border: 1px solid var(--border-stone);
+      border-radius: 1.25rem;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      scroll-margin-top: 5rem;
+      transition: border-color 0.25s ease;
+    }
+
+    .cocktail-card:hover {
+      border-color: rgba(212, 168, 95, 0.28);
+    }
+
+    .cocktail-card:nth-child(even) {
+      grid-template-columns: 7fr 5fr;
+    }
+
+    .cocktail-card:nth-child(even) .card-visual {
+      order: 2;
+    }
+
+    .card-visual {
+      position: relative;
+      min-height: 24rem;
+      background: #080c10;
+      overflow: hidden;
+    }
+
+    .card-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .cocktail-card:hover .card-visual img {
+      transform: scale(1.03);
+    }
+
+    .card-visual-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top var(--in-oklab), rgba(17, 24, 32, 0.85) 0%, transparent 40%);
+      pointer-events: none;
+    }
+
+    .course-tag-overlay {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: rgba(9, 14, 19, 0.82);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid var(--border-brass);
+      border-radius: 999px;
+      padding: 0.3rem 0.8rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent-lantern-glow);
+      letter-spacing: 0.08em;
+    }
+
+    .glassware-badge {
+      position: absolute;
+      bottom: 1rem;
+      left: 1rem;
+      right: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: #dbe4ed;
+      background: rgba(9, 14, 19, 0.78);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid var(--border-stone);
+      border-radius: 0.6rem;
+      padding: 0.45rem 0.75rem;
+    }
+
+    .glassware-badge svg {
+      width: 1.1rem;
+      height: 1.1rem;
+      color: var(--accent-lantern);
+      flex-shrink: 0;
+    }
+
+    .card-body {
+      padding: clamp(1.5rem, 3.5vw, 2.75rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.35rem;
+    }
+
+    .card-header {
+      border-bottom: 1px solid var(--border-stone);
+      padding-bottom: 1.15rem;
+    }
+
+    .course-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: var(--accent-lantern);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .card-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.85rem, 1.4rem + 1.5vw, 2.5rem);
+      font-weight: 600;
+      line-height: 1.12;
+      margin: 0 0 0.75rem;
+      color: var(--text-parchment);
+    }
+
+    .card-story {
+      font-size: 0.98rem;
+      color: var(--text-mist);
+      margin: 0;
+      line-height: 1.65;
+    }
+
+    /* Profile Pills */
+    .profile-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .profile-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-slate);
+      margin-right: 0.25rem;
+    }
+
+    .tasting-chip {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: #e4dfd7;
+      background: rgba(212, 168, 95, 0.1);
+      border: 1px solid rgba(212, 168, 95, 0.26);
+      padding: 0.22rem 0.65rem;
+      border-radius: 999px;
+    }
+
+    /* Ingredients Section */
+    .section-heading {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      letter-spacing: 0.1em;
+      color: var(--accent-lantern);
+      margin: 0 0 0.65rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Guest View Ingredient Tags vs Bartender Specs List */
+    .guest-ingredients {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .guest-ingredients li {
+      background: rgba(9, 14, 19, 0.55);
+      border: 1px solid var(--border-stone);
+      border-radius: 0.5rem;
+      padding: 0.4rem 0.75rem;
+      font-size: 0.88rem;
+      color: var(--text-parchment);
+    }
+
+    .guest-ingredients li.garnish-item {
+      border-color: rgba(127, 166, 155, 0.35);
+      color: #c7ddd7;
+    }
+
+    /* Bartender Detailed Specs (Measurements + Method) */
+    .bartender-details {
+      display: none;
+      flex-direction: column;
+      gap: 1.25rem;
+      padding-top: 0.5rem;
+    }
+
+    body[data-mode="bartender"] .bartender-details,
+    .cocktail-card[data-expanded="true"] .bartender-details {
+      display: flex;
+    }
+
+    body[data-mode="bartender"] .guest-ingredients-wrap,
+    .cocktail-card[data-expanded="true"] .guest-ingredients-wrap {
+      display: none;
+    }
+
+    .spec-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .spec-item {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.45rem 0.7rem;
+      background: rgba(9, 14, 19, 0.5);
+      border-radius: 0.45rem;
+      border-left: 2px solid var(--accent-lantern);
+      font-size: 0.9rem;
+    }
+
+    .spec-item.spec-garnish {
+      border-left-color: var(--accent-seafoam);
+      background: rgba(127, 166, 155, 0.08);
+    }
+
+    .spec-measure {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--accent-lantern-glow);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .spec-name {
+      color: var(--text-parchment);
+      flex: 1;
+    }
+
+    .spec-note {
+      color: var(--text-slate);
+      font-size: 0.82rem;
+    }
+
+    .method-list {
+      margin: 0;
+      padding-left: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      color: var(--text-mist);
+      font-size: 0.9rem;
+    }
+
+    .method-list li::marker {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--accent-lantern);
+    }
+
+    /* Per-card Expand Button (visible in Guest mode) */
+    .card-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 0.5rem;
+      border-top: 1px solid rgba(168, 187, 204, 0.08);
+    }
+
+    body[data-mode="bartender"] .card-actions {
+      display: none;
+    }
+
+    .toggle-spec-btn {
+      appearance: none;
+      background: rgba(212, 168, 95, 0.08);
+      border: 1px solid var(--border-brass);
+      color: var(--accent-lantern-glow);
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 0.45rem 0.9rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: all 0.2s ease;
+    }
+
+    .toggle-spec-btn:hover {
+      background: rgba(212, 168, 95, 0.18);
+    }
+
+    /* Prep Summary Section */
+    .prep-section {
+      margin-top: clamp(3rem, 6vw, 5rem);
+      background: var(--bg-granite);
+      border: 1px solid var(--border-stone);
+      border-radius: 1.15rem;
+      padding: clamp(1.5rem, 3vw, 2.25rem);
+      box-shadow: var(--shadow-card);
+    }
+
+    .prep-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .prep-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+      margin: 0;
+      color: var(--text-parchment);
+    }
+
+    .prep-subtitle {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent-lantern);
+    }
+
+    .table-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .prep-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      min-width: 38rem;
+    }
+
+    .prep-table th,
+    .prep-table td {
+      padding: 0.85rem 1rem;
+      text-align: start;
+      border-bottom: 1px solid var(--border-stone);
+    }
+
+    .prep-table th {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: var(--accent-lantern);
+      letter-spacing: 0.08em;
+      background: rgba(9, 14, 19, 0.45);
+    }
+
+    .prep-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .prep-table tbody tr:hover {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .prep-cocktail-name {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-parchment);
+    }
+
+    .technique-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 0.35rem;
+      background: rgba(212, 168, 95, 0.12);
+      color: var(--accent-lantern-glow);
+      border: 1px solid rgba(212, 168, 95, 0.25);
+    }
+
+    /* Footer & QR Modal Trigger */
+    .site-footer {
+      border-top: 1px solid var(--border-stone);
+      padding: 2.5rem 1.25rem 3.5rem;
+      text-align: center;
+      color: var(--text-slate);
+      font-size: 0.85rem;
+    }
+
+    .footer-inner {
+      max-width: 48rem;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .footer-crest {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      color: var(--text-parchment);
+      letter-spacing: 0.04em;
+    }
+
+    .qr-trigger-btn {
+      appearance: none;
+      background: var(--bg-granite);
+      border: 1px solid var(--border-stone);
+      color: var(--text-mist);
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .qr-trigger-btn:hover {
+      border-color: var(--border-brass);
+      color: var(--text-parchment);
+    }
+
+    /* Native Dialog for Glass QR Code */
+    dialog.qr-dialog {
+      background: var(--bg-granite-elevated);
+      color: var(--text-parchment);
+      border: 1px solid var(--border-brass);
+      border-radius: 1rem;
+      padding: 1.75rem;
+      max-width: 22rem;
+      width: calc(100% - 2rem);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8);
       text-align: center;
     }
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.02em;
+
+    dialog.qr-dialog::backdrop {
+      background: rgba(5, 8, 12, 0.78);
+      backdrop-filter: blur(6px);
     }
-    p {
-      color: #8b949e;
-      font-size: 1.1rem;
-      margin-top: 0;
+
+    .qr-dialog h3 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      margin: 0 0 0.35rem;
+    }
+
+    .qr-dialog p {
+      font-size: 0.85rem;
+      color: var(--text-mist);
+      margin: 0 0 1.25rem;
+    }
+
+    .qr-frame {
+      background: #f2efe9;
+      padding: 1rem;
+      border-radius: 0.75rem;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .qr-close-btn {
+      appearance: none;
+      width: 100%;
+      background: var(--accent-lantern);
+      color: #090e13;
+      border: none;
+      border-radius: 0.5rem;
+      padding: 0.6rem 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: var(--font-sans);
+    }
+
+    /* Responsive adjustments for mobile QR scanning */
+    @media (max-width: 860px) {
+      .progression-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .cocktail-card,
+      .cocktail-card:nth-child(even) {
+        grid-template-columns: 1fr;
+      }
+
+      .cocktail-card:nth-child(even) .card-visual {
+        order: 0;
+      }
+
+      .card-visual {
+        min-height: 19rem;
+        max-height: 23rem;
+      }
+
+      .course-pills {
+        display: none;
+      }
     }
   </style>
 </head>
-<body>
-  <h1>Horton's Creek Cocktails</h1>
-  <p>Coming soon.</p>
+<body data-mode="guest">
+
+  <!-- Sticky Header -->
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <a href="#" class="brand-lockup">
+        <svg class="brand-compass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"/>
+          <polygon points="12,4 14.2,9.8 20,12 14.2,14.2 12,20 9.8,14.2 4,12 9.8,9.8" fill="currentColor" fill-opacity="0.18"/>
+          <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
+        </svg>
+        <div class="brand-text">
+          <span class="brand-name">Horton's Creek Cocktails</span>
+          <span class="brand-sub">OCTOBER 2026 · ROTATING CLUB</span>
+        </div>
+      </a>
+
+      <div class="nav-controls">
+        <nav class="course-pills" aria-label="Cocktail courses">
+          <a class="course-pill" href="#casco-bay">I. Casco Bay</a>
+          <a class="course-pill" href="#granite-bastion">II. Granite Bastion</a>
+          <a class="course-pill" href="#parapet-nightcap">III. Parapet Nightcap</a>
+        </nav>
+
+        <div class="mode-switch" role="group" aria-label="Menu view mode">
+          <button type="button" class="mode-btn" id="btn-guest" aria-pressed="true">
+            Guest Menu
+          </button>
+          <button type="button" class="mode-btn" id="btn-bartender" aria-pressed="false">
+            Bartender Specs
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-media">
+      <img
+        src="assets/hero-coastal-garrison.jpg"
+        alt="A historic granite stone coastal fortification overlooking misty Casco Bay at dusk, lit by warm amber lanterns."
+        fetchpriority="high"
+        width="1376"
+        height="768"
+      >
+    </div>
+    <div class="hero-vignette"></div>
+
+    <div class="hero-content">
+      <div class="hero-kicker">43° 39' N · 70° 12' W // AUTUMN EDITION</div>
+      <h1 class="hero-title">The Coastal Garrison</h1>
+      <p class="hero-subtitle">
+        Coastal botanicals, autumn orchard fruit, and a touch of Atlantic salinity.
+      </p>
+      <p class="hero-description">
+        Inspired by rugged New England island outposts, maritime fog, and historic stone fortifications, this evening's trio moves from a crisp afternoon aperitif to a bracing mid-evening sour, finishing with a rich, fireside nightcap.
+      </p>
+
+      <div class="progression-strip" aria-label="Evening progression">
+        <a href="#casco-bay" class="progression-step">
+          <span class="step-number">COURSE I · APERITIF</span>
+          <span class="step-name">The Casco Bay Crossing</span>
+          <span class="step-role">Crisp · Botanical · Effervescent</span>
+        </a>
+        <a href="#granite-bastion" class="progression-step">
+          <span class="step-number">COURSE II · MID-EVENING SOUR</span>
+          <span class="step-name">The Granite Bastion</span>
+          <span class="step-role">Tart · Orchard-Spiced · Smoky</span>
+        </a>
+        <a href="#parapet-nightcap" class="progression-step">
+          <span class="step-number">COURSE III · FIRESIDE CLOSER</span>
+          <span class="step-name">The Parapet Nightcap</span>
+          <span class="step-role">Rich · Bittersweet · Woody</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="container">
+
+    <!-- Bartender Mode Batch Scaler Toolbar -->
+    <div class="bartender-toolbar" aria-live="polite">
+      <div class="toolbar-label">
+        <span><strong>Bartender Spec Mode</strong> — Showing exact proportions, techniques &amp; prep table.</span>
+      </div>
+      <div class="scale-controls" role="group" aria-label="Batch multiplier">
+        <span class="scale-label">BATCH SCALE:</span>
+        <button type="button" class="scale-btn" data-scale="1" aria-pressed="true">1x</button>
+        <button type="button" class="scale-btn" data-scale="2" aria-pressed="false">2x</button>
+        <button type="button" class="scale-btn" data-scale="4" aria-pressed="false">4x</button>
+        <button type="button" class="scale-btn" data-scale="8" aria-pressed="false">8x</button>
+      </div>
+    </div>
+
+    <div class="cocktails-stack">
+
+      <!-- 1. The Casco Bay Crossing -->
+      <article class="cocktail-card" id="casco-bay" data-expanded="false">
+        <div class="card-visual">
+          <img
+            src="assets/casco-bay-crossing.jpg"
+            alt="The Casco Bay Crossing served in a tall Collins glass over ice spears with a fresh rosemary sprig and thin green apple wheel."
+            loading="lazy"
+            width="896"
+            height="1200"
+          >
+          <div class="card-visual-overlay"></div>
+          <span class="course-tag-overlay">01 // APERITIF HIGHBALL</span>
+          <div class="glassware-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+              <path d="M7 3h10l-1 18H8L7 3z"/>
+              <path d="M7.5 8h9"/>
+            </svg>
+            <span>Collins glass over high-clarity ice spears</span>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="card-header">
+            <div class="course-eyebrow">
+              <span>FIRST WATCH · AFTERNOON TO DUSK</span>
+              <span>SHAKEN &amp; TOPPED</span>
+            </div>
+            <h2 class="card-title">The Casco Bay Crossing</h2>
+            <p class="card-story">
+              A crisp, herbaceous highball that bridges the gap between summer greenery and autumn orchard fruit. The snap pea and rosemary profiles of the gin pair with dry cider, while a touch of elderflower and saline mimics a cool sea breeze.
+            </p>
+          </div>
+
+          <div class="profile-row" aria-label="Tasting profile">
+            <span class="profile-label">PROFILE:</span>
+            <span class="tasting-chip">Crisp</span>
+            <span class="tasting-chip">Botanical</span>
+            <span class="tasting-chip">Subtly Floral</span>
+            <span class="tasting-chip">Effervescent</span>
+          </div>
+
+          <!-- Guest View: Clean Ingredient Overview -->
+          <div class="guest-ingredients-wrap">
+            <h3 class="section-heading">ELEMENTS IN THE GLASS</h3>
+            <ul class="guest-ingredients">
+              <li>Bimini Gin</li>
+              <li>St-Germain Elderflower</li>
+              <li>Dry Artisanal Hard Cider</li>
+              <li>Fresh Lemon Juice</li>
+              <li>Rich Honey Syrup (2:1)</li>
+              <li>Sea Salt Saline</li>
+              <li class="garnish-item">Garnish: Fresh Rosemary &amp; Crisp Green Apple</li>
+            </ul>
+          </div>
+
+          <!-- Bartender View: Exact Specs & Method -->
+          <div class="bartender-details">
+            <div>
+              <h3 class="section-heading">
+                <span>INGREDIENTS &amp; PROPORTIONS</span>
+                <span class="scale-indicator">1 SERVING</span>
+              </h3>
+              <ul class="spec-list">
+                <li class="spec-item">
+                  <span class="spec-measure" data-oz="1.5">1.5 oz</span>
+                  <span class="spec-name">Bimini Gin <span class="spec-note">(or hop-and-citrus forward modern gin)</span></span>
+                </li>
+                <li class="spec-item">
+                  <span class="spec-measure" data-oz="0.5">0.5 oz</span>
+                  <span class="spec-name">St-Germain Elderflower Liqueur</span>
+                </li>
+                <li class="spec-item">
+                  <span class="spec-measure" data-oz="0.5">0.5 oz</span>
+                  <span class="spec-name">Fresh lemon juice</span>
+                </li>
+                <li class="spec-item">
+                  <span class="spec-measure" data-oz="0.25">0.25 oz</span>
+                  <span class="spec-name">Rich honey syrup <span class="spec-note">(2:1 honey to warm water)</span></span>
+                </li>
+                <li class="spec-item">
+                  <span class="spec-measure" data-count="2" data-unit="drops">2 drops</span>
+                  <span class="spec-name">20% saline solution <span class="spec-note">(or a tiny pinch of flaky sea salt)</span></span>
+                </li>
+                <li class="spec-item">
+                  <span class="spec-measure" data-oz="2.5">2.5 oz</span>
+                  <span class="spec-name">Dry artisanal hard cider <span class="spec-note">(chilled)</span></span>
+                </li>
+                <li class="spec-item spec-garnish">
+                  <span class="spec-measure">GARNISH</span>
+                  <span class="spec-name">Fresh rosemary sprig &amp; a thin wheel of crisp green apple</span>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="section-heading">METHOD</h3>
+              <ol class="method-list">
+                <li>Combine the gin, elderflower liqueur, lemon juice, honey syrup, and saline solution in a cocktail shaker with ice.</li>
+                <li>Shake briskly for 8 to 10 seconds until well chilled.</li>
+                <li>Strain into an ice-filled Collins glass.</li>
+                <li>Top gently with the chilled dry hard cider and give one brief, gentle lift with a barspoon to integrate.</li>
+                <li>Clap the rosemary sprig between your palms to release the aromatics and tuck it beside the apple wheel.</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="card-actions">
+            <button type="button" class="toggle-spec-btn" aria-expanded="false">
+              <span>Show Bartender Specs &amp; Recipe</span>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2. The Granite Bastion -->
+      <article class="cocktail-card" id="granite-bastion" data-expanded="false">
+        <div class="card-visual">
+          <img
+            src="assets/granite-bastion.jpg"
+            alt="The Granite Bastion served in a Double Old Fashioned glass over a single large clear ice block, topped with a dehydrated lime wheel and grated nutmeg."
+            loading="lazy"
+            width="1024"
+            height="1024"
+          >
+          <div class="card-visual-overlay"></div>
+          <span class="course-tag-overlay">02 // SMOKY-SWEET SOUR</span>
+          <div class="glassware-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+              <path d="M5 5h14l-1.5 15h-11L5 5z"/>
+              <rect x="9" y="10" width="6" height="6" rx="1"/>
+            </svg>
+            <span>Double Old Fashioned over a single large "granite" block</span>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="card-header">
+            <div class="course-eyebrow">
+              <span>SECOND WATCH · MID-EVENING</span>
+              <span>SHAKEN &amp; LAYERED</span>
+            </div>
+            <h2 class="card-title">The Granite Bastion</h2>
+            <p class="card-story">
+              Named for the massive stone walls of turn-of-the-century coastal forts, this is a structured, smoky-sweet sour. It uses a split base of aged rum and reposado tequila, grounded by spiced pear and a delicate float of Islay peat that smells like ocean spray and campfire.
+            </p>
+          </div>
+
+          <div class="profile-row" aria-label="Tasting profile">
+            <span class="profile-label">PROFILE:</span>
+            <span class="tasting-chip">Tart</span>
+            <span class="tasting-chip">Velvety</span>
+            <span class="tasting-chip">Orchard-Spiced</span>
+            <span class="tasting-chip">Lingering Smoke</span>
+          </div>
+
+          <!-- Guest View -->
+          <div class="guest-ingredients-wrap">
+            <h3 class="section-heading">ELEMENTS IN THE GLASS</h3>
+            <ul class="guest-ingredients">
+              <li>Aged Column-Still Rum</li>
+              <li>Reposado Tequila</li>
+              <li>St. George Spiced Pear Liqueur</li>
+              <li>Laphroaig 10 Islay Scotch Float</li>
+              <li>Fresh Lime Juice</li>
+              <li>Dark Amber Maple Syrup</li>
+              <li>Angostura Bitters</li>
+              <li class="garnish-item">Garnish: Dehydrated Lime &amp; Fresh Nutmeg</li>
+            </ul>
+          </div>
+
+          <!-- Bartender View -->
+          <div class="bartender-details">
+            <div>
+              <h3 class="section-heading">
+                <span>INGREDIENTS &amp; PROPORTIONS</span>
+                <span class="scale-indicator">1 SERVING</span>
+              </h3>
+              <ul class="spec-list">
+                <li class="spec-item">
+                  <span class="spec-measure" data-oz="1.25">1.25 oz</span>
+                  <span class="spec-name">Aged column-still rum <span class="spec-note">(Flor de Caña 7 or Bacardi 8)</span></span>
+                </li>
+                <li class="spec-item">
+                  <span class="spec-measure" data-oz="0.75">0.75 oz</span>
+                  <span class="spec-name">Reposado tequila</span>
+                </li>
+                <li class="spec-item">
+                  <span class="spec-measure" data-oz="0.5">0.5 oz</span>
+                  <span class="spec-name">St. George Spiced Pear Liqueur</span>
+                </li>
+                <li class="spec-item">
+                  <span class="spec-measure" data-oz="0.75">0.75 oz</span>
+                  <span class="spec-name">Fresh lime juice</span>
+                </li>
+                <li class="spec-item">
+                  <span class="spec-measure" data-oz="0.25">0.25 oz</span>
+                  <span class="spec-name">Grade A dark amber maple syrup</span>
+                </li>
+                <li class="spec-item">
+                  <span class="spec-measure" data-count="1" data-unit="dash">1 dash</span>
+                  <span class="spec-name">Angostura bitters</span>
+                </li>
+                <li class="spec-item">
+                  <span class="spec-measure" data-oz="0.25">0.25 oz</span>
+                  <span class="spec-name">Laphroaig 10 <span class="spec-note">(or heavily peated Islay Scotch, reserved for floating)</span></span>
+                </li>
+                <li class="spec-item spec-garnish">
+                  <span class="spec-measure">GARNISH</span>
+                  <span class="spec-name">Dehydrated lime wheel &amp; a grate of fresh nutmeg</span>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="section-heading">METHOD</h3>
+              <ol class="method-list">
+                <li>Add the rum, tequila, pear liqueur, lime juice, maple syrup, and bitters to a shaker with ice.</li>
+                <li>Shake hard for 12 seconds to achieve proper dilution and a tight froth.</li>
+                <li>Strain over a large clear ice cube in a rocks glass.</li>
+                <li>Slowly pour the peated Scotch over the back of a barspoon so it settles as an aromatic layer across the top.</li>
+                <li>Float the dehydrated lime wheel and grate a light dusting of fresh nutmeg directly over the foam.</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="card-actions">
+            <button type="button" class="toggle-spec-btn" aria-expanded="false">
+              <span>Show Bartender Specs &amp; Recipe</span>
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3. The Parapet Nightcap -->
+      <article class="cocktail-card" id="parapet-nightcap" data-expanded="false">
+        <div class="card-visual">
+          <img
+            src="assets/parapet-nightcap.jpg"
+            alt="The Parapet Nightcap served in a chilled frosted Nick and Nora glass before a glowing stone hearth, garnished with a skewered Amarena cherry and orange peel."
+            loading="lazy"
+            width="896"
+            height="1200"
+          >
+          <div class="card-visual-overlay"></div>
+          <span class="course-tag-overlay">03 // FIRESIDE NIGHTCAP</span>
+          <div class="glassware-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+              <path d="M6 4h12c0 5-2.5 8-6 8S6 9 6 4z"/>
+              <path d="M12 12v8"/>
+              <path d="M8 20h8"/>
+            </svg>
+            <span>Chilled Nick and Nora or coupe glass</span>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="card-header">
+            <div class="course-eyebrow">
+              <span>FINAL WATCH · FIRESIDE CLOSER</span>
+              <span>STIRRED &amp; SPIRIT-FORWARD</span>
+            </div>
+            <h2 class="card-title">The Parapet Nightcap</h2>
+            <p class="card-story">
+              A spirit-forward, stirred closer designed for late October evenings. Straight rye whiskey and bonded apple brandy form a sturdy backbone, while Cynar and sweet vermouth bring bittersweet herbal depth, accented by roasted walnut and espresso notes.
+            </p>
+          </div>
+
+          <div class="profile-row" aria-label="Tasting profile">
+            <span class="profile-label">PROFILE:</span>
+            <span class="tasting-chip">Rich</span>
+            <span class="tasting-chip">Warming</span>
+            <span class="tasting-chip">Bittersweet</span>
+            <span class="tasting-chip">Woody</span>
+          </div>
+
+          <!-- Guest View -->
+          <div class="guest-ingredients-wrap">
+            <h3 class="section-heading">ELEMENTS IN THE GLASS</h3>
+            <ul class="guest-ingredients">
+              <li>100-Proof Straight Rye Whiskey</li>
+              <li>Laird's Bonded Apple Brandy</li>
+              <li>Cynar Artichoke Amaro</li>
+              <li>Carpano Antica Sweet Vermouth</li>
+              <li>Nocino Green Walnut (or Espresso Liqueur)</li>
+              <li>Black Walnut Bitters</li>
+              <li class="garnish-item">Garnish: Expressed Orange Peel &amp; Amarena Cherry</li>
+            </ul>
+          </div>
+
+          <!-- Bartender View -->
+          <div class="bartender-details">
+            <div>
+              <h3 class="section-heading">
+                <span>INGREDIENTS &amp; PROPORTIONS</span>
+                <span class="scale-indicator">1 SERVING</span>
+              </h3>
+              <ul class="spec-list">
+                <li class="spec-item">
+                  <span class="spec-measure" data-oz="1.25">1.25 oz</span>
+                  <span class="spec-name">High-rye bourbon or 100-proof straight rye whiskey</span>
+                </li>
+                <li class="spec-item">
+                  <span class="spec-measure" data-oz="0.75">0.75 oz</span>
+                  <span class="spec-name">Laird's Straight Apple Brandy <span class="spec-note">(Bottled in Bond)</span></span>
+                </li>
+                <li class="spec-item">
+                  <span class="spec-measure" data-oz="0.5">0.5 oz</span>
+                  <span class="spec-name">Cynar <span class="spec-note">(artichoke amaro)</span></span>
+                </li>
+                <li class="spec-item">
+                  <span class="spec-measure" data-oz="0.5">0.5 oz</span>
+                  <span class="spec-name">Carpano Antica Formula sweet vermouth</span>
+                </li>
+                <li class="spec-item">
+                  <span class="spec-measure" data-oz="0.15" data-barspoon="true">1 barspoon (0.15 oz)</span>
+                  <span class="spec-name">Nocino (green walnut liqueur) <span class="spec-note">(or Borghetti espresso liqueur)</span></span>
+                </li>
+                <li class="spec-item">
+                  <span class="spec-measure" data-count="2" data-unit="dashes">2 dashes</span>
+                  <span class="spec-name">Black walnut bitters</span>
+                </li>
+                <li class="spec-item spec-garnish">
+                  <span class="spec-measure">GARNISH</span>
+                  <span class="spec-name">Wide swath of orange peel &amp; a skewered Amarena cherry</span>
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 class="section-heading">METHOD</h3>
+              <ol class="method-list">
+                <li>Combine all liquid ingredients in a mixing glass filled two-thirds of the way with cracked ice.</li>
+                <li>Stir smoothly for 30 to 35 seconds until the glass is frosted and the texture becomes silky.</li>
+                <li>Strain into a chilled Nick and Nora glass.</li>
+                <li>Express the oils from the orange peel generously over the surface of the drink, rub the peel along the rim and stem, then discard the peel and set the skewered cherry across the rim.</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="card-actions">
+            <button type="button" class="toggle-spec-btn" aria-expanded="false">
+              <span>Show Bartender Specs &amp; Recipe</span>
+            </button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Prep Summary Table -->
+    <section class="prep-section" id="prep-summary" aria-labelledby="prep-heading">
+      <div class="prep-header">
+        <h2 class="prep-title" id="prep-heading">Garrison Prep &amp; Build Summary</h2>
+        <span class="prep-subtitle">QUICK REFERENCE LEDGER</span>
+      </div>
+      <div class="table-scroll">
+        <table class="prep-table">
+          <thead>
+            <tr>
+              <th scope="col">COCKTAIL</th>
+              <th scope="col">BASE SPIRITS</th>
+              <th scope="col">KEY MODIFIERS</th>
+              <th scope="col">ACID / SWEETENER</th>
+              <th scope="col">TECHNIQUE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="prep-cocktail-name">The Casco Bay Crossing</td>
+              <td>Gin</td>
+              <td>Elderflower, Dry Cider, Saline</td>
+              <td>Lemon / Honey Syrup</td>
+              <td><span class="technique-badge">Shaken &amp; Topped</span></td>
+            </tr>
+            <tr>
+              <td class="prep-cocktail-name">The Granite Bastion</td>
+              <td>Aged Rum &amp; Reposado Tequila</td>
+              <td>Spiced Pear, Islay Scotch Float</td>
+              <td>Lime / Maple Syrup</td>
+              <td><span class="technique-badge">Shaken &amp; Layered</span></td>
+            </tr>
+            <tr>
+              <td class="prep-cocktail-name">The Parapet Nightcap</td>
+              <td>Rye Whiskey &amp; Apple Brandy</td>
+              <td>Cynar, Sweet Vermouth, Nocino</td>
+              <td>None (Spirit-Forward)</td>
+              <td><span class="technique-badge">Stirred</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-crest">Horton's Creek Cocktails</div>
+      <p>The Coastal Garrison · Original Autumn Builds · Crafted for Cocktail Night</p>
+      <button type="button" class="qr-trigger-btn" id="open-qr-modal">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <rect x="3" y="3" width="7" height="7"/>
+          <rect x="14" y="3" width="7" height="7"/>
+          <rect x="3" y="14" width="7" height="7"/>
+          <path d="M14 14h3v3h-3zM18 18h3v3h-3zM14 19h3"/>
+        </svg>
+        <span>Share Glass QR Link</span>
+      </button>
+    </div>
+  </footer>
+
+  <!-- Glass QR Code Modal -->
+  <dialog class="qr-dialog" id="qr-dialog">
+    <h3>The Coastal Garrison</h3>
+    <p>Scan to open <strong>hortonscreekcocktails.com</strong> on your phone.</p>
+    <div class="qr-frame">
+      <img
+        src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&color=090e13&bgcolor=f2efe9&data=https%3A%2F%2Fhortonscreekcocktails.com"
+        alt="QR code for hortonscreekcocktails.com"
+        width="180"
+        height="180"
+        loading="lazy"
+      >
+    </div>
+    <button type="button" class="qr-close-btn" id="close-qr-modal">Close</button>
+  </dialog>
+
+  <script>
+    (function () {
+      const body = document.body;
+      const btnGuest = document.getElementById('btn-guest');
+      const btnBartender = document.getElementById('btn-bartender');
+      const cardToggleBtns = document.querySelectorAll('.toggle-spec-btn');
+      const scaleBtns = document.querySelectorAll('.scale-btn');
+
+      function setMode(mode) {
+        body.setAttribute('data-mode', mode);
+        const isBartender = mode === 'bartender';
+        btnGuest.setAttribute('aria-pressed', String(!isBartender));
+        btnBartender.setAttribute('aria-pressed', String(isBartender));
+        try {
+          localStorage.setItem('hcc_menu_mode', mode);
+        } catch (_) {}
+      }
+
+      btnGuest.addEventListener('click', () => setMode('guest'));
+      btnBartender.addEventListener('click', () => setMode('bartender'));
+
+      // Check URL hash or saved preference
+      try {
+        const saved = localStorage.getItem('hcc_menu_mode');
+        if (window.location.hash === '#bartender' || saved === 'bartender') {
+          setMode('bartender');
+        }
+      } catch (_) {}
+
+      // Individual card expand/collapse in Guest Mode
+      cardToggleBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const card = btn.closest('.cocktail-card');
+          const expanded = card.getAttribute('data-expanded') === 'true';
+          const nextState = !expanded;
+          card.setAttribute('data-expanded', String(nextState));
+          btn.setAttribute('aria-expanded', String(nextState));
+          btn.querySelector('span').textContent = nextState
+            ? 'Hide Bartender Specs'
+            : 'Show Bartender Specs & Recipe';
+        });
+      });
+
+      // Batch Scaler in Bartender Mode
+      function formatNumber(n) {
+        const rounded = Math.round(n * 100) / 100;
+        return rounded.toString();
+      }
+
+      scaleBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const scale = parseFloat(btn.getAttribute('data-scale')) || 1;
+          scaleBtns.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+
+          document.querySelectorAll('.scale-indicator').forEach((el) => {
+            el.textContent = scale === 1 ? '1 SERVING' : `${scale} SERVINGS`;
+          });
+
+          document.querySelectorAll('.spec-measure[data-oz]').forEach((el) => {
+            const baseOz = parseFloat(el.getAttribute('data-oz'));
+            const isBarspoon = el.getAttribute('data-barspoon') === 'true';
+            const scaledOz = formatNumber(baseOz * scale);
+            if (isBarspoon) {
+              const spoons = formatNumber(1 * scale);
+              el.textContent = `${spoons} barspoon${scale > 1 ? 's' : ''} (${scaledOz} oz)`;
+            } else {
+              el.textContent = `${scaledOz} oz`;
+            }
+          });
+
+          document.querySelectorAll('.spec-measure[data-count]').forEach((el) => {
+            const baseCount = parseFloat(el.getAttribute('data-count'));
+            const unit = el.getAttribute('data-unit');
+            const scaled = formatNumber(baseCount * scale);
+            if (unit === 'dash' && scale > 1) {
+              el.textContent = `${scaled} dashes`;
+            } else {
+              el.textContent = `${scaled} ${unit}`;
+            }
+          });
+        });
+      });
+
+      // QR Dialog
+      const qrDialog = document.getElementById('qr-dialog');
+      const openQrBtn = document.getElementById('open-qr-modal');
+      const closeQrBtn = document.getElementById('close-qr-modal');
+
+      if (qrDialog && openQrBtn && closeQrBtn) {
+        openQrBtn.addEventListener('click', () => qrDialog.showModal());
+        closeQrBtn.addEventListener('click', () => qrDialog.close());
+        qrDialog.addEventListener('click', (e) => {
+          if (e.target === qrDialog) qrDialog.close();
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
