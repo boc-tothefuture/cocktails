@@ -4,7 +4,7 @@ Shared guidance and primer for AI coding agents and human developers working in 
 
 ## Overview
 
-**Horton's Creek League of Extraordinary Cocktails** ([hortonscreekcocktails.com](https://hortonscreekcocktails.com)) is a curated digital cocktail menu, interactive bartender reference, and historical club archive (founded August 2020) designed for private tasting events in the Horton's Creek neighborhood. It features both the active seasonal tasting progression (such as "The Coastal Garrison") and **The League Vault (2020–2025)** housing 48 historical recipes across 11 sessions, complete with photo provenance badges, club lore callouts, and interactive filtering.
+**The League of Extraordinary Cocktails** ([hortonscreekcocktails.com](https://hortonscreekcocktails.com)) is a subterranean speakeasy-inspired digital cocktail archive, interactive tasting stage, and bartender reference (founded August 2020). It features an **Interactive Session Timeline Switcher** where any of the 13 tasting sessions can be elevated to the top **Active Session Tasting Stage** alongside **The Cellar Vault (2020–2026)** housing all 54 recipes across 13 sessions, complete with photo provenance badges, club lore callouts, and interactive filtering.
 
 The site is hosted as a static website on **GitHub Pages** with a custom domain (`CNAME`).
 
@@ -19,20 +19,18 @@ The project is intentionally dependency-free and build-free. There are no bundle
 ├── AGENTS.md             # This guide
 ├── CNAME                 # GitHub Pages custom domain (hortonscreekcocktails.com)
 ├── index.html            # Complete single-page application (HTML, CSS, JS)
-└── assets/               # Menu artwork, monument photo, and cocktail visuals
-    ├── hero-coastal-garrison.jpg
-    ├── hortons-creek-monument.jpg
+└── assets/               # Menu artwork and cocktail visuals
     ├── casco-bay-crossing.jpg
     ├── granite-bastion.jpg
     ├── parapet-nightcap.jpg
-    └── archive/          # 48 historical cocktail photos & spec plates (2020–2025)
+    └── archive/          # 51 historical cocktail photos & spec plates (2020–2025)
 ```
 
 ### Key Technical Characteristics
 
 - **Single-File Delivery**: All markup, styling, and client-side logic reside in [index.html](file:///Users/broconne/src/cocktails/index.html).
 - **Design System & Typography**:
-  - Dark-mode palette with maritime and stone-inspired CSS variables (`--bg-abyss`, `--bg-granite`, `--accent-lantern`, `--accent-seafoam`, etc.).
+  - **Midnight Bourbon Cellar & Moody Lounge** dark-mode palette with charred oak, smoked glass, and candlelit whiskey amber CSS variables (`--bg-abyss: #0b0807`, `--bg-granite: #14100e`, `--accent-lantern: #e8993a`, `--accent-lantern-glow: #f5b563`).
   - Fonts via Google Fonts: `Cormorant Garamond` (display serif), `Plus Jakarta Sans` (body sans-serif), and `JetBrains Mono` (spec/numerical monospace).
 - **Modern Semantic HTML & Accessibility**:
   - Native `<dialog>` elements for modals (e.g., QR sharing).
@@ -48,18 +46,22 @@ The client-side JavaScript in `index.html` implements several key interactive fe
 1. **Dual Viewing Modes (`Guest` vs. `Bartender`)**:
    - Controlled by the `data-mode` attribute on `<body>` (`guest` or `bartender`).
    - Guest mode presents an elegant presentation menu with narrative notes and hidden technical specs.
-   - Bartender mode reveals full build steps, glassware, ice, prep steps, and scaling controls.
+   - Bartender mode reveals full build steps, glassware, ice, prep steps, the Session Prep Ledger, and scaling controls.
    - State is persisted to `localStorage` (`hcc_menu_mode`) and honors the `#bartender` URL hash.
-2. **Individual Spec Accordions**:
+2. **Interactive Session Timeline Switcher & Active Tasting Stage**:
+   - The horizontal `.scrubber-bar` lets users switch between all 13 club sessions (or click `↑ Load on Tasting Stage` on any session in the Vault).
+   - Selecting a session dynamically populates `#active-tasting-stage` with split smoked-glass cocktail cards (`.stage-split-card`) and updates the `#prep-summary` Bartender Prep & Batching Ledger table.
+3. **Individual Spec Accordions**:
    - In Guest mode, guests can selectively toggle technical specs for an individual drink via `.toggle-spec-btn` (modifying `data-expanded="true|false"` on `.cocktail-card`).
-3. **Dynamic Batch Scaler**:
-   - Bartender mode includes batch scaling buttons (1x, 2x, etc.).
+4. **Dynamic Batch Scaler**:
+   - Bartender mode includes batch scaling buttons (1x, 2x, 4x, 8x) that scale both the Active Tasting Stage and all 54 cards in the Cellar Vault.
    - Quantities are stored in data attributes on `.spec-measure`:
      - `data-oz="<amount>"`: Scaled mathematically and formatted (supports `data-barspoon="true"`).
      - `data-count="<number>"` with `data-unit="dash|drop|leaf|..."`: Scaled with automated pluralization.
-4. **QR Code Sharing Modal**:
+5. **QR Code Sharing Modal**:
    - Uses native `<dialog id="qr-dialog">` with backdrop and close handlers.
-5. **The League Vault / Archive (`#league-archive`)**:
+6. **The Cellar Vault (`#league-archive`)**:
+   - Houses all 54 cocktails across 13 sessions (including *The Coastal Garrison* integrated as a 2026 session and *Nov 1, 2025: Alley 2.6*).
    - Filterable by **Host** (`data-host`), **Base Spirit** (`data-spirit`), **Photo Provenance** (`data-provenance="original|doc|ai"`), and full-text search.
    - Uses `content-visibility: auto; contain-intrinsic-size: auto none auto 650px;` on `.archive-session` blocks to defer offscreen rendering.
    - Every cocktail card includes an explicit provenance badge (`.provenance-original` for authentic host kitchen photos, `.provenance-doc` for reference photos from the original Google Doc, and `.provenance-ai` for AI illustrations & architectural spec plates).

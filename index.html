@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Horton's Creek League of Extraordinary Cocktails</title>
-  <meta name="description" content="Horton's Creek League of Extraordinary Cocktails — Featured Coastal Garrison Menu (October 2026) and the complete 2020–2025 League Vault of 48 historical cocktails.">
-  <meta name="theme-color" content="#0b1116">
+  <title>The League of Extraordinary Cocktails — Cellar Vault &amp; Tasting Stage</title>
+  <meta name="description" content="The League of Extraordinary Cocktails — Interactive Session Switcher, Bartender Prep Ledger, and the complete 2020–2026 Cellar Vault of 54 craft cocktails across 13 sessions.">
+  <meta name="theme-color" content="#0b0807">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
   <!-- Open Graph / QR Scan Preview -->
-  <meta property="og:title" content="Horton's Creek League of Extraordinary Cocktails">
-  <meta property="og:description" content="A three-course coastal progression: The Casco Bay Crossing, The Granite Bastion, and The Parapet Nightcap.">
-  <meta property="og:image" content="https://hortonscreekcocktails.com/assets/hero-coastal-garrison.jpg">
+  <meta property="og:title" content="The League of Extraordinary Cocktails">
+  <meta property="og:description" content="Subterranean craft cocktail archive &amp; interactive tasting stage: 54 cocktails across 13 sessions (2020–2026).">
+  <meta property="og:image" content="https://hortonscreekcocktails.com/assets/parapet-nightcap.jpg">
   <meta property="og:type" content="website">
 
   <!-- Fonts -->
@@ -22,30 +22,31 @@
   <style>
     :root {
       color-scheme: dark;
-      --bg-abyss: #090e13;
-      --bg-granite: #111820;
-      --bg-granite-elevated: #17212b;
-      --bg-glass: rgba(20, 29, 38, 0.78);
-      --border-stone: rgba(168, 187, 204, 0.14);
-      --border-brass: rgba(212, 168, 95, 0.35);
+      /* Midnight Bourbon Cellar & Moody Lounge Palette */
+      --bg-abyss: #0b0807;
+      --bg-granite: #14100e;
+      --bg-granite-elevated: #1c1613;
+      --bg-glass: rgba(24, 18, 15, 0.78);
+      --border-stone: rgba(232, 197, 158, 0.12);
+      --border-brass: rgba(232, 153, 58, 0.42);
 
-      --text-parchment: #f2efe9;
-      --text-mist: #b5c1cc;
-      --text-slate: #7d8d9c;
+      --text-parchment: #f5efe8;
+      --text-mist: #c7b9ab;
+      --text-slate: #8c7b6b;
 
-      --accent-lantern: #d4a85f;
-      --accent-lantern-glow: #e8be75;
-      --accent-ember: #c87a41;
-      --accent-seafoam: #7fa69b;
+      --accent-lantern: #e8993a;
+      --accent-lantern-glow: #f5b563;
+      --accent-ember: #b8622a;
+      --accent-seafoam: #c88d55;
 
       --font-serif: "Cormorant Garamond", Georgia, serif;
       --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
       --shadow-card:
-        0 4px 12px rgba(0, 0, 0, 0.35),
-        0 18px 40px -8px rgba(0, 0, 0, 0.65),
-        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        0 4px 14px rgba(0, 0, 0, 0.55),
+        0 22px 48px -10px rgba(0, 0, 0, 0.8),
+        inset 0 1px 0 rgba(255, 235, 210, 0.06);
 
       /* Modern Web Guidance: Color space interpolation fallback variables */
       --in-oklab: ;
@@ -73,8 +74,9 @@
       margin: 0;
       background-color: var(--bg-abyss);
       background-image:
-        radial-gradient(circle at 50% 0% var(--in-oklab), rgba(40, 62, 82, 0.35), transparent 65%),
-        linear-gradient(to bottom var(--in-oklab), var(--bg-abyss), #0d131a 50%, var(--bg-abyss));
+        radial-gradient(circle at 50% 0% var(--in-oklab), rgba(232, 153, 58, 0.14), transparent 58%),
+        radial-gradient(circle at 85% 25% var(--in-oklab), rgba(184, 98, 42, 0.08), transparent 50%),
+        linear-gradient(to bottom var(--in-oklab), var(--bg-abyss), #120d0b 50%, var(--bg-abyss));
       color: var(--text-parchment);
       font-family: var(--font-sans);
       font-size: 1rem;
@@ -93,112 +95,94 @@
       text-wrap: balance;
     }
 
-    /* Sticky Top Navigation & Mode Bar */
+    /* Sticky Top Navigation & Mode Bar (Slide 3 Speakeasy Header) */
     .top-bar {
       position: sticky;
       top: 0;
       z-index: 40;
-      background: rgba(9, 14, 19, 0.85);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+      background: rgba(11, 8, 7, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border-stone);
-      padding: 0.65rem 1.25rem;
+      padding: 0.8rem 1.5rem;
     }
 
     .top-bar-inner {
-      max-width: 72rem;
+      max-width: 78rem;
       margin: 0 auto;
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      justify-content: space-between;
       gap: 1rem;
-      flex-wrap: wrap;
     }
 
     .brand-lockup {
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 0.65rem;
+      gap: 0.75rem;
       text-decoration: none;
       color: var(--text-parchment);
+      justify-self: start;
     }
 
     .brand-mark {
-      width: 1.65rem;
-      height: 1.65rem;
+      width: 2.1rem;
+      height: 2.1rem;
       color: var(--accent-lantern);
+      filter: drop-shadow(0 0 10px rgba(232, 153, 58, 0.45));
       flex-shrink: 0;
     }
 
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .brand-name {
+    .brand-center-title {
       font-family: var(--font-serif);
       font-weight: 600;
-      font-size: 1.15rem;
+      font-size: clamp(1.35rem, 1rem + 1.4vw, 2.05rem);
       line-height: 1.1;
       letter-spacing: 0.02em;
+      color: var(--text-parchment);
+      text-align: center;
+      text-decoration: none;
+      text-shadow: 0 2px 18px rgba(232, 153, 58, 0.22);
     }
 
-    .brand-sub {
+    .brand-sub-tag {
+      display: block;
       font-family: var(--font-mono);
-      font-size: 0.68rem;
-      color: var(--accent-lantern);
-      letter-spacing: 0.1em;
+      font-size: 0.64rem;
+      color: var(--text-slate);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-top: 0.15rem;
     }
 
     .nav-controls {
       display: flex;
       align-items: center;
+      justify-content: flex-end;
       gap: 0.75rem;
-      flex-wrap: wrap;
+      justify-self: end;
     }
 
-    .course-pills {
-      display: flex;
-      gap: 0.35rem;
-    }
-
-    .course-pill {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--text-mist);
-      text-decoration: none;
-      padding: 0.35rem 0.65rem;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
-    }
-
-    .course-pill:hover,
-    .course-pill:focus-visible {
-      color: var(--text-parchment);
-      border-color: var(--border-stone);
-      background: rgba(255, 255, 255, 0.04);
-    }
-
-    /* Mode Switcher (Guest Menu vs Bartender Specs) */
+    /* Mode Switcher (Guest vs Bartender) */
     .mode-switch {
       display: inline-flex;
-      background: var(--bg-granite);
-      border: 1px solid var(--border-brass);
+      background: rgba(24, 18, 15, 0.9);
+      border: 1px solid rgba(232, 197, 158, 0.2);
       border-radius: 999px;
-      padding: 0.2rem;
+      padding: 0.22rem;
       gap: 0.15rem;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.6);
     }
 
     .mode-btn {
       appearance: none;
-      border: none;
+      border: 1px solid transparent;
       background: transparent;
       color: var(--text-mist);
       font-family: var(--font-sans);
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       font-weight: 500;
-      padding: 0.35rem 0.8rem;
+      padding: 0.35rem 0.9rem;
       border-radius: 999px;
       cursor: pointer;
       transition: all 0.2s ease;
@@ -208,162 +192,383 @@
     }
 
     .mode-btn[aria-pressed="true"] {
-      background: linear-gradient(135deg var(--in-oklab), var(--accent-lantern), var(--accent-ember));
-      color: #090e13;
+      background: rgba(232, 153, 58, 0.18);
+      border-color: var(--border-brass);
+      color: var(--text-parchment);
       font-weight: 600;
-      box-shadow: 0 2px 8px rgba(212, 168, 95, 0.3);
+      box-shadow: 0 0 14px rgba(232, 153, 58, 0.22);
     }
 
-    /* Hero Section */
-    .hero {
+    /* Session Timeline Scrubber Bar (Option B / Slide 3) */
+    .scrubber-bar {
+      background: rgba(20, 15, 13, 0.78);
+      border-bottom: 1px solid var(--border-stone);
+      padding: 0.85rem 1.25rem;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .scrubber-inner {
+      max-width: 78rem;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      overflow-x: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(232, 153, 58, 0.3) transparent;
+      padding-bottom: 0.2rem;
+    }
+
+    .scrubber-pill {
+      appearance: none;
+      background: rgba(30, 23, 19, 0.72);
+      border: 1px solid rgba(232, 197, 158, 0.16);
+      color: var(--text-mist);
+      font-family: var(--font-sans);
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      cursor: pointer;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .scrubber-pill:hover,
+    .scrubber-pill:focus-visible {
+      border-color: var(--border-brass);
+      color: var(--text-parchment);
+      background: rgba(42, 31, 25, 0.85);
+    }
+
+    .scrubber-pill[aria-pressed="true"] {
+      background: linear-gradient(135deg var(--in-oklab), rgba(232, 153, 58, 0.24), rgba(184, 98, 42, 0.16));
+      border-color: var(--accent-lantern);
+      color: var(--text-parchment);
+      font-weight: 600;
+      box-shadow: 0 0 18px rgba(232, 153, 58, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    .scrubber-pill .active-dot {
+      display: none;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      color: var(--accent-lantern-glow);
+      font-weight: 600;
+    }
+
+    .scrubber-pill[aria-pressed="true"] .active-dot {
+      display: inline;
+    }
+
+    .scrubber-vault-jump {
+      margin-left: auto;
+      background: rgba(15, 11, 10, 0.85);
+      border: 1px solid var(--border-brass);
+      color: var(--accent-lantern-glow);
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      text-decoration: none;
+      padding: 0.5rem 0.95rem;
+      border-radius: 999px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+
+    .scrubber-vault-jump:hover {
+      background: rgba(232, 153, 58, 0.16);
+      color: var(--text-parchment);
+    }
+
+    /* Active Session Tasting Stage (Slide 3 Top Showcase) */
+    .tasting-stage-section {
+      max-width: 78rem;
+      margin: 0 auto;
+      padding: clamp(2rem, 4vw, 3.25rem) 1.25rem clamp(2.5rem, 5vw, 4rem);
       position: relative;
-      isolation: isolate;
-      min-height: 34rem;
+    }
+
+    .stage-header {
       display: flex;
       align-items: flex-end;
-      padding: clamp(3rem, 7vw, 6rem) 1.25rem clamp(2.5rem, 5vw, 4.5rem);
-      border-bottom: 1px solid var(--border-stone);
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .stage-kicker {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      color: var(--accent-lantern);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .stage-heading {
+      font-family: var(--font-serif);
+      font-size: clamp(1.85rem, 1.4rem + 1.6vw, 2.65rem);
+      font-weight: 500;
+      margin: 0;
+      color: var(--text-parchment);
+      line-height: 1.1;
+    }
+
+    .stage-session-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-mist);
+      margin: 0.35rem 0 0;
+      max-width: 64ch;
+    }
+
+    .stage-meta-Controls {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+    }
+
+    .stage-Action-link {
+      appearance: none;
+      background: rgba(28, 22, 19, 0.82);
+      border: 1px solid var(--border-stone);
+      color: var(--text-mist);
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      padding: 0.45rem 0.85rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .stage-Action-link:hover {
+      border-color: var(--border-brass);
+      color: var(--text-parchment);
+    }
+
+    /* Slide 3 Split Smoked-Glass Cards Grid */
+    .stage-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+      gap: 1.35rem;
+    }
+
+    .stage-split-card {
+      display: grid;
+      grid-template-columns: 46% 54%;
+      background: linear-gradient(145deg var(--in-oklab), rgba(32, 24, 20, 0.88), rgba(18, 14, 12, 0.95));
+      border: 1px solid rgba(232, 197, 158, 0.16);
+      border-radius: 0.9rem;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      min-height: 19.5rem;
+      transition: border-color 0.25s ease, transform 0.25s ease;
+    }
+
+    .stage-split-card:hover {
+      border-color: var(--border-brass);
+      transform: translateY(-2px);
+    }
+
+    .stage-card-photo {
+      position: relative;
+      background: #070504;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
       overflow: hidden;
     }
 
-    .hero-media {
+    .stage-card-photo img {
       position: absolute;
       inset: 0;
-      z-index: -2;
-    }
-
-    .hero-media img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 40%;
-      filter: brightness(0.75) contrast(1.06);
-      transform: scale(1.02);
+      filter: contrast(1.06) brightness(0.92);
+      transition: transform 0.5s ease;
     }
 
-    .hero-vignette {
+    .stage-split-card:hover .stage-card-photo img {
+      transform: scale(1.04);
+    }
+
+    .stage-photo-shade {
       position: absolute;
       inset: 0;
-      z-index: -1;
       background:
-        linear-gradient(to top var(--in-oklab), var(--bg-abyss) 6%, rgba(9, 14, 19, 0.72) 48%, rgba(9, 14, 19, 0.38) 100%),
-        radial-gradient(circle at 70% 35% var(--in-oklab), rgba(212, 168, 95, 0.14), transparent 55%);
+        linear-gradient(to top, rgba(11, 8, 7, 0.95) 8%, rgba(11, 8, 7, 0.45) 45%, rgba(11, 8, 7, 0.15) 100%),
+        radial-gradient(circle at 50% 60%, rgba(232, 153, 58, 0.12), transparent 65%);
+      pointer-events: none;
     }
 
-    .hero-content {
-      max-width: 58rem;
-      margin: 0 auto;
-      width: 100%;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .stage-photo-caption {
+      position: relative;
+      z-index: 2;
+      padding: 0.9rem;
     }
 
-    .hero-kicker {
+    .stage-course-badge {
       font-family: var(--font-mono);
-      font-size: 0.75rem;
-      letter-spacing: 0.16em;
+      font-size: 0.64rem;
+      letter-spacing: 0.1em;
       color: var(--accent-lantern-glow);
-      margin-bottom: 0.75rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .hero-kicker::before,
-    .hero-kicker::after {
-      content: "";
-      width: 2rem;
-      height: 1px;
-      background: var(--border-brass);
-    }
-
-    .hero-title {
-      font-family: var(--font-serif);
-      font-size: clamp(2.6rem, 1.5rem + 5vw, 4.75rem);
-      font-weight: 600;
-      line-height: 1.05;
-      margin: 0 0 1rem;
-      letter-spacing: -0.01em;
-      color: var(--text-parchment);
-      text-shadow: 0 4px 24px rgba(0, 0, 0, 0.75);
-    }
-
-    .hero-subtitle {
-      font-family: var(--font-serif);
-      font-style: italic;
-      font-size: clamp(1.15rem, 0.95rem + 0.9vw, 1.45rem);
-      line-height: 1.45;
-      color: #dce4ec;
-      margin: 0 0 1.5rem;
-      max-width: 54ch;
-    }
-
-    .hero-description {
-      font-size: clamp(0.95rem, 0.9rem + 0.25vw, 1.08rem);
-      color: var(--text-mist);
-      margin: 0 0 2rem;
-      max-width: 62ch;
-    }
-
-    /* Progression Timeline Strip */
-    .progression-strip {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0.75rem;
-      width: 100%;
-      max-width: 50rem;
-      margin-top: 0.5rem;
-    }
-
-    .progression-step {
-      background: rgba(17, 24, 32, 0.78);
-      border: 1px solid var(--border-stone);
-      border-radius: 0.75rem;
-      padding: 0.85rem 1rem;
-      text-decoration: none;
-      color: inherit;
-      text-align: start;
-      transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
-    }
-
-    .progression-step:hover,
-    .progression-step:focus-visible {
-      transform: translateY(-2px);
-      border-color: var(--border-brass);
-      background: rgba(23, 33, 43, 0.92);
-    }
-
-    .step-number {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      color: var(--accent-lantern);
       display: block;
       margin-bottom: 0.2rem;
     }
 
-    .step-name {
+    .stage-drink-title {
       font-family: var(--font-serif);
-      font-size: 1.15rem;
+      font-size: 1.35rem;
       font-weight: 600;
-      display: block;
-      line-height: 1.2;
+      line-height: 1.12;
+      margin: 0;
       color: var(--text-parchment);
     }
 
-    .step-role {
-      font-size: 0.78rem;
-      color: var(--text-slate);
+    .stage-drink-title span {
+      color: var(--accent-lantern);
+    }
+
+    /* Right Smoked-Glass Pane of Stage Card */
+    .stage-card-pane {
+      padding: 1.15rem 1.2rem;
+      background: rgba(28, 22, 19, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-left: 1px solid rgba(232, 197, 158, 0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.85rem;
+    }
+
+    .stage-pane-header {
+      border-bottom: 1px solid rgba(232, 197, 158, 0.1);
+      padding-bottom: 0.55rem;
+    }
+
+    .stage-pane-title {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text-parchment);
+      margin: 0;
+      line-height: 1.15;
+    }
+
+    .stage-pane-sub {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-mist);
+      letter-spacing: 0.04em;
       display: block;
       margin-top: 0.15rem;
     }
 
+    .stage-spec-lines {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.38rem;
+      font-size: 0.82rem;
+      color: var(--text-parchment);
+    }
+
+    .stage-spec-lines li {
+      display: flex;
+      align-items: baseline;
+      gap: 0.45rem;
+      line-height: 1.35;
+    }
+
+    .stage-spec-lines .stage-oz {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      color: var(--accent-lantern-glow);
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+
+    .stage-garnish-line {
+      font-size: 0.78rem;
+      color: var(--accent-lantern);
+      font-weight: 500;
+      padding-top: 0.35rem;
+      border-top: 1px dashed rgba(232, 153, 58, 0.22);
+    }
+
+    .stage-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding-top: 0.35rem;
+    }
+
+    .stage-jump-btn {
+      appearance: none;
+      background: rgba(232, 153, 58, 0.12);
+      border: 1px solid var(--border-brass);
+      color: var(--accent-lantern-glow);
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      padding: 0.32rem 0.65rem;
+      border-radius: 0.4rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s ease;
+    }
+
+    .stage-jump-btn:hover {
+      background: rgba(232, 153, 58, 0.24);
+      color: var(--text-parchment);
+    }
+
+    /* Glowing Amber Divider Line (Slide 3) */
+    .cellar-amber-divider {
+      position: relative;
+      height: 1px;
+      max-width: 78rem;
+      margin: 0.5rem auto 0;
+      background: linear-gradient(90deg, transparent 0%, rgba(232, 153, 58, 0.35) 20%, var(--accent-lantern-glow) 50%, rgba(232, 153, 58, 0.35) 80%, transparent 100%);
+      box-shadow: 0 0 24px 2px rgba(232, 153, 58, 0.45);
+    }
+
+    @media (max-width: 760px) {
+      .top-bar-inner {
+        grid-template-columns: 1fr auto;
+      }
+      .brand-center-title {
+        grid-column: 1 / -1;
+        order: -1;
+        text-align: start;
+      }
+      .stage-split-card {
+        grid-template-columns: 1fr;
+      }
+      .stage-card-photo {
+        min-height: 13rem;
+      }
+    }
+
     /* Main Content Container */
     .container {
-      max-width: 70rem;
+      max-width: 78rem;
       margin: 0 auto;
-      padding: clamp(2.5rem, 5vw, 4.5rem) 1.25rem;
+      padding: clamp(2rem, 4vw, 3.5rem) 1.25rem;
     }
 
     /* Bartender Batch Controls Banner (visible in Bartender mode) */
@@ -373,11 +578,12 @@
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 1rem;
-      background: linear-gradient(135deg var(--in-oklab), rgba(212, 168, 95, 0.12), rgba(23, 33, 43, 0.85));
+      background: linear-gradient(135deg var(--in-oklab), rgba(232, 153, 58, 0.14), rgba(24, 18, 15, 0.92));
       border: 1px solid var(--border-brass);
       border-radius: 0.85rem;
       padding: 0.9rem 1.25rem;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2.25rem;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
     }
 
     body[data-mode="bartender"] .bartender-toolbar {
@@ -413,7 +619,7 @@
 
     .scale-btn {
       appearance: none;
-      background: rgba(9, 14, 19, 0.65);
+      background: rgba(11, 8, 7, 0.75);
       border: 1px solid var(--border-stone);
       color: var(--text-mist);
       font-family: var(--font-mono);
@@ -426,7 +632,7 @@
 
     .scale-btn[aria-pressed="true"] {
       background: var(--accent-lantern);
-      color: #090e13;
+      color: #0b0807;
       border-color: var(--accent-lantern);
       font-weight: 600;
     }
@@ -443,15 +649,15 @@
       grid-template-columns: 5fr 7fr;
       background: linear-gradient(160deg var(--in-oklab), var(--bg-granite-elevated), var(--bg-granite));
       border: 1px solid var(--border-stone);
-      border-radius: 1.25rem;
+      border-radius: 1.1rem;
       overflow: hidden;
       box-shadow: var(--shadow-card);
-      scroll-margin-top: 5rem;
+      scroll-margin-top: 5.5rem;
       transition: border-color 0.25s ease;
     }
 
     .cocktail-card:hover {
-      border-color: rgba(212, 168, 95, 0.28);
+      border-color: var(--border-brass);
     }
 
     .cocktail-card:nth-child(even) {
@@ -465,7 +671,7 @@
     .card-visual {
       position: relative;
       min-height: 24rem;
-      background: #080c10;
+      background: #070504;
       overflow: hidden;
     }
 
@@ -484,7 +690,7 @@
     .card-visual-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top var(--in-oklab), rgba(17, 24, 32, 0.85) 0%, transparent 40%);
+      background: linear-gradient(to top var(--in-oklab), rgba(14, 10, 8, 0.88) 0%, transparent 42%);
       pointer-events: none;
     }
 
@@ -492,7 +698,7 @@
       position: absolute;
       top: 1rem;
       left: 1rem;
-      background: rgba(9, 14, 19, 0.82);
+      background: rgba(11, 8, 7, 0.84);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       border: 1px solid var(--border-brass);
@@ -513,8 +719,8 @@
       align-items: center;
       gap: 0.5rem;
       font-size: 0.8rem;
-      color: #dbe4ed;
-      background: rgba(9, 14, 19, 0.78);
+      color: var(--text-parchment);
+      background: rgba(11, 8, 7, 0.82);
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
       border: 1px solid var(--border-stone);
@@ -588,9 +794,9 @@
     .tasting-chip {
       font-size: 0.78rem;
       font-weight: 500;
-      color: #e4dfd7;
-      background: rgba(212, 168, 95, 0.1);
-      border: 1px solid rgba(212, 168, 95, 0.26);
+      color: var(--text-parchment);
+      background: rgba(232, 153, 58, 0.1);
+      border: 1px solid rgba(232, 153, 58, 0.28);
       padding: 0.22rem 0.65rem;
       border-radius: 999px;
     }
@@ -618,7 +824,7 @@
     }
 
     .guest-ingredients li {
-      background: rgba(9, 14, 19, 0.55);
+      background: rgba(11, 8, 7, 0.65);
       border: 1px solid var(--border-stone);
       border-radius: 0.5rem;
       padding: 0.4rem 0.75rem;
@@ -627,8 +833,8 @@
     }
 
     .guest-ingredients li.garnish-item {
-      border-color: rgba(127, 166, 155, 0.35);
-      color: #c7ddd7;
+      border-color: rgba(232, 153, 58, 0.38);
+      color: var(--accent-lantern-glow);
     }
 
     /* Bartender Detailed Specs (Measurements + Method) */
@@ -664,15 +870,15 @@
       justify-content: space-between;
       gap: 1rem;
       padding: 0.45rem 0.7rem;
-      background: rgba(9, 14, 19, 0.5);
+      background: rgba(11, 8, 7, 0.6);
       border-radius: 0.45rem;
       border-left: 2px solid var(--accent-lantern);
       font-size: 0.9rem;
     }
 
     .spec-item.spec-garnish {
-      border-left-color: var(--accent-seafoam);
-      background: rgba(127, 166, 155, 0.08);
+      border-left-color: var(--accent-ember);
+      background: rgba(232, 153, 58, 0.08);
     }
 
     .spec-measure {
@@ -716,7 +922,7 @@
       align-items: center;
       justify-content: space-between;
       padding-top: 0.5rem;
-      border-top: 1px solid rgba(168, 187, 204, 0.08);
+      border-top: 1px solid var(--border-stone);
     }
 
     body[data-mode="bartender"] .card-actions {
@@ -725,7 +931,7 @@
 
     .toggle-spec-btn {
       appearance: none;
-      background: rgba(212, 168, 95, 0.08);
+      background: rgba(232, 153, 58, 0.09);
       border: 1px solid var(--border-brass);
       color: var(--accent-lantern-glow);
       font-family: var(--font-sans);
@@ -741,16 +947,16 @@
     }
 
     .toggle-spec-btn:hover {
-      background: rgba(212, 168, 95, 0.18);
+      background: rgba(232, 153, 58, 0.2);
     }
 
     /* Prep Summary Section */
     .prep-section {
-      margin-top: clamp(3rem, 6vw, 5rem);
-      background: var(--bg-granite);
+      margin-top: clamp(2rem, 4vw, 3.5rem);
+      background: linear-gradient(145deg var(--in-oklab), rgba(26, 20, 17, 0.88), rgba(16, 12, 10, 0.95));
       border: 1px solid var(--border-stone);
-      border-radius: 1.15rem;
-      padding: clamp(1.5rem, 3vw, 2.25rem);
+      border-radius: 1rem;
+      padding: clamp(1.25rem, 2.5vw, 1.85rem);
       box-shadow: var(--shadow-card);
     }
 
@@ -760,20 +966,21 @@
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 0.75rem;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.1rem;
     }
 
     .prep-title {
       font-family: var(--font-serif);
-      font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+      font-size: clamp(1.4rem, 1.15rem + 0.9vw, 1.85rem);
       margin: 0;
       color: var(--text-parchment);
     }
 
     .prep-subtitle {
       font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: var(--accent-lantern);
+      letter-spacing: 0.08em;
     }
 
     .table-scroll {
@@ -784,23 +991,24 @@
     .prep-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.9rem;
-      min-width: 38rem;
+      font-size: 0.88rem;
+      min-width: 42rem;
     }
 
     .prep-table th,
     .prep-table td {
-      padding: 0.85rem 1rem;
+      padding: 0.8rem 0.95rem;
       text-align: start;
       border-bottom: 1px solid var(--border-stone);
+      vertical-align: top;
     }
 
     .prep-table th {
       font-family: var(--font-mono);
-      font-size: 0.74rem;
+      font-size: 0.72rem;
       color: var(--accent-lantern);
       letter-spacing: 0.08em;
-      background: rgba(9, 14, 19, 0.45);
+      background: rgba(11, 8, 7, 0.55);
     }
 
     .prep-table tbody tr:last-child td {
@@ -808,12 +1016,12 @@
     }
 
     .prep-table tbody tr:hover {
-      background: rgba(255, 255, 255, 0.02);
+      background: rgba(232, 153, 58, 0.03);
     }
 
     .prep-cocktail-name {
       font-family: var(--font-serif);
-      font-size: 1.1rem;
+      font-size: 1.12rem;
       font-weight: 600;
       color: var(--text-parchment);
     }
@@ -821,12 +1029,13 @@
     .technique-badge {
       display: inline-block;
       font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       padding: 0.2rem 0.55rem;
       border-radius: 0.35rem;
-      background: rgba(212, 168, 95, 0.12);
+      background: rgba(232, 153, 58, 0.12);
       color: var(--accent-lantern-glow);
-      border: 1px solid rgba(212, 168, 95, 0.25);
+      border: 1px solid rgba(232, 153, 58, 0.28);
+      white-space: nowrap;
     }
 
     /* Footer & QR Modal Trigger */
@@ -889,7 +1098,7 @@
     }
 
     dialog.qr-dialog::backdrop {
-      background: rgba(5, 8, 12, 0.78);
+      background: rgba(8, 5, 4, 0.82);
       backdrop-filter: blur(6px);
     }
 
@@ -906,7 +1115,7 @@
     }
 
     .qr-frame {
-      background: #f2efe9;
+      background: #f5efe8;
       padding: 1rem;
       border-radius: 0.75rem;
       display: inline-block;
@@ -917,7 +1126,7 @@
       appearance: none;
       width: 100%;
       background: var(--accent-lantern);
-      color: #090e13;
+      color: #0b0807;
       border: none;
       border-radius: 0.5rem;
       padding: 0.6rem 1rem;
@@ -928,10 +1137,6 @@
 
     /* Responsive adjustments for mobile QR scanning */
     @media (max-width: 860px) {
-      .progression-strip {
-        grid-template-columns: 1fr;
-      }
-
       .cocktail-card,
       .cocktail-card:nth-child(even) {
         grid-template-columns: 1fr;
@@ -945,22 +1150,6 @@
         min-height: 19rem;
         max-height: 23rem;
       }
-
-      .course-pills {
-        display: none;
-      }
-    }
-
-    /* Bronze Plaque & Neighborhood Monument Accents */
-    .brand-neighborhood {
-      font-family: var(--font-serif);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      color: var(--accent-lantern);
-      text-transform: uppercase;
-      line-height: 1;
-      margin-bottom: 0.15rem;
     }
 
     /* Provenance Badges on Cocktail Visuals */
@@ -981,32 +1170,32 @@
     }
 
     .provenance-original {
-      background: rgba(16, 42, 34, 0.88);
-      border: 1px solid rgba(127, 198, 164, 0.55);
-      color: #a8ebd0;
+      background: rgba(24, 34, 24, 0.88);
+      border: 1px solid rgba(164, 212, 168, 0.5);
+      color: #ccebd0;
     }
 
     .provenance-doc {
-      background: rgba(38, 30, 18, 0.88);
-      border: 1px solid rgba(212, 168, 95, 0.55);
+      background: rgba(38, 26, 16, 0.88);
+      border: 1px solid rgba(232, 153, 58, 0.55);
       color: var(--accent-lantern-glow);
     }
 
     .provenance-ai {
-      background: rgba(22, 27, 42, 0.86);
-      border: 1px solid rgba(168, 187, 204, 0.32);
-      color: #cbd8e6;
+      background: rgba(22, 17, 15, 0.88);
+      border: 1px solid rgba(232, 197, 158, 0.3);
+      color: var(--text-mist);
     }
 
     /* Club Lore Callout & House Prep Subrecipe Boxes */
     .club-lore-note {
-      background: linear-gradient(135deg var(--in-oklab), rgba(212, 168, 95, 0.12), rgba(200, 122, 65, 0.06));
-      border: 1px dashed rgba(212, 168, 95, 0.45);
+      background: linear-gradient(135deg var(--in-oklab), rgba(232, 153, 58, 0.12), rgba(184, 98, 42, 0.06));
+      border: 1px dashed rgba(232, 153, 58, 0.45);
       border-left: 3px solid var(--accent-lantern);
       border-radius: 0.6rem;
       padding: 0.65rem 0.9rem;
       font-size: 0.86rem;
-      color: #e6dfd3;
+      color: var(--text-parchment);
       display: flex;
       flex-direction: column;
       gap: 0.2rem;
@@ -1026,7 +1215,7 @@
     }
 
     .prep-subrecipe {
-      background: rgba(9, 14, 19, 0.65);
+      background: rgba(11, 8, 7, 0.72);
       border: 1px solid var(--border-brass);
       border-radius: 0.65rem;
       padding: 0.85rem 1rem;
@@ -1040,114 +1229,103 @@
       line-height: 1.55;
     }
 
-    /* League Archive / Vault Section */
+    .stage-guest-pane-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .stage-bartender-pane-content {
+      display: none;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    body[data-mode="bartender"] .stage-guest-pane-content {
+      display: none;
+    }
+
+    body[data-mode="bartender"] .stage-bartender-pane-content {
+      display: flex;
+    }
+
+    body[data-mode="guest"] #prep-summary {
+      display: none;
+    }
+
+    /* Cellar Vault Section (Slide 3) */
     .archive-vault-section {
-      margin-top: clamp(4rem, 8vw, 6.5rem);
-      padding-top: clamp(3rem, 6vw, 4.5rem);
-      border-top: 1px solid var(--border-brass);
+      padding-top: clamp(2.5rem, 5vw, 3.75rem);
       scroll-margin-top: 4.5rem;
     }
 
-    .monument-banner {
-      display: grid;
-      grid-template-columns: 1.1fr 1.9fr;
-      gap: 1.75rem;
+    .cellar-vault-header {
+      display: flex;
       align-items: center;
-      background: linear-gradient(145deg var(--in-oklab), #18202a, #10161d);
-      border: 2px solid rgba(212, 168, 95, 0.42);
-      border-radius: 1.25rem;
-      padding: clamp(1.25rem, 3vw, 2rem);
-      box-shadow: var(--shadow-card);
-      margin-bottom: 2rem;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      margin-bottom: 1.35rem;
     }
 
-    .monument-photo-frame {
-      position: relative;
-      border-radius: 0.85rem;
-      overflow: hidden;
-      border: 2px solid rgba(212, 168, 95, 0.5);
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6);
-      aspect-ratio: 463 / 311;
-      background: #090e13;
-    }
-
-    .monument-photo-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      filter: contrast(1.05) saturate(0.95);
-    }
-
-    .monument-plaque-caption {
-      position: absolute;
-      bottom: 0;
-      inset-inline: 0;
-      background: linear-gradient(to top, rgba(9, 14, 19, 0.92), rgba(9, 14, 19, 0.55) 75%, transparent);
-      padding: 1.25rem 0.85rem 0.55rem;
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.08em;
-      color: var(--accent-lantern-glow);
-      text-align: center;
-    }
-
-    .monument-copy {
+    .cellar-vault-title-group {
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .archive-kicker {
-      font-family: var(--font-mono);
-      font-size: 0.74rem;
-      letter-spacing: 0.14em;
-      color: var(--accent-lantern);
+      gap: 0.35rem;
     }
 
     .archive-main-title {
       font-family: var(--font-serif);
-      font-size: clamp(2rem, 1.5rem + 2.2vw, 3rem);
-      font-weight: 600;
+      font-size: clamp(2rem, 1.5rem + 2.2vw, 2.85rem);
+      font-weight: 500;
       line-height: 1.08;
       margin: 0;
       color: var(--text-parchment);
+      display: flex;
+      align-items: baseline;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+    }
+
+    .archive-main-title .amber-slash {
+      color: var(--accent-lantern);
+      font-weight: 400;
     }
 
     .archive-lead {
-      font-size: 0.98rem;
+      font-size: 0.92rem;
       color: var(--text-mist);
       margin: 0;
-      line-height: 1.6;
+      line-height: 1.55;
     }
 
     .provenance-legend {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.25rem;
+      gap: 0.45rem;
+      margin-top: 0.2rem;
     }
 
     .legend-item {
       font-family: var(--font-mono);
-      font-size: 0.7rem;
-      padding: 0.25rem 0.65rem;
+      font-size: 0.68rem;
+      padding: 0.22rem 0.6rem;
       border-radius: 999px;
       border: 1px solid var(--border-stone);
-      background: rgba(9, 14, 19, 0.55);
+      background: rgba(18, 14, 12, 0.72);
       color: var(--text-mist);
     }
 
-    /* Interactive Filter & Search Controls */
+    /* Interactive Filter & Search Controls (Slide 3 Smoked Glass Bar) */
     .archive-controls {
-      background: var(--bg-granite);
+      background: linear-gradient(145deg var(--in-oklab), rgba(28, 22, 19, 0.86), rgba(16, 12, 10, 0.94));
       border: 1px solid var(--border-stone);
       border-radius: 1rem;
       padding: 1.25rem;
       margin-bottom: 2.25rem;
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 0.95rem;
       box-shadow: var(--shadow-card);
     }
 
@@ -1166,23 +1344,25 @@
 
     .archive-search-input {
       width: 100%;
-      background: var(--bg-abyss);
-      border: 1px solid var(--border-brass);
-      border-radius: 0.6rem;
-      padding: 0.65rem 1rem 0.65rem 2.4rem;
+      background: rgba(11, 8, 7, 0.9);
+      border: 1px solid rgba(232, 197, 158, 0.22);
+      border-radius: 999px;
+      padding: 0.65rem 1.15rem 0.65rem 2.5rem;
       color: var(--text-parchment);
       font-family: var(--font-sans);
       font-size: 0.92rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
     .archive-search-input:focus {
-      outline: 2px solid var(--accent-lantern);
-      outline-offset: 1px;
+      outline: none;
+      border-color: var(--accent-lantern);
+      box-shadow: 0 0 14px rgba(232, 153, 58, 0.22);
     }
 
     .search-icon {
       position: absolute;
-      left: 0.8rem;
+      left: 0.95rem;
       top: 50%;
       transform: translateY(-50%);
       color: var(--accent-lantern);
@@ -1201,19 +1381,19 @@
 
     .hint-chip {
       appearance: none;
-      background: rgba(212, 168, 95, 0.1);
-      border: 1px solid rgba(212, 168, 95, 0.3);
+      background: rgba(232, 153, 58, 0.1);
+      border: 1px solid rgba(232, 153, 58, 0.3);
       color: var(--accent-lantern-glow);
       font-family: var(--font-mono);
       font-size: 0.7rem;
-      padding: 0.2rem 0.55rem;
+      padding: 0.22rem 0.6rem;
       border-radius: 999px;
       cursor: pointer;
       transition: background-color 0.15s ease;
     }
 
     .hint-chip:hover {
-      background: rgba(212, 168, 95, 0.22);
+      background: rgba(232, 153, 58, 0.22);
     }
 
     .filter-group-row {
@@ -1233,13 +1413,13 @@
 
     .filter-pill {
       appearance: none;
-      background: rgba(9, 14, 19, 0.6);
+      background: rgba(15, 11, 10, 0.75);
       border: 1px solid var(--border-stone);
       color: var(--text-mist);
       font-family: var(--font-sans);
       font-size: 0.78rem;
       font-weight: 500;
-      padding: 0.3rem 0.7rem;
+      padding: 0.32rem 0.78rem;
       border-radius: 999px;
       cursor: pointer;
       transition: all 0.15s ease;
@@ -1252,9 +1432,10 @@
 
     .filter-pill[aria-pressed="true"] {
       background: var(--accent-lantern);
-      color: #090e13;
+      color: #0b0807;
       border-color: var(--accent-lantern);
       font-weight: 600;
+      box-shadow: 0 0 12px rgba(232, 153, 58, 0.3);
     }
 
     .filter-status-bar {
@@ -1285,7 +1466,7 @@
     /* Fake 404 Easter Egg for Doug & Quinn */
     .doug-quinn-404-box {
       display: none;
-      background: linear-gradient(145deg var(--in-oklab), rgba(48, 22, 22, 0.92), rgba(17, 24, 32, 0.96));
+      background: linear-gradient(145deg var(--in-oklab), rgba(48, 18, 16, 0.92), rgba(20, 14, 12, 0.96));
       border: 2px solid #d46a5f;
       border-radius: 1.15rem;
       padding: clamp(1.5rem, 4vw, 2.5rem);
@@ -1342,7 +1523,7 @@
     .bypass-404-btn {
       appearance: none;
       background: linear-gradient(135deg var(--in-oklab), var(--accent-lantern), var(--accent-ember));
-      color: #090e13;
+      color: #0b0807;
       border: none;
       border-radius: 0.55rem;
       padding: 0.65rem 1.25rem;
@@ -1350,7 +1531,7 @@
       font-size: 0.9rem;
       font-weight: 700;
       cursor: pointer;
-      box-shadow: 0 4px 16px rgba(212, 168, 95, 0.35);
+      box-shadow: 0 4px 16px rgba(232, 153, 58, 0.35);
     }
 
     /* Archive Sessions & Vault Grid (with Modern Web Guidance content-visibility) */
@@ -1358,6 +1539,7 @@
       content-visibility: auto;
       contain-intrinsic-size: auto none auto 650px;
       margin-bottom: clamp(3rem, 5vw, 4.5rem);
+      scroll-margin-top: 5.5rem;
     }
 
     .archive-session[hidden],
@@ -1369,6 +1551,34 @@
       border-left: 3px solid var(--accent-lantern);
       padding-left: 1.1rem;
       margin-bottom: 1.5rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .session-banner-copy {
+      flex: 1 1 28rem;
+    }
+
+    .stage-this-session-btn {
+      appearance: none;
+      background: rgba(232, 153, 58, 0.1);
+      border: 1px solid var(--border-brass);
+      color: var(--accent-lantern-glow);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .stage-this-session-btn:hover {
+      background: rgba(232, 153, 58, 0.22);
+      color: var(--text-parchment);
     }
 
     .session-meta {
@@ -1406,10 +1616,10 @@
       grid-template-columns: 1fr !important;
       background: repeating-linear-gradient(
         -45deg,
-        rgba(23, 33, 43, 0.85),
-        rgba(23, 33, 43, 0.85) 14px,
-        rgba(17, 24, 32, 0.92) 14px,
-        rgba(17, 24, 32, 0.92) 28px
+        rgba(28, 22, 19, 0.85),
+        rgba(28, 22, 19, 0.85) 14px,
+        rgba(18, 14, 12, 0.92) 14px,
+        rgba(18, 14, 12, 0.92) 28px
       );
       border: 1px dashed rgba(212, 106, 95, 0.55);
     }
@@ -1433,94 +1643,145 @@
       border-radius: 999px;
     }
 
-    @media (max-width: 860px) {
-      .monument-banner {
-        grid-template-columns: 1fr;
-      }
-    }
-
   </style>
 </head>
 <body data-mode="guest">
 
-  <!-- Sticky Header -->
+  <!-- Sticky Speakeasy Header (Slide 3) -->
   <header class="top-bar">
     <div class="top-bar-inner">
-      <a href="#" class="brand-lockup">
-        <svg class="brand-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="9"/>
-          <path d="M7.6 7.8h8.8l-.9 9.2H8.5z"/>
-          <rect x="9.6" y="10.4" width="4.2" height="4.2" rx=".6" transform="rotate(12 11.7 12.5)" fill="currentColor" fill-opacity="0.18"/>
-          <path d="M7.9 10h8.2" stroke-opacity=".5"/>
+      <a href="#" class="brand-lockup" aria-label="The League of Extraordinary Cocktails Home">
+        <!-- Glowing Amber Coupe Icon -->
+        <svg class="brand-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 4h14c0 5.5-3.2 9-7 9S5 9.5 5 4z" fill="currentColor" fill-opacity="0.18"/>
+          <path d="M5.5 6.5h13" stroke-opacity="0.65"/>
+          <path d="M12 13v7"/>
+          <path d="M8 20h8"/>
         </svg>
-        <div class="brand-text">
-          <span class="brand-neighborhood">Horton's Creek</span>
-          <span class="brand-name">League of Extraordinary Cocktails</span>
-          <span class="brand-sub">LEAGUE FOUNDED AUG 2020 · ROTATING CLUB</span>
-        </div>
+      </a>
+
+      <a href="#" class="brand-center-title">
+        The League of Extraordinary Cocktails
+        <span class="brand-sub-tag">SUBTERRANEAN CELLAR VAULT · EST. AUG 2020</span>
       </a>
 
       <div class="nav-controls">
-        <nav class="course-pills" aria-label="Site sections">
-          <a class="course-pill" href="#casco-bay">Featured Menu (Oct 2026)</a>
-          <a class="course-pill" href="#prep-summary">Prep Ledger</a>
-          <a class="course-pill" href="#league-archive">The League Archive (48)</a>
-        </nav>
-
         <div class="mode-switch" role="group" aria-label="Menu view mode">
           <button type="button" class="mode-btn" id="btn-guest" aria-pressed="true">
-            Guest Menu
+            Guest
           </button>
           <button type="button" class="mode-btn" id="btn-bartender" aria-pressed="false">
-            Bartender Specs
+            Bartender
           </button>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-media">
-      <img
-        src="assets/hero-coastal-garrison.jpg"
-        alt="A historic granite stone coastal fortification overlooking misty Casco Bay at dusk, lit by warm amber lanterns."
-        fetchpriority="high"
-        width="1376"
-        height="768"
-      >
+  <!-- Horizontal Interactive Session Timeline Scrubber (Option B / Slide 3) -->
+  <nav class="scrubber-bar" aria-label="Interactive Tasting Session Switcher">
+    <div class="scrubber-inner" id="session-scrubber">
+      <button type="button" class="scrubber-pill" data-stage-session="session-alley-26-2025" aria-pressed="true">
+        <span class="active-dot">ACTIVE •</span>
+        <span>Nov 2025: Alley 2.6</span>
+      </button>
+      <button type="button" class="scrubber-pill" data-stage-session="session-coastal-garrison-2026" aria-pressed="false">
+        <span class="active-dot">ACTIVE •</span>
+        <span>Oct 2026: Coastal Garrison</span>
+      </button>
+      <button type="button" class="scrubber-pill" data-stage-session="session-matts-fall-festival-2025" aria-pressed="false">
+        <span class="active-dot">ACTIVE •</span>
+        <span>Oct 2025: Fall Festival</span>
+      </button>
+      <button type="button" class="scrubber-pill" data-stage-session="session-maligned-drinks-uplifted-2025" aria-pressed="false">
+        <span class="active-dot">ACTIVE •</span>
+        <span>Sep 2025: Maligned Drinks Uplifted</span>
+      </button>
+      <button type="button" class="scrubber-pill" data-stage-session="session-dougs-smokeout-2025" aria-pressed="false">
+        <span class="active-dot">ACTIVE •</span>
+        <span>May 2025: Smokeout</span>
+      </button>
+      <button type="button" class="scrubber-pill" data-stage-session="session-cyoa-margarita-2025" aria-pressed="false">
+        <span class="active-dot">ACTIVE •</span>
+        <span>Jan 2025: Margarita Lab</span>
+      </button>
+      <button type="button" class="scrubber-pill" data-stage-session="session-matts-thanksgiving-2024" aria-pressed="false">
+        <span class="active-dot">ACTIVE •</span>
+        <span>Nov 2024: Thanksgiving</span>
+      </button>
+      <button type="button" class="scrubber-pill" data-stage-session="session-brians-fall-cocktails-2024" aria-pressed="false">
+        <span class="active-dot">ACTIVE •</span>
+        <span>Oct 2024: Fall Classics</span>
+      </button>
+      <button type="button" class="scrubber-pill" data-stage-session="session-emphasis-on-mezcal-2023" aria-pressed="false">
+        <span class="active-dot">ACTIVE •</span>
+        <span>Oct 2023: Mezcal Night</span>
+      </button>
+      <button type="button" class="scrubber-pill" data-stage-session="session-matts-gin-night-2023" aria-pressed="false">
+        <span class="active-dot">ACTIVE •</span>
+        <span>Nov 2023: Gin Night</span>
+      </button>
+      <button type="button" class="scrubber-pill" data-stage-session="session-matts-st-patricks-2023" aria-pressed="false">
+        <span class="active-dot">ACTIVE •</span>
+        <span>2023: Spring &amp; Summer</span>
+      </button>
+      <button type="button" class="scrubber-pill" data-stage-session="session-2021-2022-rotations" aria-pressed="false">
+        <span class="active-dot">ACTIVE •</span>
+        <span>2021–2022: Rotations</span>
+      </button>
+      <button type="button" class="scrubber-pill" data-stage-session="session-founding-year-2020" aria-pressed="false">
+        <span class="active-dot">ACTIVE •</span>
+        <span>2020: Founding Classics</span>
+      </button>
+      <a href="#league-archive" class="scrubber-vault-jump">Archive (54 Cocktails) ↓</a>
     </div>
-    <div class="hero-vignette"></div>
+  </nav>
 
-    <div class="hero-content">
-      <div class="hero-kicker">43° 39' N · 70° 12' W // AUTUMN EDITION</div>
-      <h1 class="hero-title">The Coastal Garrison</h1>
-      <p class="hero-subtitle">
-        Coastal botanicals, autumn orchard fruit, and a touch of Atlantic salinity.
-      </p>
-      <p class="hero-description">
-        Inspired by rugged New England island outposts, maritime fog, and historic stone fortifications, this evening's trio moves from a crisp afternoon aperitif to a bracing mid-evening sour, finishing with a rich, fireside nightcap.
-      </p>
+  <!-- Active Session Tasting Stage (Slide 3 Top Showcase) -->
+  <section class="tasting-stage-section" id="active-tasting-stage" aria-labelledby="stage-heading">
+    <div class="stage-header">
+      <div>
+        <span class="stage-kicker" id="stage-kicker">NOV 1, 2025 // HOST: BRIAN O'CONNELL</span>
+        <h1 class="stage-heading" id="stage-heading">Active Session Tasting Stage — <span id="stage-session-name" style="color: var(--accent-lantern-glow);">Alley 2.6: Cocktail Recipe &amp; Test Sheet</span></h1>
+        <p class="stage-session-subtitle" id="stage-session-desc">
+          Precision recipe calibration and low-waste tasting pours—featuring a savory Cynar-bourbon coupe, a spicy jalapeño-hibiscus reposado sour, and an effervescent Irish whiskey vanilla cream soda highball.
+        </p>
+      </div>
+      <div class="stage-meta-Controls">
+        <a href="#prep-summary" class="stage-Action-link">Session Prep Ledger ↓</a>
+        <a href="#session-alley-26-2025" class="stage-Action-link" id="stage-jump-session-link">Full Session Cards ↓</a>
+      </div>
+    </div>
 
-      <div class="progression-strip" aria-label="Evening progression">
-        <a href="#casco-bay" class="progression-step">
-          <span class="step-number">COURSE I · APERITIF</span>
-          <span class="step-name">The Casco Bay Crossing</span>
-          <span class="step-role">Crisp · Botanical · Effervescent</span>
-        </a>
-        <a href="#granite-bastion" class="progression-step">
-          <span class="step-number">COURSE II · MID-EVENING SOUR</span>
-          <span class="step-name">The Granite Bastion</span>
-          <span class="step-role">Tart · Orchard-Spiced · Smoky</span>
-        </a>
-        <a href="#parapet-nightcap" class="progression-step">
-          <span class="step-number">COURSE III · FIRESIDE CLOSER</span>
-          <span class="step-name">The Parapet Nightcap</span>
-          <span class="step-role">Rich · Bittersweet · Woody</span>
-        </a>
+    <!-- Dynamically populated split smoked-glass cards for the active session -->
+    <div class="stage-cards-grid" id="stage-cards-grid" aria-live="polite"></div>
+
+    <!-- Dynamic Session Prep & Build Ledger (updates automatically with the Active Session) -->
+    <div class="prep-section" id="prep-summary" aria-labelledby="prep-heading" style="margin-top: 1.75rem;">
+      <div class="prep-header">
+        <h2 class="prep-title" id="prep-heading">Bartender Prep &amp; Batching Ledger</h2>
+        <span class="prep-subtitle" id="prep-session-label">ACTIVE SESSION QUICK REFERENCE</span>
+      </div>
+      <div class="table-scroll">
+        <table class="prep-table">
+          <thead>
+            <tr>
+              <th scope="col">COCKTAIL</th>
+              <th scope="col">GLASSWARE &amp; ICE</th>
+              <th scope="col">PROPORTIONS &amp; BUILD</th>
+              <th scope="col">GARNISH &amp; PROFILE</th>
+              <th scope="col">TECHNIQUE</th>
+            </tr>
+          </thead>
+          <tbody id="prep-ledger-tbody">
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
+
+  <!-- Glowing Amber Divider (Slide 3) -->
+  <div class="cellar-amber-divider" role="separator"></div>
 
   <!-- Main Content -->
   <main class="container">
@@ -1528,7 +1789,7 @@
     <!-- Bartender Mode Batch Scaler Toolbar -->
     <div class="bartender-toolbar" aria-live="polite">
       <div class="toolbar-label">
-        <span><strong>Bartender Spec Mode</strong> — Showing exact proportions, techniques &amp; prep table.</span>
+        <span><strong>Bartender Spec Mode</strong> — Showing exact proportions, techniques &amp; dynamic batch scaling across all 54 cocktails.</span>
       </div>
       <div class="scale-controls" role="group" aria-label="Batch multiplier">
         <span class="scale-label">BATCH SCALE:</span>
@@ -1539,10 +1800,489 @@
       </div>
     </div>
 
-    <div class="cocktails-stack">
+    <!-- ================================================================== -->
+    <!-- THE CELLAR VAULT // 54 COCKTAILS (2020 - 2026)                     -->
+    <!-- ================================================================== -->
+    <section class="archive-vault-section" id="league-archive" aria-labelledby="archive-heading">
 
-      <!-- 1. The Casco Bay Crossing -->
-      <article class="cocktail-card" id="casco-bay" data-expanded="false">
+      <div class="cellar-vault-header">
+        <div class="cellar-vault-title-group">
+          <h2 class="archive-main-title" id="archive-heading">
+            <span>The Cellar Vault</span>
+            <span class="amber-slash">//</span>
+            <span>54 Cocktails</span>
+          </h2>
+          <p class="archive-lead">
+            Every pour from 13 tasting sessions (2020–2026)—complete with Guest &amp; Bartender Spec modes, dynamic batch scaling, and one-click staging to the top Tasting Stage.
+          </p>
+        </div>
+        <div class="provenance-legend" aria-label="Image provenance key">
+          <span class="legend-item">📸 <strong>Original Photo</strong> (12)</span>
+          <span class="legend-item">📎 <strong>Doc Reference</strong> (9)</span>
+          <span class="legend-item">✨ <strong>AI &amp; Spec Plates</strong> (33)</span>
+        </div>
+      </div>
+
+      <!-- Interactive Filter & Search Controls -->
+      <div class="archive-controls" role="region" aria-label="Filter and search cellar vault cocktails">
+        <div class="search-row">
+          <div class="search-input-wrap">
+            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"/>
+              <path d="M21 21l-4.3-4.3"/>
+            </svg>
+            <input
+              type="search"
+              id="archive-search"
+              class="archive-search-input"
+              placeholder="Search 54 cocktails, spirits, ingredients, hosts, or try &quot;Doug&quot; / &quot;Quinn&quot;..."
+              aria-label="Search cellar vault cocktails"
+            >
+          </div>
+          <div class="search-Easter-hints">
+            <span>QUICK SEARCH:</span>
+            <button type="button" class="hint-chip" data-quick-search="bourbon">Bourbon</button>
+            <button type="button" class="hint-chip" data-quick-search="mezcal">Mezcal</button>
+            <button type="button" class="hint-chip" data-quick-search="cynar">Cynar</button>
+            <button type="button" class="hint-chip" data-quick-search="doug">Doug (404?)</button>
+            <button type="button" class="hint-chip" data-quick-search="quinn">Quinn (404?)</button>
+          </div>
+        </div>
+
+        <div class="filter-group-row" role="group" aria-label="Filter by base spirit">
+          <span class="filter-group-label">SPIRITS:</span>
+          <button type="button" class="filter-pill" data-filter-spirit="all" aria-pressed="true">All Spirits</button>
+          <button type="button" class="filter-pill" data-filter-spirit="whiskey" aria-pressed="false">Whiskey &amp; Bourbon</button>
+          <button type="button" class="filter-pill" data-filter-spirit="gin" aria-pressed="false">Gin</button>
+          <button type="button" class="filter-pill" data-filter-spirit="agave" aria-pressed="false">Agave (Mezcal &amp; Tequila)</button>
+          <button type="button" class="filter-pill" data-filter-spirit="scotch" aria-pressed="false">Scotch</button>
+          <button type="button" class="filter-pill" data-filter-spirit="rum" aria-pressed="false">Rum</button>
+          <button type="button" class="filter-pill" data-filter-spirit="vodka" aria-pressed="false">Vodka</button>
+          <button type="button" class="filter-pill" data-filter-spirit="brandy" aria-pressed="false">Brandy &amp; Applejack</button>
+          <button type="button" class="filter-pill" data-filter-spirit="beer" aria-pressed="false">Beer &amp; Stout</button>
+        </div>
+
+        <div class="filter-group-row" role="group" aria-label="Filter by host">
+          <span class="filter-group-label">HOST:</span>
+          <button type="button" class="filter-pill" data-filter-host="all" aria-pressed="true">All Hosts</button>
+          <button type="button" class="filter-pill" data-filter-host="brian" aria-pressed="false">Brian O'Connell</button>
+          <button type="button" class="filter-pill" data-filter-host="matt" aria-pressed="false">Matt Boyer</button>
+          <button type="button" class="filter-pill" data-filter-host="ben" aria-pressed="false">Ben Dudley</button>
+          <button type="button" class="filter-pill" data-filter-host="doug" aria-pressed="false">Doug Neumann</button>
+          <button type="button" class="filter-pill" data-filter-host="jason" aria-pressed="false">Jason Norman</button>
+          <button type="button" class="filter-pill" data-filter-host="quinn" aria-pressed="false">Quinn</button>
+        </div>
+
+        <div class="filter-group-row" role="group" aria-label="Filter by photo provenance">
+          <span class="filter-group-label">VISUALS:</span>
+          <button type="button" class="filter-pill" data-filter-provenance="all" aria-pressed="true">All Visuals</button>
+          <button type="button" class="filter-pill" data-filter-provenance="original" aria-pressed="false">📸 Original Club Photos (12)</button>
+          <button type="button" class="filter-pill" data-filter-provenance="doc" aria-pressed="false">📎 Doc Reference Photos (9)</button>
+          <button type="button" class="filter-pill" data-filter-provenance="ai" aria-pressed="false">✨ AI &amp; Blueprints (33)</button>
+        </div>
+
+        <div class="filter-status-bar">
+          <span id="archive-count" aria-live="polite">Showing all 54 cocktails across 13 sessions (+ 3 missing cold cases)</span>
+          <button type="button" class="reset-filters-btn" id="reset-archive-filters">Reset Filters</button>
+        </div>
+      </div>
+
+      <!-- Fake 404 Easter Egg Screen for Doug / Quinn -->
+      <div class="doug-quinn-404-box" id="doug-quinn-404" role="alert">
+        <span class="err-code-kicker">HTTP 404 // ARCHIVE SECTOR CORRUPTED</span>
+        <h3 class="err-title" id="err-404-heading">404: Recipe Documentation Not Found (Mostly Doug's Fault)</h3>
+        <p style="margin: 0; color: var(--text-mist);">
+          You queried the Cellar Vault for <strong id="err-404-culprit" style="color: var(--text-parchment);">Doug Neumann</strong>. According to the official League Google Doc (Page 12), the historical record suffered a catastrophic documentation failure between 2020 and 2022:
+        </p>
+        <blockquote class="err-quote">
+          "Everyone Sucked in providing recipes for a long long time….. But it was mostly Doug's fault for not providing recipes."
+        </blockquote>
+        <ul class="err-crimes-list">
+          <li><strong>ERR_DEC_2020_DOUG:</strong> <em>"Doug's Missing Recipe Should go Here!"</em> (Page 6)</li>
+          <li><strong>ERR_APR_2021_QUINN:</strong> <em>"Quinn to insert recipe here"</em> (Page 9)</li>
+          <li><strong>ERR_MAY_2021_DOUG:</strong> <em>"Doug's Bourbon Milk Cocktail here (5/26/2021)"</em> (Page 11)</li>
+          <li><strong>WARN_NULL_TIMESTAMP:</strong> Doug's 2020 <em>Ramos Gin Fizz</em> and <em>Fancy Free</em> logged with <code>Date: ???</code></li>
+        </ul>
+        <button type="button" class="bypass-404-btn" id="bypass-404-btn">
+          Bypass 404 &amp; Reveal Surviving Evidence Anyway →
+        </button>
+      </div>
+
+      <!-- Archive Sessions Container -->
+      <div id="archive-sessions-container">
+
+<!-- ============================================================ -->
+<!-- SESSION: ALLEY 2.6 - COCKTAIL RECIPE & TEST SHEET (NOV 1, 2025) -->
+<!-- ============================================================ -->
+<section class="archive-session" id="session-alley-26-2025" data-era="2025">
+  <div class="session-banner">
+    <div class="session-banner-copy">
+      <div class="session-meta">
+        <span class="session-date">NOV 1, 2025</span>
+        <span class="session-host">HOST: BRIAN O'CONNELL</span>
+      </div>
+      <h3 class="session-title">Alley 2.6: Cocktail Recipe &amp; Test Sheet</h3>
+      <p class="session-desc">Full-size recipes, six-drink batching requirements, and low-waste tasting pours—featuring a savory Cynar-bourbon coupe, a spicy jalapeño-hibiscus reposado sour, and an effervescent Irish whiskey vanilla cream soda highball.</p>
+    </div>
+    <button type="button" class="stage-this-session-btn" data-trigger-stage="session-alley-26-2025">↑ Load on Tasting Stage</button>
+  </div>
+  <div class="vault-grid">
+
+    <!-- 0.A The Alley Cocktail -->
+    <article class="cocktail-card vault-card" id="archive-the-alley-cocktail" data-expanded="false" data-host="brian" data-spirit="whiskey" data-year="2025" data-provenance="original">
+      <div class="card-visual">
+        <img
+          src="assets/archive/the-alley-cocktail.jpg"
+          alt="The Alley Cocktail served in a chilled coupe glass on a bar mat beside a stainless steel jigger and Cynar bottle, garnished with a floating dehydrated lemon wheel."
+          loading="lazy"
+          width="1170"
+          height="1560"
+        >
+        <div class="card-visual-overlay"></div>
+        <span class="course-tag-overlay">NOV 1, 2025 // SAVORY BOURBON &amp; CYNAR COUPE</span>
+        <span class="provenance-badge provenance-original" title="Authentic photo from the November 1st cocktail night">📸 Original Club Photo</span>
+        <div class="glassware-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+            <path d="M6 4h12c0 5-2.5 8-6 8S6 9 6 4z"/>
+            <path d="M12 12v8"/>
+            <path d="M8 20h8"/>
+          </svg>
+          <span>Chilled coupe or Nick &amp; Nora glass</span>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <div class="card-header">
+          <div class="course-eyebrow">
+            <span>HOST: BRIAN O'CONNELL · ALLEY 2.6</span>
+            <span>STIRRED &amp; STRAINED</span>
+          </div>
+          <h4 class="card-title">The Alley Cocktail</h4>
+          <p class="card-story">
+            A structured, savory-bittersweet bourbon cocktail built on 101-proof Wild Turkey backbone, bone-dry vermouth, herbal Cynar artichoke amaro, and a whisper of Luxardo Maraschino, tied together by an aromatic dash of celery bitters.
+          </p>
+        </div>
+
+        <div class="club-lore-note">
+          <span class="lore-label">🧪 LOW-WASTE TASTING SCALE:</span>
+          <span class="lore-text">"Tasting pour is approximately half-size (30 mL Bourbon, 7.5 mL Dry Vermouth, 3.7 mL Cynar, 3.7 mL Maraschino, ~1/2 dash Celery Bitters; stir 15–20 sec). Do not halve the amount of ice."</span>
+        </div>
+
+        <div class="profile-row" aria-label="Tasting profile">
+          <span class="profile-label">PROFILE:</span>
+          <span class="tasting-chip">101 Bourbon Backbone</span>
+          <span class="tasting-chip">Herbal Artichoke</span>
+          <span class="tasting-chip">Savory Celery</span>
+          <span class="tasting-chip">Dry &amp; Silky</span>
+        </div>
+
+        <!-- Guest View -->
+        <div class="guest-ingredients-wrap">
+          <h5 class="section-heading">ELEMENTS IN THE GLASS</h5>
+          <ul class="guest-ingredients">
+            <li>Wild Turkey 101 Bourbon</li>
+            <li>Dry Vermouth</li>
+            <li>Cynar Artichoke Amaro</li>
+            <li>Luxardo Maraschino Liqueur</li>
+            <li>Celery Bitters</li>
+            <li class="garnish-item">Garnish: Dehydrated Lemon Slice</li>
+          </ul>
+        </div>
+
+        <!-- Bartender View -->
+        <div class="bartender-details">
+          <div>
+            <h5 class="section-heading">
+              <span>INGREDIENTS &amp; PROPORTIONS</span>
+              <span class="scale-indicator">1 SERVING</span>
+            </h5>
+            <ul class="spec-list">
+              <li class="spec-item">
+                <span class="spec-measure" data-oz="2">2 oz</span>
+                <span class="spec-name">Wild Turkey 101 Bourbon <span class="spec-note">(59 mL · 6-drink batch: 12 oz / 355 mL)</span></span>
+              </li>
+              <li class="spec-item">
+                <span class="spec-measure" data-oz="0.5">0.5 oz</span>
+                <span class="spec-name">Dry Vermouth <span class="spec-note">(15 mL · 6-drink batch: 3 oz / 89 mL)</span></span>
+              </li>
+              <li class="spec-item">
+                <span class="spec-measure" data-oz="0.25">0.25 oz</span>
+                <span class="spec-name">Cynar <span class="spec-note">(7.5 mL · 6-drink batch: 1.5 oz / 44 mL)</span></span>
+              </li>
+              <li class="spec-item">
+                <span class="spec-measure" data-oz="0.25">0.25 oz</span>
+                <span class="spec-name">Luxardo Maraschino <span class="spec-note">(7.5 mL · 6-drink batch: 1.5 oz / 44 mL)</span></span>
+              </li>
+              <li class="spec-item">
+                <span class="spec-measure" data-count="1" data-unit="dash">1 dash</span>
+                <span class="spec-name">Celery Bitters <span class="spec-note">(6-drink batch: 6 dashes)</span></span>
+              </li>
+              <li class="spec-item spec-garnish">
+                <span class="spec-measure">GARNISH</span>
+                <span class="spec-name">Dehydrated lemon slice</span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h5 class="section-heading">METHOD</h5>
+            <ol class="method-list">
+              <li>Combine Wild Turkey 101 Bourbon, dry vermouth, Cynar, Luxardo Maraschino, and celery bitters in a mixing glass with plenty of ice.</li>
+              <li>Stir the full drink for 25 to 30 seconds (or 15 to 20 seconds for a half-size tasting pour without halving the ice).</li>
+              <li>Strain into a chilled coupe or Nick &amp; Nora glass.</li>
+              <li>Float a dehydrated lemon slice gently on the surface.</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="card-actions">
+          <button type="button" class="toggle-spec-btn" aria-expanded="false">
+            <span>Show Bartender Specs &amp; Recipe</span>
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- 0.B Mexican Herbalist -->
+    <article class="cocktail-card vault-card" id="archive-mexican-herbalist" data-expanded="false" data-host="brian" data-spirit="agave" data-year="2025" data-provenance="ai">
+      <div class="card-visual">
+        <img
+          src="assets/archive/mexican-herbalist.jpg"
+          alt="Mexican Herbalist served over fresh ice in a double rocks glass with a ruby-amber hue and thin fresh jalapeño wheel garnish."
+          loading="lazy"
+          width="1024"
+          height="768"
+        >
+        <div class="card-visual-overlay"></div>
+        <span class="course-tag-overlay">NOV 1, 2025 // SPICED HIBISCUS AGAVE SOUR</span>
+        <span class="provenance-badge provenance-ai" title="AI-generated illustration created for the archive">✨ AI Illustration</span>
+        <div class="glassware-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+            <path d="M5 5h14l-1.5 15h-11L5 5z"/>
+            <rect x="9" y="10" width="6" height="6" rx="1"/>
+          </svg>
+          <span>Rocks glass over fresh ice (double-strained)</span>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <div class="card-header">
+          <div class="course-eyebrow">
+            <span>HOST: BRIAN O'CONNELL · ALLEY 2.6</span>
+            <span>SHAKEN &amp; DOUBLE-STRAINED</span>
+          </div>
+          <h4 class="card-title">Mexican Herbalist</h4>
+          <p class="card-story">
+            A vibrant, warming agave sour splitting uninfused reposado tequila with a custom house jalapeño-hibiscus reposado infusion, balanced by tart fresh lime juice and zesty honey-ginger syrup.
+          </p>
+        </div>
+
+        <div class="profile-row" aria-label="Tasting profile">
+          <span class="profile-label">PROFILE:</span>
+          <span class="tasting-chip">Tart Hibiscus</span>
+          <span class="tasting-chip">Jalapeño Heat</span>
+          <span class="tasting-chip">Warm Ginger</span>
+          <span class="tasting-chip">Oak-Aged Agave</span>
+        </div>
+
+        <!-- Guest View -->
+        <div class="guest-ingredients-wrap">
+          <h5 class="section-heading">ELEMENTS IN THE GLASS</h5>
+          <ul class="guest-ingredients">
+            <li>Reposado Tequila</li>
+            <li>Jalapeño-Hibiscus Infused Reposado</li>
+            <li>Fresh Lime Juice</li>
+            <li>Honey-Ginger Syrup</li>
+            <li class="garnish-item">Garnish: Thin Jalapeño Wheel</li>
+          </ul>
+        </div>
+
+        <!-- Bartender View -->
+        <div class="bartender-details">
+          <div>
+            <h5 class="section-heading">
+              <span>INGREDIENTS &amp; PROPORTIONS</span>
+              <span class="scale-indicator">1 SERVING</span>
+            </h5>
+            <ul class="spec-list">
+              <li class="spec-item">
+                <span class="spec-measure" data-oz="1">1 oz</span>
+                <span class="spec-name">Reposado Tequila <span class="spec-note">(30 mL · 6-drink batch: 6 oz / 177 mL)</span></span>
+              </li>
+              <li class="spec-item">
+                <span class="spec-measure" data-oz="1">1 oz</span>
+                <span class="spec-name">Jalapeño-Hibiscus Reposado <span class="spec-note">(30 mL · 6-drink batch: 6 oz / 177 mL)</span></span>
+              </li>
+              <li class="spec-item">
+                <span class="spec-measure" data-oz="0.75">0.75 oz</span>
+                <span class="spec-name">Fresh Lime Juice <span class="spec-note">(22 mL · 6-drink batch: 4.5 oz / 133 mL)</span></span>
+              </li>
+              <li class="spec-item">
+                <span class="spec-measure" data-oz="0.75">0.75 oz</span>
+                <span class="spec-name">Honey-Ginger Syrup <span class="spec-note">(22 mL · 6-drink batch: 4.5 oz / 133 mL)</span></span>
+              </li>
+              <li class="spec-item spec-garnish">
+                <span class="spec-measure">GARNISH</span>
+                <span class="spec-name">Thin fresh jalapeño wheel</span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h5 class="section-heading">METHOD</h5>
+            <ol class="method-list">
+              <li>Combine both reposado tequilas, fresh lime juice, and honey-ginger syrup in a shaker with ice.</li>
+              <li>Shake vigorously for 12 to 15 seconds (or 8 to 10 seconds for a tasting pour).</li>
+              <li>Double-strain through a fine mesh strainer over fresh ice in a rocks glass.</li>
+              <li>Garnish with a thin floating jalapeño wheel.</li>
+            </ol>
+          </div>
+
+          <div class="prep-subrecipe">
+            <h5 class="section-heading">HOUSE PREP // JALAPEÑO-HIBISCUS INFUSION (6 DRINKS)</h5>
+            <p class="subrecipe-text">Combine <strong>6 oz reposado tequila + 2 Tbsp dried hibiscus flowers + 1/2 medium jalapeño</strong> (sliced). Taste the jalapeño heat progression from 30 minutes onward and strain once the desired spice level is reached.</p>
+          </div>
+        </div>
+
+        <div class="card-actions">
+          <button type="button" class="toggle-spec-btn" aria-expanded="false">
+            <span>Show Bartender Specs &amp; Recipe</span>
+          </button>
+        </div>
+      </div>
+    </article>
+
+    <!-- 0.C Tully Cream Soda -->
+    <article class="cocktail-card vault-card" id="archive-tully-cream-soda" data-expanded="false" data-host="brian" data-spirit="whiskey" data-year="2025" data-provenance="ai">
+      <div class="card-visual">
+        <img
+          src="assets/archive/tully-cream-soda.jpg"
+          alt="Tully Cream Soda served over fresh ice in a tall highball glass topped with sparkling club soda and a long spiraling lemon twist."
+          loading="lazy"
+          width="1024"
+          height="768"
+        >
+        <div class="card-visual-overlay"></div>
+        <span class="course-tag-overlay">NOV 1, 2025 // IRISH WHISKEY VANILLA HIGHBALL</span>
+        <span class="provenance-badge provenance-ai" title="AI-generated illustration created for the archive">✨ AI Illustration</span>
+        <div class="glassware-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+            <path d="M7 3h10l-1 18H8L7 3z"/>
+            <path d="M7.5 8h9"/>
+          </svg>
+          <span>Highball or Collins glass over fresh ice</span>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <div class="card-header">
+          <div class="course-eyebrow">
+            <span>HOST: BRIAN O'CONNELL · ALLEY 2.6</span>
+            <span>SHAKEN BRIEF &amp; TOPPED</span>
+          </div>
+          <h4 class="card-title">Tully Cream Soda</h4>
+          <p class="card-story">
+            An adult craft highball that transforms triple-distilled Tullamore D.E.W. Irish Whiskey into a crisp, aromatic cream soda using rich vanilla-demerara syrup, a precise calibrated touch of fresh lemon juice, and lively club soda effervescence.
+          </p>
+        </div>
+
+        <div class="club-lore-note">
+          <span class="lore-label">💉 SYRINGE CALIBRATION TRICK:</span>
+          <span class="lore-text">"For testing, start with 3.7 mL lemon. If it tastes too sweet or soft, increase lemon in 1–2 mL steps. With the 10 mL oral syringe, split a tasting pour into two small samples and change only one variable by 1–2 mL."</span>
+        </div>
+
+        <div class="profile-row" aria-label="Tasting profile">
+          <span class="profile-label">PROFILE:</span>
+          <span class="tasting-chip">Vanilla Bean</span>
+          <span class="tasting-chip">Smooth Irish Malt</span>
+          <span class="tasting-chip">Crisp Citrus</span>
+          <span class="tasting-chip">Effervescent</span>
+        </div>
+
+        <!-- Guest View -->
+        <div class="guest-ingredients-wrap">
+          <h5 class="section-heading">ELEMENTS IN THE GLASS</h5>
+          <ul class="guest-ingredients">
+            <li>Tullamore D.E.W. Irish Whiskey</li>
+            <li>Vanilla-Demerara Syrup</li>
+            <li>Fresh Lemon Juice</li>
+            <li>Chilled Club Soda</li>
+            <li class="garnish-item">Garnish: Long Lemon Twist</li>
+          </ul>
+        </div>
+
+        <!-- Bartender View -->
+        <div class="bartender-details">
+          <div>
+            <h5 class="section-heading">
+              <span>INGREDIENTS &amp; PROPORTIONS</span>
+              <span class="scale-indicator">1 SERVING</span>
+            </h5>
+            <ul class="spec-list">
+              <li class="spec-item">
+                <span class="spec-measure" data-oz="2">2 oz</span>
+                <span class="spec-name">Tullamore D.E.W. Irish Whiskey <span class="spec-note">(59 mL · 6-drink batch: 12 oz / 355 mL)</span></span>
+              </li>
+              <li class="spec-item">
+                <span class="spec-measure" data-oz="0.5">0.5 oz</span>
+                <span class="spec-name">Vanilla-Demerara Syrup <span class="spec-note">(15 mL · 6-drink batch: 3 oz / 89 mL)</span></span>
+              </li>
+              <li class="spec-item">
+                <span class="spec-measure" data-oz="0.25">0.25 oz</span>
+                <span class="spec-name">Fresh Lemon Juice <span class="spec-note">(7.5 mL · 6-drink batch: 1.5 oz / 44 mL)</span></span>
+              </li>
+              <li class="spec-item">
+                <span class="spec-measure" data-oz="2">2 oz</span>
+                <span class="spec-name">Chilled Club Soda <span class="spec-note">(~59 mL to top · 6-drink batch: ~12 oz / 355 mL)</span></span>
+              </li>
+              <li class="spec-item spec-garnish">
+                <span class="spec-measure">GARNISH</span>
+                <span class="spec-name">Long lemon twist</span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h5 class="section-heading">METHOD</h5>
+            <ol class="method-list">
+              <li>Add Tullamore D.E.W. Irish Whiskey, vanilla-demerara syrup, and fresh lemon juice to a shaker with ice.</li>
+              <li>Shake briefly (about 8 seconds) to chill and integrate without over-diluting.</li>
+              <li>Strain over fresh ice into a highball glass, top with ~2 oz chilled club soda, and stir gently.</li>
+              <li>Express a long lemon twist over the top and tuck it along the inside of the glass.</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="card-actions">
+          <button type="button" class="toggle-spec-btn" aria-expanded="false">
+            <span>Show Bartender Specs &amp; Recipe</span>
+          </button>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SESSION 0: THE COASTAL GARRISON (OCT 2026)                   -->
+<!-- ============================================================ -->
+<section class="archive-session" id="session-coastal-garrison-2026" data-era="2026">
+  <div class="session-banner">
+    <div class="session-banner-copy">
+      <div class="session-meta">
+        <span class="session-date">OCT 2026</span>
+        <span class="session-host">HOST: BRIAN O'CONNELL</span>
+      </div>
+      <h3 class="session-title">The Coastal Garrison</h3>
+      <p class="session-desc">Coastal botanicals, autumn orchard fruit, and a touch of Atlantic salinity—moving from a crisp afternoon aperitif to a bracing mid-evening sour and a rich, fireside nightcap.</p>
+    </div>
+    <button type="button" class="stage-this-session-btn" data-trigger-stage="session-coastal-garrison-2026">↑ Load on Tasting Stage</button>
+  </div>
+  <div class="vault-grid">
+
+      <!-- 0.1 The Casco Bay Crossing -->
+      <article class="cocktail-card vault-card" id="casco-bay" data-expanded="false" data-host="brian" data-spirit="gin" data-year="2026" data-provenance="ai">
         <div class="card-visual">
           <img
             src="assets/casco-bay-crossing.jpg"
@@ -1552,7 +2292,7 @@
             height="1200"
           >
           <div class="card-visual-overlay"></div>
-          <span class="course-tag-overlay">01 // APERITIF HIGHBALL</span>
+          <span class="course-tag-overlay">COURSE 01 // APERITIF HIGHBALL</span>
           <span class="provenance-badge provenance-ai" title="AI-generated illustration created for the menu">✨ AI Illustration</span>
           <div class="glassware-badge">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
@@ -1566,10 +2306,10 @@
         <div class="card-body">
           <div class="card-header">
             <div class="course-eyebrow">
-              <span>FIRST WATCH · AFTERNOON TO DUSK</span>
+              <span>HOST: BRIAN O'CONNELL · FIRST WATCH</span>
               <span>SHAKEN &amp; TOPPED</span>
             </div>
-            <h2 class="card-title">The Casco Bay Crossing</h2>
+            <h4 class="card-title">The Casco Bay Crossing</h4>
             <p class="card-story">
               A crisp, herbaceous highball that bridges the gap between summer greenery and autumn orchard fruit. The snap pea and rosemary profiles of the gin pair with dry cider, while a touch of elderflower and saline mimics a cool sea breeze.
             </p>
@@ -1585,7 +2325,7 @@
 
           <!-- Guest View: Clean Ingredient Overview -->
           <div class="guest-ingredients-wrap">
-            <h3 class="section-heading">ELEMENTS IN THE GLASS</h3>
+            <h5 class="section-heading">ELEMENTS IN THE GLASS</h5>
             <ul class="guest-ingredients">
               <li>Bimini Gin</li>
               <li>St-Germain Elderflower</li>
@@ -1600,10 +2340,10 @@
           <!-- Bartender View: Exact Specs & Method -->
           <div class="bartender-details">
             <div>
-              <h3 class="section-heading">
+              <h5 class="section-heading">
                 <span>INGREDIENTS &amp; PROPORTIONS</span>
                 <span class="scale-indicator">1 SERVING</span>
-              </h3>
+              </h5>
               <ul class="spec-list">
                 <li class="spec-item">
                   <span class="spec-measure" data-oz="1.5">1.5 oz</span>
@@ -1637,7 +2377,7 @@
             </div>
 
             <div>
-              <h3 class="section-heading">METHOD</h3>
+              <h5 class="section-heading">METHOD</h5>
               <ol class="method-list">
                 <li>Combine the gin, elderflower liqueur, lemon juice, honey syrup, and saline solution in a cocktail shaker with ice.</li>
                 <li>Shake briskly for 8 to 10 seconds until well chilled.</li>
@@ -1656,8 +2396,8 @@
         </div>
       </article>
 
-      <!-- 2. The Granite Bastion -->
-      <article class="cocktail-card" id="granite-bastion" data-expanded="false">
+      <!-- 0.2 The Granite Bastion -->
+      <article class="cocktail-card vault-card" id="granite-bastion" data-expanded="false" data-host="brian" data-spirit="rum agave scotch" data-year="2026" data-provenance="ai">
         <div class="card-visual">
           <img
             src="assets/granite-bastion.jpg"
@@ -1667,24 +2407,24 @@
             height="1024"
           >
           <div class="card-visual-overlay"></div>
-          <span class="course-tag-overlay">02 // SMOKY-SWEET SOUR</span>
+          <span class="course-tag-overlay">COURSE 02 // SMOKY-SWEET SOUR</span>
           <span class="provenance-badge provenance-ai" title="AI-generated illustration created for the menu">✨ AI Illustration</span>
           <div class="glassware-badge">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
               <path d="M5 5h14l-1.5 15h-11L5 5z"/>
               <rect x="9" y="10" width="6" height="6" rx="1"/>
             </svg>
-            <span>Double Old Fashioned over a single large "granite" block</span>
+            <span>Double Old Fashioned over a single large crystal block</span>
           </div>
         </div>
 
         <div class="card-body">
           <div class="card-header">
             <div class="course-eyebrow">
-              <span>SECOND WATCH · MID-EVENING</span>
+              <span>HOST: BRIAN O'CONNELL · SECOND WATCH</span>
               <span>SHAKEN &amp; LAYERED</span>
             </div>
-            <h2 class="card-title">The Granite Bastion</h2>
+            <h4 class="card-title">The Granite Bastion</h4>
             <p class="card-story">
               Named for the massive stone walls of turn-of-the-century coastal forts, this is a structured, smoky-sweet sour. It uses a split base of aged rum and reposado tequila, grounded by spiced pear and a delicate float of Islay peat that smells like ocean spray and campfire.
             </p>
@@ -1700,7 +2440,7 @@
 
           <!-- Guest View -->
           <div class="guest-ingredients-wrap">
-            <h3 class="section-heading">ELEMENTS IN THE GLASS</h3>
+            <h5 class="section-heading">ELEMENTS IN THE GLASS</h5>
             <ul class="guest-ingredients">
               <li>Aged Column-Still Rum</li>
               <li>Reposado Tequila</li>
@@ -1716,10 +2456,10 @@
           <!-- Bartender View -->
           <div class="bartender-details">
             <div>
-              <h3 class="section-heading">
+              <h5 class="section-heading">
                 <span>INGREDIENTS &amp; PROPORTIONS</span>
                 <span class="scale-indicator">1 SERVING</span>
-              </h3>
+              </h5>
               <ul class="spec-list">
                 <li class="spec-item">
                   <span class="spec-measure" data-oz="1.25">1.25 oz</span>
@@ -1757,7 +2497,7 @@
             </div>
 
             <div>
-              <h3 class="section-heading">METHOD</h3>
+              <h5 class="section-heading">METHOD</h5>
               <ol class="method-list">
                 <li>Add the rum, tequila, pear liqueur, lime juice, maple syrup, and bitters to a shaker with ice.</li>
                 <li>Shake hard for 12 seconds to achieve proper dilution and a tight froth.</li>
@@ -1776,8 +2516,8 @@
         </div>
       </article>
 
-      <!-- 3. The Parapet Nightcap -->
-      <article class="cocktail-card" id="parapet-nightcap" data-expanded="false">
+      <!-- 0.3 The Parapet Nightcap -->
+      <article class="cocktail-card vault-card" id="parapet-nightcap" data-expanded="false" data-host="brian" data-spirit="whiskey brandy" data-year="2026" data-provenance="ai">
         <div class="card-visual">
           <img
             src="assets/parapet-nightcap.jpg"
@@ -1787,7 +2527,7 @@
             height="1200"
           >
           <div class="card-visual-overlay"></div>
-          <span class="course-tag-overlay">03 // FIRESIDE NIGHTCAP</span>
+          <span class="course-tag-overlay">COURSE 03 // FIRESIDE NIGHTCAP</span>
           <span class="provenance-badge provenance-ai" title="AI-generated illustration created for the menu">✨ AI Illustration</span>
           <div class="glassware-badge">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
@@ -1802,10 +2542,10 @@
         <div class="card-body">
           <div class="card-header">
             <div class="course-eyebrow">
-              <span>FINAL WATCH · FIRESIDE CLOSER</span>
+              <span>HOST: BRIAN O'CONNELL · FINAL WATCH</span>
               <span>STIRRED &amp; SPIRIT-FORWARD</span>
             </div>
-            <h2 class="card-title">The Parapet Nightcap</h2>
+            <h4 class="card-title">The Parapet Nightcap</h4>
             <p class="card-story">
               A spirit-forward, stirred closer designed for late October evenings. Straight rye whiskey and bonded apple brandy form a sturdy backbone, while Cynar and sweet vermouth bring bittersweet herbal depth, accented by roasted walnut and espresso notes.
             </p>
@@ -1821,7 +2561,7 @@
 
           <!-- Guest View -->
           <div class="guest-ingredients-wrap">
-            <h3 class="section-heading">ELEMENTS IN THE GLASS</h3>
+            <h5 class="section-heading">ELEMENTS IN THE GLASS</h5>
             <ul class="guest-ingredients">
               <li>100-Proof Straight Rye Whiskey</li>
               <li>Laird's Bonded Apple Brandy</li>
@@ -1836,10 +2576,10 @@
           <!-- Bartender View -->
           <div class="bartender-details">
             <div>
-              <h3 class="section-heading">
+              <h5 class="section-heading">
                 <span>INGREDIENTS &amp; PROPORTIONS</span>
                 <span class="scale-indicator">1 SERVING</span>
-              </h3>
+              </h5>
               <ul class="spec-list">
                 <li class="spec-item">
                   <span class="spec-measure" data-oz="1.25">1.25 oz</span>
@@ -1873,7 +2613,7 @@
             </div>
 
             <div>
-              <h3 class="section-heading">METHOD</h3>
+              <h5 class="section-heading">METHOD</h5>
               <ol class="method-list">
                 <li>Combine all liquid ingredients in a mixing glass filled two-thirds of the way with cracked ice.</li>
                 <li>Stir smoothly for 30 to 35 seconds until the glass is frosted and the texture becomes silky.</li>
@@ -1891,169 +2631,8 @@
         </div>
       </article>
 
-    </div>
-
-    <!-- Prep Summary Table -->
-    <section class="prep-section" id="prep-summary" aria-labelledby="prep-heading">
-      <div class="prep-header">
-        <h2 class="prep-title" id="prep-heading">Garrison Prep &amp; Build Summary</h2>
-        <span class="prep-subtitle">QUICK REFERENCE LEDGER</span>
-      </div>
-      <div class="table-scroll">
-        <table class="prep-table">
-          <thead>
-            <tr>
-              <th scope="col">COCKTAIL</th>
-              <th scope="col">BASE SPIRITS</th>
-              <th scope="col">KEY MODIFIERS</th>
-              <th scope="col">ACID / SWEETENER</th>
-              <th scope="col">TECHNIQUE</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="prep-cocktail-name">The Casco Bay Crossing</td>
-              <td>Gin</td>
-              <td>Elderflower, Dry Cider, Saline</td>
-              <td>Lemon / Honey Syrup</td>
-              <td><span class="technique-badge">Shaken &amp; Topped</span></td>
-            </tr>
-            <tr>
-              <td class="prep-cocktail-name">The Granite Bastion</td>
-              <td>Aged Rum &amp; Reposado Tequila</td>
-              <td>Spiced Pear, Islay Scotch Float</td>
-              <td>Lime / Maple Syrup</td>
-              <td><span class="technique-badge">Shaken &amp; Layered</span></td>
-            </tr>
-            <tr>
-              <td class="prep-cocktail-name">The Parapet Nightcap</td>
-              <td>Rye Whiskey &amp; Apple Brandy</td>
-              <td>Cynar, Sweet Vermouth, Nocino</td>
-              <td>None (Spirit-Forward)</td>
-              <td><span class="technique-badge">Stirred</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- ================================================================== -->
-    <!-- THE LEAGUE ARCHIVE / VAULT (2020 - 2025)                           -->
-    <!-- ================================================================== -->
-    <section class="archive-vault-section" id="league-archive" aria-labelledby="archive-heading">
-
-      <!-- Neighborhood Entrance Monument & Club History Header -->
-      <div class="monument-banner">
-        <div class="monument-photo-frame">
-          <img
-            src="assets/hortons-creek-monument.jpg"
-            alt="The stacked-stone and bronze plaque entrance monument of the Horton's Creek neighborhood."
-            loading="lazy"
-            width="463"
-            height="311"
-          >
-          <div class="monument-plaque-caption">HORTON'S CREEK · NEIGHBORHOOD GATHERING ARCHIVE</div>
-        </div>
-        <div class="monument-copy">
-          <span class="archive-kicker">THE PERMANENT COLLECTION // AUG 2020 – OCT 2025</span>
-          <h2 class="archive-main-title" id="archive-heading">The League of Extraordinary Cocktails Vault</h2>
-          <p class="archive-lead">
-            Every pour from six years of rotating neighborhood cocktail nights—from our inaugural August 2020 Mint Julep through themed Mezcal, Gin, Smokeout, and Fall Festival sessions. Fully integrated with Guest &amp; Bartender Spec modes and the dynamic batch scaler.
-          </p>
-          <div class="provenance-legend" aria-label="Image provenance key">
-            <span class="legend-item">📸 <strong>Original Club Photo</strong>: Authentic host kitchen photos</span>
-            <span class="legend-item">📎 <strong>Doc Reference Photo</strong>: Pasted in the original Google Doc</span>
-            <span class="legend-item">✨ <strong>AI Illustration</strong>: Generated &amp; blueprint plates</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Interactive Filter & Search Controls -->
-      <div class="archive-controls" role="region" aria-label="Filter and search historical cocktails">
-        <div class="search-row">
-          <div class="search-input-wrap">
-            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <circle cx="11" cy="11" r="8"/>
-              <path d="M21 21l-4.3-4.3"/>
-            </svg>
-            <input
-              type="search"
-              id="archive-search"
-              class="archive-search-input"
-              placeholder="Search 48 historical cocktails, ingredients, hosts, or try &quot;Doug&quot; / &quot;Quinn&quot;..."
-              aria-label="Search historical cocktails"
-            >
-          </div>
-          <div class="search-Easter-hints">
-            <span>QUICK SEARCH:</span>
-            <button type="button" class="hint-chip" data-quick-search="mezcal">Mezcal</button>
-            <button type="button" class="hint-chip" data-quick-search="bourbon">Bourbon</button>
-            <button type="button" class="hint-chip" data-quick-search="doug">Doug (404?)</button>
-            <button type="button" class="hint-chip" data-quick-search="quinn">Quinn (404?)</button>
-          </div>
-        </div>
-
-        <div class="filter-group-row" role="group" aria-label="Filter by host">
-          <span class="filter-group-label">HOST:</span>
-          <button type="button" class="filter-pill" data-filter-host="all" aria-pressed="true">All Hosts</button>
-          <button type="button" class="filter-pill" data-filter-host="brian" aria-pressed="false">Brian O'Connell</button>
-          <button type="button" class="filter-pill" data-filter-host="matt" aria-pressed="false">Matt Boyer</button>
-          <button type="button" class="filter-pill" data-filter-host="ben" aria-pressed="false">Ben Dudley</button>
-          <button type="button" class="filter-pill" data-filter-host="doug" aria-pressed="false">Doug Neumann</button>
-          <button type="button" class="filter-pill" data-filter-host="jason" aria-pressed="false">Jason Norman</button>
-          <button type="button" class="filter-pill" data-filter-host="quinn" aria-pressed="false">Quinn</button>
-        </div>
-
-        <div class="filter-group-row" role="group" aria-label="Filter by base spirit">
-          <span class="filter-group-label">SPIRIT:</span>
-          <button type="button" class="filter-pill" data-filter-spirit="all" aria-pressed="true">All Spirits</button>
-          <button type="button" class="filter-pill" data-filter-spirit="whiskey" aria-pressed="false">Whiskey &amp; Bourbon</button>
-          <button type="button" class="filter-pill" data-filter-spirit="gin" aria-pressed="false">Gin</button>
-          <button type="button" class="filter-pill" data-filter-spirit="agave" aria-pressed="false">Agave (Mezcal &amp; Tequila)</button>
-          <button type="button" class="filter-pill" data-filter-spirit="scotch" aria-pressed="false">Scotch</button>
-          <button type="button" class="filter-pill" data-filter-spirit="rum" aria-pressed="false">Rum</button>
-          <button type="button" class="filter-pill" data-filter-spirit="vodka" aria-pressed="false">Vodka</button>
-          <button type="button" class="filter-pill" data-filter-spirit="brandy" aria-pressed="false">Brandy &amp; Cognac</button>
-          <button type="button" class="filter-pill" data-filter-spirit="beer" aria-pressed="false">Beer &amp; Stout</button>
-        </div>
-
-        <div class="filter-group-row" role="group" aria-label="Filter by photo provenance">
-          <span class="filter-group-label">PHOTOS:</span>
-          <button type="button" class="filter-pill" data-filter-provenance="all" aria-pressed="true">All Visuals</button>
-          <button type="button" class="filter-pill" data-filter-provenance="original" aria-pressed="false">📸 Original Club Photos (11)</button>
-          <button type="button" class="filter-pill" data-filter-provenance="doc" aria-pressed="false">📎 Doc Reference Photos (9)</button>
-          <button type="button" class="filter-pill" data-filter-provenance="ai" aria-pressed="false">✨ AI &amp; Blueprints (28)</button>
-        </div>
-
-        <div class="filter-status-bar">
-          <span id="archive-count" aria-live="polite">Showing all 48 historical cocktails (+ 3 missing cold cases)</span>
-          <button type="button" class="reset-filters-btn" id="reset-archive-filters">Reset Filters</button>
-        </div>
-      </div>
-
-      <!-- Fake 404 Easter Egg Screen for Doug / Quinn -->
-      <div class="doug-quinn-404-box" id="doug-quinn-404" role="alert">
-        <span class="err-code-kicker">HTTP 404 // ARCHIVE SECTOR CORRUPTED</span>
-        <h3 class="err-title" id="err-404-heading">404: Recipe Documentation Not Found (Mostly Doug's Fault)</h3>
-        <p style="margin: 0; color: var(--text-mist);">
-          You queried the League Vault for <strong id="err-404-culprit" style="color: var(--text-parchment);">Doug Neumann</strong>. According to the official League Google Doc (Page 12), the historical record suffered a catastrophic documentation failure between 2020 and 2022:
-        </p>
-        <blockquote class="err-quote">
-          "Everyone Sucked in providing recipes for a long long time….. But it was mostly Doug's fault for not providing recipes."
-        </blockquote>
-        <ul class="err-crimes-list">
-          <li><strong>ERR_DEC_2020_DOUG:</strong> <em>"Doug's Missing Recipe Should go Here!"</em> (Page 6)</li>
-          <li><strong>ERR_APR_2021_QUINN:</strong> <em>"Quinn to insert recipe here"</em> (Page 9)</li>
-          <li><strong>ERR_MAY_2021_DOUG:</strong> <em>"Doug's Bourbon Milk Cocktail here (5/26/2021)"</em> (Page 11)</li>
-          <li><strong>WARN_NULL_TIMESTAMP:</strong> Doug's 2020 <em>Ramos Gin Fizz</em> and <em>Fancy Free</em> logged with <code>Date: ???</code></li>
-        </ul>
-        <button type="button" class="bypass-404-btn" id="bypass-404-btn">
-          Bypass 404 &amp; Reveal Surviving Evidence Anyway →
-        </button>
-      </div>
-
-      <!-- Archive Sessions Container -->
-      <div id="archive-sessions-container">
+  </div>
+</section>
 <!-- ============================================================ -->
 <!-- BATCH 1: 2025 & 2024 SESSIONS (19 Cocktails across 6 Sessions) -->
 <!-- ============================================================ -->
@@ -7274,8 +7853,8 @@
   <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-inner">
-      <div class="footer-crest">Horton's Creek League of Extraordinary Cocktails</div>
-      <p>League Founded August 2020 · Featured Menu: The Coastal Garrison &amp; Complete 2020–2025 Vault</p>
+      <div class="footer-crest">The League of Extraordinary Cocktails</div>
+      <p>Subterranean Cellar Vault · Founded August 2020 · 54 Cocktails across 13 Sessions (2020–2026)</p>
       <button type="button" class="qr-trigger-btn" id="open-qr-modal">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <rect x="3" y="3" width="7" height="7"/>
@@ -7283,7 +7862,7 @@
           <rect x="3" y="14" width="7" height="7"/>
           <path d="M14 14h3v3h-3zM18 18h3v3h-3zM14 19h3"/>
         </svg>
-        <span>Share Glass QR Link</span>
+        <span>Share Cellar QR Link</span>
       </button>
     </div>
   </footer>
@@ -7294,7 +7873,7 @@
     <p>Scan to open <strong>hortonscreekcocktails.com</strong> on your phone.</p>
     <div class="qr-frame">
       <img
-        src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&color=090e13&bgcolor=f2efe9&data=https%3A%2F%2Fhortonscreekcocktails.com"
+        src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&color=0b0807&bgcolor=f5efe8&data=https%3A%2F%2Fhortonscreekcocktails.com"
         alt="QR code for hortonscreekcocktails.com"
         width="180"
         height="180"
@@ -7311,6 +7890,7 @@
       const btnBartender = document.getElementById('btn-bartender');
       const cardToggleBtns = document.querySelectorAll('.toggle-spec-btn');
       const scaleBtns = document.querySelectorAll('.scale-btn');
+      let currentScale = 1;
 
       function setMode(mode) {
         body.setAttribute('data-mode', mode);
@@ -7384,37 +7964,270 @@
         return map[unit] || (unit.endsWith('s') ? unit : unit + 's');
       }
 
+      function applyScaleToContainer(rootEl, scale) {
+        rootEl.querySelectorAll('.scale-indicator').forEach((el) => {
+          el.textContent = scale === 1 ? '1 SERVING' : `${scale} SERVINGS`;
+        });
+
+        rootEl.querySelectorAll('.spec-measure[data-oz]').forEach((el) => {
+          const baseOz = parseFloat(el.getAttribute('data-oz'));
+          const isBarspoon = el.getAttribute('data-barspoon') === 'true';
+          const scaledOz = formatNumber(baseOz * scale);
+          if (isBarspoon) {
+            const spoons = formatNumber(1 * scale);
+            el.textContent = `${spoons} barspoon${scale > 1 ? 's' : ''} (${scaledOz} oz)`;
+          } else {
+            el.textContent = `${scaledOz} oz`;
+          }
+        });
+
+        rootEl.querySelectorAll('.spec-measure[data-count]').forEach((el) => {
+          const baseCount = parseFloat(el.getAttribute('data-count'));
+          const unit = el.getAttribute('data-unit');
+          const scaled = formatNumber(baseCount * scale);
+          el.textContent = `${scaled} ${pluralizeUnit(unit, baseCount * scale)}`;
+        });
+      }
+
       scaleBtns.forEach((btn) => {
         btn.addEventListener('click', () => {
-          const scale = parseFloat(btn.getAttribute('data-scale')) || 1;
+          currentScale = parseFloat(btn.getAttribute('data-scale')) || 1;
           scaleBtns.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
-
-          document.querySelectorAll('.scale-indicator').forEach((el) => {
-            el.textContent = scale === 1 ? '1 SERVING' : `${scale} SERVINGS`;
-          });
-
-          document.querySelectorAll('.spec-measure[data-oz]').forEach((el) => {
-            const baseOz = parseFloat(el.getAttribute('data-oz'));
-            const isBarspoon = el.getAttribute('data-barspoon') === 'true';
-            const scaledOz = formatNumber(baseOz * scale);
-            if (isBarspoon) {
-              const spoons = formatNumber(1 * scale);
-              el.textContent = `${spoons} barspoon${scale > 1 ? 's' : ''} (${scaledOz} oz)`;
-            } else {
-              el.textContent = `${scaledOz} oz`;
-            }
-          });
-
-          document.querySelectorAll('.spec-measure[data-count]').forEach((el) => {
-            const baseCount = parseFloat(el.getAttribute('data-count'));
-            const unit = el.getAttribute('data-unit');
-            const scaled = formatNumber(baseCount * scale);
-            el.textContent = `${scaled} ${pluralizeUnit(unit, baseCount * scale)}`;
-          });
+          applyScaleToContainer(document, currentScale);
         });
       });
 
-      // League Archive Filtering, Search & Doug/Quinn 404 Easter Egg
+      // ============================================================
+      // Interactive Session Timeline Scrubber & Active Tasting Stage
+      // ============================================================
+      const scrubberPills = document.querySelectorAll('.scrubber-pill[data-stage-session]');
+      const stageKickerEl = document.getElementById('stage-kicker');
+      const stageSessionNameEl = document.getElementById('stage-session-name');
+      const stageSessionDescEl = document.getElementById('stage-session-desc');
+      const stageJumpLinkEl = document.getElementById('stage-jump-session-link');
+      const stageCardsGridEl = document.getElementById('stage-cards-grid');
+      const prepLedgerTbodyEl = document.getElementById('prep-ledger-tbody');
+      const prepSessionLabelEl = document.getElementById('prep-session-label');
+
+      // Add "Load on Tasting Stage" buttons to all session banners in the Vault
+      document.querySelectorAll('.archive-session').forEach((sec) => {
+        const banner = sec.querySelector('.session-banner');
+        if (banner && !banner.querySelector('.stage-this-session-btn')) {
+          const children = Array.from(banner.children);
+          const copyWrap = document.createElement('div');
+          copyWrap.className = 'session-banner-copy';
+          children.forEach((ch) => copyWrap.appendChild(ch));
+          banner.appendChild(copyWrap);
+
+          const stageBtn = document.createElement('button');
+          stageBtn.type = 'button';
+          stageBtn.className = 'stage-this-session-btn';
+          stageBtn.setAttribute('data-trigger-stage', sec.id);
+          stageBtn.textContent = '↑ Load on Tasting Stage';
+          banner.appendChild(stageBtn);
+        }
+      });
+
+      function renderActiveStageSession(sessionId, scrollStageIntoView) {
+        const sessionEl = document.getElementById(sessionId);
+        if (!sessionEl) return;
+
+        // Update scrubber pill active states
+        scrubberPills.forEach((pill) => {
+          const isMatch = pill.getAttribute('data-stage-session') === sessionId;
+          pill.setAttribute('aria-pressed', String(isMatch));
+        });
+
+        const dateText = (sessionEl.querySelector('.session-date')?.textContent || '').trim();
+        const hostText = (sessionEl.querySelector('.session-host')?.textContent || '').trim();
+        const titleText = (sessionEl.querySelector('.session-title')?.textContent || '').trim();
+        const descText = (sessionEl.querySelector('.session-desc')?.textContent || '').trim();
+
+        if (stageKickerEl) stageKickerEl.textContent = `${dateText} // ${hostText}`;
+        if (stageSessionNameEl) stageSessionNameEl.textContent = titleText;
+        if (stageSessionDescEl) stageSessionDescEl.textContent = descText;
+        if (stageJumpLinkEl) stageJumpLinkEl.setAttribute('href', `#${sessionId}`);
+        if (prepSessionLabelEl) prepSessionLabelEl.textContent = `${titleText.toUpperCase()} · PREP & BUILD LEDGER`;
+
+        const cards = Array.from(sessionEl.querySelectorAll('.vault-card:not(.vault-missing-card)'));
+
+        if (stageCardsGridEl) {
+          stageCardsGridEl.innerHTML = '';
+          cards.forEach((card, idx) => {
+            const cardId = card.id;
+            const imgEl = card.querySelector('.card-visual img');
+            const imgSrc = imgEl ? imgEl.getAttribute('src') : '';
+            const imgAlt = imgEl ? imgEl.getAttribute('alt') : '';
+            const drinkTitle = (card.querySelector('.card-title')?.textContent || '').trim();
+            const eyebrowSpans = card.querySelectorAll('.course-eyebrow span');
+            const techniqueText = eyebrowSpans.length > 1 ? eyebrowSpans[1].textContent.trim() : 'CRAFT BUILD';
+            const glasswareText = (card.querySelector('.glassware-badge span')?.textContent || 'Cocktail glass').trim();
+
+            // Extract up to 5 key spec items + garnish
+            const specItems = Array.from(card.querySelectorAll('.spec-list .spec-item'));
+            const liquidSpecs = specItems.filter((li) => !li.classList.contains('spec-garnish')).slice(0, 5);
+            const garnishSpec = specItems.find((li) => li.classList.contains('spec-garnish'));
+
+            const specListHtml = liquidSpecs
+              .map((li) => {
+                const measureEl = li.querySelector('.spec-measure');
+                const nameEl = li.querySelector('.spec-name');
+                const measureClone = measureEl ? measureEl.cloneNode(true) : null;
+                if (measureClone) {
+                  measureClone.className = 'stage-oz spec-measure';
+                }
+                // Strip parenthetical brand note for compact stage card clarity
+                let cleanName = '';
+                if (nameEl) {
+                  const cloneName = nameEl.cloneNode(true);
+                  cloneName.querySelectorAll('.spec-note').forEach((n) => n.remove());
+                  cleanName = cloneName.textContent.trim();
+                }
+                return `<li>${measureClone ? measureClone.outerHTML : ''}<span>${cleanName}</span></li>`;
+              })
+              .join('');
+
+            const garnishText = garnishSpec
+              ? (garnishSpec.querySelector('.spec-name')?.textContent || '').trim()
+              : (card.querySelector('.garnish-item')?.textContent || '').replace(/^Garnish:\s*/i, '').trim();
+
+            const guestItems = Array.from(card.querySelectorAll('.guest-ingredients li:not(.garnish-item)'))
+              .slice(0, 5)
+              .map((li) => `<li><span class="stage-oz">•</span><span>${li.textContent.trim()}</span></li>`)
+              .join('');
+
+            const chipsText = Array.from(card.querySelectorAll('.tasting-chip'))
+              .slice(0, 3)
+              .map((c) => c.textContent.trim())
+              .join(' · ');
+
+            const splitCard = document.createElement('article');
+            splitCard.className = 'stage-split-card';
+            splitCard.innerHTML = `
+              <div class="stage-card-photo">
+                <img src="${imgSrc}" alt="${imgAlt.replace(/"/g, '&quot;')}" loading="${idx < 3 ? 'eager' : 'lazy'}">
+                <div class="stage-photo-shade"></div>
+                <div class="stage-photo-caption">
+                  <span class="stage-course-badge">POUR 0${idx + 1} // ${techniqueText}</span>
+                  <h2 class="stage-drink-title">${drinkTitle}</h2>
+                </div>
+              </div>
+              <div class="stage-card-pane">
+                <div class="stage-guest-pane-content">
+                  <div class="stage-pane-header">
+                    <h3 class="stage-pane-title">Elements in Glass</h3>
+                    <span class="stage-pane-sub">${chipsText || 'Tasting Notes'}</span>
+                  </div>
+                  <ul class="stage-spec-lines">
+                    ${guestItems}
+                  </ul>
+                </div>
+                <div class="stage-bartender-pane-content">
+                  <div class="stage-pane-header">
+                    <h3 class="stage-pane-title">Bartender Prep</h3>
+                    <span class="stage-pane-sub">Ledger &amp; Batching Specs · <span class="scale-indicator">1 SERVING</span></span>
+                  </div>
+                  <ul class="stage-spec-lines">
+                    ${specListHtml}
+                  </ul>
+                </div>
+                <div>
+                  ${garnishText ? `<div class="stage-garnish-line">Garnish: ${garnishText}</div>` : ''}
+                  <div class="stage-card-footer">
+                    <span style="font-family: var(--font-mono); font-size: 0.66rem; color: var(--text-slate);">${glasswareText}</span>
+                    <a href="#${cardId}" class="stage-jump-btn">Full Recipe ↓</a>
+                  </div>
+                </div>
+              </div>
+            `;
+            stageCardsGridEl.appendChild(splitCard);
+          });
+
+          if (currentScale !== 1) {
+            applyScaleToContainer(stageCardsGridEl, currentScale);
+          }
+        }
+
+        // Populate Prep & Batching Ledger Table for this Session
+        if (prepLedgerTbodyEl) {
+          prepLedgerTbodyEl.innerHTML = '';
+          cards.forEach((card) => {
+            const drinkTitle = (card.querySelector('.card-title')?.textContent || '').trim();
+            const glasswareText = (card.querySelector('.glassware-badge span')?.textContent || 'Cocktail glass').trim();
+            const eyebrowSpans = card.querySelectorAll('.course-eyebrow span');
+            const techniqueText = eyebrowSpans.length > 1 ? eyebrowSpans[1].textContent.trim() : 'Craft Build';
+
+            const specItems = Array.from(card.querySelectorAll('.spec-list .spec-item'));
+            const liquidSpecs = specItems.filter((li) => !li.classList.contains('spec-garnish'));
+            const garnishSpec = specItems.find((li) => li.classList.contains('spec-garnish'));
+
+            const buildSummary = liquidSpecs
+              .map((li) => {
+                const m = (li.querySelector('.spec-measure')?.textContent || '').trim();
+                const nEl = li.querySelector('.spec-name');
+                let n = '';
+                if (nEl) {
+                  const c = nEl.cloneNode(true);
+                  c.querySelectorAll('.spec-note').forEach((note) => note.remove());
+                  n = c.textContent.trim();
+                }
+                return `<span style="white-space: nowrap; color: var(--accent-lantern-glow); font-family: var(--font-mono); font-size: 0.78rem;">${m}</span> ${n}`;
+              })
+              .join(' · ');
+
+            const garnishText = garnishSpec
+              ? (garnishSpec.querySelector('.spec-name')?.textContent || '').trim()
+              : '';
+            const chips = Array.from(card.querySelectorAll('.tasting-chip'))
+              .map((c) => c.textContent.trim())
+              .join(', ');
+
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+              <td class="prep-cocktail-name"><a href="#${card.id}" style="color: inherit; text-decoration: none;">${drinkTitle}</a></td>
+              <td style="color: var(--text-mist); font-size: 0.84rem;">${glasswareText}</td>
+              <td style="font-size: 0.84rem; line-height: 1.5;">${buildSummary}</td>
+              <td style="font-size: 0.82rem; color: var(--text-mist);">${garnishText ? `<strong>Garnish:</strong> ${garnishText}<br>` : ''}<span style="color: var(--text-slate);">${chips}</span></td>
+              <td><span class="technique-badge">${techniqueText}</span></td>
+            `;
+            prepLedgerTbodyEl.appendChild(tr);
+          });
+        }
+
+        if (scrollStageIntoView) {
+          document.getElementById('active-tasting-stage')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+
+      scrubberPills.forEach((pill) => {
+        pill.addEventListener('click', () => {
+          const targetSession = pill.getAttribute('data-stage-session');
+          if (targetSession) {
+            renderActiveStageSession(targetSession, false);
+          }
+        });
+      });
+
+      document.querySelectorAll('[data-trigger-stage]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const targetSession = btn.getAttribute('data-trigger-stage');
+          if (targetSession) {
+            renderActiveStageSession(targetSession, true);
+          }
+        });
+      });
+
+      // Initialize Active Session Stage (honor URL hash if it points to a session, otherwise default to Nov 2025: Alley 2.6)
+      const initialHash = window.location.hash.replace(/^#/, '');
+      if (initialHash && document.getElementById(initialHash)?.classList.contains('archive-session')) {
+        renderActiveStageSession(initialHash, false);
+      } else {
+        renderActiveStageSession('session-alley-26-2025', false);
+      }
+
+      // ============================================================
+      // Cellar Vault Filtering, Search & Doug/Quinn 404 Easter Egg
+      // ============================================================
       const searchInput = document.getElementById('archive-search');
       const hostBtns = document.querySelectorAll('[data-filter-host]');
       const spiritBtns = document.querySelectorAll('[data-filter-spirit]');
@@ -7484,7 +8297,7 @@
 
         if (archiveCountEl) {
           const missingSuffix = visibleMissing > 0 ? ` (+ ${visibleMissing} missing cold case${visibleMissing > 1 ? 's' : ''})` : '';
-          archiveCountEl.textContent = `Showing ${visibleCocktails} of 48 historical cocktails${missingSuffix}`;
+          archiveCountEl.textContent = `Showing ${visibleCocktails} of 54 cocktails${missingSuffix}`;
         }
       }
 
