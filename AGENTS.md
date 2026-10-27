@@ -61,7 +61,7 @@ The client-side JavaScript in `index.html` implements several key interactive fe
 5. **QR Code Sharing Modal**:
    - Uses native `<dialog id="qr-dialog">` with backdrop and close handlers.
 6. **The Cellar Vault (`#league-archive`)**:
-   - Houses all 54 cocktails across 13 sessions (including *The Coastal Garrison* integrated as a 2026 session and *Nov 1, 2025: Alley 2.6*).
+   - Houses all 54 cocktails across 13 sessions (including *The Coastal Garrison* integrated as a 2026 session and *Oct 1, 2025: Alley 2.6*).
    - Filterable by **Host** (`data-host`), **Base Spirit** (`data-spirit`), **Photo Provenance** (`data-provenance="original|doc|ai"`), and full-text search.
    - Uses `content-visibility: auto; contain-intrinsic-size: auto none auto 650px;` on `.archive-session` blocks to defer offscreen rendering.
    - Every cocktail card includes an explicit provenance badge (`.provenance-original` for authentic host kitchen photos, `.provenance-doc` for reference photos from the original Google Doc, and `.provenance-ai` for AI illustrations & architectural spec plates).
