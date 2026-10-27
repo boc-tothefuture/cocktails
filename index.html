@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The League of Extraordinary Cocktails — Cellar Vault &amp; Tasting Stage</title>
+  <title>The League of Extraordinary Cocktails — Cellar Vault</title>
   <meta name="description" content="The League of Extraordinary Cocktails — Interactive Session Switcher, Bartender Prep Ledger, and the complete 2020–2025 Cellar Vault of 51 craft cocktails across 12 sessions.">
   <meta name="theme-color" content="#0b0807">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 
   <!-- Open Graph / QR Scan Preview -->
   <meta property="og:title" content="The League of Extraordinary Cocktails">
-  <meta property="og:description" content="Subterranean craft cocktail archive &amp; interactive tasting stage: 51 cocktails across 12 sessions (2020–2025).">
+  <meta property="og:description" content="Subterranean craft cocktail archive: 51 cocktails across 12 sessions (2020–2025).">
   <meta property="og:image" content="https://hortonscreekcocktails.com/assets/archive/the-alley-cocktail.jpg">
   <meta property="og:type" content="website">
 
@@ -1738,7 +1738,7 @@
     <div class="stage-header">
       <div>
         <span class="stage-kicker" id="stage-kicker">OCT 1, 2025 // HOST: DOUG NEUMANN</span>
-        <h1 class="stage-heading" id="stage-heading">Active Session Tasting Stage — <span id="stage-session-name" style="color: var(--accent-lantern-glow);">Alley 2.6 Cocktails</span></h1>
+        <h1 class="stage-heading" id="stage-heading"><span id="stage-session-name" style="color: var(--accent-lantern-glow);">Alley 2.6 Cocktails</span></h1>
         <p class="stage-session-subtitle" id="stage-session-desc">
           Precision recipe calibration and low-waste tasting pours—featuring a savory Cynar-bourbon coupe, a spicy jalapeño-hibiscus reposado sour, and an effervescent Irish whiskey vanilla cream soda highball.
         </p>
@@ -1797,7 +1797,7 @@
     </div>
 
     <!-- ================================================================== -->
-    <!-- THE CELLAR VAULT // 54 COCKTAILS (2020 - 2026)                     -->
+    <!-- THE CELLAR VAULT // 51 COCKTAILS (2020 - 2025)                     -->
     <!-- ================================================================== -->
     <section class="archive-vault-section" id="league-archive" aria-labelledby="archive-heading">
 
@@ -1806,16 +1806,16 @@
           <h2 class="archive-main-title" id="archive-heading">
             <span>The Cellar Vault</span>
             <span class="amber-slash">//</span>
-            <span>54 Cocktails</span>
+            <span>51 Cocktails</span>
           </h2>
           <p class="archive-lead">
-            Every pour from 13 tasting sessions (2020–2026)—complete with Guest &amp; Bartender Spec modes, dynamic batch scaling, and one-click staging to the top Tasting Stage.
+            Every pour from 12 sessions (2020–2025)—complete with Guest &amp; Bartender Spec modes, dynamic batch scaling, and quick session switching.
           </p>
         </div>
         <div class="provenance-legend" aria-label="Image provenance key">
           <span class="legend-item">📸 <strong>Original Photo</strong> (12)</span>
           <span class="legend-item">📎 <strong>Doc Reference</strong> (9)</span>
-          <span class="legend-item">✨ <strong>AI &amp; Spec Plates</strong> (33)</span>
+          <span class="legend-item">✨ <strong>AI &amp; Spec Plates</strong> (30)</span>
         </div>
       </div>
 
@@ -1920,7 +1920,7 @@
       <h3 class="session-title">Alley 2.6 Cocktails</h3>
       <p class="session-desc">Full-size recipes, six-drink batching requirements, and low-waste tasting pours—featuring a savory Cynar-bourbon coupe, a spicy jalapeño-hibiscus reposado sour, and an effervescent Irish whiskey vanilla cream soda highball.</p>
     </div>
-    <button type="button" class="stage-this-session-btn" data-trigger-stage="session-alley-26-2025">↑ Load on Tasting Stage</button>
+    <button type="button" class="stage-this-session-btn" data-trigger-stage="session-alley-26-2025">↑ Feature This Session</button>
   </div>
   <div class="vault-grid">
 
@@ -1955,7 +1955,7 @@
           </div>
           <h4 class="card-title">The Alley Cocktail</h4>
           <p class="card-story">
-            A structured, savory-bittersweet bourbon cocktail built on 101-proof Wild Turkey backbone, bone-dry vermouth, herbal Cynar artichoke amaro, and a whisper of Luxardo Maraschino, tied together by an aromatic dash of celery bitters.
+            A structured, savory-bittersweet bourbon cocktail built on 101-proof Wild Turkey backbone, bone-dry vermouth, Cynar, and a whisper of Luxardo Maraschino, tied together by an aromatic dash of celery bitters.
           </p>
         </div>
 
@@ -1978,7 +1978,7 @@
           <ul class="guest-ingredients">
             <li>Wild Turkey 101 Bourbon</li>
             <li>Dry Vermouth</li>
-            <li>Cynar Artichoke Amaro</li>
+            <li>Cynar</li>
             <li>Luxardo Maraschino Liqueur</li>
             <li>Celery Bitters</li>
             <li class="garnish-item">Garnish: Dehydrated Lemon Slice</li>
@@ -7636,7 +7636,7 @@
       const prepLedgerTbodyEl = document.getElementById('prep-ledger-tbody');
       const prepSessionLabelEl = document.getElementById('prep-session-label');
 
-      // Add "Load on Tasting Stage" buttons to all session banners in the Vault
+      // Add "Feature This Session" buttons to all session banners in the Vault
       document.querySelectorAll('.archive-session').forEach((sec) => {
         const banner = sec.querySelector('.session-banner');
         if (banner && !banner.querySelector('.stage-this-session-btn')) {
@@ -7650,7 +7650,7 @@
           stageBtn.type = 'button';
           stageBtn.className = 'stage-this-session-btn';
           stageBtn.setAttribute('data-trigger-stage', sec.id);
-          stageBtn.textContent = '↑ Load on Tasting Stage';
+          stageBtn.textContent = '↑ Feature This Session';
           banner.appendChild(stageBtn);
         }
       });

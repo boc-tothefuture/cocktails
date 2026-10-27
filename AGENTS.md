@@ -46,7 +46,7 @@ The client-side JavaScript in `index.html` implements several key interactive fe
    - Bartender mode reveals full build steps, glassware, ice, prep steps, the Session Prep Ledger, and scaling controls.
    - State is persisted to `localStorage` (`hcc_menu_mode`) and honors the `#bartender` URL hash.
 2. **Interactive Session Timeline Switcher & Active Tasting Stage**:
-   - The horizontal `.scrubber-bar` lets users switch between all 12 club sessions (or click `↑ Load on Tasting Stage` on any session in the Vault).
+   - The horizontal `.scrubber-bar` lets users switch between all 12 club sessions (or click `↑ Feature This Session` on any session in the Vault).
    - Selecting a session dynamically populates `#active-tasting-stage` with split smoked-glass cocktail cards (`.stage-split-card`) and updates the `#prep-summary` Bartender Prep & Batching Ledger table.
 3. **Individual Spec Accordions**:
    - In Guest mode, guests can selectively toggle technical specs for an individual drink via `.toggle-spec-btn` (modifying `data-expanded="true|false"` on `.cocktail-card`).
