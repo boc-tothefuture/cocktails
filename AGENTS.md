@@ -20,7 +20,7 @@ The project is intentionally dependency-free and build-free. There are no bundle
 ├── CNAME                 # GitHub Pages custom domain (hortonscreekcocktails.com)
 ├── index.html            # Complete single-page application (HTML, CSS, JS)
 └── assets/               # Menu artwork and cocktail visuals
-    └── archive/          # 51 historical cocktail photos & spec plates (2020–2025)
+    └── archive/          # 51 historical cocktail photos & AI illustrations (2020–2025)
 ```
 
 ### Key Technical Characteristics
@@ -61,7 +61,7 @@ The client-side JavaScript in `index.html` implements several key interactive fe
    - Houses all 51 cocktails across 12 sessions (including *Oct 1, 2025: Alley 2.6*).
    - Filterable by **Host** (`data-host`), **Base Spirit** (`data-spirit`), **Photo Provenance** (`data-provenance="original|doc|ai"`), and full-text search.
    - Uses `content-visibility: auto; contain-intrinsic-size: auto none auto 650px;` on `.archive-session` blocks to defer offscreen rendering.
-   - Every cocktail card includes an explicit provenance badge (`.provenance-original` for authentic host kitchen photos, `.provenance-doc` for reference photos from the original Google Doc, and `.provenance-ai` for AI illustrations & architectural spec plates).
+   - Every cocktail card includes an explicit provenance badge (`.provenance-original` for authentic host kitchen photos, `.provenance-doc` for reference photos from the original Google Doc, and `.provenance-ai` for AI illustrations).
    - Includes a tongue-in-cheek **HTTP 404 Easter Egg (`#doug-quinn-404`)** when filtering or searching for `Doug` or `Quinn`, referencing the Google Doc lore before revealing their surviving recipes and `.vault-missing-card` cold cases.
 
 ---
