@@ -267,24 +267,70 @@
       display: inline;
     }
 
-    .scrubber-vault-jump {
+    /* Page View Modes: 'session' (focused on active session) vs 'vault' (fully scrollable cellar archive) */
+    body[data-page-view="session"] #league-archive {
+      display: none !important;
+    }
+
+    body[data-page-view="vault"] #active-tasting-stage,
+    body[data-page-view="vault"] .cellar-amber-divider {
+      display: none !important;
+    }
+
+    /* Scrubber Vault Navigation Button */
+    .scrubber-vault-btn {
       margin-left: auto;
-      background: rgba(15, 11, 10, 0.85);
-      border: 1px solid var(--border-brass);
+      background: linear-gradient(135deg var(--in-oklab), rgba(232, 153, 58, 0.18), rgba(217, 121, 37, 0.28));
+      border: 1px solid var(--accent-lantern);
       color: var(--accent-lantern-glow);
       font-family: var(--font-mono);
-      font-size: 0.76rem;
-      text-decoration: none;
-      padding: 0.5rem 0.95rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.5rem 1.05rem;
       border-radius: 999px;
       white-space: nowrap;
       flex-shrink: 0;
-      transition: all 0.2s ease;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
-    .scrubber-vault-jump:hover {
-      background: rgba(232, 153, 58, 0.16);
-      color: var(--text-parchment);
+    .scrubber-vault-btn:hover {
+      background: var(--accent-lantern);
+      color: #0b0807;
+      border-color: var(--accent-lantern-glow);
+      box-shadow: 0 0 16px rgba(232, 153, 58, 0.45);
+      transform: translateY(-1px);
+    }
+
+    .scrubber-vault-btn:active {
+      transform: translateY(0);
+    }
+
+    .scrubber-vault-btn[aria-pressed="true"] {
+      background: var(--accent-lantern);
+      color: #0b0807;
+      border-color: var(--accent-lantern-glow);
+      font-weight: 700;
+      box-shadow: 0 0 20px rgba(232, 153, 58, 0.55);
+    }
+
+    .scrubber-vault-btn .vault-arch-icon {
+      flex-shrink: 0;
+    }
+
+    .scrubber-vault-jump {
+      display: none;
+    }
+
+    /* View Transition Styling */
+    @media (prefers-reduced-motion: no-preference) {
+      ::view-transition-old(root),
+      ::view-transition-new(root) {
+        animation-duration: 0.22s;
+      }
     }
 
     /* Active Session Tasting Stage (Slide 3 Top Showcase) */
@@ -321,6 +367,16 @@
       margin: 0;
       color: var(--text-parchment);
       line-height: 1.1;
+    }
+
+    .stage-heading:focus {
+      outline: none;
+    }
+
+    .stage-heading:focus-visible {
+      outline: 2px solid var(--accent-lantern-glow);
+      outline-offset: 4px;
+      border-radius: 4px;
     }
 
     .stage-session-subtitle {
@@ -847,6 +903,16 @@
       color: var(--text-parchment);
     }
 
+    .card-title:focus {
+      outline: none;
+    }
+
+    .card-title:focus-visible {
+      outline: 2px solid var(--accent-lantern-glow);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+
     .card-story {
       font-size: 0.98rem;
       color: var(--text-mist);
@@ -1365,6 +1431,16 @@
       flex-wrap: wrap;
     }
 
+    .archive-main-title:focus {
+      outline: none;
+    }
+
+    .archive-main-title:focus-visible {
+      outline: 2px solid var(--accent-lantern-glow);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+
     .archive-main-title .amber-slash {
       color: var(--accent-lantern);
       font-weight: 400;
@@ -1527,6 +1603,138 @@
       font-family: var(--font-mono);
       font-size: 0.76rem;
       color: var(--text-mist);
+    }
+
+    .filter-status-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      flex-wrap: wrap;
+    }
+
+    /* I'm Feeling Lucky Button (Vault Area) */
+    .vault-lucky-btn {
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.48rem;
+      background: linear-gradient(135deg var(--in-oklab), rgba(232, 153, 58, 0.22), rgba(184, 98, 27, 0.32));
+      border: 1px solid var(--accent-lantern);
+      color: var(--accent-lantern-glow);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 0.52rem 1.05rem;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 0 14px rgba(232, 153, 58, 0.22);
+      transition: all 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+      white-space: nowrap;
+    }
+
+    .vault-lucky-btn:hover {
+      background: var(--accent-lantern);
+      color: #0b0807;
+      border-color: var(--accent-lantern-glow);
+      box-shadow: 0 0 22px rgba(232, 153, 58, 0.55);
+      transform: translateY(-1px);
+    }
+
+    .vault-lucky-btn:active {
+      transform: translateY(0);
+    }
+
+    .vault-lucky-btn:focus-visible {
+      outline: 2px solid var(--accent-lantern-glow);
+      outline-offset: 2px;
+    }
+
+    .vault-lucky-btn .lucky-dice-icon {
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      flex-shrink: 0;
+    }
+
+    .vault-lucky-btn:hover .lucky-dice-icon {
+      transform: rotate(45deg);
+    }
+
+    .vault-lucky-btn--subtle {
+      padding: 0.26rem 0.72rem;
+      font-size: 0.72rem;
+      background: rgba(232, 153, 58, 0.12);
+      border-color: var(--border-brass);
+      box-shadow: none;
+    }
+
+    .vault-lucky-btn--subtle:hover {
+      box-shadow: 0 0 12px rgba(232, 153, 58, 0.4);
+    }
+
+    /* Lucky Pick Highlight state on Vault Card */
+    .cocktail-card.is-lucky-pick {
+      border-color: var(--accent-lantern) !important;
+      box-shadow: 0 0 35px 8px rgba(232, 153, 58, 0.45), 0 25px 60px rgba(0, 0, 0, 0.85) !important;
+      animation: luckyCardPulse 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) 2;
+    }
+
+    @keyframes luckyCardPulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(232, 153, 58, 0.75), var(--shadow-card);
+        border-color: var(--accent-lantern);
+      }
+      50% {
+        box-shadow: 0 0 45px 12px rgba(232, 153, 58, 0.55), 0 25px 60px rgba(0, 0, 0, 0.85);
+        border-color: var(--accent-lantern-glow);
+      }
+      100% {
+        box-shadow: 0 0 24px 4px rgba(232, 153, 58, 0.35), var(--shadow-card);
+        border-color: var(--accent-lantern);
+      }
+    }
+
+    .lucky-pick-badge {
+      position: absolute;
+      top: 3.35rem;
+      left: 1rem;
+      z-index: 4;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: linear-gradient(135deg, var(--accent-lantern), #f5b563);
+      color: #0b0807;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.32rem 0.8rem;
+      border-radius: 999px;
+      box-shadow: 0 4px 18px rgba(232, 153, 58, 0.55);
+      animation: luckyBadgeBounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes luckyBadgeBounce {
+      0% {
+        opacity: 0;
+        transform: scale(0.6) translateY(-8px);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cocktail-card.is-lucky-pick {
+        animation: none;
+      }
+      .lucky-pick-badge {
+        animation: none;
+      }
+      .vault-lucky-btn .lucky-dice-icon {
+        transition: none;
+      }
     }
 
     .reset-filters-btn {
@@ -1723,7 +1931,7 @@
 
   </style>
 </head>
-<body data-mode="guest">
+<body data-mode="guest" data-page-view="session">
 
   <!-- Sticky Speakeasy Header (Slide 3) -->
   <header class="top-bar">
@@ -1756,7 +1964,7 @@
     </div>
   </header>
 
-  <!-- Horizontal Interactive Session Timeline Scrubber (Option B / Slide 3) -->
+  <!-- Horizontal Interactive Session Timeline Scrubber -->
   <nav class="scrubber-bar" aria-label="Interactive Tasting Session Switcher">
     <div class="scrubber-inner" id="session-scrubber">
       <button type="button" class="scrubber-pill" data-stage-session="session-alley-26-2026" aria-pressed="true">
@@ -1771,43 +1979,23 @@
         <span class="active-dot">ACTIVE •</span>
         <span>Sep 2025: Maligned Drinks Uplifted</span>
       </button>
-      <button type="button" class="scrubber-pill" data-stage-session="session-dougs-smokeout-2025" aria-pressed="false">
+
+      <!-- Dynamic pill for historical sessions featured from inside the vault -->
+      <button type="button" class="scrubber-pill" id="scrubber-dynamic-session-pill" data-stage-session="" aria-pressed="false" style="display: none;">
         <span class="active-dot">ACTIVE •</span>
-        <span>May 2025: Smokeout</span>
+        <span id="scrubber-dynamic-session-title">Historical Session</span>
       </button>
-      <button type="button" class="scrubber-pill" data-stage-session="session-cyoa-margarita-2025" aria-pressed="false">
-        <span class="active-dot">ACTIVE •</span>
-        <span>Jan 2025: Margarita Lab</span>
+
+      <!-- The Vault Navigation Button -->
+      <button type="button" class="scrubber-pill scrubber-vault-btn" id="nav-vault-btn" aria-pressed="false" title="Explore the full 51-cocktail Cellar Vault">
+        <svg class="vault-arch-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect width="18" height="18" x="3" y="3" rx="2" />
+          <path d="M7 8h10"/>
+          <path d="M7 12h10"/>
+          <path d="M7 16h6"/>
+        </svg>
+        <span>The Vault (51 Cocktails)</span>
       </button>
-      <button type="button" class="scrubber-pill" data-stage-session="session-matts-thanksgiving-2024" aria-pressed="false">
-        <span class="active-dot">ACTIVE •</span>
-        <span>Nov 2024: Thanksgiving</span>
-      </button>
-      <button type="button" class="scrubber-pill" data-stage-session="session-brians-fall-cocktails-2024" aria-pressed="false">
-        <span class="active-dot">ACTIVE •</span>
-        <span>Oct 2024: Fall Classics</span>
-      </button>
-      <button type="button" class="scrubber-pill" data-stage-session="session-emphasis-on-mezcal-2023" aria-pressed="false">
-        <span class="active-dot">ACTIVE •</span>
-        <span>Oct 2023: Mezcal Night</span>
-      </button>
-      <button type="button" class="scrubber-pill" data-stage-session="session-matts-gin-night-2023" aria-pressed="false">
-        <span class="active-dot">ACTIVE •</span>
-        <span>Nov 2023: Gin Night</span>
-      </button>
-      <button type="button" class="scrubber-pill" data-stage-session="session-matts-st-patricks-2023" aria-pressed="false">
-        <span class="active-dot">ACTIVE •</span>
-        <span>2023: Spring &amp; Summer</span>
-      </button>
-      <button type="button" class="scrubber-pill" data-stage-session="session-2021-2022-rotations" aria-pressed="false">
-        <span class="active-dot">ACTIVE •</span>
-        <span>2021–2022: Rotations</span>
-      </button>
-      <button type="button" class="scrubber-pill" data-stage-session="session-founding-year-2020" aria-pressed="false">
-        <span class="active-dot">ACTIVE •</span>
-        <span>2020: Founding Classics</span>
-      </button>
-      <a href="#league-archive" class="scrubber-vault-jump">Archive (51 Cocktails) ↓</a>
     </div>
   </nav>
 
@@ -1823,12 +2011,26 @@
       </div>
       <div class="stage-meta-Controls">
         <a href="#prep-summary" class="stage-Action-link">Session Prep Ledger ↓</a>
-        <a href="#session-alley-26-2026" class="stage-Action-link" id="stage-jump-session-link">Full Session Cards ↓</a>
+        <button type="button" class="stage-Action-link" id="stage-vault-link">Explore Cellar Vault (51 Cocktails) →</button>
       </div>
     </div>
 
     <!-- Dynamically populated split smoked-glass cards for the active session -->
     <div class="stage-cards-grid" id="stage-cards-grid" aria-live="polite"></div>
+
+    <!-- Bartender Mode Batch Scaler Toolbar (Session View) -->
+    <div class="bartender-toolbar" aria-live="polite" style="margin-top: 1.75rem; margin-bottom: 0;">
+      <div class="toolbar-label">
+        <span><strong>Bartender Spec Mode</strong> — Proportions, build steps &amp; batch scaling for this session.</span>
+      </div>
+      <div class="scale-controls" role="group" aria-label="Batch multiplier">
+        <span class="scale-label">BATCH SCALE:</span>
+        <button type="button" class="scale-btn" data-scale="1" aria-pressed="true">1x</button>
+        <button type="button" class="scale-btn" data-scale="2" aria-pressed="false">2x</button>
+        <button type="button" class="scale-btn" data-scale="4" aria-pressed="false">4x</button>
+        <button type="button" class="scale-btn" data-scale="8" aria-pressed="false">8x</button>
+      </div>
+    </div>
 
     <!-- Dynamic Session Prep & Build Ledger (updates automatically with the Active Session) -->
     <div class="prep-section" id="prep-summary" aria-labelledby="prep-heading" style="margin-top: 1.75rem;">
@@ -1913,6 +2115,17 @@
               aria-label="Search cellar vault cocktails"
             >
           </div>
+          <button type="button" class="vault-lucky-btn" id="vault-lucky-btn" aria-label="I'm feeling lucky: select and scroll to a random cocktail">
+            <svg class="lucky-dice-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect width="18" height="18" x="3" y="3" rx="4" />
+              <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" />
+              <circle cx="15.5" cy="8.5" r="1.5" fill="currentColor" />
+              <circle cx="8.5" cy="15.5" r="1.5" fill="currentColor" />
+              <circle cx="15.5" cy="15.5" r="1.5" fill="currentColor" />
+              <circle cx="12" cy="12" r="1.5" fill="currentColor" />
+            </svg>
+            <span>I'm Feeling Lucky</span>
+          </button>
           <div class="search-Easter-hints">
             <span>QUICK SEARCH:</span>
             <button type="button" class="hint-chip" data-quick-search="bourbon">Bourbon</button>
@@ -1957,7 +2170,20 @@
 
         <div class="filter-status-bar">
           <span id="archive-count" aria-live="polite">Showing all 51 cocktails across 12 sessions (+ 3 missing cold cases)</span>
-          <button type="button" class="reset-filters-btn" id="reset-archive-filters">Reset Filters</button>
+          <div class="filter-status-actions">
+            <button type="button" class="vault-lucky-btn vault-lucky-btn--subtle" id="vault-lucky-btn-secondary" title="Pick a random cocktail from the vault">
+              <svg class="lucky-dice-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect width="18" height="18" x="3" y="3" rx="4" />
+                <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" />
+                <circle cx="15.5" cy="8.5" r="1.5" fill="currentColor" />
+                <circle cx="8.5" cy="15.5" r="1.5" fill="currentColor" />
+                <circle cx="15.5" cy="15.5" r="1.5" fill="currentColor" />
+                <circle cx="12" cy="12" r="1.5" fill="currentColor" />
+              </svg>
+              <span>I'm Feeling Lucky</span>
+            </button>
+            <button type="button" class="reset-filters-btn" id="reset-archive-filters">Reset Filters</button>
+          </div>
         </div>
       </div>
 
@@ -8566,30 +8792,179 @@
         }
       }
 
-      scrubberPills.forEach((pill) => {
-        pill.addEventListener('click', () => {
-          const targetSession = pill.getAttribute('data-stage-session');
-          if (targetSession) {
-            renderActiveStageSession(targetSession, false);
+      // ============================================================
+      // Page View Modes: Focused Session vs Full Cellar Vault
+      // ============================================================
+      const navVaultBtn = document.getElementById('nav-vault-btn');
+      const stageVaultLink = document.getElementById('stage-vault-link');
+      const dynamicSessionPill = document.getElementById('scrubber-dynamic-session-pill');
+      const dynamicSessionTitle = document.getElementById('scrubber-dynamic-session-title');
+
+      const TOP_THREE_SESSIONS = [
+        'session-alley-26-2026',
+        'session-matts-fall-festival-2025',
+        'session-maligned-drinks-uplifted-2025'
+      ];
+
+      let currentPageView = 'session';
+      let currentSessionId = 'session-alley-26-2026';
+
+      function setPageView(view, options = {}) {
+        currentPageView = view;
+        body.setAttribute('data-page-view', view);
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (view === 'vault') {
+          if (navVaultBtn) navVaultBtn.setAttribute('aria-pressed', 'true');
+          document.querySelectorAll('.scrubber-pill[data-stage-session]').forEach((pill) => {
+            pill.setAttribute('aria-pressed', 'false');
+          });
+
+          if (options.scroll) {
+            window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+          }
+
+          const archiveHeading = document.getElementById('archive-heading');
+          if (archiveHeading) {
+            archiveHeading.setAttribute('tabindex', '-1');
+            archiveHeading.focus({ preventScroll: true });
+          }
+
+          if (options.targetCardId) {
+            setTimeout(async () => {
+              const card = document.getElementById(options.targetCardId);
+              if (card) {
+                const parentSession = card.closest('.archive-session');
+                if (parentSession) parentSession.hidden = false;
+                card.hidden = false;
+                archiveSessions.forEach((s) => (s.style.contentVisibility = 'visible'));
+                await scrollIntoViewAsync(card, { behavior: prefersReduced ? 'auto' : 'smooth', block: 'center' });
+                card.classList.add('is-lucky-pick');
+                setTimeout(() => card.classList.remove('is-lucky-pick'), 3000);
+              }
+            }, 80);
+          }
+
+          try {
+            const modeSuffix = body.getAttribute('data-mode') === 'bartender' ? '&bartender' : '';
+            history.replaceState(null, '', `#vault${modeSuffix}`);
+          } catch (_) {}
+        } else {
+          if (navVaultBtn) navVaultBtn.setAttribute('aria-pressed', 'false');
+          if (options.sessionId) {
+            currentSessionId = options.sessionId;
+          }
+
+          renderActiveStageSession(currentSessionId, false);
+
+          const isTopThree = TOP_THREE_SESSIONS.includes(currentSessionId);
+          if (isTopThree) {
+            if (dynamicSessionPill) dynamicSessionPill.style.display = 'none';
+          } else {
+            if (dynamicSessionPill) {
+              dynamicSessionPill.style.display = 'inline-flex';
+              dynamicSessionPill.setAttribute('data-stage-session', currentSessionId);
+              const sessionEl = document.getElementById(currentSessionId);
+              const sTitle = sessionEl ? (sessionEl.querySelector('.session-title')?.textContent || '').trim() : 'Historical Session';
+              const sDate = sessionEl ? (sessionEl.querySelector('.session-date')?.textContent || '').trim() : '';
+              if (dynamicSessionTitle) dynamicSessionTitle.textContent = `${sDate ? sDate + ': ' : ''}${sTitle}`;
+            }
+          }
+
+          document.querySelectorAll('.scrubber-pill[data-stage-session]').forEach((pill) => {
+            const isMatch = pill.getAttribute('data-stage-session') === currentSessionId;
+            pill.setAttribute('aria-pressed', String(isMatch));
+          });
+
+          if (options.scroll) {
+            window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+          }
+
+          const stageHeading = document.getElementById('stage-heading');
+          if (stageHeading) {
+            stageHeading.setAttribute('tabindex', '-1');
+            stageHeading.focus({ preventScroll: true });
+          }
+
+          try {
+            const modeSuffix = body.getAttribute('data-mode') === 'bartender' ? '&bartender' : '';
+            history.replaceState(null, '', `#${currentSessionId}${modeSuffix}`);
+          } catch (_) {}
+        }
+      }
+
+      function transitionPageView(view, options = {}) {
+        const update = () => setPageView(view, options);
+        if (!document.startViewTransition || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          update();
+        } else {
+          document.startViewTransition(update);
+        }
+      }
+
+      if (navVaultBtn) {
+        navVaultBtn.addEventListener('click', () => {
+          transitionPageView('vault', { scroll: true });
+        });
+      }
+
+      if (stageVaultLink) {
+        stageVaultLink.addEventListener('click', () => {
+          transitionPageView('vault', { scroll: true });
+        });
+      }
+
+      // Delegate Full Recipe jump from Stage Cards to Vault Card
+      if (stageCardsGridEl) {
+        stageCardsGridEl.addEventListener('click', (e) => {
+          const jumpBtn = e.target.closest('.stage-jump-btn');
+          if (jumpBtn) {
+            e.preventDefault();
+            const href = jumpBtn.getAttribute('href') || '';
+            const cardId = href.replace(/^#/, '');
+            if (cardId) {
+              transitionPageView('vault', { targetCardId: cardId });
+            }
           }
         });
+      }
+
+      document.querySelectorAll('.brand-lockup, .brand-center-title').forEach((brandEl) => {
+        brandEl.addEventListener('click', (e) => {
+          e.preventDefault();
+          transitionPageView('session', { sessionId: 'session-alley-26-2026', scroll: true });
+        });
+      });
+
+      document.getElementById('session-scrubber')?.addEventListener('click', (e) => {
+        const pill = e.target.closest('.scrubber-pill[data-stage-session]');
+        if (pill) {
+          const targetSession = pill.getAttribute('data-stage-session');
+          if (targetSession) {
+            transitionPageView('session', { sessionId: targetSession, scroll: true });
+          }
+        }
       });
 
       document.querySelectorAll('[data-trigger-stage]').forEach((btn) => {
         btn.addEventListener('click', () => {
           const targetSession = btn.getAttribute('data-trigger-stage');
           if (targetSession) {
-            renderActiveStageSession(targetSession, true);
+            transitionPageView('session', { sessionId: targetSession, scroll: true });
           }
         });
       });
 
-      // Initialize Active Session Stage (honor URL hash if it points to a session, otherwise default to Oct 2026: Alley 2.6)
-      const initialHash = window.location.hash.replace(/^#/, '');
-      if (initialHash && document.getElementById(initialHash)?.classList.contains('archive-session')) {
-        renderActiveStageSession(initialHash, false);
+      // Initialize from URL Hash or default to Alley 2.6 Session
+      const rawHash = window.location.hash.replace(/^#/, '');
+      const hashParts = rawHash.split('&');
+      const primaryHash = hashParts[0];
+      if (primaryHash === 'vault' || primaryHash === 'league-archive') {
+        setPageView('vault', { scroll: false });
+      } else if (primaryHash && document.getElementById(primaryHash)?.classList.contains('archive-session')) {
+        setPageView('session', { sessionId: primaryHash, scroll: false });
       } else {
-        renderActiveStageSession('session-alley-26-2026', false);
+        setPageView('session', { sessionId: 'session-alley-26-2026', scroll: false });
       }
 
       // ============================================================
@@ -8733,6 +9108,157 @@
           applyArchiveFilters();
         });
       }
+
+      // ============================================================
+      // "I'm Feeling Lucky" Vault Selector
+      // ============================================================
+      const luckyBtns = [
+        document.getElementById('vault-lucky-btn'),
+        document.getElementById('vault-lucky-btn-secondary')
+      ].filter(Boolean);
+
+      let lastLuckyCardId = null;
+      let luckyScrollToken = 0;
+
+      function scrollIntoViewAsync(element, options, scroller = window) {
+        element.scrollIntoView(options);
+
+        // On document root scrollers, Chrome has a bug where scroll method promises resolve too early.
+        // Listen to window 'scrollend' with an idle fallback to guarantee true completion.
+        return new Promise((resolve) => {
+          let timeoutId;
+          const finish = () => {
+            clearTimeout(timeoutId);
+            scroller.removeEventListener('scrollend', finish);
+            scroller.removeEventListener('scroll', onScroll);
+            resolve();
+          };
+          const onScroll = () => {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(finish, 120);
+          };
+          scroller.addEventListener('scrollend', finish, { once: true });
+          scroller.addEventListener('scroll', onScroll, { passive: true });
+          timeoutId = setTimeout(finish, 140);
+        });
+      }
+
+      async function triggerFeelingLucky() {
+        const opId = ++luckyScrollToken;
+
+        // 1. If Doug/Quinn 404 easter egg is active, bypass it
+        if (box404 && box404.classList.contains('is-visible')) {
+          bypassed404For.add('doug');
+          bypassed404For.add('quinn');
+          applyArchiveFilters();
+        }
+
+        // Ensure Vault view is active so the lucky card is visible
+        if (currentPageView !== 'vault') {
+          setPageView('vault', { scroll: false });
+        }
+
+        // 2. Identify candidate cocktails (excluding missing cold case placeholders)
+        let candidates = Array.from(vaultCards).filter((c) => {
+          return !c.hidden && !c.classList.contains('vault-missing-card');
+        });
+
+        // If active filters or query hid all candidates, reset filters so all 51 are available
+        if (candidates.length === 0) {
+          if (resetBtn) resetBtn.click();
+          candidates = Array.from(vaultCards).filter((c) => !c.classList.contains('vault-missing-card'));
+        }
+
+        if (candidates.length === 0) return;
+
+        // 3. Pick random cocktail, avoiding immediate repetition if multiple exist
+        let pool = candidates;
+        if (candidates.length > 1 && lastLuckyCardId) {
+          pool = candidates.filter((c) => c.id !== lastLuckyCardId);
+          if (pool.length === 0) pool = candidates;
+        }
+        const pickedCard = pool[Math.floor(Math.random() * pool.length)];
+        lastLuckyCardId = pickedCard.id;
+
+        // Clear previous highlights and badges
+        document.querySelectorAll('.is-lucky-pick').forEach((c) => c.classList.remove('is-lucky-pick'));
+        document.querySelectorAll('.lucky-pick-badge').forEach((b) => b.remove());
+
+        // 4. Ensure target session and card are visible
+        const parentSession = pickedCard.closest('.archive-session');
+        if (parentSession) parentSession.hidden = false;
+        pickedCard.hidden = false;
+
+        // 5. Expand specs in Guest Mode so full build steps & story are open
+        if (body.getAttribute('data-mode') === 'guest') {
+          pickedCard.setAttribute('data-expanded', 'true');
+          const toggleBtn = pickedCard.querySelector('.toggle-spec-btn');
+          if (toggleBtn) {
+            toggleBtn.setAttribute('aria-expanded', 'true');
+            const toggleSpan = toggleBtn.querySelector('span');
+            if (toggleSpan) toggleSpan.textContent = 'Hide Bartender Specs';
+          }
+        }
+
+        // Ensure sessions are laid out for precise coordinate calculation
+        archiveSessions.forEach((s) => (s.style.contentVisibility = 'visible'));
+
+        // 6. Smoothly scroll into view with modern scroll-completion handling
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        await scrollIntoViewAsync(pickedCard, {
+          behavior: prefersReduced ? 'auto' : 'smooth',
+          block: 'center'
+        });
+
+        // If superseded by a rapid subsequent click, exit cleanly
+        if (opId !== luckyScrollToken) return;
+
+        // Re-settle scroll position if intervening offscreen sections expanded from content-visibility: auto
+        const initialRect = pickedCard.getBoundingClientRect();
+        if (initialRect.top < 0 || initialRect.bottom > window.innerHeight) {
+          pickedCard.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block: 'center' });
+        }
+
+        // 7. Apply highlight state & lucky badge
+        pickedCard.classList.add('is-lucky-pick');
+
+        const cardVisual = pickedCard.querySelector('.card-visual');
+        if (cardVisual) {
+          const badge = document.createElement('div');
+          badge.className = 'lucky-pick-badge';
+          badge.setAttribute('aria-label', "Tonight's Lucky Pour");
+          badge.innerHTML = `
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect width="18" height="18" x="3" y="3" rx="4" />
+              <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" />
+              <circle cx="15.5" cy="8.5" r="1.5" fill="currentColor" />
+              <circle cx="8.5" cy="15.5" r="1.5" fill="currentColor" />
+              <circle cx="15.5" cy="15.5" r="1.5" fill="currentColor" />
+              <circle cx="12" cy="12" r="1.5" fill="currentColor" />
+            </svg>
+            <span>Tonight's Lucky Pour</span>
+          `;
+          cardVisual.appendChild(badge);
+        }
+
+        // 8. Update status bar with polite announcement
+        const drinkTitle = (pickedCard.querySelector('.card-title') || {}).textContent || 'Cocktail';
+        const sessionHeading = parentSession ? (parentSession.querySelector('.session-title') || {}).textContent || '' : '';
+        if (archiveCountEl) {
+          archiveCountEl.innerHTML = `🎲 I'm Feeling Lucky selected: <strong>${drinkTitle.trim()}</strong>${sessionHeading ? ' (' + sessionHeading.trim() + ')' : ''}`;
+        }
+
+        // 9. Move focus to card title with preventScroll
+        const titleEl = pickedCard.querySelector('.card-title');
+        if (titleEl) {
+          titleEl.setAttribute('tabindex', '-1');
+          titleEl.focus({ preventScroll: true });
+        }
+      }
+
+      luckyBtns.forEach((btn) => {
+        btn.addEventListener('click', triggerFeelingLucky);
+      });
 
       // QR Dialog
       const qrDialog = document.getElementById('qr-dialog');

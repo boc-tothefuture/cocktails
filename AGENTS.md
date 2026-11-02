@@ -47,9 +47,11 @@ The client-side JavaScript in `index.html` implements several key interactive fe
    - Guest mode presents an elegant presentation menu with narrative notes and hidden technical specs.
    - Bartender mode reveals full build steps, glassware, ice, prep steps, the Session Prep Ledger, and scaling controls.
    - State is persisted to `localStorage` (`hcc_menu_mode`) and honors the `#bartender` URL hash.
-2. **Interactive Session Timeline Switcher & Active Tasting Stage**:
-   - The horizontal `.scrubber-bar` lets users switch between all 12 club sessions (or click `↑ Feature This Session` on any session in the Vault).
-   - Selecting a session dynamically populates `#active-tasting-stage` with split smoked-glass cocktail cards (`.stage-split-card`) and updates the `#prep-summary` Bartender Prep & Batching Ledger table.
+2. **Session-Focused View vs. Full Cellar Vault Layout**:
+   - The top navigation features the **past 3 tasting sessions** (`Oct 2026: Alley 2.6`, `Oct 2025: Fall Festival`, `Sep 2025: Maligned Drinks Uplifted`) followed by **The Vault (51 Cocktails)** button.
+   - When viewing a session (`body[data-page-view="session"]`), the entire page is dedicated exclusively to that session: the session narrative, split tasting cards (`.stage-split-card`), the Bartender Prep & Batching Ledger table (`#prep-summary`), and batch scaler—removing the vault and other drinks from the view.
+   - Clicking **The Vault** button (`body[data-page-view="vault"]`) or navigating to `#vault` reveals the fully scrollable Cellar Vault housing all 51 recipes across 12 sessions, complete with search, spirit/host/provenance filters, and the "I'm Feeling Lucky" selector.
+   - Any historical session can be elevated from the Vault into the focused session view via `↑ Feature This Session`.
 3. **Individual Spec Accordions**:
    - In Guest mode, guests can selectively toggle technical specs for an individual drink via `.toggle-spec-btn` (modifying `data-expanded="true|false"` on `.cocktail-card`).
 4. **Dynamic Batch Scaler**:
@@ -65,6 +67,9 @@ The client-side JavaScript in `index.html` implements several key interactive fe
    - Uses `content-visibility: auto; contain-intrinsic-size: auto none auto 650px;` on `.archive-session` blocks to defer offscreen rendering.
    - Every cocktail card includes an explicit provenance badge (`.provenance-original` for authentic host kitchen photos, `.provenance-doc` for reference photos from the original Google Doc, and `.provenance-ai` for AI illustrations).
    - Includes a tongue-in-cheek **HTTP 404 Easter Egg (`#doug-quinn-404`)** when filtering or searching for `Doug` or `Quinn`, referencing the Google Doc lore before revealing their surviving recipes and `.vault-missing-card` cold cases.
+7. **"I'm Feeling Lucky" Vault Selector (`#vault-lucky-btn`)**:
+   - Randomly selects an authentic recipe from the Cellar Vault (honoring active spirit/host filters when present, or resetting if filtered to empty).
+   - Smoothly scrolls to the chosen cocktail card using modern scroll completion promises, handles `content-visibility: auto` settling, activates an amber pulse highlight, reveals a `Tonight's Lucky Pour` badge, and automatically expands bartender specs in Guest mode.
 
 ---
 
