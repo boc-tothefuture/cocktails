@@ -1425,7 +1425,8 @@
       display: flex;
     }
 
-    body[data-mode="guest"] #prep-summary {
+    body[data-mode="guest"] #prep-summary,
+    body[data-mode="guest"] .stage-prep-link {
       display: none;
     }
 
@@ -2042,8 +2043,7 @@
         </p>
       </div>
       <div class="stage-meta-Controls">
-        <a href="#prep-summary" class="stage-Action-link">Session Prep Ledger ↓</a>
-        <button type="button" class="stage-Action-link" id="stage-vault-link">Explore Cellar Vault (51 Cocktails) →</button>
+        <a href="#prep-summary" class="stage-Action-link stage-prep-link" id="stage-prep-link">Session Prep Ledger ↓</a>
       </div>
     </div>
 
@@ -8849,7 +8849,7 @@
       // Page View Modes: Focused Session vs Full Cellar Vault
       // ============================================================
       const navVaultBtn = document.getElementById('nav-vault-btn');
-      const stageVaultLink = document.getElementById('stage-vault-link');
+      const stagePrepLink = document.getElementById('stage-prep-link');
       const dynamicSessionPill = document.getElementById('scrubber-dynamic-session-pill');
       const dynamicSessionTitle = document.getElementById('scrubber-dynamic-session-title');
 
@@ -8961,9 +8961,10 @@
         });
       }
 
-      if (stageVaultLink) {
-        stageVaultLink.addEventListener('click', () => {
-          transitionPageView('vault', { scroll: true });
+      if (stagePrepLink) {
+        stagePrepLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          document.getElementById('prep-summary')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
       }
 
