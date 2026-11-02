@@ -55,7 +55,7 @@ The client-side JavaScript in `index.html` implements several key interactive fe
 3. **Individual Spec Accordions**:
    - In Guest mode, guests can selectively toggle technical specs for an individual drink via `.toggle-spec-btn` (modifying `data-expanded="true|false"` on `.cocktail-card`).
 4. **Dynamic Batch Scaler**:
-   - Bartender mode includes batch scaling buttons (1x, 2x, 3x, 4x, 5x, 6x) that scale both the Active Tasting Stage and all 51 cards in the Cellar Vault.
+   - Bartender mode includes batch scaling buttons (1x, 2x, 3x, 4x, 5x, 6x) that scale the Bartender Prep & Batching Ledger table (formatting each ingredient on its own line for rapid service) and all 51 cards in the Cellar Vault, while preserving the top stage cards as fixed single-serving reference specs.
    - Quantities are stored in data attributes on `.spec-measure`:
      - `data-oz="<amount>"`: Scaled mathematically and formatted (supports `data-barspoon="true"`).
      - `data-count="<number>"` with `data-unit="dash|drop|leaf|..."`: Scaled with automated pluralization.

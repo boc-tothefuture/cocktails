@@ -1182,6 +1182,38 @@
       white-space: nowrap;
     }
 
+    .prep-build-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.38rem;
+    }
+
+    .prep-build-item {
+      display: flex;
+      align-items: baseline;
+      gap: 0.55rem;
+      line-height: 1.35;
+      font-size: 0.84rem;
+    }
+
+    .prep-measure {
+      white-space: nowrap;
+      color: var(--accent-lantern-glow);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      min-width: 4.4rem;
+      display: inline-block;
+      flex-shrink: 0;
+    }
+
+    .prep-ingredient-name {
+      color: var(--text-parchment);
+    }
+
     /* Footer & QR Modal Trigger */
     .site-footer {
       border-top: 1px solid var(--border-stone);
@@ -2021,7 +2053,7 @@
     <!-- Bartender Mode Batch Scaler Toolbar (Session View) -->
     <div class="bartender-toolbar" aria-live="polite" style="margin-top: 1.75rem; margin-bottom: 0;">
       <div class="toolbar-label">
-        <span><strong>Bartender Spec Mode</strong> — Proportions, build steps &amp; batch scaling for this session.</span>
+        <span><strong>Bartender Batching Ledger</strong> — Scale batch proportions across the active session below.</span>
       </div>
       <div class="scale-controls" role="group" aria-label="Batch multiplier">
         <span class="scale-label">BATCH SCALE:</span>
@@ -2038,9 +2070,9 @@
     <div class="prep-section" id="prep-summary" aria-labelledby="prep-heading" style="margin-top: 1.75rem;">
       <div class="prep-header">
         <h2 class="prep-title" id="prep-heading">Bartender Prep &amp; Batching Ledger</h2>
-        <span class="prep-subtitle" id="prep-session-label">ACTIVE SESSION QUICK REFERENCE</span>
+        <span class="prep-subtitle" id="prep-session-label">ACTIVE SESSION BATCH LEDGER · <span class="scale-indicator">1 SERVING</span></span>
       </div>
-      <div class="table-scroll">
+      <div class="table-scroll" tabindex="0" role="region" aria-labelledby="prep-heading">
         <table class="prep-table">
           <thead>
             <tr>
@@ -8639,7 +8671,10 @@
         if (stageSessionNameEl) stageSessionNameEl.textContent = titleText;
         if (stageSessionDescEl) stageSessionDescEl.textContent = descText;
         if (stageJumpLinkEl) stageJumpLinkEl.setAttribute('href', `#${sessionId}`);
-        if (prepSessionLabelEl) prepSessionLabelEl.textContent = `${titleText.toUpperCase()} · PREP & BUILD LEDGER`;
+        if (prepSessionLabelEl) {
+          const servingText = currentScale === 1 ? '1 SERVING' : `${currentScale} SERVINGS`;
+          prepSessionLabelEl.innerHTML = `${titleText.toUpperCase()} · BATCH LEDGER · <span class="scale-indicator">${servingText}</span>`;
+        }
 
         const cards = Array.from(sessionEl.querySelectorAll('.vault-card:not(.vault-missing-card)'));
 
@@ -8664,9 +8699,19 @@
               .map((li) => {
                 const measureEl = li.querySelector('.spec-measure');
                 const nameEl = li.querySelector('.spec-name');
-                const measureClone = measureEl ? measureEl.cloneNode(true) : null;
-                if (measureClone) {
-                  measureClone.className = 'stage-oz spec-measure';
+                let measureText = '';
+                if (measureEl) {
+                  const baseOz = parseFloat(measureEl.getAttribute('data-oz'));
+                  const isBarspoon = measureEl.getAttribute('data-barspoon') === 'true';
+                  const baseCount = parseFloat(measureEl.getAttribute('data-count'));
+                  const unit = measureEl.getAttribute('data-unit');
+                  if (!isNaN(baseOz)) {
+                    measureText = isBarspoon ? '1 barspoon (0.125 oz)' : `${formatNumber(baseOz)} oz`;
+                  } else if (!isNaN(baseCount) && unit) {
+                    measureText = `${formatNumber(baseCount)} ${pluralizeUnit(unit, baseCount)}`;
+                  } else {
+                    measureText = measureEl.textContent.trim();
+                  }
                 }
                 // Strip parenthetical brand note for compact stage card clarity
                 let cleanName = '';
@@ -8675,7 +8720,7 @@
                   cloneName.querySelectorAll('.spec-note').forEach((n) => n.remove());
                   cleanName = cloneName.textContent.trim();
                 }
-                return `<li>${measureClone ? measureClone.outerHTML : ''}<span>${cleanName}</span></li>`;
+                return `<li><span class="stage-oz stage-ref-measure">${measureText}</span><span>${cleanName}</span></li>`;
               })
               .join('');
 
@@ -8719,8 +8764,8 @@
                 </div>
                 <div class="stage-bartender-pane-content">
                   <div class="stage-pane-header">
-                    <h3 class="stage-pane-title">Bartender Prep</h3>
-                    <span class="stage-pane-sub">Ledger &amp; Batching Specs · <span class="scale-indicator">1 SERVING</span></span>
+                    <h3 class="stage-pane-title">Bartender Spec</h3>
+                    <span class="stage-pane-sub">Single-Drink Reference Spec</span>
                   </div>
                   <ul class="stage-spec-lines">
                     ${specListHtml}
@@ -8739,10 +8784,6 @@
             if (stagePhotoEl) attachSpecViewToggle(stagePhotoEl);
             stageCardsGridEl.appendChild(splitCard);
           });
-
-          if (currentScale !== 1) {
-            applyScaleToContainer(stageCardsGridEl, currentScale);
-          }
         }
 
         // Populate Prep & Batching Ledger Table for this Session
@@ -8758,19 +8799,25 @@
             const liquidSpecs = specItems.filter((li) => !li.classList.contains('spec-garnish'));
             const garnishSpec = specItems.find((li) => li.classList.contains('spec-garnish'));
 
-            const buildSummary = liquidSpecs
+            const buildLinesHtml = liquidSpecs
               .map((li) => {
-                const m = (li.querySelector('.spec-measure')?.textContent || '').trim();
-                const nEl = li.querySelector('.spec-name');
-                let n = '';
-                if (nEl) {
-                  const c = nEl.cloneNode(true);
+                const measureEl = li.querySelector('.spec-measure');
+                const nameEl = li.querySelector('.spec-name');
+                let cleanName = '';
+                if (nameEl) {
+                  const c = nameEl.cloneNode(true);
                   c.querySelectorAll('.spec-note').forEach((note) => note.remove());
-                  n = c.textContent.trim();
+                  cleanName = c.textContent.trim();
                 }
-                return `<span style="white-space: nowrap; color: var(--accent-lantern-glow); font-family: var(--font-mono); font-size: 0.78rem;">${m}</span> ${n}`;
+                let measureHtml = '';
+                if (measureEl) {
+                  const cloneMeasure = measureEl.cloneNode(true);
+                  cloneMeasure.className = 'spec-measure prep-measure';
+                  measureHtml = cloneMeasure.outerHTML;
+                }
+                return `<li class="prep-build-item">${measureHtml}<span class="prep-ingredient-name">${cleanName}</span></li>`;
               })
-              .join(' · ');
+              .join('');
 
             const garnishText = garnishSpec
               ? (garnishSpec.querySelector('.spec-name')?.textContent || '').trim()
@@ -8783,12 +8830,14 @@
             tr.innerHTML = `
               <td class="prep-cocktail-name"><a href="#${card.id}" style="color: inherit; text-decoration: none;">${drinkTitle}</a></td>
               <td style="color: var(--text-mist); font-size: 0.84rem;">${glasswareText}</td>
-              <td style="font-size: 0.84rem; line-height: 1.5;">${buildSummary}</td>
+              <td><ul class="prep-build-list">${buildLinesHtml}</ul></td>
               <td style="font-size: 0.82rem; color: var(--text-mist);">${garnishText ? `<strong>Garnish:</strong> ${garnishText}<br>` : ''}<span style="color: var(--text-slate);">${chips}</span></td>
               <td><span class="technique-badge">${techniqueText}</span></td>
             `;
             prepLedgerTbodyEl.appendChild(tr);
           });
+
+          applyScaleToContainer(document.getElementById('prep-summary') || prepLedgerTbodyEl, currentScale);
         }
 
         if (scrollStageIntoView) {
@@ -8925,6 +8974,20 @@
           if (jumpBtn) {
             e.preventDefault();
             const href = jumpBtn.getAttribute('href') || '';
+            const cardId = href.replace(/^#/, '');
+            if (cardId) {
+              transitionPageView('vault', { targetCardId: cardId });
+            }
+          }
+        });
+      }
+
+      if (prepLedgerTbodyEl) {
+        prepLedgerTbodyEl.addEventListener('click', (e) => {
+          const link = e.target.closest('a[href^="#"]');
+          if (link) {
+            e.preventDefault();
+            const href = link.getAttribute('href') || '';
             const cardId = href.replace(/^#/, '');
             if (cardId) {
               transitionPageView('vault', { targetCardId: cardId });
