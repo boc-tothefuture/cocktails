@@ -4,7 +4,7 @@ Shared guidance and primer for AI coding agents and human developers working in 
 
 ## Overview
 
-**The League of Extraordinary Cocktails** ([hortonscreekcocktails.com](https://hortonscreekcocktails.com)) is a subterranean speakeasy-inspired digital cocktail archive, interactive tasting stage, and bartender reference (founded August 2020). It features an **Interactive Session Timeline Switcher** where any of the 12 tasting sessions can be elevated to the top **Active Session Tasting Stage** alongside **The Cellar Vault (2020–2026)** housing all 51 recipes across 12 sessions, complete with photo provenance badges, club lore callouts, and interactive filtering.
+**The League of Extraordinary Cocktails** ([hortonscreekcocktails.com](https://hortonscreekcocktails.com)) is a speakeasy-inspired digital cocktail archive, interactive tasting stage, and bartender reference (founded August 2020). It features an **Interactive Session Timeline Switcher** where any of the 12 tasting sessions can be elevated to the top **Active Session Tasting Stage** alongside **The Cellar Vault (2020–2026)** housing all 51 recipes across 12 sessions, complete with photo provenance badges, club lore callouts, and interactive filtering.
 
 The site is hosted as a static website on **GitHub Pages** with a custom domain (`CNAME`).
 

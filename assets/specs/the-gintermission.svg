@@ -18,7 +18,7 @@
 <pattern id="pat-archive-the-gintermission-3" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="7" height="7" fill="#e8c86b" fill-opacity="0.10"/><line x1="1.5" y1="5.5" x2="5.5" y2="1.5" stroke="#e8c86b" stroke-width="1.1" stroke-opacity="0.82" stroke-linecap="round"/></pattern>
   </defs>
 
-  <!-- Subterranean Speakeasy Blueprint Canvas -->
+  <!-- Speakeasy Blueprint Canvas -->
   <rect width="420" height="460" fill="url(#bg-glow-archive-the-gintermission)"/>
   <rect x="14" y="14" width="392" height="432" rx="8" fill="none" stroke="#e8c59e" stroke-opacity="0.1" stroke-width="1"/>
 

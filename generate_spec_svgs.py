@@ -1034,7 +1034,7 @@ def generate_cocktail_svg(recipe: CocktailRecipe) -> str:
     {pattern_defs}
   </defs>
 
-  <!-- Subterranean Speakeasy Blueprint Canvas -->
+  <!-- Speakeasy Blueprint Canvas -->
   <rect width="420" height="460" fill="url(#bg-glow-{uid})"/>
   <rect x="14" y="14" width="392" height="432" rx="8" fill="none" stroke="#e8c59e" stroke-opacity="0.1" stroke-width="1"/>
 
