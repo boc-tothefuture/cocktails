@@ -55,7 +55,7 @@ The client-side JavaScript in `index.html` implements several key interactive fe
 3. **Individual Spec Accordions**:
    - In Guest mode, guests can selectively toggle technical specs for an individual drink via `.toggle-spec-btn` (modifying `data-expanded="true|false"` on `.cocktail-card`).
 4. **Dynamic Batch Scaler**:
-   - Bartender mode includes batch scaling buttons (1x, 2x, 3x, 4x, 5x, 6x) that scale the Bartender Prep & Batching Ledger table (formatting each ingredient on its own line for rapid service) and all 51 cards in the Cellar Vault, while preserving the top stage cards as fixed single-serving reference specs.
+   - Bartender mode includes batch scaling buttons (1x, 2x, 3x, 4x, 5x, 6x) positioned directly above the Bartender Prep & Batching Ledger table (formatting each ingredient on its own line for rapid service), while preserving the top stage cards as fixed single-serving reference specs.
    - Quantities are stored in data attributes on `.spec-measure`:
      - `data-oz="<amount>"`: Scaled mathematically and formatted (supports `data-barspoon="true"`).
      - `data-count="<number>"` with `data-unit="dash|drop|leaf|..."`: Scaled with automated pluralization.
@@ -70,6 +70,13 @@ The client-side JavaScript in `index.html` implements several key interactive fe
 7. **"I'm Feeling Lucky" Vault Selector (`#vault-lucky-btn`)**:
    - Randomly selects an authentic recipe from the Cellar Vault (honoring active spirit/host filters when present, or resetting if filtered to empty).
    - Smoothly scrolls to the chosen cocktail card using modern scroll completion promises, handles `content-visibility: auto` settling, activates an amber pulse highlight, reveals a `Tonight's Lucky Pour` badge, and automatically expands bartender specs in Guest mode.
+8. **Minimalist Host Rotation Tracker (`#up-next-btn`, `#rotation-dropdown`)**:
+   - Strictly tracks the 5-member continuous host rotation cycle: **Doug ➔ Brian ➔ Matt ➔ Jason ➔ Quinn**.
+   - Positioned to the far left of the latest session in `.scrubber-inner` (`[ 🍸 UP NEXT: <HOST> ▾ ]`), matching the descending chronological flow.
+   - Clicking reveals a floating speakeasy popover dropdown with full cycle visibility, highlighting the current host and upcoming host.
+   - Dynamically synchronizes who is current and who is up next whenever the featured session changes on the tasting stage. Supports light-dismiss via click-outside and <kbd>Esc</kbd>.
+9. **Privacy & Member Identity Convention**:
+   - All host and member references across recipes, session headers, filter buttons, story callouts, and the 404 Easter egg use **first names only** (*Doug, Brian, Matt, Jason, Quinn, Ben*). Last names are strictly omitted.
 
 ---
 

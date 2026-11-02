@@ -199,8 +199,10 @@
       box-shadow: 0 0 14px rgba(232, 153, 58, 0.22);
     }
 
-    /* Session Timeline Scrubber Bar (Option B / Slide 3) */
+    /* Session Timeline Scrubber Bar */
     .scrubber-bar {
+      position: relative;
+      z-index: 30;
       background: rgba(20, 15, 13, 0.78);
       border-bottom: 1px solid var(--border-stone);
       padding: 0.85rem 1.25rem;
@@ -208,9 +210,15 @@
       -webkit-backdrop-filter: blur(10px);
     }
 
-    .scrubber-inner {
+    .scrubber-wrapper {
       max-width: 78rem;
       margin: 0 auto;
+      position: relative;
+    }
+
+    .scrubber-inner {
+      width: 100%;
+      margin: 0;
       display: flex;
       align-items: center;
       gap: 0.6rem;
@@ -218,6 +226,202 @@
       scrollbar-width: thin;
       scrollbar-color: rgba(232, 153, 58, 0.3) transparent;
       padding-bottom: 0.2rem;
+    }
+
+    /* Up Next Trigger Button in Scrubber Track */
+    .scrubber-up-next-btn {
+      appearance: none;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      letter-spacing: 0.04em;
+      background: linear-gradient(135deg, rgba(42, 28, 20, 0.95), rgba(28, 18, 13, 0.95));
+      border: 1px solid var(--accent-lantern);
+      color: var(--text-parchment);
+      padding: 0.46rem 0.95rem;
+      border-radius: 999px;
+      cursor: pointer;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 0 16px rgba(232, 153, 58, 0.22);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      flex-shrink: 0;
+    }
+
+    .scrubber-up-next-btn:hover,
+    .scrubber-up-next-btn:focus-visible {
+      border-color: var(--accent-lantern-glow);
+      background: linear-gradient(135deg, rgba(54, 36, 26, 0.95), rgba(36, 22, 16, 0.95));
+      transform: translateY(-1px);
+      box-shadow: 0 0 20px rgba(232, 153, 58, 0.35);
+      color: #fff;
+    }
+
+    .scrubber-up-next-btn strong {
+      color: var(--accent-lantern-glow);
+      font-weight: 700;
+    }
+
+    .scrubber-up-next-btn .up-next-chevron {
+      font-size: 0.7rem;
+      color: var(--accent-lantern);
+      transition: transform 0.2s ease;
+    }
+
+    .scrubber-up-next-btn.is-open {
+      background: var(--accent-lantern);
+      border-color: var(--accent-lantern);
+      color: #0b0807;
+      box-shadow: 0 0 24px rgba(232, 153, 58, 0.45);
+    }
+
+    .scrubber-up-next-btn.is-open strong {
+      color: #0b0807;
+    }
+
+    .scrubber-up-next-btn.is-open .up-next-chevron {
+      color: #0b0807;
+      transform: rotate(180deg);
+    }
+
+    /* Floating Minimalist Rotation Popover Dropdown */
+    .rotation-popover-dropdown {
+      position: absolute;
+      top: calc(100% + 0.6rem);
+      left: 0;
+      width: 19rem;
+      max-width: min(19rem, calc(100vw - 2.5rem));
+      background: linear-gradient(145deg, rgba(26, 20, 17, 0.98), rgba(16, 12, 10, 0.99));
+      border: 1px solid rgba(232, 197, 158, 0.26);
+      border-radius: 0.75rem;
+      padding: 1rem 1.15rem;
+      box-shadow:
+        0 14px 40px rgba(0, 0, 0, 0.85),
+        0 0 28px rgba(232, 153, 58, 0.15),
+        inset 0 1px 0 rgba(255, 235, 210, 0.08);
+      z-index: 120;
+      animation: popoverFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes popoverFadeIn {
+      from { opacity: 0; transform: translateY(-6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .popover-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 0.55rem;
+      border-bottom: 1px dashed rgba(232, 197, 158, 0.14);
+      margin-bottom: 0.65rem;
+    }
+
+    .popover-title {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      color: var(--accent-lantern);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .popover-badge {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--text-slate);
+      background: rgba(255, 255, 255, 0.04);
+      padding: 0.15rem 0.45rem;
+      border-radius: 999px;
+    }
+
+    .rotation-steps-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .rotation-step-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.42rem 0.65rem;
+      border-radius: 0.45rem;
+      font-size: 0.86rem;
+      transition: background 0.15s ease;
+    }
+
+    .step-left {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .step-idx {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-slate);
+      min-width: 1.1rem;
+    }
+
+    .step-name {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-mist);
+    }
+
+    .step-tag {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+    }
+
+    /* Current Host */
+    .rotation-step-row.is-current {
+      background: rgba(232, 153, 58, 0.08);
+      border: 1px solid rgba(232, 153, 58, 0.22);
+    }
+    .rotation-step-row.is-current .step-name {
+      color: var(--accent-lantern-glow);
+    }
+    .rotation-step-row.is-current .step-tag {
+      background: rgba(232, 153, 58, 0.18);
+      color: var(--accent-lantern);
+    }
+
+    /* Next Up */
+    .rotation-step-row.is-next {
+      background: linear-gradient(90deg, rgba(232, 153, 58, 0.22), rgba(217, 121, 37, 0.28));
+      border: 1px dashed var(--accent-lantern-glow);
+      box-shadow: 0 0 14px rgba(232, 153, 58, 0.18);
+    }
+    .rotation-step-row.is-next .step-name {
+      color: #fff;
+      font-weight: 700;
+    }
+    .rotation-step-row.is-next .step-tag {
+      background: var(--accent-lantern);
+      color: #0b0807;
+      font-weight: 700;
+    }
+
+    .popover-footer-note {
+      margin-top: 0.65rem;
+      padding-top: 0.55rem;
+      border-top: 1px dashed rgba(232, 197, 158, 0.14);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--text-slate);
     }
 
     .scrubber-pill {
@@ -1999,36 +2203,62 @@
 
   <!-- Horizontal Interactive Session Timeline Scrubber -->
   <nav class="scrubber-bar" aria-label="Interactive Tasting Session Switcher">
-    <div class="scrubber-inner" id="session-scrubber">
-      <button type="button" class="scrubber-pill" data-stage-session="session-alley-26-2026" aria-pressed="true">
-        <span class="active-dot">ACTIVE •</span>
-        <span>Oct 2026: Alley 2.6</span>
-      </button>
-      <button type="button" class="scrubber-pill" data-stage-session="session-matts-fall-festival-2025" aria-pressed="false">
-        <span class="active-dot">ACTIVE •</span>
-        <span>Oct 2025: Fall Festival</span>
-      </button>
-      <button type="button" class="scrubber-pill" data-stage-session="session-maligned-drinks-uplifted-2025" aria-pressed="false">
-        <span class="active-dot">ACTIVE •</span>
-        <span>Sep 2025: Maligned Drinks Uplifted</span>
-      </button>
+    <div class="scrubber-wrapper">
+      <div class="scrubber-inner" id="session-scrubber">
+        <!-- Up Next Host Rotation Trigger Pill -->
+        <button type="button" class="scrubber-pill scrubber-up-next-btn" id="up-next-btn" aria-expanded="false" aria-haspopup="dialog" aria-controls="rotation-dropdown" title="View League Host Rotation">
+          <span class="up-next-icon" aria-hidden="true">🍸</span>
+          <span class="up-next-text">UP NEXT: <strong id="up-next-name">BRIAN</strong></span>
+          <span class="up-next-chevron" aria-hidden="true">▾</span>
+        </button>
 
-      <!-- Dynamic pill for historical sessions featured from inside the vault -->
-      <button type="button" class="scrubber-pill" id="scrubber-dynamic-session-pill" data-stage-session="" aria-pressed="false" style="display: none;">
-        <span class="active-dot">ACTIVE •</span>
-        <span id="scrubber-dynamic-session-title">Historical Session</span>
-      </button>
+        <button type="button" class="scrubber-pill" data-stage-session="session-alley-26-2026" aria-pressed="true">
+          <span class="active-dot">ACTIVE •</span>
+          <span>Oct 2026: Alley 2.6</span>
+        </button>
+        <button type="button" class="scrubber-pill" data-stage-session="session-matts-fall-festival-2025" aria-pressed="false">
+          <span class="active-dot">ACTIVE •</span>
+          <span>Oct 2025: Fall Festival</span>
+        </button>
+        <button type="button" class="scrubber-pill" data-stage-session="session-maligned-drinks-uplifted-2025" aria-pressed="false">
+          <span class="active-dot">ACTIVE •</span>
+          <span>Sep 2025: Maligned Drinks Uplifted</span>
+        </button>
 
-      <!-- The Vault Navigation Button -->
-      <button type="button" class="scrubber-pill scrubber-vault-btn" id="nav-vault-btn" aria-pressed="false" title="Explore the full 51-cocktail Cellar Vault">
-        <svg class="vault-arch-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <rect width="18" height="18" x="3" y="3" rx="2" />
-          <path d="M7 8h10"/>
-          <path d="M7 12h10"/>
-          <path d="M7 16h6"/>
-        </svg>
-        <span>The Vault (51 Cocktails)</span>
-      </button>
+        <!-- Dynamic pill for historical sessions featured from inside the vault -->
+        <button type="button" class="scrubber-pill" id="scrubber-dynamic-session-pill" data-stage-session="" aria-pressed="false" style="display: none;">
+          <span class="active-dot">ACTIVE •</span>
+          <span id="scrubber-dynamic-session-title">Historical Session</span>
+        </button>
+
+        <!-- The Vault Navigation Button -->
+        <button type="button" class="scrubber-pill scrubber-vault-btn" id="nav-vault-btn" aria-pressed="false" title="Explore the full 51-cocktail Cellar Vault">
+          <svg class="vault-arch-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect width="18" height="18" x="3" y="3" rx="2" />
+            <path d="M7 8h10"/>
+            <path d="M7 12h10"/>
+            <path d="M7 16h6"/>
+          </svg>
+          <span>The Vault (51 Cocktails)</span>
+        </button>
+      </div>
+
+      <!-- Floating Minimalist Rotation Popover Dropdown -->
+      <div class="rotation-popover-dropdown" id="rotation-dropdown" hidden role="region" aria-label="Club host rotation details">
+        <div class="popover-header">
+          <span class="popover-title">Club Host Rotation</span>
+          <span class="popover-badge">5-Member Cycle</span>
+        </div>
+
+        <ol class="rotation-steps-list" id="rotation-steps-list">
+          <!-- Dynamically populated via updateHostRotation() -->
+        </ol>
+
+        <div class="popover-footer-note">
+          <span>Continuous cycle</span>
+          <span>Quinn ➔ Doug</span>
+        </div>
+      </div>
     </div>
   </nav>
 
@@ -2036,7 +2266,7 @@
   <section class="tasting-stage-section" id="active-tasting-stage" aria-labelledby="stage-heading">
     <div class="stage-header">
       <div>
-        <span class="stage-kicker" id="stage-kicker">OCT 1, 2026 // HOST: DOUG NEUMANN // HORTONS CREEK</span>
+        <span class="stage-kicker" id="stage-kicker">OCT 1, 2026 // HOST: DOUG // HORTONS CREEK</span>
         <h1 class="stage-heading" id="stage-heading"><span id="stage-session-name" style="color: var(--accent-lantern-glow);">Alley 2.6</span></h1>
         <p class="stage-session-subtitle" id="stage-session-desc">
           1/10th as good as the real thing — An affectionate home-bar tribute to Alley Twenty Six. Durham sophistication, now available in Cary. Great cocktails can happen anywhere.
@@ -2096,22 +2326,6 @@
   <!-- Main Content -->
   <main class="container">
 
-    <!-- Bartender Mode Batch Scaler Toolbar -->
-    <div class="bartender-toolbar" aria-live="polite">
-      <div class="toolbar-label">
-        <span><strong>Bartender Spec Mode</strong> — Showing exact proportions, techniques &amp; dynamic batch scaling across all 54 cocktails.</span>
-      </div>
-      <div class="scale-controls" role="group" aria-label="Batch multiplier">
-        <span class="scale-label">BATCH SCALE:</span>
-        <button type="button" class="scale-btn" data-scale="1" aria-pressed="true">1x</button>
-        <button type="button" class="scale-btn" data-scale="2" aria-pressed="false">2x</button>
-        <button type="button" class="scale-btn" data-scale="3" aria-pressed="false">3x</button>
-        <button type="button" class="scale-btn" data-scale="4" aria-pressed="false">4x</button>
-        <button type="button" class="scale-btn" data-scale="5" aria-pressed="false">5x</button>
-        <button type="button" class="scale-btn" data-scale="6" aria-pressed="false">6x</button>
-      </div>
-    </div>
-
     <!-- ================================================================== -->
     <!-- THE CELLAR VAULT // 51 COCKTAILS (2020 - 2026)                     -->
     <!-- ================================================================== -->
@@ -2167,8 +2381,8 @@
             <button type="button" class="hint-chip" data-quick-search="bourbon">Bourbon</button>
             <button type="button" class="hint-chip" data-quick-search="mezcal">Mezcal</button>
             <button type="button" class="hint-chip" data-quick-search="cynar">Cynar</button>
-            <button type="button" class="hint-chip" data-quick-search="doug">Doug (404?)</button>
-            <button type="button" class="hint-chip" data-quick-search="quinn">Quinn (404?)</button>
+            <button type="button" class="hint-chip" data-quick-search="doug">Doug</button>
+            <button type="button" class="hint-chip" data-quick-search="quinn">Quinn</button>
           </div>
         </div>
 
@@ -2188,12 +2402,12 @@
         <div class="filter-group-row" role="group" aria-label="Filter by host">
           <span class="filter-group-label">HOST:</span>
           <button type="button" class="filter-pill" data-filter-host="all" aria-pressed="true">All Hosts</button>
-          <button type="button" class="filter-pill" data-filter-host="brian" aria-pressed="false">Brian O'Connell</button>
-          <button type="button" class="filter-pill" data-filter-host="matt" aria-pressed="false">Matt Boyer</button>
-          <button type="button" class="filter-pill" data-filter-host="ben" aria-pressed="false">Ben Dudley</button>
-          <button type="button" class="filter-pill" data-filter-host="doug" aria-pressed="false">Doug Neumann</button>
-          <button type="button" class="filter-pill" data-filter-host="jason" aria-pressed="false">Jason Norman</button>
+          <button type="button" class="filter-pill" data-filter-host="doug" aria-pressed="false">Doug</button>
+          <button type="button" class="filter-pill" data-filter-host="brian" aria-pressed="false">Brian</button>
+          <button type="button" class="filter-pill" data-filter-host="matt" aria-pressed="false">Matt</button>
+          <button type="button" class="filter-pill" data-filter-host="jason" aria-pressed="false">Jason</button>
           <button type="button" class="filter-pill" data-filter-host="quinn" aria-pressed="false">Quinn</button>
+          <button type="button" class="filter-pill" data-filter-host="ben" aria-pressed="false">Ben</button>
         </div>
 
         <div class="filter-group-row" role="group" aria-label="Filter by photo provenance">
@@ -2228,7 +2442,7 @@
         <span class="err-code-kicker">HTTP 404 // ARCHIVE SECTOR CORRUPTED</span>
         <h3 class="err-title" id="err-404-heading">404: Recipe Documentation Not Found (Mostly Doug's Fault)</h3>
         <p style="margin: 0; color: var(--text-mist);">
-          You queried the Cellar Vault for <strong id="err-404-culprit" style="color: var(--text-parchment);">Doug Neumann</strong>. According to the official League Google Doc (Page 12), the historical record suffered a catastrophic documentation failure between 2020 and 2022:
+          You queried the Cellar Vault for <strong id="err-404-culprit" style="color: var(--text-parchment);">Doug</strong>. According to the official League Google Doc (Page 12), the historical record suffered a catastrophic documentation failure between 2020 and 2022:
         </p>
         <blockquote class="err-quote">
           "Everyone Sucked in providing recipes for a long long time….. But it was mostly Doug's fault for not providing recipes."
@@ -2255,7 +2469,7 @@
     <div class="session-banner-copy">
       <div class="session-meta">
         <span class="session-date">OCT 1, 2026</span>
-        <span class="session-host">HOST: DOUG NEUMANN · HORTONS CREEK</span>
+        <span class="session-host">HOST: DOUG · HORTONS CREEK</span>
       </div>
       <h3 class="session-title">Alley 2.6</h3>
       <p class="session-desc">1/10th as good as the real thing — An affectionate home-bar tribute to Alley Twenty Six. Durham sophistication, now available in Cary. Great cocktails can happen anywhere.</p>
@@ -2290,7 +2504,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: DOUG NEUMANN · ALLEY 2.6</span>
+            <span>HOST: DOUG · ALLEY 2.6</span>
             <span>STIRRED &amp; STRAINED</span>
           </div>
           <h4 class="card-title">The Alley Cocktail</h4>
@@ -2399,7 +2613,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: DOUG NEUMANN · ALLEY 2.6</span>
+            <span>HOST: DOUG · ALLEY 2.6</span>
             <span>SHAKEN &amp; DOUBLE-STRAINED</span>
           </div>
           <h4 class="card-title">Mexican Herbalist</h4>
@@ -2508,7 +2722,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: DOUG NEUMANN · ALLEY 2.6</span>
+            <span>HOST: DOUG · ALLEY 2.6</span>
             <span>SHAKEN BRIEF &amp; TOPPED</span>
           </div>
           <h4 class="card-title">Tully Cream Soda</h4>
@@ -2604,7 +2818,7 @@
   <div class="session-banner">
     <div class="session-meta">
       <span class="session-date">OCT 23, 2025</span>
-      <span class="session-host">HOST: MATT BOYER</span>
+      <span class="session-host">HOST: MATT</span>
     </div>
     <h3 class="session-title">Matt's Fall Festival</h3>
     <p class="session-desc">Warming harvest flavors, smoldering cinnamon aromatics, and rich autumn infusions designed for crisp October evenings.</p>
@@ -2636,7 +2850,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: MATT BOYER</span>
+            <span>HOST: MATT</span>
             <span>SHAKEN &amp; SMOKED</span>
           </div>
           <h4 class="card-title">Smoky Harvest Apple Cider Margarita</h4>
@@ -2749,7 +2963,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: MATT BOYER</span>
+            <span>HOST: MATT</span>
             <span>SHAKEN &amp; STRAINED</span>
           </div>
           <h4 class="card-title">Cranberry Rosemary Whiskey Sour</h4>
@@ -2856,7 +3070,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: MATT BOYER</span>
+            <span>HOST: MATT</span>
             <span>BUILT OVER ICE</span>
           </div>
           <h4 class="card-title">Pumpkin Spice White Russian</h4>
@@ -2937,7 +3151,7 @@
   <div class="session-banner">
     <div class="session-meta">
       <span class="session-date">SEP 22, 2025</span>
-      <span class="session-host">HOST: BRIAN O'CONNELL</span>
+      <span class="session-host">HOST: BRIAN</span>
     </div>
     <h3 class="session-title">Maligned Drinks Uplifted</h3>
     <p class="session-desc">Taking universally misunderstood, kitschy disco-era guilty pleasures and radically rehabilitating them with high-proof craft spirits, balanced acidity, and modern culinary technique.</p>
@@ -2969,7 +3183,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: BRIAN O'CONNELL</span>
+            <span>HOST: BRIAN</span>
             <span>DRY SHAKEN &amp; SOUR</span>
           </div>
           <h4 class="card-title">Amaretto Sour</h4>
@@ -3078,7 +3292,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: BRIAN O'CONNELL</span>
+            <span>HOST: BRIAN</span>
             <span>DRY SHAKEN &amp; FROTHY</span>
           </div>
           <h4 class="card-title">Midori Sour</h4>
@@ -3187,7 +3401,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: BRIAN O'CONNELL</span>
+            <span>HOST: BRIAN</span>
             <span>SHAKEN &amp; LUXURIOUS</span>
           </div>
           <h4 class="card-title">Grasshopper</h4>
@@ -3272,7 +3486,7 @@
   <div class="session-banner">
     <div class="session-meta">
       <span class="session-date">MAY 5, 2025</span>
-      <span class="session-host">HOST: DOUG NEUMANN</span>
+      <span class="session-host">HOST: DOUG</span>
     </div>
     <h3 class="session-title">Doug's Smokeout</h3>
     <p class="session-desc">Dense hardwood smoke chambers, peated malts, and theatrical campfire aromatics infusing classic spirits with woodsy depth.</p>
@@ -3305,7 +3519,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: DOUG NEUMANN</span>
+            <span>HOST: DOUG</span>
             <span>STIRRED &amp; SMOKED</span>
           </div>
           <h4 class="card-title">The Witcher</h4>
@@ -3418,7 +3632,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: DOUG NEUMANN</span>
+            <span>HOST: DOUG</span>
             <span>STIRRED &amp; SMOKED</span>
           </div>
           <h4 class="card-title">Smoked Rum Old Fashioned</h4>
@@ -3516,7 +3730,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: DOUG NEUMANN</span>
+            <span>HOST: DOUG</span>
             <span>STIRRED OVER ROCK</span>
           </div>
           <h4 class="card-title">Highland Campfire</h4>
@@ -3601,7 +3815,7 @@
   <div class="session-banner">
     <div class="session-meta">
       <span class="session-date">JAN 23, 2025</span>
-      <span class="session-host">HOST: JASON NORMAN</span>
+      <span class="session-host">HOST: JASON</span>
     </div>
     <h3 class="session-title">Choose Your Own Adventure: Margarita Style</h3>
     <p class="session-desc">An interactive agave laboratory featuring sidecar dropper ampules, frozen beer floaters, and customizable heat levels.</p>
@@ -3633,7 +3847,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: JASON NORMAN</span>
+            <span>HOST: JASON</span>
             <span>SHAKEN &amp; INTERACTIVE</span>
           </div>
           <h4 class="card-title">Heaven or Hell Margarita</h4>
@@ -3760,7 +3974,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: JASON NORMAN</span>
+            <span>HOST: JASON</span>
             <span>SHAKEN &amp; TOPPED</span>
           </div>
           <h4 class="card-title">Beerita</h4>
@@ -3859,7 +4073,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: JASON NORMAN</span>
+            <span>HOST: JASON</span>
             <span>SHAKEN WITH AMPULES</span>
           </div>
           <h4 class="card-title">The Skinny Spanish</h4>
@@ -3955,7 +4169,7 @@
   <div class="session-banner">
     <div class="session-meta">
       <span class="session-date">NOV 20, 2024</span>
-      <span class="session-host">HOST: MATT BOYER</span>
+      <span class="session-host">HOST: MATT</span>
     </div>
     <h3 class="session-title">Matt's Thanksgiving Cocktails</h3>
     <p class="session-desc">A Thanksgiving-inspired menu featuring fresh orchard cider, house thyme syrup, warm winter baking spices, and velvety pumpkin purée.</p>
@@ -3987,7 +4201,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: MATT BOYER</span>
+            <span>HOST: MATT</span>
             <span>SHAKEN &amp; TOPPED</span>
           </div>
           <h4 class="card-title">Harvest Thyme Fizz</h4>
@@ -4100,7 +4314,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: MATT BOYER</span>
+            <span>HOST: MATT</span>
             <span>BUILT IN MUG</span>
           </div>
           <h4 class="card-title">Spiced Cranberry Mule</h4>
@@ -4207,7 +4421,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: MATT BOYER</span>
+            <span>HOST: MATT</span>
             <span>STIRRED OVER ROCK</span>
           </div>
           <h4 class="card-title">Pumpkin Maple Old Fashioned</h4>
@@ -4297,7 +4511,7 @@
   <div class="session-banner">
     <div class="session-meta">
       <span class="session-date">OCT 29, 2024</span>
-      <span class="session-host">HOST: BRIAN O'CONNELL</span>
+      <span class="session-host">HOST: BRIAN</span>
     </div>
     <h3 class="session-title">Brian's Fall Cocktails</h3>
     <p class="session-desc">A celebration of American spirits and autumnal staples, featuring legendary Sasha Petraske &amp; Jeffrey Morgenthaler builds alongside the infamous Gonster.</p>
@@ -4329,7 +4543,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: BRIAN O'CONNELL</span>
+            <span>HOST: BRIAN</span>
             <span>LAYERED HIGHBALL</span>
           </div>
           <h4 class="card-title">The Gonster</h4>
@@ -4422,7 +4636,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: BRIAN O'CONNELL</span>
+            <span>HOST: BRIAN</span>
             <span>STIRRED ON THE ROCK</span>
           </div>
           <h4 class="card-title">Fallback Cocktail</h4>
@@ -4529,7 +4743,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: BRIAN O'CONNELL</span>
+            <span>HOST: BRIAN</span>
             <span>MUDDLED &amp; STIRRED</span>
           </div>
           <h4 class="card-title">American Trilogy</h4>
@@ -4638,7 +4852,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: BRIAN O'CONNELL</span>
+            <span>HOST: BRIAN</span>
             <span>SHAKEN &amp; STRAINED</span>
           </div>
           <h4 class="card-title">Flannel Shirt</h4>
@@ -4742,7 +4956,7 @@
   <div class="session-banner">
     <div class="session-meta">
       <span class="session-date">NOV 16, 2023</span>
-      <span class="session-host">HOST: MATT BOYER</span>
+      <span class="session-host">HOST: MATT</span>
     </div>
     <h3 class="session-title">Matt's Gin Night</h3>
     <p class="session-desc">An exploration of botanical depth, bitter citrus harmonies, and zero-compromise freezer-door alchemy.</p>
@@ -4767,7 +4981,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: MATT BOYER</span>
+            <span>HOST: MATT</span>
             <span>SHAKEN &amp; TOPPED</span>
           </div>
           <h4 class="card-title">Singapore Sling</h4>
@@ -4879,7 +5093,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: MATT BOYER</span>
+            <span>HOST: MATT</span>
             <span>SHAKEN &amp; CHILLED</span>
           </div>
           <h4 class="card-title">The Gintermission</h4>
@@ -4970,7 +5184,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: MATT BOYER</span>
+            <span>HOST: MATT</span>
             <span>FREEZER BATCH</span>
           </div>
           <h4 class="card-title">Frozen Martini</h4>
@@ -5071,7 +5285,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: MATT BOYER</span>
+            <span>HOST: MATT</span>
             <span>BUILT OVER ICE</span>
           </div>
           <h4 class="card-title">Pimm's Cup</h4>
@@ -5144,7 +5358,7 @@
   <div class="session-banner">
     <div class="session-meta">
       <span class="session-date">OCT 18, 2023</span>
-      <span class="session-host">HOST: BRIAN O'CONNELL</span>
+      <span class="session-host">HOST: BRIAN</span>
     </div>
     <h3 class="session-title">An Emphasis on Mezcal</h3>
     <p class="session-desc">Oaxacan smoke meets Italian amari, house Thai chili infusions, and the highbrow-lowbrow magic of the craft beer spritz.</p>
@@ -5169,7 +5383,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: BRIAN O'CONNELL</span>
+            <span>HOST: BRIAN</span>
             <span>SHAKEN &amp; MISTED</span>
           </div>
           <h4 class="card-title">Hot and Unbothered</h4>
@@ -5285,7 +5499,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: BRIAN O'CONNELL</span>
+            <span>HOST: BRIAN</span>
             <span>STIRRED IN GLASS</span>
           </div>
           <h4 class="card-title">Oaxaca Old Fashioned</h4>
@@ -5376,7 +5590,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: BRIAN O'CONNELL</span>
+            <span>HOST: BRIAN</span>
             <span>SHAKEN &amp; EXPRESSED</span>
           </div>
           <h4 class="card-title">Division Bell</h4>
@@ -5465,7 +5679,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: BRIAN O'CONNELL</span>
+            <span>HOST: BRIAN</span>
             <span>BUILT IN BOTTLE</span>
           </div>
           <h4 class="card-title">Spaghett</h4>
@@ -5545,7 +5759,7 @@
   <div class="session-banner">
     <div class="session-meta">
       <span class="session-date">MAR 17 – AUG 17, 2023</span>
-      <span class="session-host">HOST: MATT BOYER &amp; JASON NORMAN</span>
+      <span class="session-host">HOST: MATT &amp; JASON</span>
     </div>
     <h3 class="session-title">2023 Spring &amp; Summer Sessions</h3>
     <p class="session-desc">Celebrating St. Patrick's Day pot-still traditions followed by vigorous late-summer backyard muddling.</p>
@@ -5570,12 +5784,12 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: JASON NORMAN</span>
+            <span>HOST: JASON</span>
             <span>MUDDLED &amp; SHAKEN</span>
           </div>
           <h4 class="card-title">Jason's Smash</h4>
           <p class="card-story">
-            Jason Norman's signature late-summer smash. Robust straight bourbon is muddled vigorously with ripe juicy blackberries, spearmint leaves, tart lime juice, and finished with refreshing sparkling lime club soda.
+            Jason's signature late-summer smash. Robust straight bourbon is muddled vigorously with ripe juicy blackberries, spearmint leaves, tart lime juice, and finished with refreshing sparkling lime club soda.
           </p>
         </div>
         <div class="club-lore-note">
@@ -5675,12 +5889,12 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: MATT BOYER</span>
+            <span>HOST: MATT</span>
             <span>STIRRED &amp; STRAINED</span>
           </div>
           <h4 class="card-title">Good Cork</h4>
           <p class="card-story">
-            A revelation from Matt Boyer's St. Patrick's Day celebration. Luxurious single pot still Irish whiskey meets artisanal mezcal, herbal Bénédictine, and aromatic Peychaud's bitters in a complex, spirit-forward harmony.
+            A revelation from Matt's St. Patrick's Day celebration. Luxurious single pot still Irish whiskey meets artisanal mezcal, herbal Bénédictine, and aromatic Peychaud's bitters in a complex, spirit-forward harmony.
           </p>
         </div>
         <div class="profile-row" aria-label="Tasting profile">
@@ -5765,7 +5979,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: MATT BOYER</span>
+            <span>HOST: MATT</span>
             <span>MUDDLED &amp; SHAKEN</span>
           </div>
           <h4 class="card-title">Irish Maid</h4>
@@ -5862,7 +6076,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: MATT BOYER</span>
+            <span>HOST: MATT</span>
             <span>SHAKEN &amp; FROTHY</span>
           </div>
           <h4 class="card-title">Baileys Espresso Martini</h4>
@@ -5967,12 +6181,12 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: JASON NORMAN</span>
+            <span>HOST: JASON</span>
             <span>SHAKEN &amp; RIMMED</span>
           </div>
           <h4 class="card-title">Snowed In</h4>
           <p class="card-story">
-            Jason Norman's festive December holiday treat. Kentucky straight bourbon is blended with rich bourbon cream, dark coffee liqueur, half-and-half, and peppermint schnapps inside a crushed peppermint candy cane rim.
+            Jason's festive December holiday treat. Kentucky straight bourbon is blended with rich bourbon cream, dark coffee liqueur, half-and-half, and peppermint schnapps inside a crushed peppermint candy cane rim.
           </p>
         </div>
         <div class="profile-row" aria-label="Tasting profile">
@@ -6067,12 +6281,12 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: BEN DUDLEY</span>
+            <span>HOST: BEN</span>
             <span>STIRRED &amp; STRAINED</span>
           </div>
           <h4 class="card-title">A Certain Aesthetic</h4>
           <p class="card-story">
-            Sourced from Tazza Kitchen by Ben Dudley. Straight bourbon is elevated by bittersweet Californian Lo-Fi Amaro, house-simmered strawberry simple syrup, and dark, aromatic black lemon bitters.
+            Sourced from Tazza Kitchen by Ben. Straight bourbon is elevated by bittersweet Californian Lo-Fi Amaro, house-simmered strawberry simple syrup, and dark, aromatic black lemon bitters.
           </p>
         </div>
         <div class="club-lore-note">
@@ -6167,7 +6381,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: BEN DUDLEY</span>
+            <span>HOST: BEN</span>
             <span>STIRRED CLASSIC</span>
           </div>
           <h4 class="card-title">La Louisiane</h4>
@@ -6275,7 +6489,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: BRIAN O'CONNELL</span>
+            <span>HOST: BRIAN</span>
             <span>SHAKEN &amp; FLOATED</span>
           </div>
           <h4 class="card-title">Penicillin</h4>
@@ -6392,12 +6606,12 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: BEN DUDLEY</span>
+            <span>HOST: BEN</span>
             <span>SHAKEN &amp; STRAINED</span>
           </div>
           <h4 class="card-title">Azalea</h4>
           <p class="card-story">
-            The signature cocktail of the Masters Tournament at Augusta National, brought to the League by Ben Dudley. Botanical gin unites with sweet pineapple juice, freshly squeezed lemon juice, and a spoonful of grenadine for its iconic blossom-pink hue.
+            The signature cocktail of the Masters Tournament at Augusta National, brought to the League by Ben. Botanical gin unites with sweet pineapple juice, freshly squeezed lemon juice, and a spoonful of grenadine for its iconic blossom-pink hue.
           </p>
         </div>
         <div class="profile-row" aria-label="Tasting profile">
@@ -6483,7 +6697,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: BRIAN O'CONNELL</span>
+            <span>HOST: BRIAN</span>
             <span>SHAKEN &amp; STRAINED</span>
           </div>
           <h4 class="card-title">Aviation</h4>
@@ -6708,7 +6922,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: BRIAN O'CONNELL</span>
+            <span>HOST: BRIAN</span>
             <span>EQUAL PARTS · SHAKEN</span>
           </div>
           <h4 class="card-title">Paper Plane</h4>
@@ -6812,12 +7026,12 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: BEN DUDLEY</span>
+            <span>HOST: BEN</span>
             <span>DIRTY DUMP · SHAKEN</span>
           </div>
           <h4 class="card-title">The Canadian Cocktail</h4>
           <p class="card-story">
-            A comforting winter cooler brought by Ben Dudley in mid-December 2020. Spiced rum is mellowed with pure maple syrup, brightened with fresh lime and crisp apple cider, and spiced with dissolved ground cinnamon.
+            A comforting winter cooler brought by Ben in mid-December 2020. Spiced rum is mellowed with pure maple syrup, brightened with fresh lime and crisp apple cider, and spiced with dissolved ground cinnamon.
           </p>
         </div>
 
@@ -6921,12 +7135,12 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: DOUG NEUMANN</span>
+            <span>HOST: DOUG</span>
             <span>MICROWAVE ACCELERATED · BATCHED</span>
           </div>
           <h4 class="card-title">Nuked Negroni</h4>
           <p class="card-story">
-            Leave it to Doug Neumann to hack molecular mixology with kitchen appliances. By utilizing microwave radiation to rapidly rupture plant cellular walls, fresh blackberries, grapefruit peel, and rosemary infuse into classic Negroni ingredients in minutes.
+            Leave it to Doug to hack molecular mixology with kitchen appliances. By utilizing microwave radiation to rapidly rupture plant cellular walls, fresh blackberries, grapefruit peel, and rosemary infuse into classic Negroni ingredients in minutes.
           </p>
         </div>
 
@@ -7048,12 +7262,12 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: BRIAN O'CONNELL</span>
+            <span>HOST: BRIAN</span>
             <span>BUILT &amp; LAYERED · HOT</span>
           </div>
           <h4 class="card-title">Irish Coffee</h4>
           <p class="card-story">
-            Brian O'Connell's authentic recreation of the legendary Buena Vista recipe. Smooth Bushmills Irish whiskey and rich demerara syrup are stirred into freshly bloomed French press coffee, crowned with delicate chilled whipped cream and grated whole nutmeg.
+            Brian's authentic recreation of the legendary Buena Vista recipe. Smooth Bushmills Irish whiskey and rich demerara syrup are stirred into freshly bloomed French press coffee, crowned with delicate chilled whipped cream and grated whole nutmeg.
           </p>
         </div>
 
@@ -7158,7 +7372,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: BEN DUDLEY</span>
+            <span>HOST: BEN</span>
             <span>FRENCH QUARTER CLASSIC · SHAKEN/STIRRED</span>
           </div>
           <h4 class="card-title">Vieux Carré</h4>
@@ -7272,7 +7486,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: DOUG NEUMANN</span>
+            <span>HOST: DOUG</span>
             <span>STIRRED &amp; SPIRIT-FORWARD</span>
           </div>
           <h4 class="card-title">Fancy Free</h4>
@@ -7382,7 +7596,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: BRIAN O'CONNELL</span>
+            <span>HOST: BRIAN</span>
             <span>SUGAR-RIMMED · SHAKEN SOUR</span>
           </div>
           <h4 class="card-title">Sidecar</h4>
@@ -7482,7 +7696,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: BEN DUDLEY</span>
+            <span>HOST: BEN</span>
             <span>ABSINTHE RINSE · STIRRED NEAT</span>
           </div>
           <h4 class="card-title">Sazerac</h4>
@@ -7597,7 +7811,7 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: DOUG NEUMANN</span>
+            <span>HOST: DOUG</span>
             <span>ENDURANCE SHAKE · FIZZ</span>
           </div>
           <h4 class="card-title">Ramos Gin Fizz</h4>
@@ -7717,12 +7931,12 @@
       <div class="card-body">
         <div class="card-header">
           <div class="course-eyebrow">
-            <span>HOST: BRIAN O'CONNELL</span>
+            <span>HOST: BRIAN</span>
             <span>MUDDLED &amp; FROSTED · INAUGURAL #01</span>
           </div>
           <h4 class="card-title">Mint Julep</h4>
           <p class="card-story">
-            The historic very first cocktail of the Horton's Creek League of Extraordinary Cocktails, hosted by Brian O'Connell on August 18, 2020. Kentucky bourbon and bruised fresh spearmint leaves stirred into a mountain of crushed ice until the silver cup is crusted in frost.
+            The historic very first cocktail of the Horton's Creek League of Extraordinary Cocktails, hosted by Brian on August 18, 2020. Kentucky bourbon and bruised fresh spearmint leaves stirred into a mountain of crushed ice until the silver cup is crusted in frost.
           </p>
         </div>
 
@@ -8652,6 +8866,90 @@
         attachSpecViewToggle(visualEl);
       });
 
+      // ============================================================
+      // Minimalist Host Rotation Tracker Engine
+      // Rotation: Doug -> Brian -> Matt -> Jason -> Quinn (cyclical)
+      // ============================================================
+      const HOST_ROTATION = ['Doug', 'Brian', 'Matt', 'Jason', 'Quinn'];
+      const upNextBtn = document.getElementById('up-next-btn');
+      const rotationDropdown = document.getElementById('rotation-dropdown');
+      const upNextNameEl = document.getElementById('up-next-name');
+      const rotationStepsListEl = document.getElementById('rotation-steps-list');
+
+      function updateHostRotation(hostText) {
+        const norm = (hostText || '').toLowerCase();
+        let currentIdx = -1;
+        for (let i = 0; i < HOST_ROTATION.length; i++) {
+          if (norm.includes(HOST_ROTATION[i].toLowerCase())) {
+            currentIdx = i;
+            break;
+          }
+        }
+        // Default to Doug if unknown / founding rotation
+        if (currentIdx === -1) {
+          currentIdx = 0;
+        }
+        const nextIdx = (currentIdx + 1) % HOST_ROTATION.length;
+        const nextHost = HOST_ROTATION[nextIdx];
+
+        if (upNextNameEl) {
+          upNextNameEl.textContent = nextHost.toUpperCase();
+        }
+
+        if (rotationStepsListEl) {
+          rotationStepsListEl.innerHTML = HOST_ROTATION.map((name, i) => {
+            const isCurrent = i === currentIdx;
+            const isNext = i === nextIdx;
+            let rowClass = 'rotation-step-row';
+            let tagHtml = '';
+            if (isCurrent) {
+              rowClass += ' is-current';
+              tagHtml = '<span class="step-tag">CURRENT HOST</span>';
+            } else if (isNext) {
+              rowClass += ' is-next';
+              tagHtml = '<span class="step-tag">UP NEXT</span>';
+            }
+            return `
+              <li class="${rowClass}">
+                <div class="step-left">
+                  <span class="step-idx">${i + 1}.</span>
+                  <span class="step-name">${name}</span>
+                </div>
+                ${tagHtml}
+              </li>
+            `;
+          }).join('');
+        }
+      }
+
+      function toggleRotationDropdown(show) {
+        if (!upNextBtn || !rotationDropdown) return;
+        const willShow = show !== undefined ? show : rotationDropdown.hidden;
+        rotationDropdown.hidden = !willShow;
+        upNextBtn.setAttribute('aria-expanded', String(willShow));
+        upNextBtn.classList.toggle('is-open', willShow);
+      }
+
+      if (upNextBtn && rotationDropdown) {
+        upNextBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          toggleRotationDropdown();
+        });
+
+        document.addEventListener('click', (e) => {
+          if (!rotationDropdown.hidden && !rotationDropdown.contains(e.target) && e.target !== upNextBtn && !upNextBtn.contains(e.target)) {
+            toggleRotationDropdown(false);
+          }
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && !rotationDropdown.hidden) {
+            toggleRotationDropdown(false);
+            upNextBtn.focus();
+          }
+        });
+      }
+
       function renderActiveStageSession(sessionId, scrollStageIntoView) {
         const sessionEl = document.getElementById(sessionId);
         if (!sessionEl) return;
@@ -8675,6 +8973,9 @@
           const servingText = currentScale === 1 ? '1 SERVING' : `${currentScale} SERVINGS`;
           prepSessionLabelEl.innerHTML = `${titleText.toUpperCase()} · BATCH LEDGER · <span class="scale-indicator">${servingText}</span>`;
         }
+
+        // Keep host rotation synchronized with featured session
+        updateHostRotation(hostText);
 
         const cards = Array.from(sessionEl.querySelectorAll('.vault-card:not(.vault-missing-card)'));
 
@@ -9061,11 +9362,11 @@
         const q = (searchInput ? searchInput.value : '').trim().toLowerCase();
 
         // Check if Doug or Quinn 404 Easter egg should trigger
-        const isDougTrigger = (activeHost === 'doug' || q === 'doug' || q === 'doug neumann') && !bypassed404For.has('doug');
+        const isDougTrigger = (activeHost === 'doug' || q === 'doug' ) && !bypassed404For.has('doug');
         const isQuinnTrigger = (activeHost === 'quinn' || q === 'quinn') && !bypassed404For.has('quinn');
 
         if (isDougTrigger || isQuinnTrigger) {
-          const who = isQuinnTrigger ? 'Quinn (and Doug)' : 'Doug Neumann';
+          const who = isQuinnTrigger ? 'Quinn (and Doug)' : 'Doug';
           if (culpritEl) culpritEl.textContent = who;
           if (box404) box404.classList.add('is-visible');
           if (archiveSessionsContainer) archiveSessionsContainer.style.display = 'none';
