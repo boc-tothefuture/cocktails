@@ -2027,8 +2027,10 @@
         <span class="scale-label">BATCH SCALE:</span>
         <button type="button" class="scale-btn" data-scale="1" aria-pressed="true">1x</button>
         <button type="button" class="scale-btn" data-scale="2" aria-pressed="false">2x</button>
+        <button type="button" class="scale-btn" data-scale="3" aria-pressed="false">3x</button>
         <button type="button" class="scale-btn" data-scale="4" aria-pressed="false">4x</button>
-        <button type="button" class="scale-btn" data-scale="8" aria-pressed="false">8x</button>
+        <button type="button" class="scale-btn" data-scale="5" aria-pressed="false">5x</button>
+        <button type="button" class="scale-btn" data-scale="6" aria-pressed="false">6x</button>
       </div>
     </div>
 
@@ -2071,8 +2073,10 @@
         <span class="scale-label">BATCH SCALE:</span>
         <button type="button" class="scale-btn" data-scale="1" aria-pressed="true">1x</button>
         <button type="button" class="scale-btn" data-scale="2" aria-pressed="false">2x</button>
+        <button type="button" class="scale-btn" data-scale="3" aria-pressed="false">3x</button>
         <button type="button" class="scale-btn" data-scale="4" aria-pressed="false">4x</button>
-        <button type="button" class="scale-btn" data-scale="8" aria-pressed="false">8x</button>
+        <button type="button" class="scale-btn" data-scale="5" aria-pressed="false">5x</button>
+        <button type="button" class="scale-btn" data-scale="6" aria-pressed="false">6x</button>
       </div>
     </div>
 
@@ -7921,7 +7925,7 @@
       scaleBtns.forEach((btn) => {
         btn.addEventListener('click', () => {
           currentScale = parseFloat(btn.getAttribute('data-scale')) || 1;
-          scaleBtns.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+          scaleBtns.forEach((b) => b.setAttribute('aria-pressed', String(b.getAttribute('data-scale') === String(currentScale))));
           applyScaleToContainer(document, currentScale);
         });
       });
