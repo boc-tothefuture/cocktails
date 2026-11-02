@@ -4,7 +4,7 @@ Shared guidance and primer for AI coding agents and human developers working in 
 
 ## Overview
 
-**The League of Extraordinary Cocktails** ([hortonscreekcocktails.com](https://hortonscreekcocktails.com)) is a subterranean speakeasy-inspired digital cocktail archive, interactive tasting stage, and bartender reference (founded August 2020). It features an **Interactive Session Timeline Switcher** where any of the 12 tasting sessions can be elevated to the top **Active Session Tasting Stage** alongside **The Cellar Vault (2020–2025)** housing all 51 recipes across 12 sessions, complete with photo provenance badges, club lore callouts, and interactive filtering.
+**The League of Extraordinary Cocktails** ([hortonscreekcocktails.com](https://hortonscreekcocktails.com)) is a subterranean speakeasy-inspired digital cocktail archive, interactive tasting stage, and bartender reference (founded August 2020). It features an **Interactive Session Timeline Switcher** where any of the 12 tasting sessions can be elevated to the top **Active Session Tasting Stage** alongside **The Cellar Vault (2020–2026)** housing all 51 recipes across 12 sessions, complete with photo provenance badges, club lore callouts, and interactive filtering.
 
 The site is hosted as a static website on **GitHub Pages** with a custom domain (`CNAME`).
 
@@ -20,7 +20,7 @@ The project is intentionally dependency-free and build-free. There are no bundle
 ├── CNAME                 # GitHub Pages custom domain (hortonscreekcocktails.com)
 ├── index.html            # Complete single-page application (HTML, CSS, JS)
 └── assets/               # Menu artwork and cocktail visuals
-    └── archive/          # 51 historical cocktail photos & AI illustrations (2020–2025)
+    └── archive/          # 51 historical cocktail photos & AI illustrations (2020–2026)
 ```
 
 ### Key Technical Characteristics
@@ -58,7 +58,7 @@ The client-side JavaScript in `index.html` implements several key interactive fe
 5. **QR Code Sharing Modal**:
    - Uses native `<dialog id="qr-dialog">` with backdrop and close handlers.
 6. **The Cellar Vault (`#league-archive`)**:
-   - Houses all 51 cocktails across 12 sessions (including *Oct 1, 2025: Alley 2.6*).
+   - Houses all 51 cocktails across 12 sessions (including *Oct 1, 2026: Alley 2.6*).
    - Filterable by **Host** (`data-host`), **Base Spirit** (`data-spirit`), **Photo Provenance** (`data-provenance="original|doc|ai"`), and full-text search.
    - Uses `content-visibility: auto; contain-intrinsic-size: auto none auto 650px;` on `.archive-session` blocks to defer offscreen rendering.
    - Every cocktail card includes an explicit provenance badge (`.provenance-original` for authentic host kitchen photos, `.provenance-doc` for reference photos from the original Google Doc, and `.provenance-ai` for AI illustrations).
