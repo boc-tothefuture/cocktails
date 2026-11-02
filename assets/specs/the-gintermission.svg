@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 460" width="100%" height="100%" class="cocktail-spec-svg" role="img" aria-label="The Gintermission proportional build diagram">
+  <defs>
+    <radialGradient id="bg-glow-archive-the-gintermission" cx="38%" cy="52%" r="60%">
+      <stop offset="0%" stop-color="#1d1511"/>
+      <stop offset="65%" stop-color="#110c0a"/>
+      <stop offset="100%" stop-color="#090605"/>
+    </radialGradient>
+    <clipPath id="glass-clip-archive-the-gintermission">
+      <path d="M 78.0 176.0 C 78.0 228.0, 110.0 266.0, 152.0 266.0 C 194.0 266.0, 226.0 228.0, 226.0 176.0 Z"/>
+    </clipPath>
+    <mask id="ice-mask-archive-the-gintermission">
+      <rect x="0" y="0" width="420" height="460" fill="white"/>
+      
+    </mask>
+    <pattern id="pat-archive-the-gintermission-0" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="7" height="7" fill="#d4ccc2" fill-opacity="0.09"/><circle cx="2" cy="2" r="1.15" fill="#d4ccc2" fill-opacity="0.85"/><circle cx="5.5" cy="5.5" r="1.15" fill="#d4ccc2" fill-opacity="0.85"/></pattern>
+<pattern id="pat-archive-the-gintermission-1" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#e5b968" fill-opacity="0.11"/><line x1="2" y1="1.5" x2="2" y2="6.5" stroke="#e5b968" stroke-width="1.15" stroke-opacity="0.82" stroke-linecap="round"/><line x1="5.5" y1="1.5" x2="5.5" y2="6.5" stroke="#e5b968" stroke-width="1.15" stroke-opacity="0.82" stroke-linecap="round"/><line x1="2" y1="4" x2="5.5" y2="4" stroke="#e5b968" stroke-width="0.9" stroke-opacity="0.55"/></pattern>
+<pattern id="pat-archive-the-gintermission-2" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#d16647" fill-opacity="0.12"/><path d="M4 1.8V6.2M1.8 4H6.2" stroke="#d16647" stroke-width="1.05" stroke-opacity="0.82" stroke-linecap="round"/></pattern>
+<pattern id="pat-archive-the-gintermission-3" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="7" height="7" fill="#e8c86b" fill-opacity="0.10"/><line x1="1.5" y1="5.5" x2="5.5" y2="1.5" stroke="#e8c86b" stroke-width="1.1" stroke-opacity="0.82" stroke-linecap="round"/></pattern>
+  </defs>
+
+  <!-- Subterranean Speakeasy Blueprint Canvas -->
+  <rect width="420" height="460" fill="url(#bg-glow-archive-the-gintermission)"/>
+  <rect x="14" y="14" width="392" height="432" rx="8" fill="none" stroke="#e8c59e" stroke-opacity="0.1" stroke-width="1"/>
+
+  <!-- Proportional Patterned Liquid Layers (Clipped to Glass & Masked Around Ice) -->
+  <g clip-path="url(#glass-clip-archive-the-gintermission)">
+    <g mask="url(#ice-mask-archive-the-gintermission)">
+      <rect x="40" y="245.94" width="240" height="20.06" fill="url(#pat-archive-the-gintermission-0)"/><line x1="40" y1="245.94" x2="280" y2="245.94" stroke="#d4ccc2" stroke-width="0.7" stroke-opacity="0.45" stroke-dasharray="2 2"/><rect x="40" y="215.86" width="240" height="30.09" fill="url(#pat-archive-the-gintermission-1)"/><line x1="40" y1="215.86" x2="280" y2="215.86" stroke="#e5b968" stroke-width="0.7" stroke-opacity="0.45" stroke-dasharray="2 2"/><rect x="40" y="205.83" width="240" height="10.03" fill="url(#pat-archive-the-gintermission-2)"/><line x1="40" y1="205.83" x2="280" y2="205.83" stroke="#d16647" stroke-width="0.7" stroke-opacity="0.45" stroke-dasharray="2 2"/><rect x="40" y="195.80" width="240" height="10.03" fill="url(#pat-archive-the-gintermission-3)"/><line x1="40" y1="195.80" x2="280" y2="195.80" stroke="#e8c86b" stroke-width="1.1" stroke-opacity="0.7"/>
+    </g>
+    
+  </g>
+
+  <!-- Minimalist Open-Top Glass Silhouette -->
+  <path d="M 77.0 176.0 C 77.0 229.0, 109.0 267.0, 152.0 267.0 C 195.0 267.0, 227.0 229.0, 227.0 176.0" fill="none" stroke="#d8c7b4" stroke-width="2" stroke-linecap="round"/><line x1="152.0" y1="267.0" x2="152.0" y2="350" stroke="#d8c7b4" stroke-width="2"/><path d="M 108.0 350 L 196.0 350" stroke="#d8c7b4" stroke-width="2.2" stroke-linecap="round"/>
+
+  <!-- Garnish, Bitters Droplets & Botanical Accents -->
+  <g><circle cx="160.0" cy="193.8" r="16" fill="#120d0b" stroke="#a8c66c" stroke-width="1.5"/><circle cx="160.0" cy="193.8" r="13" fill="none" stroke="#a8c66c" stroke-width="0.8" stroke-opacity="0.6"/><line x1="160.0" y1="193.8" x2="175.0" y2="193.8" stroke="#a8c66c" stroke-width="0.9" stroke-opacity="0.7"/><line x1="160.0" y1="193.8" x2="170.6" y2="204.4" stroke="#a8c66c" stroke-width="0.9" stroke-opacity="0.7"/><line x1="160.0" y1="193.8" x2="160.0" y2="208.8" stroke="#a8c66c" stroke-width="0.9" stroke-opacity="0.7"/><line x1="160.0" y1="193.8" x2="149.4" y2="204.4" stroke="#a8c66c" stroke-width="0.9" stroke-opacity="0.7"/><line x1="160.0" y1="193.8" x2="145.0" y2="193.8" stroke="#a8c66c" stroke-width="0.9" stroke-opacity="0.7"/><line x1="160.0" y1="193.8" x2="149.4" y2="183.2" stroke="#a8c66c" stroke-width="0.9" stroke-opacity="0.7"/><line x1="160.0" y1="193.8" x2="160.0" y2="178.8" stroke="#a8c66c" stroke-width="0.9" stroke-opacity="0.7"/><line x1="160.0" y1="193.8" x2="170.6" y2="183.2" stroke="#a8c66c" stroke-width="0.9" stroke-opacity="0.7"/></g>
+
+  <!-- Proportional Layer Callouts -->
+  <g class="spec-svg-callout"><polyline points="219.0,200.8 234.0,200.8 240.0,200.8" fill="none" stroke="#e8c86b" stroke-width="0.85" stroke-opacity="0.65"/><circle cx="219.0" cy="200.8" r="1.5" fill="#e8c86b"/><text x="245.0" y="203.8" fill="#f5efe8" font-family="'JetBrains Mono', monospace" font-size="8.2" letter-spacing="0.01em"><tspan class="spec-measure" data-oz="0.5" fill="#e8c86b" font-weight="600">0.5 oz</tspan> <tspan fill="#c7b9ab">Fresh lime juice</tspan></text></g><g class="spec-svg-callout"><polyline points="213.9,210.8 234.0,216.3 240.0,216.3" fill="none" stroke="#d16647" stroke-width="0.85" stroke-opacity="0.65"/><circle cx="213.9" cy="210.8" r="1.5" fill="#d16647"/><text x="245.0" y="219.3" fill="#f5efe8" font-family="'JetBrains Mono', monospace" font-size="8.2" letter-spacing="0.01em"><tspan class="spec-measure" data-oz="0.5" fill="#d16647" font-weight="600">0.5 oz</tspan> <tspan fill="#c7b9ab">Campari</tspan></text></g><g class="spec-svg-callout"><polyline points="202.2,230.9 234.0,231.8 240.0,231.8" fill="none" stroke="#e5b968" stroke-width="0.85" stroke-opacity="0.65"/><circle cx="202.2" cy="230.9" r="1.5" fill="#e5b968"/><text x="245.0" y="234.8" fill="#f5efe8" font-family="'JetBrains Mono', monospace" font-size="8.2" letter-spacing="0.01em"><tspan class="spec-measure" data-oz="1.5" fill="#e5b968" font-weight="600">1.5 oz</tspan> <tspan fill="#c7b9ab">Ginger liqueur</tspan></text></g><g class="spec-svg-callout"><polyline points="180.7,256.0 234.0,256.0 240.0,256.0" fill="none" stroke="#d4ccc2" stroke-width="0.85" stroke-opacity="0.65"/><circle cx="180.7" cy="256.0" r="1.5" fill="#d4ccc2"/><text x="245.0" y="259.0" fill="#f5efe8" font-family="'JetBrains Mono', monospace" font-size="8.2" letter-spacing="0.01em"><tspan class="spec-measure" data-oz="1" fill="#d4ccc2" font-weight="600">1 oz</tspan> <tspan fill="#c7b9ab">Dry Gin</tspan></text></g>
+</svg>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 460" width="100%" height="100%" class="cocktail-spec-svg" role="img" aria-label="Grasshopper proportional build diagram">
+  <defs>
+    <radialGradient id="bg-glow-archive-grasshopper" cx="38%" cy="52%" r="60%">
+      <stop offset="0%" stop-color="#1d1511"/>
+      <stop offset="65%" stop-color="#110c0a"/>
+      <stop offset="100%" stop-color="#090605"/>
+    </radialGradient>
+    <clipPath id="glass-clip-archive-grasshopper">
+      <path d="M 78.0 176.0 C 78.0 228.0, 110.0 266.0, 152.0 266.0 C 194.0 266.0, 226.0 228.0, 226.0 176.0 Z"/>
+    </clipPath>
+    <mask id="ice-mask-archive-grasshopper">
+      <rect x="0" y="0" width="420" height="460" fill="white"/>
+      
+    </mask>
+    <pattern id="pat-archive-grasshopper-0" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="7" height="7" fill="#82b078" fill-opacity="0.09"/><circle cx="2" cy="2" r="1.15" fill="#82b078" fill-opacity="0.85"/><circle cx="5.5" cy="5.5" r="1.15" fill="#82b078" fill-opacity="0.85"/></pattern>
+<pattern id="pat-archive-grasshopper-1" width="5" height="5" patternUnits="userSpaceOnUse"><rect width="5" height="5" fill="#f2e6d8" fill-opacity="0.18"/><circle cx="1.5" cy="1.5" r="0.9" fill="#f2e6d8" fill-opacity="0.9"/><circle cx="4" cy="3.8" r="0.75" fill="#f2e6d8" fill-opacity="0.75"/></pattern>
+<pattern id="pat-archive-grasshopper-2" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="7" height="7" fill="#82b078" fill-opacity="0.09"/><circle cx="2" cy="2" r="1.15" fill="#82b078" fill-opacity="0.85"/><circle cx="5.5" cy="5.5" r="1.15" fill="#82b078" fill-opacity="0.85"/></pattern>
+<pattern id="pat-archive-grasshopper-3" width="5" height="5" patternUnits="userSpaceOnUse"><rect width="5" height="5" fill="#f2e6d8" fill-opacity="0.18"/><circle cx="1.5" cy="1.5" r="0.9" fill="#f2e6d8" fill-opacity="0.9"/><circle cx="4" cy="3.8" r="0.75" fill="#f2e6d8" fill-opacity="0.75"/></pattern>
+  </defs>
+
+  <!-- Subterranean Speakeasy Blueprint Canvas -->
+  <rect width="420" height="460" fill="url(#bg-glow-archive-grasshopper)"/>
+  <rect x="14" y="14" width="392" height="432" rx="8" fill="none" stroke="#e8c59e" stroke-opacity="0.1" stroke-width="1"/>
+
+  <!-- Proportional Patterned Liquid Layers (Clipped to Glass & Masked Around Ice) -->
+  <g clip-path="url(#glass-clip-archive-grasshopper)">
+    <g mask="url(#ice-mask-archive-grasshopper)">
+      <rect x="40" y="241.62" width="240" height="24.38" fill="url(#pat-archive-grasshopper-0)"/><line x1="40" y1="241.62" x2="280" y2="241.62" stroke="#82b078" stroke-width="0.7" stroke-opacity="0.45" stroke-dasharray="2 2"/><rect x="40" y="222.11" width="240" height="19.51" fill="url(#pat-archive-grasshopper-1)"/><line x1="40" y1="222.11" x2="280" y2="222.11" stroke="#f2e6d8" stroke-width="0.7" stroke-opacity="0.45" stroke-dasharray="2 2"/><rect x="40" y="215.31" width="240" height="6.81" fill="url(#pat-archive-grasshopper-2)"/><line x1="40" y1="215.31" x2="280" y2="215.31" stroke="#82b078" stroke-width="0.7" stroke-opacity="0.45" stroke-dasharray="2 2"/><rect x="40" y="195.80" width="240" height="19.51" fill="url(#pat-archive-grasshopper-3)"/><line x1="40" y1="195.80" x2="280" y2="195.80" stroke="#f2e6d8" stroke-width="1.1" stroke-opacity="0.7"/>
+    </g>
+    
+  </g>
+
+  <!-- Minimalist Open-Top Glass Silhouette -->
+  <path d="M 77.0 176.0 C 77.0 229.0, 109.0 267.0, 152.0 267.0 C 195.0 267.0, 227.0 229.0, 227.0 176.0" fill="none" stroke="#d8c7b4" stroke-width="2" stroke-linecap="round"/><line x1="152.0" y1="267.0" x2="152.0" y2="350" stroke="#d8c7b4" stroke-width="2"/><path d="M 108.0 350 L 196.0 350" stroke="#d8c7b4" stroke-width="2.2" stroke-linecap="round"/>
+
+  <!-- Garnish, Bitters Droplets & Botanical Accents -->
+  <g fill="none" stroke="#86b478" stroke-width="1.35" stroke-linecap="round"><path d="M 132.0 211.8 Q 124.0 186.8 116.0 163.8"/><path d="M 128.0 197.8 C 118.0 193.8, 118.0 187.8, 127.0 189.8"/><path d="M 128.0 197.8 C 136.0 191.8, 136.0 185.8, 127.0 189.8"/><path d="M 123.0 183.8 C 113.0 179.8, 113.0 173.8, 122.0 176.8"/><path d="M 123.0 183.8 C 131.0 177.8, 131.0 171.8, 122.0 176.8"/><path d="M 119.0 171.8 C 110.0 167.8, 112.0 161.8, 118.0 165.8"/></g>
+
+  <!-- Proportional Layer Callouts -->
+  <g class="spec-svg-callout"><polyline points="216.6,205.6 234.0,205.6 240.0,205.6" fill="none" stroke="#f2e6d8" stroke-width="0.85" stroke-opacity="0.65"/><circle cx="216.6" cy="205.6" r="1.5" fill="#f2e6d8"/><text x="245.0" y="208.6" fill="#f5efe8" font-family="'JetBrains Mono', monospace" font-size="8.2" letter-spacing="0.01em"><tspan class="spec-measure" data-oz="1" fill="#f2e6d8" font-weight="600">1 oz</tspan> <tspan fill="#c7b9ab">White Choc. Syrup</tspan></text></g><g class="spec-svg-callout"><polyline points="209.6,218.7 234.0,221.1 240.0,221.1" fill="none" stroke="#82b078" stroke-width="0.85" stroke-opacity="0.65"/><circle cx="209.6" cy="218.7" r="1.5" fill="#82b078"/><text x="245.0" y="224.1" fill="#f5efe8" font-family="'JetBrains Mono', monospace" font-size="8.2" letter-spacing="0.01em"><tspan class="spec-measure" data-oz="0.25" fill="#82b078" font-weight="600">0.25 oz</tspan> <tspan fill="#c7b9ab">Ancho Reyes Verde</tspan></text></g><g class="spec-svg-callout"><polyline points="201.6,231.9 234.0,236.6 240.0,236.6" fill="none" stroke="#f2e6d8" stroke-width="0.85" stroke-opacity="0.65"/><circle cx="201.6" cy="231.9" r="1.5" fill="#f2e6d8"/><text x="245.0" y="239.6" fill="#f5efe8" font-family="'JetBrains Mono', monospace" font-size="8.2" letter-spacing="0.01em"><tspan class="spec-measure" data-oz="1" fill="#f2e6d8" font-weight="600">1 oz</tspan> <tspan fill="#c7b9ab">White crème de cacao</tspan></text></g><g class="spec-svg-callout"><polyline points="183.2,253.8 234.0,253.8 240.0,253.8" fill="none" stroke="#82b078" stroke-width="0.85" stroke-opacity="0.65"/><circle cx="183.2" cy="253.8" r="1.5" fill="#82b078"/><text x="245.0" y="256.8" fill="#f5efe8" font-family="'JetBrains Mono', monospace" font-size="8.2" letter-spacing="0.01em"><tspan class="spec-measure" data-oz="1.25" fill="#82b078" font-weight="600">1.25 oz</tspan> <tspan fill="#c7b9ab">Mint-infused vodka</tspan></text></g>
+</svg>

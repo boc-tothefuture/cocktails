@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 460" width="100%" height="100%" class="cocktail-spec-svg" role="img" aria-label="Snowed In proportional build diagram">
+  <defs>
+    <radialGradient id="bg-glow-archive-snowed-in" cx="38%" cy="52%" r="60%">
+      <stop offset="0%" stop-color="#1d1511"/>
+      <stop offset="65%" stop-color="#110c0a"/>
+      <stop offset="100%" stop-color="#090605"/>
+    </radialGradient>
+    <clipPath id="glass-clip-archive-snowed-in">
+      <path d="M 78.0 184.0 L 99.0 346.0 L 205.0 346.0 L 226.0 184.0 Z"/>
+    </clipPath>
+    <mask id="ice-mask-archive-snowed-in">
+      <rect x="0" y="0" width="420" height="460" fill="white"/>
+      
+    </mask>
+    <pattern id="pat-archive-snowed-in-0" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#e08c38" fill-opacity="0.11"/><line x1="2" y1="1.5" x2="2" y2="6.5" stroke="#e08c38" stroke-width="1.15" stroke-opacity="0.82" stroke-linecap="round"/><line x1="5.5" y1="1.5" x2="5.5" y2="6.5" stroke="#e08c38" stroke-width="1.15" stroke-opacity="0.82" stroke-linecap="round"/><line x1="2" y1="4" x2="5.5" y2="4" stroke="#e08c38" stroke-width="0.9" stroke-opacity="0.55"/></pattern>
+<pattern id="pat-archive-snowed-in-1" width="5" height="5" patternUnits="userSpaceOnUse"><rect width="5" height="5" fill="#f2e6d8" fill-opacity="0.18"/><circle cx="1.5" cy="1.5" r="0.9" fill="#f2e6d8" fill-opacity="0.9"/><circle cx="4" cy="3.8" r="0.75" fill="#f2e6d8" fill-opacity="0.75"/></pattern>
+<pattern id="pat-archive-snowed-in-2" width="5" height="5" patternUnits="userSpaceOnUse"><rect width="5" height="5" fill="#f2e6d8" fill-opacity="0.18"/><circle cx="1.5" cy="1.5" r="0.9" fill="#f2e6d8" fill-opacity="0.9"/><circle cx="4" cy="3.8" r="0.75" fill="#f2e6d8" fill-opacity="0.75"/></pattern>
+<pattern id="pat-archive-snowed-in-3" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#9e6b47" fill-opacity="0.11"/><line x1="2" y1="1.5" x2="2" y2="6.5" stroke="#9e6b47" stroke-width="1.15" stroke-opacity="0.82" stroke-linecap="round"/><line x1="5.5" y1="1.5" x2="5.5" y2="6.5" stroke="#9e6b47" stroke-width="1.15" stroke-opacity="0.82" stroke-linecap="round"/><line x1="2" y1="4" x2="5.5" y2="4" stroke="#9e6b47" stroke-width="0.9" stroke-opacity="0.55"/></pattern>
+<pattern id="pat-archive-snowed-in-4" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="7" height="7" fill="#82b078" fill-opacity="0.09"/><circle cx="2" cy="2" r="1.15" fill="#82b078" fill-opacity="0.85"/><circle cx="5.5" cy="5.5" r="1.15" fill="#82b078" fill-opacity="0.85"/></pattern>
+  </defs>
+
+  <!-- Subterranean Speakeasy Blueprint Canvas -->
+  <rect width="420" height="460" fill="url(#bg-glow-archive-snowed-in)"/>
+  <rect x="14" y="14" width="392" height="432" rx="8" fill="none" stroke="#e8c59e" stroke-opacity="0.1" stroke-width="1"/>
+
+  <!-- Proportional Patterned Liquid Layers (Clipped to Glass & Masked Around Ice) -->
+  <g clip-path="url(#glass-clip-archive-snowed-in)">
+    <g mask="url(#ice-mask-archive-snowed-in)">
+      <rect x="40" y="305.50" width="240" height="40.50" fill="url(#pat-archive-snowed-in-0)"/><line x1="40" y1="305.50" x2="280" y2="305.50" stroke="#e08c38" stroke-width="0.7" stroke-opacity="0.45" stroke-dasharray="2 2"/><rect x="40" y="265.00" width="240" height="40.50" fill="url(#pat-archive-snowed-in-1)"/><line x1="40" y1="265.00" x2="280" y2="265.00" stroke="#f2e6d8" stroke-width="0.7" stroke-opacity="0.45" stroke-dasharray="2 2"/><rect x="40" y="251.50" width="240" height="13.50" fill="url(#pat-archive-snowed-in-2)"/><line x1="40" y1="251.50" x2="280" y2="251.50" stroke="#f2e6d8" stroke-width="0.7" stroke-opacity="0.45" stroke-dasharray="2 2"/><rect x="40" y="238.00" width="240" height="13.50" fill="url(#pat-archive-snowed-in-3)"/><line x1="40" y1="238.00" x2="280" y2="238.00" stroke="#9e6b47" stroke-width="0.7" stroke-opacity="0.45" stroke-dasharray="2 2"/><rect x="40" y="224.50" width="240" height="13.50" fill="url(#pat-archive-snowed-in-4)"/><line x1="40" y1="224.50" x2="280" y2="224.50" stroke="#82b078" stroke-width="1.1" stroke-opacity="0.7"/>
+    </g>
+    
+  </g>
+
+  <!-- Minimalist Open-Top Glass Silhouette -->
+  <path d="M 77.0 184.0 L 98.0 347.0 Q 98.0 351.0 103.0 351.0 L 201.0 351.0 Q 206.0 351.0 206.0 347.0 L 227.0 184.0" fill="none" stroke="#d8c7b4" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Garnish, Bitters Droplets & Botanical Accents -->
+  <circle cx="78.0" cy="186.5" r="1.3" fill="#c96567" fill-opacity="0.88"/>
+<circle cx="83.7" cy="182.5" r="1.3" fill="#c96567" fill-opacity="0.88"/>
+<circle cx="89.4" cy="186.5" r="1.3" fill="#c96567" fill-opacity="0.88"/>
+<circle cx="95.1" cy="182.5" r="1.3" fill="#c96567" fill-opacity="0.88"/>
+<circle cx="100.8" cy="186.5" r="1.3" fill="#c96567" fill-opacity="0.88"/>
+<circle cx="106.5" cy="182.5" r="1.3" fill="#c96567" fill-opacity="0.88"/>
+<circle cx="112.2" cy="186.5" r="1.3" fill="#c96567" fill-opacity="0.88"/>
+<circle cx="117.8" cy="182.5" r="1.3" fill="#c96567" fill-opacity="0.88"/>
+<circle cx="123.5" cy="186.5" r="1.3" fill="#c96567" fill-opacity="0.88"/>
+<circle cx="129.2" cy="182.5" r="1.3" fill="#c96567" fill-opacity="0.88"/>
+<circle cx="134.9" cy="186.5" r="1.3" fill="#c96567" fill-opacity="0.88"/>
+<circle cx="140.6" cy="182.5" r="1.3" fill="#c96567" fill-opacity="0.88"/>
+<circle cx="146.3" cy="186.5" r="1.3" fill="#c96567" fill-opacity="0.88"/>
+<circle cx="152.0" cy="182.5" r="1.3" fill="#c96567" fill-opacity="0.88"/>
+<circle cx="157.7" cy="186.5" r="1.3" fill="#c96567" fill-opacity="0.88"/>
+<circle cx="163.4" cy="182.5" r="1.3" fill="#c96567" fill-opacity="0.88"/>
+<circle cx="169.1" cy="186.5" r="1.3" fill="#c96567" fill-opacity="0.88"/>
+<circle cx="174.8" cy="182.5" r="1.3" fill="#c96567" fill-opacity="0.88"/>
+<circle cx="180.5" cy="186.5" r="1.3" fill="#c96567" fill-opacity="0.88"/>
+<circle cx="186.2" cy="182.5" r="1.3" fill="#c96567" fill-opacity="0.88"/>
+<circle cx="191.8" cy="186.5" r="1.3" fill="#c96567" fill-opacity="0.88"/>
+<circle cx="197.5" cy="182.5" r="1.3" fill="#c96567" fill-opacity="0.88"/>
+<circle cx="203.2" cy="186.5" r="1.3" fill="#c96567" fill-opacity="0.88"/>
+<circle cx="208.9" cy="182.5" r="1.3" fill="#c96567" fill-opacity="0.88"/>
+<circle cx="214.6" cy="186.5" r="1.3" fill="#c96567" fill-opacity="0.88"/>
+<circle cx="220.3" cy="182.5" r="1.3" fill="#c96567" fill-opacity="0.88"/>
+<circle cx="226.0" cy="186.5" r="1.3" fill="#c96567" fill-opacity="0.88"/>
+<g transform="translate(140.0, 222.5) rotate(-15)"><ellipse cx="0" cy="0" rx="5" ry="3.2" fill="#14100e" stroke="#c88d55" stroke-width="1.2"/><path d="M -3.5 0 Q 0 1.2 3.5 0" fill="none" stroke="#c88d55" stroke-width="0.9"/></g>
+<g transform="translate(152.0, 220.5) rotate(10)"><ellipse cx="0" cy="0" rx="5" ry="3.2" fill="#14100e" stroke="#c88d55" stroke-width="1.2"/><path d="M -3.5 0 Q 0 1.2 3.5 0" fill="none" stroke="#c88d55" stroke-width="0.9"/></g>
+<g transform="translate(164.0, 222.5) rotate(-25)"><ellipse cx="0" cy="0" rx="5" ry="3.2" fill="#14100e" stroke="#c88d55" stroke-width="1.2"/><path d="M -3.5 0 Q 0 1.2 3.5 0" fill="none" stroke="#c88d55" stroke-width="0.9"/></g>
+
+  <!-- Proportional Layer Callouts -->
+  <g class="spec-svg-callout"><polyline points="223.9,231.2 234.0,231.2 240.0,231.2" fill="none" stroke="#82b078" stroke-width="0.85" stroke-opacity="0.65"/><circle cx="223.9" cy="231.2" r="1.5" fill="#82b078"/><text x="245.0" y="234.2" fill="#f5efe8" font-family="'JetBrains Mono', monospace" font-size="8.2" letter-spacing="0.01em"><tspan class="spec-measure" data-oz="0.5" fill="#82b078" font-weight="600">0.5 oz</tspan> <tspan fill="#c7b9ab">Peppermint schnapps</tspan></text></g><g class="spec-svg-callout"><polyline points="222.1,244.8 234.0,246.8 240.0,246.8" fill="none" stroke="#9e6b47" stroke-width="0.85" stroke-opacity="0.65"/><circle cx="222.1" cy="244.8" r="1.5" fill="#9e6b47"/><text x="245.0" y="249.8" fill="#f5efe8" font-family="'JetBrains Mono', monospace" font-size="8.2" letter-spacing="0.01em"><tspan class="spec-measure" data-oz="0.5" fill="#9e6b47" font-weight="600">0.5 oz</tspan> <tspan fill="#c7b9ab">Coffee liqueur</tspan></text></g><g class="spec-svg-callout"><polyline points="220.4,258.2 234.0,262.2 240.0,262.2" fill="none" stroke="#f2e6d8" stroke-width="0.85" stroke-opacity="0.65"/><circle cx="220.4" cy="258.2" r="1.5" fill="#f2e6d8"/><text x="245.0" y="265.2" fill="#f5efe8" font-family="'JetBrains Mono', monospace" font-size="8.2" letter-spacing="0.01em"><tspan class="spec-measure" data-oz="0.5" fill="#f2e6d8" font-weight="600">0.5 oz</tspan> <tspan fill="#c7b9ab">Half &amp; Half</tspan></text></g><g class="spec-svg-callout"><polyline points="216.9,285.2 234.0,285.2 240.0,285.2" fill="none" stroke="#f2e6d8" stroke-width="0.85" stroke-opacity="0.65"/><circle cx="216.9" cy="285.2" r="1.5" fill="#f2e6d8"/><text x="245.0" y="288.2" fill="#f5efe8" font-family="'JetBrains Mono', monospace" font-size="8.2" letter-spacing="0.01em"><tspan class="spec-measure" data-oz="1.5" fill="#f2e6d8" font-weight="600">1.5 oz</tspan> <tspan fill="#c7b9ab">Bourbon cream</tspan></text></g><g class="spec-svg-callout"><polyline points="211.6,325.8 234.0,325.8 240.0,325.8" fill="none" stroke="#e08c38" stroke-width="0.85" stroke-opacity="0.65"/><circle cx="211.6" cy="325.8" r="1.5" fill="#e08c38"/><text x="245.0" y="328.8" fill="#f5efe8" font-family="'JetBrains Mono', monospace" font-size="8.2" letter-spacing="0.01em"><tspan class="spec-measure" data-oz="1.5" fill="#e08c38" font-weight="600">1.5 oz</tspan> <tspan fill="#c7b9ab">Straight bourbon</tspan></text></g>
+</svg>

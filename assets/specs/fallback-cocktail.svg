@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 460" width="100%" height="100%" class="cocktail-spec-svg" role="img" aria-label="Fallback Cocktail proportional build diagram">
+  <defs>
+    <radialGradient id="bg-glow-archive-fallback-cocktail" cx="38%" cy="52%" r="60%">
+      <stop offset="0%" stop-color="#1d1511"/>
+      <stop offset="65%" stop-color="#110c0a"/>
+      <stop offset="100%" stop-color="#090605"/>
+    </radialGradient>
+    <clipPath id="glass-clip-archive-fallback-cocktail">
+      <path d="M 78.0 184.0 L 99.0 346.0 L 205.0 346.0 L 226.0 184.0 Z"/>
+    </clipPath>
+    <mask id="ice-mask-archive-fallback-cocktail">
+      <rect x="0" y="0" width="420" height="460" fill="white"/>
+      <rect x="96.3" y="223.9" width="66.0" height="68.0" rx="1.5" fill="black"/>
+    </mask>
+    <pattern id="pat-archive-fallback-cocktail-0" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#e08c38" fill-opacity="0.11"/><line x1="2" y1="1.5" x2="2" y2="6.5" stroke="#e08c38" stroke-width="1.15" stroke-opacity="0.82" stroke-linecap="round"/><line x1="5.5" y1="1.5" x2="5.5" y2="6.5" stroke="#e08c38" stroke-width="1.15" stroke-opacity="0.82" stroke-linecap="round"/><line x1="2" y1="4" x2="5.5" y2="4" stroke="#e08c38" stroke-width="0.9" stroke-opacity="0.55"/></pattern>
+<pattern id="pat-archive-fallback-cocktail-1" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#c96d38" fill-opacity="0.11"/><path d="M1.5 6L4 2L6.5 6" fill="none" stroke="#c96d38" stroke-width="1.05" stroke-opacity="0.8" stroke-linecap="round" stroke-linejoin="round"/></pattern>
+<pattern id="pat-archive-fallback-cocktail-2" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#d16647" fill-opacity="0.12"/><path d="M4 1.8V6.2M1.8 4H6.2" stroke="#d16647" stroke-width="1.05" stroke-opacity="0.82" stroke-linecap="round"/></pattern>
+<pattern id="pat-archive-fallback-cocktail-3" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="7" height="7" fill="#d89440" fill-opacity="0.09"/><circle cx="2" cy="2" r="1.15" fill="#d89440" fill-opacity="0.85"/><circle cx="5.5" cy="5.5" r="1.15" fill="#d89440" fill-opacity="0.85"/></pattern>
+  </defs>
+
+  <!-- Subterranean Speakeasy Blueprint Canvas -->
+  <rect width="420" height="460" fill="url(#bg-glow-archive-fallback-cocktail)"/>
+  <rect x="14" y="14" width="392" height="432" rx="8" fill="none" stroke="#e8c59e" stroke-opacity="0.1" stroke-width="1"/>
+
+  <!-- Proportional Patterned Liquid Layers (Clipped to Glass & Masked Around Ice) -->
+  <g clip-path="url(#glass-clip-archive-fallback-cocktail)">
+    <g mask="url(#ice-mask-archive-fallback-cocktail)">
+      <rect x="40" y="304.96" width="240" height="41.04" fill="url(#pat-archive-fallback-cocktail-0)"/><line x1="40" y1="304.96" x2="280" y2="304.96" stroke="#e08c38" stroke-width="0.7" stroke-opacity="0.45" stroke-dasharray="2 2"/><rect x="40" y="263.92" width="240" height="41.04" fill="url(#pat-archive-fallback-cocktail-1)"/><line x1="40" y1="263.92" x2="280" y2="263.92" stroke="#c96d38" stroke-width="0.7" stroke-opacity="0.45" stroke-dasharray="2 2"/><rect x="40" y="243.40" width="240" height="20.52" fill="url(#pat-archive-fallback-cocktail-2)"/><line x1="40" y1="243.40" x2="280" y2="243.40" stroke="#d16647" stroke-width="0.7" stroke-opacity="0.45" stroke-dasharray="2 2"/><rect x="40" y="222.88" width="240" height="20.52" fill="url(#pat-archive-fallback-cocktail-3)"/><line x1="40" y1="222.88" x2="280" y2="222.88" stroke="#d89440" stroke-width="1.1" stroke-opacity="0.7"/>
+    </g>
+    <rect x="96.3" y="223.9" width="66.0" height="68.0" rx="1.5" fill="#110c0a" fill-opacity="0.25" stroke="#dfd2c0" stroke-width="0.9" stroke-opacity="0.22"/>
+  </g>
+
+  <!-- Minimalist Open-Top Glass Silhouette -->
+  <path d="M 77.0 184.0 L 98.0 347.0 Q 98.0 351.0 103.0 351.0 L 201.0 351.0 Q 206.0 351.0 206.0 347.0 L 227.0 184.0" fill="none" stroke="#d8c7b4" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Garnish, Bitters Droplets & Botanical Accents -->
+  <path d="M 205.0 205.0 C 208.5 209.5, 208.5 213.5, 205.0 213.5 C 201.5 213.5, 201.5 209.5, 205.0 205.0 Z" fill="none" stroke="#d65a4a" stroke-width="1.35"/>
+<path d="M 205.0 192.5 C 208.5 197.0, 208.5 201.0, 205.0 201.0 C 201.5 201.0, 201.5 197.0, 205.0 192.5 Z" fill="none" stroke="#d65a4a" stroke-width="1.35"/>
+<g fill="none" stroke="#e8993a" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round"><path d="M 110.0 174.0 C 110.0 196.0, 144.0 198.0, 146.0 174.0 C 148.0 156.0, 126.0 156.0, 128.0 176.0 C 130.0 198.0, 174.0 198.0, 176.0 176.0 C 178.0 158.0, 158.0 158.0, 160.0 178.0 C 162.0 196.0, 192.0 194.0, 198.0 176.0"/><path d="M 114.0 174.0 C 114.0 192.0, 140.0 194.0, 142.0 174.0" stroke-opacity="0.55" stroke-width="1.0"/></g>
+
+  <!-- Proportional Layer Callouts -->
+  <g class="spec-svg-callout"><polyline points="223.6,233.1 234.0,233.1 240.0,233.1" fill="none" stroke="#d89440" stroke-width="0.85" stroke-opacity="0.65"/><circle cx="223.6" cy="233.1" r="1.5" fill="#d89440"/><text x="245.0" y="236.1" fill="#f5efe8" font-family="'JetBrains Mono', monospace" font-size="8.2" letter-spacing="0.01em"><tspan class="spec-measure" data-oz="0.5" fill="#d89440" font-weight="600">0.5 oz</tspan> <tspan fill="#c7b9ab">Amaro Nonino</tspan></text></g><g class="spec-svg-callout"><polyline points="221.0,253.7 234.0,253.7 240.0,253.7" fill="none" stroke="#d16647" stroke-width="0.85" stroke-opacity="0.65"/><circle cx="221.0" cy="253.7" r="1.5" fill="#d16647"/><text x="245.0" y="256.7" fill="#f5efe8" font-family="'JetBrains Mono', monospace" font-size="8.2" letter-spacing="0.01em"><tspan class="spec-measure" data-oz="0.5" fill="#d16647" font-weight="600">0.5 oz</tspan> <tspan fill="#c7b9ab">Sweet Vermouth</tspan></text></g><g class="spec-svg-callout"><polyline points="217.0,284.4 234.0,284.4 240.0,284.4" fill="none" stroke="#c96d38" stroke-width="0.85" stroke-opacity="0.65"/><circle cx="217.0" cy="284.4" r="1.5" fill="#c96d38"/><text x="245.0" y="287.4" fill="#f5efe8" font-family="'JetBrains Mono', monospace" font-size="8.2" letter-spacing="0.01em"><tspan class="spec-measure" data-oz="1" fill="#c96d38" font-weight="600">1 oz</tspan> <tspan fill="#c7b9ab">Applejack brandy</tspan></text></g><g class="spec-svg-callout"><polyline points="211.7,325.5 234.0,325.5 240.0,325.5" fill="none" stroke="#e08c38" stroke-width="0.85" stroke-opacity="0.65"/><circle cx="211.7" cy="325.5" r="1.5" fill="#e08c38"/><text x="245.0" y="328.5" fill="#f5efe8" font-family="'JetBrains Mono', monospace" font-size="8.2" letter-spacing="0.01em"><tspan class="spec-measure" data-oz="1" fill="#e08c38" font-weight="600">1 oz</tspan> <tspan fill="#c7b9ab">Rye whiskey</tspan></text></g>
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 460" width="100%" height="100%" class="cocktail-spec-svg" role="img" aria-label="Smoked Honey Toddy proportional build diagram">
+  <defs>
+    <radialGradient id="bg-glow-archive-smoked-honey-toddy" cx="38%" cy="52%" r="60%">
+      <stop offset="0%" stop-color="#1d1511"/>
+      <stop offset="65%" stop-color="#110c0a"/>
+      <stop offset="100%" stop-color="#090605"/>
+    </radialGradient>
+    <clipPath id="glass-clip-archive-smoked-honey-toddy">
+      <path d="M 96.0 185.0 L 104.0 344.0 L 200.0 344.0 L 208.0 185.0 Z"/>
+    </clipPath>
+    <mask id="ice-mask-archive-smoked-honey-toddy">
+      <rect x="0" y="0" width="420" height="460" fill="white"/>
+      
+    </mask>
+    <pattern id="pat-archive-smoked-honey-toddy-0" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#e08c38" fill-opacity="0.11"/><line x1="2" y1="1.5" x2="2" y2="6.5" stroke="#e08c38" stroke-width="1.15" stroke-opacity="0.82" stroke-linecap="round"/><line x1="5.5" y1="1.5" x2="5.5" y2="6.5" stroke="#e08c38" stroke-width="1.15" stroke-opacity="0.82" stroke-linecap="round"/><line x1="2" y1="4" x2="5.5" y2="4" stroke="#e08c38" stroke-width="0.9" stroke-opacity="0.55"/></pattern>
+<pattern id="pat-archive-smoked-honey-toddy-1" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="7" height="7" fill="#e8c86b" fill-opacity="0.10"/><line x1="1.5" y1="5.5" x2="5.5" y2="1.5" stroke="#e8c86b" stroke-width="1.1" stroke-opacity="0.82" stroke-linecap="round"/></pattern>
+<pattern id="pat-archive-smoked-honey-toddy-2" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="7" height="7" fill="#d4ccc2" fill-opacity="0.09"/><circle cx="2" cy="2" r="1.15" fill="#d4ccc2" fill-opacity="0.85"/><circle cx="5.5" cy="5.5" r="1.15" fill="#d4ccc2" fill-opacity="0.85"/></pattern>
+  </defs>
+
+  <!-- Subterranean Speakeasy Blueprint Canvas -->
+  <rect width="420" height="460" fill="url(#bg-glow-archive-smoked-honey-toddy)"/>
+  <rect x="14" y="14" width="392" height="432" rx="8" fill="none" stroke="#e8c59e" stroke-opacity="0.1" stroke-width="1"/>
+
+  <!-- Proportional Patterned Liquid Layers (Clipped to Glass & Masked Around Ice) -->
+  <g clip-path="url(#glass-clip-archive-smoked-honey-toddy)">
+    <g mask="url(#ice-mask-archive-smoked-honey-toddy)">
+      <rect x="40" y="321.29" width="240" height="22.71" fill="url(#pat-archive-smoked-honey-toddy-0)"/><line x1="40" y1="321.29" x2="280" y2="321.29" stroke="#e08c38" stroke-width="0.7" stroke-opacity="0.45" stroke-dasharray="2 2"/><rect x="40" y="292.89" width="240" height="28.39" fill="url(#pat-archive-smoked-honey-toddy-1)"/><line x1="40" y1="292.89" x2="280" y2="292.89" stroke="#e8c86b" stroke-width="0.7" stroke-opacity="0.45" stroke-dasharray="2 2"/><rect x="40" y="224.75" width="240" height="68.14" fill="url(#pat-archive-smoked-honey-toddy-2)"/><line x1="40" y1="224.75" x2="280" y2="224.75" stroke="#d4ccc2" stroke-width="1.1" stroke-opacity="0.7"/>
+    </g>
+    
+  </g>
+
+  <!-- Minimalist Open-Top Glass Silhouette -->
+  <path d="M 95.0 185.0 L 103.0 345.0 Q 103.0 349.0 108.0 349.0 L 196.0 349.0 Q 201.0 349.0 201.0 345.0 L 209.0 185.0" fill="none" stroke="#d8c7b4" stroke-width="2" stroke-linecap="round"/><path d="M 98.0 209.0 C 66.0 209.0, 74.0 320.0, 106.0 320.0" fill="none" stroke="#d8c7b4" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Garnish, Bitters Droplets & Botanical Accents -->
+  <g><circle cx="160.0" cy="222.8" r="16" fill="#120d0b" stroke="#e8c86b" stroke-width="1.5"/><circle cx="160.0" cy="222.8" r="13" fill="none" stroke="#e8c86b" stroke-width="0.8" stroke-opacity="0.6"/><line x1="160.0" y1="222.8" x2="175.0" y2="222.8" stroke="#e8c86b" stroke-width="0.9" stroke-opacity="0.7"/><line x1="160.0" y1="222.8" x2="170.6" y2="233.4" stroke="#e8c86b" stroke-width="0.9" stroke-opacity="0.7"/><line x1="160.0" y1="222.8" x2="160.0" y2="237.8" stroke="#e8c86b" stroke-width="0.9" stroke-opacity="0.7"/><line x1="160.0" y1="222.8" x2="149.4" y2="233.4" stroke="#e8c86b" stroke-width="0.9" stroke-opacity="0.7"/><line x1="160.0" y1="222.8" x2="145.0" y2="222.8" stroke="#e8c86b" stroke-width="0.9" stroke-opacity="0.7"/><line x1="160.0" y1="222.8" x2="149.4" y2="212.1" stroke="#e8c86b" stroke-width="0.9" stroke-opacity="0.7"/><line x1="160.0" y1="222.8" x2="160.0" y2="207.8" stroke="#e8c86b" stroke-width="0.9" stroke-opacity="0.7"/><line x1="160.0" y1="222.8" x2="170.6" y2="212.1" stroke="#e8c86b" stroke-width="0.9" stroke-opacity="0.7"/></g>
+<g fill="none" stroke="#86b478" stroke-width="1.35" stroke-linecap="round"><path d="M 132.0 240.8 Q 124.0 215.8 116.0 192.8"/><path d="M 128.0 226.8 C 118.0 222.8, 118.0 216.8, 127.0 218.8"/><path d="M 128.0 226.8 C 136.0 220.8, 136.0 214.8, 127.0 218.8"/><path d="M 123.0 212.8 C 113.0 208.8, 113.0 202.8, 122.0 205.8"/><path d="M 123.0 212.8 C 131.0 206.8, 131.0 200.8, 122.0 205.8"/><path d="M 119.0 200.8 C 110.0 196.8, 112.0 190.8, 118.0 194.8"/></g>
+<g fill="none" stroke="#c7b9ab" stroke-width="1.1" stroke-opacity="0.45" stroke-linecap="round" stroke-dasharray="3 3"><path d="M 126.0 179.0 C 116.0 163.0, 140.0 155.0, 130.0 139.0"/><path d="M 160.0 175.0 C 150.0 159.0, 174.0 151.0, 164.0 135.0"/></g>
+
+  <!-- Proportional Layer Callouts -->
+  <g class="spec-svg-callout"><polyline points="208.3,258.8 234.0,258.8 240.0,258.8" fill="none" stroke="#d4ccc2" stroke-width="0.85" stroke-opacity="0.65"/><circle cx="208.3" cy="258.8" r="1.5" fill="#d4ccc2"/><text x="245.0" y="261.8" fill="#f5efe8" font-family="'JetBrains Mono', monospace" font-size="8.2" letter-spacing="0.01em"><tspan class="spec-measure" data-oz="3" fill="#d4ccc2" font-weight="600">3 oz</tspan> <tspan fill="#c7b9ab">Boiling hot water</tspan></text></g><g class="spec-svg-callout"><polyline points="205.9,307.1 234.0,307.1 240.0,307.1" fill="none" stroke="#e8c86b" stroke-width="0.85" stroke-opacity="0.65"/><circle cx="205.9" cy="307.1" r="1.5" fill="#e8c86b"/><text x="245.0" y="310.1" fill="#f5efe8" font-family="'JetBrains Mono', monospace" font-size="8.2" letter-spacing="0.01em"><tspan class="spec-measure" data-oz="1.25" fill="#e8c86b" font-weight="600">1.25 oz</tspan> <tspan fill="#c7b9ab">Fresh lemon juice</tspan></text></g><g class="spec-svg-callout"><polyline points="204.6,332.6 234.0,332.6 240.0,332.6" fill="none" stroke="#e08c38" stroke-width="0.85" stroke-opacity="0.65"/><circle cx="204.6" cy="332.6" r="1.5" fill="#e08c38"/><text x="245.0" y="335.6" fill="#f5efe8" font-family="'JetBrains Mono', monospace" font-size="8.2" letter-spacing="0.01em"><tspan class="spec-measure" data-oz="1" fill="#e08c38" font-weight="600">1 oz</tspan> <tspan fill="#c7b9ab">Smoky Scotch</tspan></text></g>
+</svg>

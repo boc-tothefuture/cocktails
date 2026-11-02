@@ -16,11 +16,13 @@ The project is intentionally dependency-free and build-free. There are no bundle
 
 ```text
 .
-├── AGENTS.md             # This guide
-├── CNAME                 # GitHub Pages custom domain (hortonscreekcocktails.com)
-├── index.html            # Complete single-page application (HTML, CSS, JS)
-└── assets/               # Menu artwork and cocktail visuals
-    └── archive/          # 51 historical cocktail photos & AI illustrations (2020–2026)
+├── AGENTS.md              # This guide
+├── CNAME                  # GitHub Pages custom domain (hortonscreekcocktails.com)
+├── index.html             # Complete single-page application (HTML, CSS, JS)
+├── generate_spec_svgs.py  # Python generator for Regarding Cocktails-style SVG build diagrams
+└── assets/                # Menu artwork and cocktail visuals
+    ├── archive/           # 51 historical cocktail photos & AI illustrations (2020–2026)
+    └── specs/             # 51 proportional SVG cocktail build diagrams (2020–2026)
 ```
 
 ### Key Technical Characteristics

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 460" width="100%" height="100%" class="cocktail-spec-svg" role="img" aria-label="The Alley Cocktail proportional build diagram">
+  <defs>
+    <radialGradient id="bg-glow-archive-the-alley-cocktail" cx="38%" cy="52%" r="60%">
+      <stop offset="0%" stop-color="#1d1511"/>
+      <stop offset="65%" stop-color="#110c0a"/>
+      <stop offset="100%" stop-color="#090605"/>
+    </radialGradient>
+    <clipPath id="glass-clip-archive-the-alley-cocktail">
+      <path d="M 78.0 176.0 C 78.0 228.0, 110.0 266.0, 152.0 266.0 C 194.0 266.0, 226.0 228.0, 226.0 176.0 Z"/>
+    </clipPath>
+    <mask id="ice-mask-archive-the-alley-cocktail">
+      <rect x="0" y="0" width="420" height="460" fill="white"/>
+      
+    </mask>
+    <pattern id="pat-archive-the-alley-cocktail-0" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#e08c38" fill-opacity="0.11"/><line x1="2" y1="1.5" x2="2" y2="6.5" stroke="#e08c38" stroke-width="1.15" stroke-opacity="0.82" stroke-linecap="round"/><line x1="5.5" y1="1.5" x2="5.5" y2="6.5" stroke="#e08c38" stroke-width="1.15" stroke-opacity="0.82" stroke-linecap="round"/><line x1="2" y1="4" x2="5.5" y2="4" stroke="#e08c38" stroke-width="0.9" stroke-opacity="0.55"/></pattern>
+<pattern id="pat-archive-the-alley-cocktail-1" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="7" height="7" fill="#e5b968" fill-opacity="0.09"/><circle cx="2" cy="2" r="1.15" fill="#e5b968" fill-opacity="0.85"/><circle cx="5.5" cy="5.5" r="1.15" fill="#e5b968" fill-opacity="0.85"/></pattern>
+<pattern id="pat-archive-the-alley-cocktail-2" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#d16647" fill-opacity="0.12"/><path d="M4 1.8V6.2M1.8 4H6.2" stroke="#d16647" stroke-width="1.05" stroke-opacity="0.82" stroke-linecap="round"/></pattern>
+<pattern id="pat-archive-the-alley-cocktail-3" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="7" height="7" fill="#e5b968" fill-opacity="0.09"/><circle cx="2" cy="2" r="1.15" fill="#e5b968" fill-opacity="0.85"/><circle cx="5.5" cy="5.5" r="1.15" fill="#e5b968" fill-opacity="0.85"/></pattern>
+  </defs>
+
+  <!-- Subterranean Speakeasy Blueprint Canvas -->
+  <rect width="420" height="460" fill="url(#bg-glow-archive-the-alley-cocktail)"/>
+  <rect x="14" y="14" width="392" height="432" rx="8" fill="none" stroke="#e8c59e" stroke-opacity="0.1" stroke-width="1"/>
+
+  <!-- Proportional Patterned Liquid Layers (Clipped to Glass & Masked Around Ice) -->
+  <g clip-path="url(#glass-clip-archive-the-alley-cocktail)">
+    <g mask="url(#ice-mask-archive-the-alley-cocktail)">
+      <rect x="40" y="220.68" width="240" height="45.32" fill="url(#pat-archive-the-alley-cocktail-0)"/><line x1="40" y1="220.68" x2="280" y2="220.68" stroke="#e08c38" stroke-width="0.7" stroke-opacity="0.45" stroke-dasharray="2 2"/><rect x="40" y="209.36" width="240" height="11.33" fill="url(#pat-archive-the-alley-cocktail-1)"/><line x1="40" y1="209.36" x2="280" y2="209.36" stroke="#e5b968" stroke-width="0.7" stroke-opacity="0.45" stroke-dasharray="2 2"/><rect x="40" y="202.58" width="240" height="6.78" fill="url(#pat-archive-the-alley-cocktail-2)"/><line x1="40" y1="202.58" x2="280" y2="202.58" stroke="#d16647" stroke-width="0.7" stroke-opacity="0.45" stroke-dasharray="2 2"/><rect x="40" y="195.80" width="240" height="6.78" fill="url(#pat-archive-the-alley-cocktail-3)"/><line x1="40" y1="195.80" x2="280" y2="195.80" stroke="#e5b968" stroke-width="1.1" stroke-opacity="0.7"/>
+    </g>
+    
+  </g>
+
+  <!-- Minimalist Open-Top Glass Silhouette -->
+  <path d="M 77.0 176.0 C 77.0 229.0, 109.0 267.0, 152.0 267.0 C 195.0 267.0, 227.0 229.0, 227.0 176.0" fill="none" stroke="#d8c7b4" stroke-width="2" stroke-linecap="round"/><line x1="152.0" y1="267.0" x2="152.0" y2="350" stroke="#d8c7b4" stroke-width="2"/><path d="M 108.0 350 L 196.0 350" stroke="#d8c7b4" stroke-width="2.2" stroke-linecap="round"/>
+
+  <!-- Garnish, Bitters Droplets & Botanical Accents -->
+  <path d="M 201.4 181.8 C 204.9 186.3, 204.9 190.3, 201.4 190.3 C 197.9 190.3, 197.9 186.3, 201.4 181.8 Z" fill="none" stroke="#86b478" stroke-width="1.35"/>
+<g><circle cx="160.0" cy="193.8" r="16" fill="#120d0b" stroke="#e8c86b" stroke-width="1.5"/><circle cx="160.0" cy="193.8" r="13" fill="none" stroke="#e8c86b" stroke-width="0.8" stroke-opacity="0.6"/><line x1="160.0" y1="193.8" x2="175.0" y2="193.8" stroke="#e8c86b" stroke-width="0.9" stroke-opacity="0.7"/><line x1="160.0" y1="193.8" x2="170.6" y2="204.4" stroke="#e8c86b" stroke-width="0.9" stroke-opacity="0.7"/><line x1="160.0" y1="193.8" x2="160.0" y2="208.8" stroke="#e8c86b" stroke-width="0.9" stroke-opacity="0.7"/><line x1="160.0" y1="193.8" x2="149.4" y2="204.4" stroke="#e8c86b" stroke-width="0.9" stroke-opacity="0.7"/><line x1="160.0" y1="193.8" x2="145.0" y2="193.8" stroke="#e8c86b" stroke-width="0.9" stroke-opacity="0.7"/><line x1="160.0" y1="193.8" x2="149.4" y2="183.2" stroke="#e8c86b" stroke-width="0.9" stroke-opacity="0.7"/><line x1="160.0" y1="193.8" x2="160.0" y2="178.8" stroke="#e8c86b" stroke-width="0.9" stroke-opacity="0.7"/><line x1="160.0" y1="193.8" x2="170.6" y2="183.2" stroke="#e8c86b" stroke-width="0.9" stroke-opacity="0.7"/></g>
+
+  <!-- Proportional Layer Callouts -->
+  <g class="spec-svg-callout"><polyline points="219.8,199.2 234.0,199.2 240.0,199.2" fill="none" stroke="#e5b968" stroke-width="0.85" stroke-opacity="0.65"/><circle cx="219.8" cy="199.2" r="1.5" fill="#e5b968"/><text x="245.0" y="202.2" fill="#f5efe8" font-family="'JetBrains Mono', monospace" font-size="8.2" letter-spacing="0.01em"><tspan class="spec-measure" data-oz="0.25" fill="#e5b968" font-weight="600">0.25 oz</tspan> <tspan fill="#c7b9ab">Luxardo Maraschino</tspan></text></g><g class="spec-svg-callout"><polyline points="216.4,206.0 234.0,214.7 240.0,214.7" fill="none" stroke="#d16647" stroke-width="0.85" stroke-opacity="0.65"/><circle cx="216.4" cy="206.0" r="1.5" fill="#d16647"/><text x="245.0" y="217.7" fill="#f5efe8" font-family="'JetBrains Mono', monospace" font-size="8.2" letter-spacing="0.01em"><tspan class="spec-measure" data-oz="0.25" fill="#d16647" font-weight="600">0.25 oz</tspan> <tspan fill="#c7b9ab">Cynar</tspan></text></g><g class="spec-svg-callout"><polyline points="211.7,215.0 234.0,230.2 240.0,230.2" fill="none" stroke="#e5b968" stroke-width="0.85" stroke-opacity="0.65"/><circle cx="211.7" cy="215.0" r="1.5" fill="#e5b968"/><text x="245.0" y="233.2" fill="#f5efe8" font-family="'JetBrains Mono', monospace" font-size="8.2" letter-spacing="0.01em"><tspan class="spec-measure" data-oz="0.5" fill="#e5b968" font-weight="600">0.5 oz</tspan> <tspan fill="#c7b9ab">Dry Vermouth</tspan></text></g><g class="spec-svg-callout"><polyline points="193.1,243.3 234.0,245.7 240.0,245.7" fill="none" stroke="#e08c38" stroke-width="0.85" stroke-opacity="0.65"/><circle cx="193.1" cy="243.3" r="1.5" fill="#e08c38"/><text x="245.0" y="248.7" fill="#f5efe8" font-family="'JetBrains Mono', monospace" font-size="8.2" letter-spacing="0.01em"><tspan class="spec-measure" data-oz="2" fill="#e08c38" font-weight="600">2 oz</tspan> <tspan fill="#c7b9ab">Wild Turkey 101</tspan></text></g>
+</svg>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 460" width="100%" height="100%" class="cocktail-spec-svg" role="img" aria-label="American Trilogy proportional build diagram">
+  <defs>
+    <radialGradient id="bg-glow-archive-american-trilogy" cx="38%" cy="52%" r="60%">
+      <stop offset="0%" stop-color="#1d1511"/>
+      <stop offset="65%" stop-color="#110c0a"/>
+      <stop offset="100%" stop-color="#090605"/>
+    </radialGradient>
+    <clipPath id="glass-clip-archive-american-trilogy">
+      <path d="M 78.0 184.0 L 99.0 346.0 L 205.0 346.0 L 226.0 184.0 Z"/>
+    </clipPath>
+    <mask id="ice-mask-archive-american-trilogy">
+      <rect x="0" y="0" width="420" height="460" fill="white"/>
+      <rect x="95.8" y="219.4" width="42.0" height="42.0" rx="1.5" transform="rotate(-5 116.8 240.4)" fill="black"/><rect x="105.8" y="265.4" width="38.0" height="38.0" rx="1.5" transform="rotate(7 124.8 284.4)" fill="black"/>
+    </mask>
+    <pattern id="pat-archive-american-trilogy-0" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#e08c38" fill-opacity="0.11"/><line x1="2" y1="1.5" x2="2" y2="6.5" stroke="#e08c38" stroke-width="1.15" stroke-opacity="0.82" stroke-linecap="round"/><line x1="5.5" y1="1.5" x2="5.5" y2="6.5" stroke="#e08c38" stroke-width="1.15" stroke-opacity="0.82" stroke-linecap="round"/><line x1="2" y1="4" x2="5.5" y2="4" stroke="#e08c38" stroke-width="0.9" stroke-opacity="0.55"/></pattern>
+<pattern id="pat-archive-american-trilogy-1" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#c96d38" fill-opacity="0.11"/><path d="M1.5 6L4 2L6.5 6" fill="none" stroke="#c96d38" stroke-width="1.05" stroke-opacity="0.8" stroke-linecap="round" stroke-linejoin="round"/></pattern>
+<pattern id="pat-archive-american-trilogy-2" width="12" height="12" patternUnits="userSpaceOnUse"><rect width="12" height="12" fill="#dfd2c0" fill-opacity="0.07"/><circle cx="3.5" cy="8.5" r="1.7" fill="none" stroke="#dfd2c0" stroke-width="0.95" stroke-opacity="0.78"/><circle cx="9" cy="4" r="1.2" fill="none" stroke="#dfd2c0" stroke-width="0.9" stroke-opacity="0.7"/><circle cx="6.5" cy="10.5" r="0.7" fill="#dfd2c0" fill-opacity="0.65"/></pattern>
+  </defs>
+
+  <!-- Subterranean Speakeasy Blueprint Canvas -->
+  <rect width="420" height="460" fill="url(#bg-glow-archive-american-trilogy)"/>
+  <rect x="14" y="14" width="392" height="432" rx="8" fill="none" stroke="#e8c59e" stroke-opacity="0.1" stroke-width="1"/>
+
+  <!-- Proportional Patterned Liquid Layers (Clipped to Glass & Masked Around Ice) -->
+  <g clip-path="url(#glass-clip-archive-american-trilogy)">
+    <g mask="url(#ice-mask-archive-american-trilogy)">
+      <rect x="40" y="287.09" width="240" height="58.91" fill="url(#pat-archive-american-trilogy-0)"/><line x1="40" y1="287.09" x2="280" y2="287.09" stroke="#e08c38" stroke-width="0.7" stroke-opacity="0.45" stroke-dasharray="2 2"/><rect x="40" y="228.18" width="240" height="58.91" fill="url(#pat-archive-american-trilogy-1)"/><line x1="40" y1="228.18" x2="280" y2="228.18" stroke="#c96d38" stroke-width="0.7" stroke-opacity="0.45" stroke-dasharray="2 2"/><rect x="40" y="216.40" width="240" height="11.78" fill="url(#pat-archive-american-trilogy-2)"/><line x1="40" y1="216.40" x2="280" y2="216.40" stroke="#dfd2c0" stroke-width="1.1" stroke-opacity="0.7"/>
+    </g>
+    <rect x="95.8" y="219.4" width="42.0" height="42.0" rx="1.5" transform="rotate(-5 116.8 240.4)" fill="#110c0a" fill-opacity="0.25" stroke="#dfd2c0" stroke-width="0.85" stroke-opacity="0.22"/><rect x="105.8" y="265.4" width="38.0" height="38.0" rx="1.5" transform="rotate(7 124.8 284.4)" fill="#110c0a" fill-opacity="0.25" stroke="#dfd2c0" stroke-width="0.85" stroke-opacity="0.22"/>
+  </g>
+
+  <!-- Minimalist Open-Top Glass Silhouette -->
+  <path d="M 77.0 184.0 L 98.0 347.0 Q 98.0 351.0 103.0 351.0 L 201.0 351.0 Q 206.0 351.0 206.0 347.0 L 227.0 184.0" fill="none" stroke="#d8c7b4" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Garnish, Bitters Droplets & Botanical Accents -->
+  <rect x="138.0" y="332.0" width="11" height="11" rx="1.5" fill="#14100e" stroke="#e8c86b" stroke-width="1.2" stroke-dasharray="2 1.5"/>
+<path d="M 205.8 202.4 C 209.3 206.9, 209.3 210.9, 205.8 210.9 C 202.3 210.9, 202.3 206.9, 205.8 202.4 Z" fill="none" stroke="#eba844" stroke-width="1.35"/>
+<path d="M 205.8 189.9 C 209.3 194.4, 209.3 198.4, 205.8 198.4 C 202.3 198.4, 202.3 194.4, 205.8 189.9 Z" fill="none" stroke="#eba844" stroke-width="1.35"/>
+<path d="M 205.8 177.4 C 209.3 181.9, 209.3 185.9, 205.8 185.9 C 202.3 185.9, 202.3 181.9, 205.8 177.4 Z" fill="none" stroke="#eba844" stroke-width="1.35"/>
+<g fill="none" stroke="#e8993a" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round"><path d="M 110.0 174.0 C 110.0 196.0, 144.0 198.0, 146.0 174.0 C 148.0 156.0, 126.0 156.0, 128.0 176.0 C 130.0 198.0, 174.0 198.0, 176.0 176.0 C 178.0 158.0, 158.0 158.0, 160.0 178.0 C 162.0 196.0, 192.0 194.0, 198.0 176.0"/><path d="M 114.0 174.0 C 114.0 192.0, 140.0 194.0, 142.0 174.0" stroke-opacity="0.55" stroke-width="1.0"/></g>
+
+  <!-- Proportional Layer Callouts -->
+  <g class="spec-svg-callout"><polyline points="225.0,222.3 234.0,222.3 240.0,222.3" fill="none" stroke="#dfd2c0" stroke-width="0.85" stroke-opacity="0.65"/><circle cx="225.0" cy="222.3" r="1.5" fill="#dfd2c0"/><text x="245.0" y="225.3" fill="#f5efe8" font-family="'JetBrains Mono', monospace" font-size="8.2" letter-spacing="0.01em"><tspan class="spec-measure" data-count="1" data-unit="splash" fill="#dfd2c0" font-weight="600">1 splash</tspan> <tspan fill="#c7b9ab">Club soda</tspan></text></g><g class="spec-svg-callout"><polyline points="220.5,257.6 234.0,257.6 240.0,257.6" fill="none" stroke="#c96d38" stroke-width="0.85" stroke-opacity="0.65"/><circle cx="220.5" cy="257.6" r="1.5" fill="#c96d38"/><text x="245.0" y="260.6" fill="#f5efe8" font-family="'JetBrains Mono', monospace" font-size="8.2" letter-spacing="0.01em"><tspan class="spec-measure" data-oz="1" fill="#c96d38" font-weight="600">1 oz</tspan> <tspan fill="#c7b9ab">Applejack brandy</tspan></text></g><g class="spec-svg-callout"><polyline points="212.8,316.5 234.0,316.5 240.0,316.5" fill="none" stroke="#e08c38" stroke-width="0.85" stroke-opacity="0.65"/><circle cx="212.8" cy="316.5" r="1.5" fill="#e08c38"/><text x="245.0" y="319.5" fill="#f5efe8" font-family="'JetBrains Mono', monospace" font-size="8.2" letter-spacing="0.01em"><tspan class="spec-measure" data-oz="1" fill="#e08c38" font-weight="600">1 oz</tspan> <tspan fill="#c7b9ab">Rye whiskey</tspan></text></g>
+</svg>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 460" width="100%" height="100%" class="cocktail-spec-svg" role="img" aria-label="Irish Coffee proportional build diagram">
+  <defs>
+    <radialGradient id="bg-glow-archive-irish-coffee" cx="38%" cy="52%" r="60%">
+      <stop offset="0%" stop-color="#1d1511"/>
+      <stop offset="65%" stop-color="#110c0a"/>
+      <stop offset="100%" stop-color="#090605"/>
+    </radialGradient>
+    <clipPath id="glass-clip-archive-irish-coffee">
+      <path d="M 96.0 165.0 L 104.0 312.0 L 200.0 312.0 L 208.0 165.0 Z"/>
+    </clipPath>
+    <mask id="ice-mask-archive-irish-coffee">
+      <rect x="0" y="0" width="420" height="460" fill="white"/>
+      
+    </mask>
+    <pattern id="pat-archive-irish-coffee-0" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#e08c38" fill-opacity="0.11"/><line x1="2" y1="1.5" x2="2" y2="6.5" stroke="#e08c38" stroke-width="1.15" stroke-opacity="0.82" stroke-linecap="round"/><line x1="5.5" y1="1.5" x2="5.5" y2="6.5" stroke="#e08c38" stroke-width="1.15" stroke-opacity="0.82" stroke-linecap="round"/><line x1="2" y1="4" x2="5.5" y2="4" stroke="#e08c38" stroke-width="0.9" stroke-opacity="0.55"/></pattern>
+<pattern id="pat-archive-irish-coffee-1" width="10" height="6" patternUnits="userSpaceOnUse"><rect width="10" height="6" fill="#d68a3e" fill-opacity="0.12"/><line x1="1.5" y1="2" x2="5.5" y2="2" stroke="#d68a3e" stroke-width="1.15" stroke-opacity="0.85" stroke-linecap="round"/><line x1="5.5" y1="5" x2="9" y2="5" stroke="#d68a3e" stroke-width="1.15" stroke-opacity="0.85" stroke-linecap="round"/></pattern>
+<pattern id="pat-archive-irish-coffee-2" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#9e6b47" fill-opacity="0.11"/><line x1="2" y1="1.5" x2="2" y2="6.5" stroke="#9e6b47" stroke-width="1.15" stroke-opacity="0.82" stroke-linecap="round"/><line x1="5.5" y1="1.5" x2="5.5" y2="6.5" stroke="#9e6b47" stroke-width="1.15" stroke-opacity="0.82" stroke-linecap="round"/><line x1="2" y1="4" x2="5.5" y2="4" stroke="#9e6b47" stroke-width="0.9" stroke-opacity="0.55"/></pattern>
+<pattern id="pat-archive-irish-coffee-3" width="5" height="5" patternUnits="userSpaceOnUse"><rect width="5" height="5" fill="#f2e6d8" fill-opacity="0.18"/><circle cx="1.5" cy="1.5" r="0.9" fill="#f2e6d8" fill-opacity="0.9"/><circle cx="4" cy="3.8" r="0.75" fill="#f2e6d8" fill-opacity="0.75"/></pattern>
+  </defs>
+
+  <!-- Subterranean Speakeasy Blueprint Canvas -->
+  <rect width="420" height="460" fill="url(#bg-glow-archive-irish-coffee)"/>
+  <rect x="14" y="14" width="392" height="432" rx="8" fill="none" stroke="#e8c59e" stroke-opacity="0.1" stroke-width="1"/>
+
+  <!-- Proportional Patterned Liquid Layers (Clipped to Glass & Masked Around Ice) -->
+  <g clip-path="url(#glass-clip-archive-irish-coffee)">
+    <g mask="url(#ice-mask-archive-irish-coffee)">
+      <rect x="40" y="294.07" width="240" height="17.93" fill="url(#pat-archive-irish-coffee-0)"/><line x1="40" y1="294.07" x2="280" y2="294.07" stroke="#e08c38" stroke-width="0.7" stroke-opacity="0.45" stroke-dasharray="2 2"/><rect x="40" y="282.42" width="240" height="11.65" fill="url(#pat-archive-irish-coffee-1)"/><line x1="40" y1="282.42" x2="280" y2="282.42" stroke="#d68a3e" stroke-width="0.7" stroke-opacity="0.45" stroke-dasharray="2 2"/><rect x="40" y="219.68" width="240" height="62.74" fill="url(#pat-archive-irish-coffee-2)"/><line x1="40" y1="219.68" x2="280" y2="219.68" stroke="#9e6b47" stroke-width="0.7" stroke-opacity="0.45" stroke-dasharray="2 2"/><rect x="40" y="201.75" width="240" height="17.93" fill="url(#pat-archive-irish-coffee-3)"/><line x1="40" y1="201.75" x2="280" y2="201.75" stroke="#f2e6d8" stroke-width="1.1" stroke-opacity="0.7"/>
+    </g>
+    
+  </g>
+
+  <!-- Minimalist Open-Top Glass Silhouette -->
+  <path d="M 95.0 165.0 L 103.0 313.0 Q 103.0 317.0 108.0 317.0 L 196.0 317.0 Q 201.0 317.0 201.0 313.0 L 209.0 165.0" fill="none" stroke="#d8c7b4" stroke-width="2" stroke-linecap="round"/><path d="M 98.0 189.0 C 66.0 189.0, 74.0 288.0, 106.0 288.0" fill="none" stroke="#d8c7b4" stroke-width="2" stroke-linecap="round"/><line x1="152.0" y1="317.0" x2="152.0" y2="350" stroke="#d8c7b4" stroke-width="2.2"/><path d="M 114.0 350 L 190.0 350" stroke="#d8c7b4" stroke-width="2.2" stroke-linecap="round"/>
+
+  <!-- Garnish, Bitters Droplets & Botanical Accents -->
+  
+
+  <!-- Proportional Layer Callouts -->
+  <g class="spec-svg-callout"><polyline points="209.5,210.7 234.0,210.7 240.0,210.7" fill="none" stroke="#f2e6d8" stroke-width="0.85" stroke-opacity="0.65"/><circle cx="209.5" cy="210.7" r="1.5" fill="#f2e6d8"/><text x="245.0" y="213.7" fill="#f5efe8" font-family="'JetBrains Mono', monospace" font-size="8.2" letter-spacing="0.01em"><tspan class="spec-measure" fill="#f2e6d8" font-weight="600">TO TOP</tspan> <tspan fill="#c7b9ab">Whipped Cream</tspan></text></g><g class="spec-svg-callout"><polyline points="207.3,251.0 234.0,251.0 240.0,251.0" fill="none" stroke="#9e6b47" stroke-width="0.85" stroke-opacity="0.65"/><circle cx="207.3" cy="251.0" r="1.5" fill="#9e6b47"/><text x="245.0" y="254.0" fill="#f5efe8" font-family="'JetBrains Mono', monospace" font-size="8.2" letter-spacing="0.01em"><tspan class="spec-measure" data-oz="3.5" fill="#9e6b47" font-weight="600">3.5 oz</tspan> <tspan fill="#c7b9ab">Hot Coffee</tspan></text></g><g class="spec-svg-callout"><polyline points="205.3,288.2 234.0,288.2 240.0,288.2" fill="none" stroke="#d68a3e" stroke-width="0.85" stroke-opacity="0.65"/><circle cx="205.3" cy="288.2" r="1.5" fill="#d68a3e"/><text x="245.0" y="291.2" fill="#f5efe8" font-family="'JetBrains Mono', monospace" font-size="8.2" letter-spacing="0.01em"><tspan class="spec-measure" data-oz="0.65" fill="#d68a3e" font-weight="600">0.65 oz</tspan> <tspan fill="#c7b9ab">Demerara Syrup</tspan></text></g><g class="spec-svg-callout"><polyline points="204.5,303.0 234.0,303.7 240.0,303.7" fill="none" stroke="#e08c38" stroke-width="0.85" stroke-opacity="0.65"/><circle cx="204.5" cy="303.0" r="1.5" fill="#e08c38"/><text x="245.0" y="306.7" fill="#f5efe8" font-family="'JetBrains Mono', monospace" font-size="8.2" letter-spacing="0.01em"><tspan class="spec-measure" data-oz="1" fill="#e08c38" font-weight="600">1 oz</tspan> <tspan fill="#c7b9ab">Bushmills Irish</tspan></text></g>
+</svg>

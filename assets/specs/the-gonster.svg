@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 460" width="100%" height="100%" class="cocktail-spec-svg" role="img" aria-label="The Gonster proportional build diagram">
+  <defs>
+    <radialGradient id="bg-glow-archive-the-gonster" cx="38%" cy="52%" r="60%">
+      <stop offset="0%" stop-color="#1d1511"/>
+      <stop offset="65%" stop-color="#110c0a"/>
+      <stop offset="100%" stop-color="#090605"/>
+    </radialGradient>
+    <clipPath id="glass-clip-archive-the-gonster">
+      <path d="M 90.0 146.0 L 106.0 346.0 L 198.0 346.0 L 214.0 146.0 Z"/>
+    </clipPath>
+    <mask id="ice-mask-archive-the-gonster">
+      <rect x="0" y="0" width="420" height="460" fill="white"/>
+      
+    </mask>
+    <pattern id="pat-archive-the-gonster-0" width="12" height="12" patternUnits="userSpaceOnUse"><rect width="12" height="12" fill="#8ab868" fill-opacity="0.07"/><circle cx="3.5" cy="8.5" r="1.7" fill="none" stroke="#8ab868" stroke-width="0.95" stroke-opacity="0.78"/><circle cx="9" cy="4" r="1.2" fill="none" stroke="#8ab868" stroke-width="0.9" stroke-opacity="0.7"/><circle cx="6.5" cy="10.5" r="0.7" fill="#8ab868" fill-opacity="0.65"/></pattern>
+<pattern id="pat-archive-the-gonster-1" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#8c6246" fill-opacity="0.11"/><line x1="2" y1="1.5" x2="2" y2="6.5" stroke="#8c6246" stroke-width="1.15" stroke-opacity="0.82" stroke-linecap="round"/><line x1="5.5" y1="1.5" x2="5.5" y2="6.5" stroke="#8c6246" stroke-width="1.15" stroke-opacity="0.82" stroke-linecap="round"/><line x1="2" y1="4" x2="5.5" y2="4" stroke="#8c6246" stroke-width="0.9" stroke-opacity="0.55"/></pattern>
+  </defs>
+
+  <!-- Subterranean Speakeasy Blueprint Canvas -->
+  <rect width="420" height="460" fill="url(#bg-glow-archive-the-gonster)"/>
+  <rect x="14" y="14" width="392" height="432" rx="8" fill="none" stroke="#e8c59e" stroke-opacity="0.1" stroke-width="1"/>
+
+  <!-- Proportional Patterned Liquid Layers (Clipped to Glass & Masked Around Ice) -->
+  <g clip-path="url(#glass-clip-archive-the-gonster)">
+    <g mask="url(#ice-mask-archive-the-gonster)">
+      <rect x="40" y="271.00" width="240" height="75.00" fill="url(#pat-archive-the-gonster-0)"/><line x1="40" y1="271.00" x2="280" y2="271.00" stroke="#8ab868" stroke-width="0.7" stroke-opacity="0.45" stroke-dasharray="2 2"/><rect x="40" y="196.00" width="240" height="75.00" fill="url(#pat-archive-the-gonster-1)"/><line x1="40" y1="196.00" x2="280" y2="196.00" stroke="#8c6246" stroke-width="1.1" stroke-opacity="0.7"/>
+    </g>
+    
+  </g>
+
+  <!-- Minimalist Open-Top Glass Silhouette -->
+  <path d="M 89.0 146.0 L 105.0 348.0 Q 105.0 352.0 110.0 352.0 L 194.0 352.0 Q 199.0 352.0 199.0 348.0 L 215.0 146.0" fill="none" stroke="#d8c7b4" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Garnish, Bitters Droplets & Botanical Accents -->
+  
+
+  <!-- Proportional Layer Callouts -->
+  <g class="spec-svg-callout"><polyline points="211.0,233.5 234.0,233.5 240.0,233.5" fill="none" stroke="#8c6246" stroke-width="0.85" stroke-opacity="0.65"/><circle cx="211.0" cy="233.5" r="1.5" fill="#8c6246"/><text x="245.0" y="236.5" fill="#f5efe8" font-family="'JetBrains Mono', monospace" font-size="8.2" letter-spacing="0.01em"><tspan class="spec-measure" data-oz="8" fill="#8c6246" font-weight="600">8 oz</tspan> <tspan fill="#c7b9ab">Guinness Draught</tspan></text></g><g class="spec-svg-callout"><polyline points="205.0,308.5 234.0,308.5 240.0,308.5" fill="none" stroke="#8ab868" stroke-width="0.85" stroke-opacity="0.65"/><circle cx="205.0" cy="308.5" r="1.5" fill="#8ab868"/><text x="245.0" y="311.5" fill="#f5efe8" font-family="'JetBrains Mono', monospace" font-size="8.2" letter-spacing="0.01em"><tspan class="spec-measure" data-oz="8" fill="#8ab868" font-weight="600">8 oz</tspan> <tspan fill="#c7b9ab">Monster Energy drink</tspan></text></g>
+</svg>
