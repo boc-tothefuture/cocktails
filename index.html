@@ -2251,7 +2251,38 @@
         </div>
 
         <ol class="rotation-steps-list" id="rotation-steps-list">
-          <!-- Dynamically populated via updateHostRotation() -->
+          <li class="rotation-step-row is-current">
+            <div class="step-left">
+              <span class="step-idx">1.</span>
+              <span class="step-name">Doug</span>
+            </div>
+            <span class="step-tag">CURRENT HOST</span>
+          </li>
+          <li class="rotation-step-row is-next">
+            <div class="step-left">
+              <span class="step-idx">2.</span>
+              <span class="step-name">Brian</span>
+            </div>
+            <span class="step-tag">UP NEXT</span>
+          </li>
+          <li class="rotation-step-row">
+            <div class="step-left">
+              <span class="step-idx">3.</span>
+              <span class="step-name">Matt</span>
+            </div>
+          </li>
+          <li class="rotation-step-row">
+            <div class="step-left">
+              <span class="step-idx">4.</span>
+              <span class="step-name">Jason</span>
+            </div>
+          </li>
+          <li class="rotation-step-row">
+            <div class="step-left">
+              <span class="step-idx">5.</span>
+              <span class="step-name">Quinn</span>
+            </div>
+          </li>
         </ol>
 
         <div class="popover-footer-note">
@@ -8875,9 +8906,11 @@
       const rotationDropdown = document.getElementById('rotation-dropdown');
       const upNextNameEl = document.getElementById('up-next-name');
       const rotationStepsListEl = document.getElementById('rotation-steps-list');
+      let currentFeaturedHost = 'Doug';
 
       function updateHostRotation(hostText) {
-        const norm = (hostText || '').toLowerCase();
+        if (hostText) currentFeaturedHost = hostText;
+        const norm = (currentFeaturedHost || '').toLowerCase();
         let currentIdx = -1;
         for (let i = 0; i < HOST_ROTATION.length; i++) {
           if (norm.includes(HOST_ROTATION[i].toLowerCase())) {
@@ -8896,8 +8929,9 @@
           upNextNameEl.textContent = nextHost.toUpperCase();
         }
 
-        if (rotationStepsListEl) {
-          rotationStepsListEl.innerHTML = HOST_ROTATION.map((name, i) => {
+        const stepsList = document.getElementById('rotation-steps-list') || rotationStepsListEl;
+        if (stepsList) {
+          stepsList.innerHTML = HOST_ROTATION.map((name, i) => {
             const isCurrent = i === currentIdx;
             const isNext = i === nextIdx;
             let rowClass = 'rotation-step-row';
@@ -8925,6 +8959,12 @@
       function toggleRotationDropdown(show) {
         if (!upNextBtn || !rotationDropdown) return;
         const willShow = show !== undefined ? show : rotationDropdown.hidden;
+        if (willShow) {
+          const list = document.getElementById('rotation-steps-list');
+          if (!list || !list.children.length) {
+            updateHostRotation(currentFeaturedHost);
+          }
+        }
         rotationDropdown.hidden = !willShow;
         upNextBtn.setAttribute('aria-expanded', String(willShow));
         upNextBtn.classList.toggle('is-open', willShow);
@@ -8948,6 +8988,9 @@
             upNextBtn.focus();
           }
         });
+
+        // Initialize rotation immediately on script run
+        updateHostRotation('Doug');
       }
 
       function renderActiveStageSession(sessionId, scrollStageIntoView) {
