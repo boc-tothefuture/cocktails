@@ -1908,6 +1908,351 @@
       box-shadow: 0 0 12px rgba(232, 153, 58, 0.4);
     }
 
+    /* Unified Discovery Duo Capsule ("I'm Feeling Lucky" + "What Can I Make?") */
+    .discovery-duo-capsule {
+      display: inline-flex;
+      align-items: stretch;
+      background: rgba(14, 10, 8, 0.92);
+      border: 1px solid rgba(232, 153, 58, 0.45);
+      border-radius: 999px;
+      padding: 0.2rem;
+      box-shadow: 0 0 18px rgba(232, 153, 58, 0.14);
+      gap: 0.15rem;
+      flex-shrink: 0;
+    }
+
+    .discovery-duo-capsule .vault-lucky-btn {
+      border-color: transparent;
+      background: rgba(232, 153, 58, 0.14);
+      box-shadow: none;
+      padding: 0.44rem 0.95rem;
+      font-size: 0.76rem;
+    }
+
+    .discovery-duo-capsule .vault-lucky-btn:hover {
+      background: var(--accent-lantern);
+      color: #0b0807;
+      transform: none;
+      box-shadow: 0 0 14px rgba(232, 153, 58, 0.45);
+    }
+
+    .duo-capsule-divider {
+      width: 1px;
+      background: rgba(232, 197, 158, 0.2);
+      margin: 0.25rem 0.1rem;
+    }
+
+    .vault-maker-btn {
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-parchment);
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 0.44rem 0.95rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+      white-space: nowrap;
+    }
+
+    .vault-maker-btn:hover,
+    .vault-maker-btn:focus-visible {
+      background: rgba(232, 153, 58, 0.16);
+      color: var(--accent-lantern-glow);
+      outline: none;
+    }
+
+    .vault-maker-btn .maker-chevron {
+      font-size: 0.7rem;
+      color: var(--accent-lantern);
+      transition: transform 0.2s ease;
+    }
+
+    .vault-maker-btn[aria-expanded="true"] {
+      background: linear-gradient(135deg, var(--accent-lantern), #c97a22);
+      color: #0b0807;
+      font-weight: 700;
+      box-shadow: 0 0 16px rgba(232, 153, 58, 0.4);
+    }
+
+    .vault-maker-btn[aria-expanded="true"] .maker-chevron {
+      color: #0b0807;
+      transform: rotate(180deg);
+    }
+
+    /* Progressive "What Can I Make?" Backbar Drawer */
+    .backbar-drawer[hidden],
+    .backbar-step[hidden],
+    .backbar-footer[hidden],
+    .rotation-popover-dropdown[hidden] {
+      display: none !important;
+    }
+
+    .backbar-drawer {
+      background:
+        radial-gradient(circle at 82% 0%, rgba(232, 153, 58, 0.12), transparent 58%),
+        linear-gradient(160deg, rgba(26, 19, 15, 0.96), rgba(14, 10, 8, 0.98));
+      border: 1px solid rgba(232, 153, 58, 0.36);
+      border-radius: 0.85rem;
+      padding: 1.1rem 1.35rem;
+      box-shadow:
+        0 14px 36px rgba(0, 0, 0, 0.65),
+        inset 0 1px 0 rgba(255, 235, 210, 0.08);
+      animation: popoverFadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .backbar-step {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .backbar-step + .backbar-step {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px dashed rgba(232, 197, 158, 0.16);
+      animation: popoverFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .backbar-step-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .backbar-step-title {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-lantern-glow);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .backbar-step-badge {
+      background: rgba(232, 153, 58, 0.2);
+      color: var(--accent-lantern);
+      padding: 0.12rem 0.45rem;
+      border-radius: 4px;
+      font-size: 0.62rem;
+      font-weight: 700;
+    }
+
+    .backbar-step-hint {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      color: var(--text-slate);
+    }
+
+    .backbar-chips-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.48rem;
+    }
+
+    .backbar-chip {
+      appearance: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.42rem;
+      padding: 0.4rem 0.85rem;
+      border-radius: 999px;
+      background: rgba(30, 23, 19, 0.85);
+      border: 1px solid rgba(232, 197, 158, 0.18);
+      color: var(--text-mist);
+      font-family: var(--font-sans);
+      font-size: 0.79rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.18s ease;
+    }
+
+    .backbar-chip:hover,
+    .backbar-chip:focus-visible {
+      border-color: var(--border-brass);
+      color: var(--text-parchment);
+      background: rgba(44, 32, 25, 0.92);
+      transform: translateY(-1px);
+    }
+
+    .backbar-chip[aria-pressed="true"] {
+      background: linear-gradient(135deg, rgba(232, 153, 58, 0.3), rgba(184, 98, 42, 0.24));
+      border-color: var(--accent-lantern);
+      color: #fff;
+      font-weight: 600;
+      box-shadow: 0 0 14px rgba(232, 153, 58, 0.24);
+    }
+
+    .backbar-chip.is-unlock-suggestion:not([aria-pressed="true"]) {
+      border-style: dashed;
+      border-color: rgba(245, 181, 99, 0.48);
+      color: var(--text-parchment);
+    }
+
+    .backbar-chip-badge {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      padding: 0.08rem 0.38rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-slate);
+    }
+
+    .backbar-chip[aria-pressed="true"] .backbar-chip-badge {
+      background: var(--accent-lantern);
+      color: #0b0807;
+      font-weight: 700;
+    }
+
+    .backbar-chip.is-unlock-suggestion:not([aria-pressed="true"]) .backbar-chip-badge {
+      background: rgba(232, 153, 58, 0.18);
+      color: var(--accent-lantern-glow);
+    }
+
+    .backbar-chip.is-ready-unlock:not([aria-pressed="true"]) .backbar-chip-badge {
+      background: rgba(74, 222, 128, 0.18);
+      color: #86efac;
+      font-weight: 600;
+    }
+
+    /* Drawer Footer */
+    .backbar-footer {
+      margin-top: 1rem;
+      padding-top: 0.9rem;
+      border-top: 1px solid rgba(232, 197, 158, 0.14);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .backbar-status-group {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+    }
+
+    .backbar-stat-pill {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      padding: 0.34rem 0.75rem;
+      border-radius: 0.45rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .backbar-stat-pill.ready {
+      background: rgba(74, 222, 128, 0.12);
+      border: 1px solid rgba(74, 222, 128, 0.4);
+      color: #86efac;
+      font-weight: 600;
+    }
+
+    .backbar-stat-pill.almost {
+      background: rgba(232, 153, 58, 0.14);
+      border: 1px dashed rgba(232, 153, 58, 0.45);
+      color: var(--accent-lantern-glow);
+    }
+
+    .backbar-actions-group {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .backbar-util-btn {
+      appearance: none;
+      font-family: var(--font-mono);
+      font-size: 0.67rem;
+      color: var(--text-mist);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-stone);
+      padding: 0.32rem 0.7rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .backbar-util-btn:hover {
+      border-color: var(--border-brass);
+      color: var(--text-parchment);
+    }
+
+    .backbar-util-btn[aria-expanded="true"],
+    .backbar-util-btn.active {
+      border-color: var(--accent-lantern);
+      color: var(--accent-lantern-glow);
+      background: rgba(232, 153, 58, 0.12);
+    }
+
+    /* Live Card Match Ribbon on Filtered Vault Cards */
+    .card-match-ribbon {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      font-weight: 600;
+      padding: 0.36rem 0.68rem;
+      border-radius: 0.45rem;
+      margin-bottom: 0.65rem;
+      letter-spacing: 0.04em;
+    }
+
+    .card-match-ribbon.is-ready {
+      background: rgba(74, 222, 128, 0.14);
+      border: 1px solid rgba(74, 222, 128, 0.4);
+      color: #86efac;
+    }
+
+    .card-match-ribbon.is-almost {
+      background: rgba(232, 153, 58, 0.15);
+      border: 1px dashed rgba(232, 153, 58, 0.5);
+      color: var(--accent-lantern-glow);
+    }
+
+    .card-match-ribbon.is-partial {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-stone);
+      color: var(--text-slate);
+    }
+
+    .ribbon-add-btn {
+      appearance: none;
+      background: rgba(232, 153, 58, 0.24);
+      border: 1px solid var(--accent-lantern);
+      color: var(--text-parchment);
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      font-weight: 700;
+      padding: 0.15rem 0.48rem;
+      border-radius: 999px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+
+    .ribbon-add-btn:hover {
+      background: var(--accent-lantern);
+      color: #0b0807;
+    }
+
     /* Lucky Pick Highlight state on Vault Card */
     .cocktail-card.is-lucky-pick {
       border-color: var(--accent-lantern) !important;
@@ -2396,17 +2741,25 @@
               aria-label="Search cellar vault cocktails"
             >
           </div>
-          <button type="button" class="vault-lucky-btn" id="vault-lucky-btn" aria-label="I'm feeling lucky: select and scroll to a random cocktail">
-            <svg class="lucky-dice-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect width="18" height="18" x="3" y="3" rx="4" />
-              <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" />
-              <circle cx="15.5" cy="8.5" r="1.5" fill="currentColor" />
-              <circle cx="8.5" cy="15.5" r="1.5" fill="currentColor" />
-              <circle cx="15.5" cy="15.5" r="1.5" fill="currentColor" />
-              <circle cx="12" cy="12" r="1.5" fill="currentColor" />
-            </svg>
-            <span>I'm Feeling Lucky</span>
-          </button>
+          <div class="discovery-duo-capsule" role="group" aria-label="Cocktail discovery tools">
+            <button type="button" class="vault-lucky-btn" id="vault-lucky-btn" aria-label="I'm feeling lucky: select and scroll to a random cocktail">
+              <svg class="lucky-dice-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect width="18" height="18" x="3" y="3" rx="4" />
+                <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor" />
+                <circle cx="15.5" cy="8.5" r="1.5" fill="currentColor" />
+                <circle cx="8.5" cy="15.5" r="1.5" fill="currentColor" />
+                <circle cx="15.5" cy="15.5" r="1.5" fill="currentColor" />
+                <circle cx="12" cy="12" r="1.5" fill="currentColor" />
+              </svg>
+              <span id="vault-lucky-btn-label">I'm Feeling Lucky</span>
+            </button>
+            <span class="duo-capsule-divider" aria-hidden="true"></span>
+            <button type="button" class="vault-maker-btn" id="vault-maker-btn" aria-expanded="false" aria-controls="backbar-drawer" title="Filter cocktails by the bottles and ingredients you have on hand">
+              <span aria-hidden="true">🥃</span>
+              <span id="vault-maker-btn-label">What Can I Make?</span>
+              <span class="maker-chevron" aria-hidden="true">▾</span>
+            </button>
+          </div>
           <div class="search-Easter-hints">
             <span>QUICK SEARCH:</span>
             <button type="button" class="hint-chip" data-quick-search="bourbon">Bourbon</button>
@@ -2414,6 +2767,70 @@
             <button type="button" class="hint-chip" data-quick-search="cynar">Cynar</button>
             <button type="button" class="hint-chip" data-quick-search="doug">Doug</button>
             <button type="button" class="hint-chip" data-quick-search="quinn">Quinn</button>
+          </div>
+        </div>
+
+        <!-- Progressive "What Can I Make?" Backbar Ingredient Matcher Drawer -->
+        <div class="backbar-drawer" id="backbar-drawer" hidden role="region" aria-label="What Can I Make ingredient matcher">
+          <!-- Step 1: Base Spirits (Always visible when drawer is open) -->
+          <div class="backbar-step" id="backbar-step-spirits">
+            <div class="backbar-step-header">
+              <span class="backbar-step-title">
+                <span class="backbar-step-badge">STEP 1</span>
+                <span>Tap the Base Spirits on Your Shelf</span>
+              </span>
+              <span class="backbar-step-hint" id="backbar-spirits-hint">Select 1 or more spirits to reveal matching liqueurs ➔</span>
+            </div>
+            <div class="backbar-chips-wrap" id="backbar-spirits-chips" role="group" aria-label="Base spirits on hand">
+              <!-- Auto-populated from Vault recipes on boot -->
+            </div>
+          </div>
+
+          <!-- Step 2: Matching Liqueurs, Vermouth & Amari (Auto-expands once a Base Spirit is selected) -->
+          <div class="backbar-step" id="backbar-step-modifiers" hidden>
+            <div class="backbar-step-header">
+              <span class="backbar-step-title">
+                <span class="backbar-step-badge">STEP 2</span>
+                <span id="backbar-modifiers-title">Matching Liqueurs, Vermouth &amp; Amari</span>
+              </span>
+              <span class="backbar-step-hint">Only bottles used with your selected spirits are shown · Garnishes are optional</span>
+            </div>
+            <div class="backbar-chips-wrap" id="backbar-modifiers-chips" role="group" aria-label="Matching liqueurs and modifiers on hand">
+              <!-- Dynamically rendered based on selected base spirits -->
+            </div>
+          </div>
+
+          <!-- Step 3 (Optional Expandable): House Pantry & Mixers -->
+          <div class="backbar-step" id="backbar-step-pantry" hidden>
+            <div class="backbar-step-header">
+              <span class="backbar-step-title">
+                <span class="backbar-step-badge">PANTRY</span>
+                <span>Citrus, Syrups, Bitters &amp; Mixers</span>
+              </span>
+              <span class="backbar-step-hint">Pre-checked as house staples · Tap any item to toggle</span>
+            </div>
+            <div class="backbar-chips-wrap" id="backbar-pantry-chips" role="group" aria-label="House pantry staples on hand">
+              <!-- Auto-populated from Vault recipes on boot -->
+            </div>
+          </div>
+
+          <!-- Live Match Footer (Visible once at least 1 spirit is selected) -->
+          <div class="backbar-footer" id="backbar-footer" hidden>
+            <div class="backbar-status-group" aria-live="polite">
+              <span class="backbar-stat-pill ready" id="backbar-ready-count">🟢 0 Ready to Pour</span>
+              <span class="backbar-stat-pill almost" id="backbar-almost-count">🟡 0 Just 1 Bottle Away</span>
+            </div>
+            <div class="backbar-actions-group">
+              <button type="button" class="backbar-util-btn" id="backbar-pantry-toggle-btn" aria-expanded="false" aria-controls="backbar-step-pantry">
+                ✓ House Pantry Assumed ▾
+              </button>
+              <button type="button" class="backbar-util-btn active" id="backbar-mode-toggle-btn" data-match-mode="smart" title="Toggle between Ready + 1-Bottle-Away vs All drinks containing selected spirits">
+                Mode: Ready + 1-Away
+              </button>
+              <button type="button" class="backbar-util-btn" id="backbar-clear-btn">
+                Clear Shelf
+              </button>
+            </div>
           </div>
         </div>
 
@@ -9401,6 +9818,319 @@
       let activeProv = 'all';
       let bypassed404For = new Set();
 
+      // ============================================================
+      // Auto-Indexing "What Can I Make?" Backbar Ingredient Matcher
+      // Automatically parses .spec-list items from all .vault-card
+      // elements on boot (and auto-discovers any future ingredients).
+      // ============================================================
+      const CANONICAL_INGREDIENT_RULES = [
+        // Theatrical / non-blocking elements (automatically treated as optional like garnishes)
+        { id: '_optional', shelf: 'optional', label: 'Optional', shortLabel: 'Optional', keywords: ['smoke', 'mist', 'boiling hot water', 'filtered water', 'sidecar dropper', 'whipped cream', 'ground cinnamon', 'candied ginger', 'vanilla extract', 'roasted coffee beans', 'grapefruit peel', 'rosemary sprig', 'fire tincture'] },
+
+        // Shelf 1: Base Spirits (check specific whiskeys before generic whiskey)
+        { id: 'irish_whiskey', shelf: 'spirits', label: '🍀 Irish Whiskey', shortLabel: 'Irish Whiskey', keywords: ['irish whiskey', 'tullamore', 'bushmills', 'pot still irish'] },
+        { id: 'scotch', shelf: 'spirits', label: '🔥 Scotch', shortLabel: 'Scotch', keywords: ['scotch'] },
+        { id: 'whiskey', shelf: 'spirits', label: '🥃 Bourbon & Rye', shortLabel: 'Bourbon / Rye', keywords: ['bourbon', 'rye whiskey', 'straight rye', 'whiskey'] },
+        { id: 'gin', shelf: 'spirits', label: '🍸 Gin', shortLabel: 'Gin', keywords: ['gin', "pimm's", 'pimms'] },
+        { id: 'mezcal', shelf: 'spirits', label: '🌵 Mezcal', shortLabel: 'Mezcal', keywords: ['mezcal'] },
+        { id: 'tequila', shelf: 'spirits', label: '🌵 Tequila', shortLabel: 'Tequila', keywords: ['tequila', 'reposado'] },
+        { id: 'vodka', shelf: 'spirits', label: '❄️ Vodka', shortLabel: 'Vodka', keywords: ['vodka'] },
+        { id: 'brandy', shelf: 'spirits', label: '🍎 Cognac & Applejack', shortLabel: 'Cognac / Applejack', keywords: ['cognac', 'applejack', 'apple brandy'] },
+        { id: 'rum', shelf: 'spirits', label: '🏝️ Rum', shortLabel: 'Rum', keywords: ['rum'] },
+        { id: 'beer', shelf: 'spirits', label: '🍺 Beer & Stout', shortLabel: 'Beer / Stout', keywords: ['stout', 'lager', 'pilsner', 'high life', 'guinness'] },
+
+        // Shelf 2: Backbar Liqueurs, Vermouth & Amari
+        { id: 'orange_liqueur', shelf: 'modifiers', label: '🍊 Cointreau / Grand Marnier', shortLabel: 'Orange Liqueur', keywords: ['cointreau', 'grand marnier', 'orange liqueur', 'triple sec'] },
+        { id: 'aperol', shelf: 'modifiers', label: '🍊 Aperol', shortLabel: 'Aperol', keywords: ['aperol'] },
+        { id: 'campari', shelf: 'modifiers', label: '🔴 Campari', shortLabel: 'Campari', keywords: ['campari'] },
+        { id: 'benedictine', shelf: 'modifiers', label: '🍯 Bénédictine D.O.M.', shortLabel: 'Bénédictine', keywords: ['bénédictine', 'benedictine'] },
+        { id: 'maraschino', shelf: 'modifiers', label: '🍒 Luxardo Maraschino', shortLabel: 'Luxardo Maraschino', keywords: ['maraschino'] },
+        { id: 'sweet_vermouth', shelf: 'modifiers', label: '🍷 Sweet Vermouth', shortLabel: 'Sweet Vermouth', keywords: ['sweet vermouth', 'carpano antica'] },
+        { id: 'dry_vermouth', shelf: 'modifiers', label: '🍸 Dry / Blanc Vermouth', shortLabel: 'Dry Vermouth', keywords: ['dry vermouth', 'blanc vermouth'] },
+        { id: 'amaro_nonino', shelf: 'modifiers', label: '🌿 Amaro Nonino', shortLabel: 'Amaro Nonino', keywords: ['nonino'] },
+        { id: 'dark_amaro', shelf: 'modifiers', label: '🌱 Cynar / Averna / Amaro', shortLabel: 'Cynar / Amaro', keywords: ['cynar', 'averna', 'gentian amaro', 'strega'] },
+        { id: 'absinthe', shelf: 'modifiers', label: '🧚 Absinthe', shortLabel: 'Absinthe', keywords: ['absinthe', 'herbsaint'] },
+        { id: 'coffee_cream', shelf: 'modifiers', label: '☕ Coffee Liqueur & Cream', shortLabel: 'Coffee Liqueur & Cream', keywords: ['coffee liqueur', 'baileys', 'irish cream', 'bourbon cream', 'pumpkin spice creamer', 'half-and-half', 'heavy cream', 'peppermint schnapps'] },
+        { id: 'cherry_berry', shelf: 'modifiers', label: '🍒 Cherry Heering / Chambord', shortLabel: 'Cherry Heering / Chambord', keywords: ['chambord', 'heering'] },
+        { id: 'amaretto', shelf: 'modifiers', label: '🌰 Amaretto', shortLabel: 'Amaretto', keywords: ['amaretto'] },
+        { id: 'floral_liqueur', shelf: 'modifiers', label: '🌸 St-Germain / Crème de Violette', shortLabel: 'St-Germain / Violette', keywords: ['st-germain', 'elderflower', 'violette'] },
+        { id: 'cacao_ancho', shelf: 'modifiers', label: '🍫 Crème de Cacao / Ancho Reyes', shortLabel: 'Crème de Cacao / Ancho', keywords: ['crème de cacao', 'ancho reyes'] },
+        { id: 'spiced_melon_ginger', shelf: 'modifiers', label: '🍈 Midori / Allspice / Ginger Liqueur', shortLabel: 'Midori / Allspice / Ginger', keywords: ['midori', 'allspice dram', 'ginger liqueur'] },
+
+        // Shelf 3: House Pantry Staples (Pre-checked by default)
+        { id: 'lemon', shelf: 'pantry', pantryDefault: true, label: '🍋 Lemon Juice', shortLabel: 'Lemon Juice', keywords: ['lemon juice'] },
+        { id: 'lime', shelf: 'pantry', pantryDefault: true, label: '🍈 Lime Juice', shortLabel: 'Lime Juice', keywords: ['lime juice', 'lime cordial', 'limeade'] },
+        { id: 'simple_syrup', shelf: 'pantry', pantryDefault: true, label: '🍯 Simple / Demerara Syrup', shortLabel: 'Simple Syrup', keywords: ['simple syrup', 'demerara', 'sugar', 'grenadine', 'cinnamon syrup', 'spiced syrup', 'white chocolate syrup', 'chili syrup', 'passionfruit syrup'] },
+        { id: 'maple_honey_agave', shelf: 'pantry', pantryDefault: true, label: '🍁 Maple, Honey & Agave', shortLabel: 'Maple / Honey / Agave', keywords: ['maple syrup', 'honey', 'agave'] },
+        { id: 'bitters', shelf: 'pantry', pantryDefault: true, label: "💧 Angostura & Peychaud's Bitters", shortLabel: 'Bitters', keywords: ['bitters'] },
+        { id: 'soda_ginger', shelf: 'pantry', pantryDefault: true, label: '🫧 Club Soda & Ginger Beer', shortLabel: 'Club Soda / Ginger Beer', keywords: ['club soda', 'ginger beer', 'ginger ale', 'monster energy'] },
+        { id: 'juices_cider', shelf: 'pantry', pantryDefault: true, label: '🍎 Cider, Juice & Espresso', shortLabel: 'Cider / Juice / Coffee', keywords: ['apple cider', 'cranberry juice', 'orange juice', 'pineapple juice', 'espresso', 'press coffee', 'pumpkin purée'] },
+        { id: 'fresh_pantry', shelf: 'pantry', pantryDefault: true, label: '🌿 Egg White, Mint & Produce', shortLabel: 'Egg / Mint / Berries', keywords: ['egg white', 'mint leaves', 'blackberries', 'cucumber'] }
+      ];
+
+      const vaultMakerBtn = document.getElementById('vault-maker-btn');
+      const vaultMakerBtnLabel = document.getElementById('vault-maker-btn-label');
+      const vaultLuckyBtnLabel = document.getElementById('vault-lucky-btn-label');
+      const backbarDrawer = document.getElementById('backbar-drawer');
+      const backbarSpiritsChips = document.getElementById('backbar-spirits-chips');
+      const backbarSpiritsHint = document.getElementById('backbar-spirits-hint');
+      const backbarStepModifiers = document.getElementById('backbar-step-modifiers');
+      const backbarModifiersTitle = document.getElementById('backbar-modifiers-title');
+      const backbarModifiersChips = document.getElementById('backbar-modifiers-chips');
+      const backbarStepPantry = document.getElementById('backbar-step-pantry');
+      const backbarPantryChips = document.getElementById('backbar-pantry-chips');
+      const backbarFooter = document.getElementById('backbar-footer');
+      const backbarReadyCountEl = document.getElementById('backbar-ready-count');
+      const backbarAlmostCountEl = document.getElementById('backbar-almost-count');
+      const backbarPantryToggleBtn = document.getElementById('backbar-pantry-toggle-btn');
+      const backbarModeToggleBtn = document.getElementById('backbar-mode-toggle-btn');
+      const backbarClearBtn = document.getElementById('backbar-clear-btn');
+
+      const ingredientCatalog = new Map();
+      const cardIngredientMap = new Map(); // cardId -> { spiritIds: Set, modifierIds: Set, pantryIds: Set, requiredIds: Array }
+      const selectedBackbarSpirits = new Set();
+      const selectedBackbarModifiers = new Set();
+      const selectedBackbarPantry = new Set();
+      let backbarMatchMode = 'smart'; // 'smart' (Ready + 1-Away) | 'any' (All drinks with selected spirit)
+      let backbarPantryInitialized = false;
+
+      function cleanSpecItemName(li) {
+        const nameEl = li.querySelector('.spec-name');
+        if (!nameEl) return '';
+        const clone = nameEl.cloneNode(true);
+        clone.querySelectorAll('.spec-note').forEach((n) => n.remove());
+        return clone.textContent.replace(/\s+/g, ' ').trim();
+      }
+
+      function classifySpecIngredient(li) {
+        if (li.classList.contains('spec-garnish') || li.getAttribute('data-optional') === 'true') {
+          return { id: '_optional', shelf: 'optional' };
+        }
+        const explicitId = li.getAttribute('data-ing');
+        if (explicitId && ingredientCatalog.has(explicitId)) {
+          return ingredientCatalog.get(explicitId);
+        }
+        const cleanName = cleanSpecItemName(li);
+        if (!cleanName) return { id: '_optional', shelf: 'optional' };
+        const low = cleanName.toLowerCase();
+
+        for (const rule of CANONICAL_INGREDIENT_RULES) {
+          for (const kw of rule.keywords) {
+            const escaped = kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const pattern = new RegExp(`\\b${escaped}\\b`, 'i');
+            if (pattern.test(low)) {
+              return rule;
+            }
+          }
+        }
+
+        // Auto-Discovery Fallback for brand-new ingredients in future cocktails
+        const slug = 'auto_' + low.replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
+        if (!ingredientCatalog.has(slug)) {
+          const explicitShelf = li.getAttribute('data-shelf') || 'modifiers';
+          const autoRule = {
+            id: slug,
+            shelf: explicitShelf,
+            label: `🍾 ${cleanName}`,
+            shortLabel: cleanName,
+            pantryDefault: explicitShelf === 'pantry',
+            isAutoDiscovered: true,
+            recipeIds: new Set()
+          };
+          ingredientCatalog.set(slug, autoRule);
+          if (autoRule.pantryDefault) selectedBackbarPantry.add(slug);
+        }
+        return ingredientCatalog.get(slug);
+      }
+
+      function indexVaultIngredients() {
+        ingredientCatalog.clear();
+        cardIngredientMap.clear();
+
+        const shouldInitPantry = !backbarPantryInitialized;
+        CANONICAL_INGREDIENT_RULES.forEach((rule) => {
+          if (rule.shelf === 'optional') return;
+          ingredientCatalog.set(rule.id, {
+            ...rule,
+            recipeIds: new Set()
+          });
+          if (shouldInitPantry && rule.shelf === 'pantry' && rule.pantryDefault) {
+            selectedBackbarPantry.add(rule.id);
+          }
+        });
+        backbarPantryInitialized = true;
+
+        const currentVaultCards = document.querySelectorAll('.vault-card:not(.vault-missing-card)');
+        currentVaultCards.forEach((card) => {
+          const spiritIds = new Set();
+          const modifierIds = new Set();
+          const pantryIds = new Set();
+
+          card.querySelectorAll('.spec-list .spec-item').forEach((li) => {
+            const matched = classifySpecIngredient(li);
+            if (!matched || matched.shelf === 'optional') return;
+            const entry = ingredientCatalog.get(matched.id);
+            if (entry) entry.recipeIds.add(card.id);
+
+            if (matched.shelf === 'spirits') spiritIds.add(matched.id);
+            else if (matched.shelf === 'modifiers') modifierIds.add(matched.id);
+            else if (matched.shelf === 'pantry') pantryIds.add(matched.id);
+          });
+
+          const requiredIds = [...spiritIds, ...modifierIds, ...pantryIds];
+          cardIngredientMap.set(card.id, {
+            spiritIds,
+            modifierIds,
+            pantryIds,
+            requiredIds
+          });
+        });
+
+        renderBackbarShelves();
+      }
+
+      function isBackbarIngredientOnHand(id) {
+        return (
+          selectedBackbarSpirits.has(id) ||
+          selectedBackbarModifiers.has(id) ||
+          selectedBackbarPantry.has(id)
+        );
+      }
+
+      function renderBackbarShelves() {
+        if (!backbarSpiritsChips || !backbarModifiersChips || !backbarPantryChips) return;
+
+        // 1. Render Step 1: Base Spirits (sorted by recipe count desc)
+        const spiritsList = Array.from(ingredientCatalog.values())
+          .filter((item) => item.shelf === 'spirits' && item.recipeIds.size > 0)
+          .sort((a, b) => b.recipeIds.size - a.recipeIds.size);
+
+        backbarSpiritsChips.innerHTML = spiritsList
+          .map((sp) => {
+            const isSelected = selectedBackbarSpirits.has(sp.id);
+            const countText = isSelected ? `✓ ${sp.recipeIds.size}` : `${sp.recipeIds.size}`;
+            return `
+              <button type="button" class="backbar-chip" data-backbar-spirit="${sp.id}" aria-pressed="${isSelected}">
+                <span>${sp.label}</span>
+                <span class="backbar-chip-badge">${countText}</span>
+              </button>
+            `;
+          })
+          .join('');
+
+        // 2. Progressive Step 2: Matching Modifiers for selected Base Spirits
+        if (selectedBackbarSpirits.size === 0) {
+          if (backbarStepModifiers) backbarStepModifiers.hidden = true;
+          if (backbarFooter) backbarFooter.hidden = true;
+          if (backbarSpiritsHint) {
+            backbarSpiritsHint.textContent = 'Select 1 or more spirits to reveal matching liqueurs ➔';
+          }
+        } else {
+          if (backbarStepModifiers) backbarStepModifiers.hidden = false;
+          if (backbarFooter) backbarFooter.hidden = false;
+
+          // Candidate cards that use at least one selected base spirit
+          const candidateCards = [];
+          cardIngredientMap.forEach((info, cardId) => {
+            const usesSelectedSpirit = Array.from(info.spiritIds).some((sid) => selectedBackbarSpirits.has(sid));
+            if (usesSelectedSpirit) candidateCards.push({ cardId, info });
+          });
+
+          const selectedSpiritNames = Array.from(selectedBackbarSpirits)
+            .map((sid) => ingredientCatalog.get(sid)?.shortLabel || sid)
+            .join(' + ');
+
+          if (backbarSpiritsHint) {
+            backbarSpiritsHint.textContent = `${selectedBackbarSpirits.size} spirit${selectedBackbarSpirits.size > 1 ? 's' : ''} selected · ${candidateCards.length} candidate cocktail${candidateCards.length === 1 ? '' : 's'}`;
+          }
+          if (backbarModifiersTitle) {
+            backbarModifiersTitle.textContent = `Matching Liqueurs, Vermouth & Amari for ${selectedSpiritNames}`;
+          }
+
+          // Collect only modifiers used by candidateCards (or already selected)
+          const relevantModIds = new Set(selectedBackbarModifiers);
+          const modUnlockReadyCount = new Map();
+          const modTotalCandidateCount = new Map();
+
+          candidateCards.forEach(({ info }) => {
+            info.modifierIds.forEach((mid) => {
+              relevantModIds.add(mid);
+              modTotalCandidateCount.set(mid, (modTotalCandidateCount.get(mid) || 0) + 1);
+            });
+            // Check if this card is missing ONLY one modifier to become Ready to Pour
+            const missingAll = info.requiredIds.filter((reqId) => !isBackbarIngredientOnHand(reqId));
+            if (missingAll.length === 1 && info.modifierIds.has(missingAll[0])) {
+              const missingModId = missingAll[0];
+              modUnlockReadyCount.set(missingModId, (modUnlockReadyCount.get(missingModId) || 0) + 1);
+            }
+          });
+
+          const modifiersList = Array.from(relevantModIds)
+            .map((mid) => ingredientCatalog.get(mid))
+            .filter(Boolean)
+            .sort((a, b) => {
+              const aSel = selectedBackbarModifiers.has(a.id) ? 1 : 0;
+              const bSel = selectedBackbarModifiers.has(b.id) ? 1 : 0;
+              if (aSel !== bSel) return bSel - aSel;
+              const aReady = modUnlockReadyCount.get(a.id) || 0;
+              const bReady = modUnlockReadyCount.get(b.id) || 0;
+              if (aReady !== bReady) return bReady - aReady;
+              return (modTotalCandidateCount.get(b.id) || 0) - (modTotalCandidateCount.get(a.id) || 0);
+            });
+
+          if (modifiersList.length === 0) {
+            backbarModifiersChips.innerHTML = `<span style="font-family: var(--font-mono); font-size: 0.74rem; color: #86efac;">✓ No extra liqueurs required — all ${candidateCards.length} recipes use House Pantry staples!</span>`;
+          } else {
+            backbarModifiersChips.innerHTML = modifiersList
+              .map((mod) => {
+                const isSelected = selectedBackbarModifiers.has(mod.id);
+                const readyUnlock = modUnlockReadyCount.get(mod.id) || 0;
+                const candCount = modTotalCandidateCount.get(mod.id) || 0;
+                let badgeText = `${candCount}`;
+                let extraClass = '';
+                if (isSelected) {
+                  badgeText = '✓';
+                } else if (readyUnlock > 0) {
+                  badgeText = `+${readyUnlock} Ready!`;
+                  extraClass = 'is-unlock-suggestion is-ready-unlock';
+                } else if (candCount > 0) {
+                  badgeText = `+${candCount} drink${candCount > 1 ? 's' : ''}`;
+                  extraClass = 'is-unlock-suggestion';
+                }
+                return `
+                  <button type="button" class="backbar-chip ${extraClass}" data-backbar-modifier="${mod.id}" aria-pressed="${isSelected}">
+                    <span>${mod.label}</span>
+                    <span class="backbar-chip-badge">${badgeText}</span>
+                  </button>
+                `;
+              })
+              .join('');
+          }
+        }
+
+        // 3. Render Step 3: Pantry Staples
+        const pantryList = Array.from(ingredientCatalog.values()).filter((item) => item.shelf === 'pantry');
+        backbarPantryChips.innerHTML = pantryList
+          .map((pan) => {
+            const isSelected = selectedBackbarPantry.has(pan.id);
+            return `
+              <button type="button" class="backbar-chip" data-backbar-pantry="${pan.id}" aria-pressed="${isSelected}">
+                <span>${pan.label}</span>
+                <span class="backbar-chip-badge">${isSelected ? '✓' : '+'}</span>
+              </button>
+            `;
+          })
+          .join('');
+
+        if (backbarPantryToggleBtn) {
+          const isOpen = !backbarStepPantry.hidden;
+          backbarPantryToggleBtn.textContent = `✓ House Pantry (${selectedBackbarPantry.size}/${pantryList.length}) ${isOpen ? '▴' : '▾'}`;
+        }
+      }
+
+      // Expose re-indexer globally so dynamically added cocktails can re-index immediately
+      window.reindexVaultIngredients = indexVaultIngredients;
+
       function applyArchiveFilters() {
         const q = (searchInput ? searchInput.value : '').trim().toLowerCase();
 
@@ -9422,10 +10152,59 @@
           if (archiveSessionsContainer) archiveSessionsContainer.style.display = '';
         }
 
+        const isBackbarActive = selectedBackbarSpirits.size > 0;
         let visibleCocktails = 0;
         let visibleMissing = 0;
+        let readyCount = 0;
+        let almostCount = 0;
 
-        vaultCards.forEach((card) => {
+        // First pass when Backbar is active: evaluate match status for each card
+        const backbarCardEval = new Map();
+        if (isBackbarActive) {
+          document.querySelectorAll('.vault-card:not(.vault-missing-card)').forEach((card) => {
+            const info = cardIngredientMap.get(card.id);
+            if (!info) return;
+            const hasSelectedSpirit = Array.from(info.spiritIds).some((sid) => selectedBackbarSpirits.has(sid));
+            if (!hasSelectedSpirit) {
+              backbarCardEval.set(card.id, { matchesSpirit: false });
+              return;
+            }
+            const missingIds = info.requiredIds.filter((reqId) => !isBackbarIngredientOnHand(reqId));
+            const status = missingIds.length === 0 ? 'ready' : missingIds.length === 1 ? 'almost' : 'partial';
+            if (status === 'ready') readyCount++;
+            else if (status === 'almost') almostCount++;
+            backbarCardEval.set(card.id, {
+              matchesSpirit: true,
+              status,
+              missingIds,
+              totalReq: info.requiredIds.length
+            });
+          });
+        }
+
+        // Update Backbar Footer Counters & Attached Lucky Button Label
+        if (isBackbarActive) {
+          if (backbarReadyCountEl) {
+            backbarReadyCountEl.textContent = `🟢 ${readyCount} Ready to Pour Tonight`;
+          }
+          if (backbarAlmostCountEl) {
+            backbarAlmostCountEl.textContent = `🟡 ${almostCount} Just 1 Bottle Away`;
+          }
+          const totalSelectedBottles = selectedBackbarSpirits.size + selectedBackbarModifiers.size;
+          if (vaultMakerBtnLabel) {
+            vaultMakerBtnLabel.textContent = `What Can I Make? (${totalSelectedBottles})`;
+          }
+          if (vaultLuckyBtnLabel) {
+            const luckyPoolCount = readyCount > 0 ? readyCount : (almostCount > 0 ? almostCount : visibleCocktails);
+            vaultLuckyBtnLabel.textContent = luckyPoolCount > 0 ? `Roll From My Shelf (${luckyPoolCount})` : "I'm Feeling Lucky";
+          }
+        } else {
+          if (vaultMakerBtnLabel) vaultMakerBtnLabel.textContent = 'What Can I Make?';
+          if (vaultLuckyBtnLabel) vaultLuckyBtnLabel.textContent = "I'm Feeling Lucky";
+        }
+
+        const allVaultCards = document.querySelectorAll('.vault-card');
+        allVaultCards.forEach((card) => {
           const cardHost = (card.getAttribute('data-host') || '').toLowerCase();
           const cardSpirit = (card.getAttribute('data-spirit') || '').toLowerCase().split(/\s+/);
           const cardProv = (card.getAttribute('data-provenance') || '').toLowerCase();
@@ -9436,7 +10215,55 @@
           const provMatch = activeProv === 'all' || cardProv === activeProv;
           const textMatch = !q || card.textContent.toLowerCase().includes(q);
 
-          const show = hostMatch && spiritMatch && provMatch && textMatch;
+          let backbarMatch = true;
+          const existingRibbon = card.querySelector('.card-match-ribbon');
+          if (existingRibbon) existingRibbon.remove();
+
+          if (isBackbarActive) {
+            if (isMissingCard) {
+              backbarMatch = false;
+            } else {
+              const evalInfo = backbarCardEval.get(card.id);
+              if (!evalInfo || !evalInfo.matchesSpirit) {
+                backbarMatch = false;
+              } else {
+                const effectiveSmart = backbarMatchMode === 'smart' && (readyCount + almostCount > 0);
+                if (effectiveSmart) {
+                  backbarMatch = evalInfo.status === 'ready' || evalInfo.status === 'almost';
+                } else {
+                  backbarMatch = true;
+                }
+
+                if (backbarMatch) {
+                  const contentEl = card.querySelector('.card-body') || card.querySelector('.card-content') || card;
+                  if (contentEl) {
+                    const ribbon = document.createElement('div');
+                    if (evalInfo.status === 'ready') {
+                      ribbon.className = 'card-match-ribbon is-ready';
+                      ribbon.innerHTML = `<span>🟢 READY TO POUR (${evalInfo.totalReq}/${evalInfo.totalReq} ON HAND)</span><span>Garnish Optional</span>`;
+                    } else if (evalInfo.status === 'almost') {
+                      const missItem = ingredientCatalog.get(evalInfo.missingIds[0]);
+                      const missLabel = missItem ? missItem.shortLabel : evalInfo.missingIds[0];
+                      ribbon.className = 'card-match-ribbon is-almost';
+                      ribbon.innerHTML = `
+                        <span>🟡 MISSING 1 BOTTLE: ${missLabel.toUpperCase()}</span>
+                        <button type="button" class="ribbon-add-btn" data-add-backbar-ing="${evalInfo.missingIds[0]}">+ Have It</button>
+                      `;
+                    } else {
+                      const missNames = evalInfo.missingIds
+                        .map((id) => ingredientCatalog.get(id)?.shortLabel || id)
+                        .join(', ');
+                      ribbon.className = 'card-match-ribbon is-partial';
+                      ribbon.innerHTML = `<span>⚪ MISSING ${evalInfo.missingIds.length}: ${missNames}</span>`;
+                    }
+                    contentEl.insertBefore(ribbon, contentEl.firstChild);
+                  }
+                }
+              }
+            }
+          }
+
+          const show = hostMatch && spiritMatch && provMatch && textMatch && backbarMatch;
           card.hidden = !show;
           if (show) {
             if (isMissingCard) visibleMissing++;
@@ -9444,14 +10271,18 @@
           }
         });
 
-        archiveSessions.forEach((session) => {
+        document.querySelectorAll('.archive-session').forEach((session) => {
           const anyVisible = session.querySelectorAll('.vault-card:not([hidden])').length > 0;
           session.hidden = !anyVisible;
         });
 
         if (archiveCountEl) {
-          const missingSuffix = visibleMissing > 0 ? ` (+ ${visibleMissing} missing cold case${visibleMissing > 1 ? 's' : ''})` : '';
-          archiveCountEl.textContent = `Showing ${visibleCocktails} of 51 cocktails${missingSuffix}`;
+          if (isBackbarActive) {
+            archiveCountEl.textContent = `What Can I Make: Showing ${visibleCocktails} matching cocktail${visibleCocktails === 1 ? '' : 's'} (${readyCount} Ready to Pour · ${almostCount} Just 1 Bottle Away)`;
+          } else {
+            const missingSuffix = visibleMissing > 0 ? ` (+ ${visibleMissing} missing cold case${visibleMissing > 1 ? 's' : ''})` : '';
+            archiveCountEl.textContent = `Showing ${visibleCocktails} of 51 cocktails${missingSuffix}`;
+          }
         }
       }
 
@@ -9508,12 +10339,113 @@
         });
       });
 
+      function clearBackbarSelection() {
+        selectedBackbarSpirits.clear();
+        selectedBackbarModifiers.clear();
+        selectedBackbarPantry.clear();
+        ingredientCatalog.forEach((item) => {
+          if (item.shelf === 'pantry' && item.pantryDefault) {
+            selectedBackbarPantry.add(item.id);
+          }
+        });
+        renderBackbarShelves();
+      }
+
+      if (vaultMakerBtn && backbarDrawer) {
+        vaultMakerBtn.addEventListener('click', () => {
+          const willOpen = backbarDrawer.hidden;
+          backbarDrawer.hidden = !willOpen;
+          vaultMakerBtn.setAttribute('aria-expanded', String(willOpen));
+        });
+      }
+
+      if (backbarDrawer) {
+        backbarDrawer.addEventListener('click', (e) => {
+          const spiritBtn = e.target.closest('[data-backbar-spirit]');
+          if (spiritBtn) {
+            const sid = spiritBtn.getAttribute('data-backbar-spirit');
+            if (selectedBackbarSpirits.has(sid)) selectedBackbarSpirits.delete(sid);
+            else selectedBackbarSpirits.add(sid);
+            renderBackbarShelves();
+            applyArchiveFilters();
+            return;
+          }
+
+          const modBtn = e.target.closest('[data-backbar-modifier]');
+          if (modBtn) {
+            const mid = modBtn.getAttribute('data-backbar-modifier');
+            if (selectedBackbarModifiers.has(mid)) selectedBackbarModifiers.delete(mid);
+            else selectedBackbarModifiers.add(mid);
+            renderBackbarShelves();
+            applyArchiveFilters();
+            return;
+          }
+
+          const panBtn = e.target.closest('[data-backbar-pantry]');
+          if (panBtn) {
+            const pid = panBtn.getAttribute('data-backbar-pantry');
+            if (selectedBackbarPantry.has(pid)) selectedBackbarPantry.delete(pid);
+            else selectedBackbarPantry.add(pid);
+            renderBackbarShelves();
+            applyArchiveFilters();
+            return;
+          }
+        });
+      }
+
+      if (backbarPantryToggleBtn && backbarStepPantry) {
+        backbarPantryToggleBtn.addEventListener('click', () => {
+          const willShow = backbarStepPantry.hidden;
+          backbarStepPantry.hidden = !willShow;
+          backbarPantryToggleBtn.setAttribute('aria-expanded', String(willShow));
+          renderBackbarShelves();
+        });
+      }
+
+      if (backbarModeToggleBtn) {
+        backbarModeToggleBtn.addEventListener('click', () => {
+          backbarMatchMode = backbarMatchMode === 'smart' ? 'any' : 'smart';
+          backbarModeToggleBtn.setAttribute('data-match-mode', backbarMatchMode);
+          backbarModeToggleBtn.classList.toggle('active', backbarMatchMode === 'smart');
+          backbarModeToggleBtn.textContent =
+            backbarMatchMode === 'smart' ? 'Mode: Ready + 1-Away' : 'Mode: All With Spirit';
+          applyArchiveFilters();
+        });
+      }
+
+      if (backbarClearBtn) {
+        backbarClearBtn.addEventListener('click', () => {
+          clearBackbarSelection();
+          applyArchiveFilters();
+        });
+      }
+
+      // Allow clicking "+ Have It" directly on a "Missing 1 Bottle" card ribbon
+      if (archiveSessionsContainer) {
+        archiveSessionsContainer.addEventListener('click', (e) => {
+          const addBtn = e.target.closest('[data-add-backbar-ing]');
+          if (!addBtn) return;
+          const ingId = addBtn.getAttribute('data-add-backbar-ing');
+          const item = ingredientCatalog.get(ingId);
+          if (!item) return;
+          if (item.shelf === 'spirits') selectedBackbarSpirits.add(ingId);
+          else if (item.shelf === 'modifiers') selectedBackbarModifiers.add(ingId);
+          else if (item.shelf === 'pantry') selectedBackbarPantry.add(ingId);
+          renderBackbarShelves();
+          applyArchiveFilters();
+        });
+      }
+
+      // Initialize the Backbar ingredient index from all Vault cards on boot
+      indexVaultIngredients();
+
       if (resetBtn) {
         resetBtn.addEventListener('click', () => {
           activeHost = 'all';
           activeSpirit = 'all';
           activeProv = 'all';
           if (searchInput) searchInput.value = '';
+          clearBackbarSelection();
           hostBtns.forEach((b) => b.setAttribute('aria-pressed', String(b.getAttribute('data-filter-host') === 'all')));
           spiritBtns.forEach((b) => b.setAttribute('aria-pressed', String(b.getAttribute('data-filter-spirit') === 'all')));
           provBtns.forEach((b) => b.setAttribute('aria-pressed', String(b.getAttribute('data-filter-provenance') === 'all')));
@@ -9571,14 +10503,23 @@
         }
 
         // 2. Identify candidate cocktails (excluding missing cold case placeholders)
-        let candidates = Array.from(vaultCards).filter((c) => {
+        const allCurrentCards = Array.from(document.querySelectorAll('.vault-card'));
+        let candidates = allCurrentCards.filter((c) => {
           return !c.hidden && !c.classList.contains('vault-missing-card');
         });
+
+        // When "What Can I Make?" is active and has Ready-to-Pour matches, prioritize rolling from Ready pours!
+        if (selectedBackbarSpirits.size > 0 && candidates.length > 0) {
+          const readyCandidates = candidates.filter((c) => c.querySelector('.card-match-ribbon.is-ready'));
+          if (readyCandidates.length > 0) {
+            candidates = readyCandidates;
+          }
+        }
 
         // If active filters or query hid all candidates, reset filters so all 51 are available
         if (candidates.length === 0) {
           if (resetBtn) resetBtn.click();
-          candidates = Array.from(vaultCards).filter((c) => !c.classList.contains('vault-missing-card'));
+          candidates = allCurrentCards.filter((c) => !c.classList.contains('vault-missing-card'));
         }
 
         if (candidates.length === 0) return;

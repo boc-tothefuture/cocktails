@@ -77,6 +77,12 @@ The client-side JavaScript in `index.html` implements several key interactive fe
    - Dynamically synchronizes who is current and who is up next whenever the featured session changes on the tasting stage. Supports light-dismiss via click-outside and <kbd>Esc</kbd>.
 9. **Privacy & Member Identity Convention**:
    - All host and member references across recipes, session headers, filter buttons, story callouts, and the 404 Easter egg use **first names only** (*Doug, Brian, Matt, Jason, Quinn, Ben*). Last names are strictly omitted.
+10. **Progressive "What Can I Make?" Backbar Ingredient Matcher (`#vault-maker-btn`, `#backbar-drawer`)**:
+    - Attached directly to **I'm Feeling Lucky** inside `.discovery-duo-capsule` in the Vault controls.
+    - **Progressive Unfold**: Opens showing **only Step 1 (Base Spirits)**. Once a user selects one or more Base Spirits, **Step 2 (Matching Liqueurs, Vermouth & Amari)** automatically expands, displaying only the modifiers that pair with the selected spirit(s) alongside live `+X Ready!` / `+X drinks` badges.
+    - **House Pantry Assumption & Optional Garnishes**: Common pantry staples (Lemon, Lime, Simple/Demerara Syrup, Maple/Honey/Agave, Bitters, Club Soda/Ginger Beer, Cider/Juice/Coffee, Egg/Mint/Produce) are assumed on hand by default (customizable via the `✓ House Pantry (8/8) ▾` pill), while `.spec-garnish` items and theatrical techniques (smoke, mist) are always treated as optional.
+    - **Live Card Ribbons & Lucky Synergy**: Filtered cards receive `.card-match-ribbon` badges (`🟢 READY TO POUR` or `🟡 MISSING 1 BOTTLE: <NAME>` with an inline `+ Have It` button), and the attached **I'm Feeling Lucky** button dynamically transforms into `Roll From My Shelf (X)` to pick a random ready-to-pour drink.
+    - **Zero-Config Extensibility**: `indexVaultIngredients()` automatically scans `.vault-card .spec-list .spec-item` elements from the DOM on boot (exposed globally as `window.reindexVaultIngredients()`). Any new cocktail added in the future automatically updates bottle counts and even auto-discovers brand-new liqueurs/modifiers without requiring JS edits (optional overrides: `data-optional="true"`, `data-ing="<id>"`, `data-shelf="spirits|modifiers|pantry"`).
 
 ---
 
