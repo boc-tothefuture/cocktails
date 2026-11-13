@@ -2800,17 +2800,17 @@
             </div>
           </div>
 
-          <!-- Step 3 (Optional Expandable): House Pantry & Mixers -->
+          <!-- Step 3: Citrus, Syrups, Bitters & Mixers (Auto-expands once a Base Spirit is selected) -->
           <div class="backbar-step" id="backbar-step-pantry" hidden>
             <div class="backbar-step-header">
               <span class="backbar-step-title">
-                <span class="backbar-step-badge">PANTRY</span>
+                <span class="backbar-step-badge">STEP 3</span>
                 <span>Citrus, Syrups, Bitters &amp; Mixers</span>
               </span>
-              <span class="backbar-step-hint">Pre-checked as house staples · Tap any item to toggle</span>
+              <span class="backbar-step-hint">Only items used with your selected spirits are shown · Tap what you have on hand</span>
             </div>
-            <div class="backbar-chips-wrap" id="backbar-pantry-chips" role="group" aria-label="House pantry staples on hand">
-              <!-- Auto-populated from Vault recipes on boot -->
+            <div class="backbar-chips-wrap" id="backbar-pantry-chips" role="group" aria-label="Citrus, syrups, bitters and mixers on hand">
+              <!-- Dynamically rendered based on selected base spirits -->
             </div>
           </div>
 
@@ -2821,8 +2821,8 @@
               <span class="backbar-stat-pill almost" id="backbar-almost-count">🟡 0 Just 1 Bottle Away</span>
             </div>
             <div class="backbar-actions-group">
-              <button type="button" class="backbar-util-btn" id="backbar-pantry-toggle-btn" aria-expanded="false" aria-controls="backbar-step-pantry">
-                ✓ House Pantry Assumed ▾
+              <button type="button" class="backbar-util-btn" id="backbar-pantry-toggle-btn" aria-expanded="true" aria-controls="backbar-step-pantry">
+                Pantry &amp; Mixers ▴
               </button>
               <button type="button" class="backbar-util-btn active" id="backbar-mode-toggle-btn" data-match-mode="smart" title="Toggle between Ready + 1-Bottle-Away vs All drinks containing selected spirits">
                 Mode: Ready + 1-Away
@@ -9857,15 +9857,15 @@
         { id: 'cacao_ancho', shelf: 'modifiers', label: '🍫 Crème de Cacao / Ancho Reyes', shortLabel: 'Crème de Cacao / Ancho', keywords: ['crème de cacao', 'ancho reyes'] },
         { id: 'spiced_melon_ginger', shelf: 'modifiers', label: '🍈 Midori / Allspice / Ginger Liqueur', shortLabel: 'Midori / Allspice / Ginger', keywords: ['midori', 'allspice dram', 'ginger liqueur'] },
 
-        // Shelf 3: House Pantry Staples (Pre-checked by default)
-        { id: 'lemon', shelf: 'pantry', pantryDefault: true, label: '🍋 Lemon Juice', shortLabel: 'Lemon Juice', keywords: ['lemon juice'] },
-        { id: 'lime', shelf: 'pantry', pantryDefault: true, label: '🍈 Lime Juice', shortLabel: 'Lime Juice', keywords: ['lime juice', 'lime cordial', 'limeade'] },
-        { id: 'simple_syrup', shelf: 'pantry', pantryDefault: true, label: '🍯 Simple / Demerara Syrup', shortLabel: 'Simple Syrup', keywords: ['simple syrup', 'demerara', 'sugar', 'grenadine', 'cinnamon syrup', 'spiced syrup', 'white chocolate syrup', 'chili syrup', 'passionfruit syrup'] },
-        { id: 'maple_honey_agave', shelf: 'pantry', pantryDefault: true, label: '🍁 Maple, Honey & Agave', shortLabel: 'Maple / Honey / Agave', keywords: ['maple syrup', 'honey', 'agave'] },
-        { id: 'bitters', shelf: 'pantry', pantryDefault: true, label: "💧 Angostura & Peychaud's Bitters", shortLabel: 'Bitters', keywords: ['bitters'] },
-        { id: 'soda_ginger', shelf: 'pantry', pantryDefault: true, label: '🫧 Club Soda & Ginger Beer', shortLabel: 'Club Soda / Ginger Beer', keywords: ['club soda', 'ginger beer', 'ginger ale', 'monster energy'] },
-        { id: 'juices_cider', shelf: 'pantry', pantryDefault: true, label: '🍎 Cider, Juice & Espresso', shortLabel: 'Cider / Juice / Coffee', keywords: ['apple cider', 'cranberry juice', 'orange juice', 'pineapple juice', 'espresso', 'press coffee', 'pumpkin purée'] },
-        { id: 'fresh_pantry', shelf: 'pantry', pantryDefault: true, label: '🌿 Egg White, Mint & Produce', shortLabel: 'Egg / Mint / Berries', keywords: ['egg white', 'mint leaves', 'blackberries', 'cucumber'] }
+        // Shelf 3: Citrus, Syrups, Bitters & Mixers (not assumed stocked)
+        { id: 'lemon', shelf: 'pantry', label: '🍋 Lemon Juice', shortLabel: 'Lemon Juice', keywords: ['lemon juice'] },
+        { id: 'lime', shelf: 'pantry', label: '🍈 Lime Juice', shortLabel: 'Lime Juice', keywords: ['lime juice', 'lime cordial', 'limeade'] },
+        { id: 'simple_syrup', shelf: 'pantry', label: '🍯 Simple / Demerara Syrup', shortLabel: 'Simple Syrup', keywords: ['simple syrup', 'demerara', 'sugar', 'grenadine', 'cinnamon syrup', 'spiced syrup', 'white chocolate syrup', 'chili syrup', 'passionfruit syrup'] },
+        { id: 'maple_honey_agave', shelf: 'pantry', label: '🍁 Maple, Honey & Agave', shortLabel: 'Maple / Honey / Agave', keywords: ['maple syrup', 'honey', 'agave'] },
+        { id: 'bitters', shelf: 'pantry', label: "💧 Angostura & Peychaud's Bitters", shortLabel: 'Bitters', keywords: ['bitters'] },
+        { id: 'soda_ginger', shelf: 'pantry', label: '🫧 Club Soda & Ginger Beer', shortLabel: 'Club Soda / Ginger Beer', keywords: ['club soda', 'ginger beer', 'ginger ale', 'monster energy'] },
+        { id: 'juices_cider', shelf: 'pantry', label: '🍎 Cider, Juice & Espresso', shortLabel: 'Cider / Juice / Coffee', keywords: ['apple cider', 'cranberry juice', 'orange juice', 'pineapple juice', 'espresso', 'press coffee', 'pumpkin purée'] },
+        { id: 'fresh_pantry', shelf: 'pantry', label: '🌿 Egg White, Mint & Produce', shortLabel: 'Egg / Mint / Berries', keywords: ['egg white', 'mint leaves', 'blackberries', 'cucumber'] }
       ];
 
       const vaultMakerBtn = document.getElementById('vault-maker-btn');
@@ -9892,7 +9892,7 @@
       const selectedBackbarModifiers = new Set();
       const selectedBackbarPantry = new Set();
       let backbarMatchMode = 'smart'; // 'smart' (Ready + 1-Away) | 'any' (All drinks with selected spirit)
-      let backbarPantryInitialized = false;
+      let backbarPantryCollapsed = false;
 
       function cleanSpecItemName(li) {
         const nameEl = li.querySelector('.spec-name');
@@ -9933,12 +9933,10 @@
             shelf: explicitShelf,
             label: `🍾 ${cleanName}`,
             shortLabel: cleanName,
-            pantryDefault: explicitShelf === 'pantry',
             isAutoDiscovered: true,
             recipeIds: new Set()
           };
           ingredientCatalog.set(slug, autoRule);
-          if (autoRule.pantryDefault) selectedBackbarPantry.add(slug);
         }
         return ingredientCatalog.get(slug);
       }
@@ -9947,18 +9945,13 @@
         ingredientCatalog.clear();
         cardIngredientMap.clear();
 
-        const shouldInitPantry = !backbarPantryInitialized;
         CANONICAL_INGREDIENT_RULES.forEach((rule) => {
           if (rule.shelf === 'optional') return;
           ingredientCatalog.set(rule.id, {
             ...rule,
             recipeIds: new Set()
           });
-          if (shouldInitPantry && rule.shelf === 'pantry' && rule.pantryDefault) {
-            selectedBackbarPantry.add(rule.id);
-          }
         });
-        backbarPantryInitialized = true;
 
         const currentVaultCards = document.querySelectorAll('.vault-card:not(.vault-missing-card)');
         currentVaultCards.forEach((card) => {
@@ -10018,15 +10011,17 @@
           })
           .join('');
 
-        // 2. Progressive Step 2: Matching Modifiers for selected Base Spirits
+        // 2. Progressive Step 2 & Step 3: Matching Modifiers and Pantry/Mixers for selected Base Spirits
         if (selectedBackbarSpirits.size === 0) {
           if (backbarStepModifiers) backbarStepModifiers.hidden = true;
+          if (backbarStepPantry) backbarStepPantry.hidden = true;
           if (backbarFooter) backbarFooter.hidden = true;
           if (backbarSpiritsHint) {
             backbarSpiritsHint.textContent = 'Select 1 or more spirits to reveal matching liqueurs ➔';
           }
         } else {
           if (backbarStepModifiers) backbarStepModifiers.hidden = false;
+          if (backbarStepPantry) backbarStepPantry.hidden = backbarPantryCollapsed;
           if (backbarFooter) backbarFooter.hidden = false;
 
           // Candidate cards that use at least one selected base spirit
@@ -10047,84 +10042,111 @@
             backbarModifiersTitle.textContent = `Matching Liqueurs, Vermouth & Amari for ${selectedSpiritNames}`;
           }
 
-          // Collect only modifiers used by candidateCards (or already selected)
+          // Collect only modifiers & pantry items used by candidateCards (or already selected)
           const relevantModIds = new Set(selectedBackbarModifiers);
           const modUnlockReadyCount = new Map();
           const modTotalCandidateCount = new Map();
+          const relevantPantryIds = new Set(selectedBackbarPantry);
+          const pantryUnlockReadyCount = new Map();
+          const pantryTotalCandidateCount = new Map();
 
           candidateCards.forEach(({ info }) => {
             info.modifierIds.forEach((mid) => {
               relevantModIds.add(mid);
               modTotalCandidateCount.set(mid, (modTotalCandidateCount.get(mid) || 0) + 1);
             });
-            // Check if this card is missing ONLY one modifier to become Ready to Pour
+            info.pantryIds.forEach((pid) => {
+              relevantPantryIds.add(pid);
+              pantryTotalCandidateCount.set(pid, (pantryTotalCandidateCount.get(pid) || 0) + 1);
+            });
+            // Check if this card is missing ONLY one modifier or pantry item to become Ready to Pour
             const missingAll = info.requiredIds.filter((reqId) => !isBackbarIngredientOnHand(reqId));
-            if (missingAll.length === 1 && info.modifierIds.has(missingAll[0])) {
-              const missingModId = missingAll[0];
-              modUnlockReadyCount.set(missingModId, (modUnlockReadyCount.get(missingModId) || 0) + 1);
+            if (missingAll.length === 1) {
+              const missingId = missingAll[0];
+              if (info.modifierIds.has(missingId)) {
+                modUnlockReadyCount.set(missingId, (modUnlockReadyCount.get(missingId) || 0) + 1);
+              } else if (info.pantryIds.has(missingId)) {
+                pantryUnlockReadyCount.set(missingId, (pantryUnlockReadyCount.get(missingId) || 0) + 1);
+              }
             }
           });
 
-          const modifiersList = Array.from(relevantModIds)
-            .map((mid) => ingredientCatalog.get(mid))
-            .filter(Boolean)
-            .sort((a, b) => {
-              const aSel = selectedBackbarModifiers.has(a.id) ? 1 : 0;
-              const bSel = selectedBackbarModifiers.has(b.id) ? 1 : 0;
-              if (aSel !== bSel) return bSel - aSel;
-              const aReady = modUnlockReadyCount.get(a.id) || 0;
-              const bReady = modUnlockReadyCount.get(b.id) || 0;
-              if (aReady !== bReady) return bReady - aReady;
-              return (modTotalCandidateCount.get(b.id) || 0) - (modTotalCandidateCount.get(a.id) || 0);
-            });
+          const renderMatchingChips = (idsSet, selectedSet, unlockMap, totalMap, dataAttr) => {
+            const list = Array.from(idsSet)
+              .map((id) => ingredientCatalog.get(id))
+              .filter(Boolean)
+              .sort((a, b) => {
+                const aSel = selectedSet.has(a.id) ? 1 : 0;
+                const bSel = selectedSet.has(b.id) ? 1 : 0;
+                if (aSel !== bSel) return bSel - aSel;
+                const aReady = unlockMap.get(a.id) || 0;
+                const bReady = unlockMap.get(b.id) || 0;
+                if (aReady !== bReady) return bReady - aReady;
+                return (totalMap.get(b.id) || 0) - (totalMap.get(a.id) || 0);
+              });
 
-          if (modifiersList.length === 0) {
-            backbarModifiersChips.innerHTML = `<span style="font-family: var(--font-mono); font-size: 0.74rem; color: #86efac;">✓ No extra liqueurs required — all ${candidateCards.length} recipes use House Pantry staples!</span>`;
+            return {
+              count: list.length,
+              html: list
+                .map((item) => {
+                  const isSelected = selectedSet.has(item.id);
+                  const readyUnlock = unlockMap.get(item.id) || 0;
+                  const candCount = totalMap.get(item.id) || 0;
+                  let badgeText = `${candCount}`;
+                  let extraClass = '';
+                  if (isSelected) {
+                    badgeText = '✓';
+                  } else if (readyUnlock > 0) {
+                    badgeText = `+${readyUnlock} Ready!`;
+                    extraClass = 'is-unlock-suggestion is-ready-unlock';
+                  } else if (candCount > 0) {
+                    badgeText = `+${candCount} drink${candCount > 1 ? 's' : ''}`;
+                    extraClass = 'is-unlock-suggestion';
+                  }
+                  return `
+                    <button type="button" class="backbar-chip ${extraClass}" ${dataAttr}="${item.id}" aria-pressed="${isSelected}">
+                      <span>${item.label}</span>
+                      <span class="backbar-chip-badge">${badgeText}</span>
+                    </button>
+                  `;
+                })
+                .join('')
+            };
+          };
+
+          const modifiersRendered = renderMatchingChips(
+            relevantModIds,
+            selectedBackbarModifiers,
+            modUnlockReadyCount,
+            modTotalCandidateCount,
+            'data-backbar-modifier'
+          );
+
+          if (modifiersRendered.count === 0) {
+            backbarModifiersChips.innerHTML = `<span style="font-family: var(--font-mono); font-size: 0.74rem; color: #86efac;">✓ No extra liqueurs required — select any citrus, syrups, or mixers below.</span>`;
           } else {
-            backbarModifiersChips.innerHTML = modifiersList
-              .map((mod) => {
-                const isSelected = selectedBackbarModifiers.has(mod.id);
-                const readyUnlock = modUnlockReadyCount.get(mod.id) || 0;
-                const candCount = modTotalCandidateCount.get(mod.id) || 0;
-                let badgeText = `${candCount}`;
-                let extraClass = '';
-                if (isSelected) {
-                  badgeText = '✓';
-                } else if (readyUnlock > 0) {
-                  badgeText = `+${readyUnlock} Ready!`;
-                  extraClass = 'is-unlock-suggestion is-ready-unlock';
-                } else if (candCount > 0) {
-                  badgeText = `+${candCount} drink${candCount > 1 ? 's' : ''}`;
-                  extraClass = 'is-unlock-suggestion';
-                }
-                return `
-                  <button type="button" class="backbar-chip ${extraClass}" data-backbar-modifier="${mod.id}" aria-pressed="${isSelected}">
-                    <span>${mod.label}</span>
-                    <span class="backbar-chip-badge">${badgeText}</span>
-                  </button>
-                `;
-              })
-              .join('');
+            backbarModifiersChips.innerHTML = modifiersRendered.html;
           }
-        }
 
-        // 3. Render Step 3: Pantry Staples
-        const pantryList = Array.from(ingredientCatalog.values()).filter((item) => item.shelf === 'pantry');
-        backbarPantryChips.innerHTML = pantryList
-          .map((pan) => {
-            const isSelected = selectedBackbarPantry.has(pan.id);
-            return `
-              <button type="button" class="backbar-chip" data-backbar-pantry="${pan.id}" aria-pressed="${isSelected}">
-                <span>${pan.label}</span>
-                <span class="backbar-chip-badge">${isSelected ? '✓' : '+'}</span>
-              </button>
-            `;
-          })
-          .join('');
+          const pantryRendered = renderMatchingChips(
+            relevantPantryIds,
+            selectedBackbarPantry,
+            pantryUnlockReadyCount,
+            pantryTotalCandidateCount,
+            'data-backbar-pantry'
+          );
 
-        if (backbarPantryToggleBtn) {
-          const isOpen = !backbarStepPantry.hidden;
-          backbarPantryToggleBtn.textContent = `✓ House Pantry (${selectedBackbarPantry.size}/${pantryList.length}) ${isOpen ? '▴' : '▾'}`;
+          if (pantryRendered.count === 0) {
+            backbarPantryChips.innerHTML = `<span style="font-family: var(--font-mono); font-size: 0.74rem; color: #86efac;">✓ No citrus, syrups, or mixers needed for these recipes!</span>`;
+          } else {
+            backbarPantryChips.innerHTML = pantryRendered.html;
+          }
+
+          if (backbarPantryToggleBtn) {
+            const isOpen = !backbarStepPantry.hidden;
+            backbarPantryToggleBtn.setAttribute('aria-expanded', String(isOpen));
+            backbarPantryToggleBtn.textContent = `Pantry & Mixers (${selectedBackbarPantry.size}/${pantryRendered.count}) ${isOpen ? '▴' : '▾'}`;
+          }
         }
       }
 
@@ -10343,11 +10365,7 @@
         selectedBackbarSpirits.clear();
         selectedBackbarModifiers.clear();
         selectedBackbarPantry.clear();
-        ingredientCatalog.forEach((item) => {
-          if (item.shelf === 'pantry' && item.pantryDefault) {
-            selectedBackbarPantry.add(item.id);
-          }
-        });
+        backbarPantryCollapsed = false;
         renderBackbarShelves();
       }
 
@@ -10395,9 +10413,9 @@
 
       if (backbarPantryToggleBtn && backbarStepPantry) {
         backbarPantryToggleBtn.addEventListener('click', () => {
-          const willShow = backbarStepPantry.hidden;
-          backbarStepPantry.hidden = !willShow;
-          backbarPantryToggleBtn.setAttribute('aria-expanded', String(willShow));
+          backbarPantryCollapsed = !backbarPantryCollapsed;
+          backbarStepPantry.hidden = backbarPantryCollapsed;
+          backbarPantryToggleBtn.setAttribute('aria-expanded', String(!backbarPantryCollapsed));
           renderBackbarShelves();
         });
       }
