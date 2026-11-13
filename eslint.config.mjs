@@ -8,6 +8,10 @@ export default tseslint.config(
   },
   eslint.configs.recommended,
   {
+    files: ['test/**/*.mjs', 'scripts/**/*.mjs'],
+    languageOptions: { globals: { ...globals.node } }
+  },
+  {
     files: ['src/**/*.ts'],
     extends: [...tseslint.configs.strictTypeChecked, ...tseslint.configs.stylisticTypeChecked],
     languageOptions: {

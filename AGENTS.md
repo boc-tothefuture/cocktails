@@ -33,7 +33,10 @@ The project uses zero runtime dependencies and zero bundlers: static markup/styl
 │   ├── stage.ts           # Active tasting stage renderer and host rotation tracker
 │   ├── vault-matcher.ts   # Cellar Vault search, filters, 404 Easter egg, Backbar, and Lucky picker
 │   └── main.ts            # Application entry point, hash routing, mode toggle, and QR modal
+├── scripts/               # Build-time static generators
+│   └── generate-share-pages.mjs # Generates per-session OG social preview pages under s/
 ├── dist/                  # Gitignored build output emitted by `npm run build` (for local preview & CI)
+├── s/                     # Gitignored per-session social preview pages emitted by `npm run build`
 └── assets/                # Menu artwork, icons, and static QR code
     ├── archive/           # 51 historical cocktail photos & AI illustrations (2020–2026)
     ├── favicon.svg        # Site favicon
@@ -155,7 +158,7 @@ Then preview in your browser (ES modules require serving over HTTP/HTTPS, not `f
 ### Validation Checklist
 
 Before committing changes:
-- Run `npm run check` (`tsc --noEmit`, `biome check .`, and `eslint .`) cleanly with zero errors.
+- Run `npm run check` (`tsc --noEmit`, `biome check .`, `eslint .`, and `node --test test/`) cleanly with zero errors.
 - Rebuild locally (`npm run build`) when previewing in the browser (`dist/` is gitignored and built by GitHub Actions on push to `main`).
 - Verify both **Guest** and **Bartender** modes.
 - Test the **batch scaler** across all recipes to confirm numbers and units update cleanly without `NaN` or layout breaking.

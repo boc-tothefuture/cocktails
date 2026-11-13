@@ -32,7 +32,7 @@
 
       --text-parchment: #f5efe8;
       --text-mist: #c7b9ab;
-      --text-slate: #8c7b6b;
+      --text-slate: #ada093;
 
       --accent-lantern: #e8993a;
       --accent-lantern-glow: #f5b563;
@@ -68,6 +68,7 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 6.5rem;
     }
 
     body {
@@ -166,12 +167,12 @@
     /* Mode Switcher (Guest vs Bartender) */
     .mode-switch {
       display: inline-flex;
-      background: rgba(24, 18, 15, 0.9);
-      border: 1px solid rgba(232, 197, 158, 0.2);
+      background: rgba(20, 15, 13, 0.94);
+      border: 1px solid rgba(232, 197, 158, 0.28);
       border-radius: 999px;
       padding: 0.22rem;
-      gap: 0.15rem;
-      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.6);
+      gap: 0.2rem;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.65);
     }
 
     .mode-btn {
@@ -182,21 +183,22 @@
       font-family: var(--font-sans);
       font-size: 0.8rem;
       font-weight: 500;
-      padding: 0.35rem 0.9rem;
+      padding: 0.36rem 0.95rem;
       border-radius: 999px;
       cursor: pointer;
       transition: all 0.2s ease;
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
+      white-space: nowrap;
     }
 
     .mode-btn[aria-pressed="true"] {
-      background: rgba(232, 153, 58, 0.18);
-      border-color: var(--border-brass);
-      color: var(--text-parchment);
-      font-weight: 600;
-      box-shadow: 0 0 14px rgba(232, 153, 58, 0.22);
+      background: linear-gradient(135deg, var(--accent-lantern), #cc7a22);
+      border-color: var(--accent-lantern-glow);
+      color: #0b0807;
+      font-weight: 700;
+      box-shadow: 0 0 16px rgba(232, 153, 58, 0.38);
     }
 
     /* Session Timeline Scrubber Bar */
@@ -543,6 +545,7 @@
       margin: 0 auto;
       padding: clamp(2rem, 4vw, 3.25rem) 1.25rem clamp(2.5rem, 5vw, 4rem);
       position: relative;
+      scroll-margin-top: 6.5rem;
     }
 
     .stage-header {
@@ -573,14 +576,9 @@
       line-height: 1.1;
     }
 
-    .stage-heading:focus {
-      outline: none;
-    }
-
+    .stage-heading:focus,
     .stage-heading:focus-visible {
-      outline: 2px solid var(--accent-lantern-glow);
-      outline-offset: 4px;
-      border-radius: 4px;
+      outline: none;
     }
 
     .stage-session-subtitle {
@@ -619,7 +617,7 @@
     /* Slide 3 Split Smoked-Glass Cards Grid */
     .stage-cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(22rem, 100%), 1fr));
       gap: 1.35rem;
     }
 
@@ -774,27 +772,60 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
       gap: 0.5rem;
-      padding-top: 0.35rem;
+      padding-top: 0.45rem;
     }
 
-    .stage-jump-btn {
+    .stage-card-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      flex-wrap: wrap;
+      margin-left: auto;
+    }
+
+    .stage-jump-btn,
+    .copy-link-btn {
       appearance: none;
       background: rgba(232, 153, 58, 0.12);
       border: 1px solid var(--border-brass);
       color: var(--accent-lantern-glow);
       font-family: var(--font-mono);
-      font-size: 0.7rem;
-      padding: 0.32rem 0.65rem;
-      border-radius: 0.4rem;
+      font-size: 0.72rem;
+      padding: 0.36rem 0.72rem;
+      border-radius: 0.42rem;
       cursor: pointer;
       text-decoration: none;
-      transition: background 0.15s ease;
+      white-space: nowrap;
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .copy-link-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(232, 197, 158, 0.25);
+      color: var(--text-mist);
     }
 
     .stage-jump-btn:hover {
       background: rgba(232, 153, 58, 0.24);
       color: var(--text-parchment);
+    }
+
+    .copy-link-btn:hover {
+      border-color: var(--border-brass);
+      background: rgba(232, 153, 58, 0.14);
+      color: var(--text-parchment);
+    }
+
+    .copy-link-btn.is-copied {
+      border-color: rgba(74, 222, 128, 0.6);
+      background: rgba(74, 222, 128, 0.16);
+      color: #86efac;
     }
 
     /* Glowing Amber Divider Line (Slide 3) */
@@ -808,19 +839,76 @@
     }
 
     @media (max-width: 760px) {
+      html {
+        scroll-padding-top: 8.5rem;
+      }
+      .top-bar {
+        padding: 0.65rem 1rem;
+      }
       .top-bar-inner {
-        grid-template-columns: 1fr auto;
+        grid-template-columns: auto 1fr;
+        gap: 0.45rem 0.75rem;
       }
       .brand-center-title {
         grid-column: 1 / -1;
         order: -1;
         text-align: start;
+        font-size: 1.25rem;
+      }
+      .brand-sub-tag {
+        font-size: 0.56rem;
+        margin-top: 0.18rem;
+      }
+      .mode-btn {
+        min-height: 40px;
+        padding: 0.32rem 0.75rem;
+      }
+      .scrubber-bar {
+        padding: 0.65rem 1rem;
+      }
+      .scrubber-inner {
+        flex-wrap: wrap;
+        overflow-x: visible;
+        gap: 0.45rem;
+        padding-bottom: 0;
+      }
+      .scrubber-vault-btn {
+        margin-left: 0;
+        width: 100%;
+        justify-content: center;
+        font-size: 0.74rem;
+        padding: 0.45rem 0.9rem;
+      }
+      .tasting-stage-section,
+      .archive-vault-section,
+      .cocktail-card,
+      .archive-session {
+        scroll-margin-top: 8.5rem;
       }
       .stage-split-card {
         grid-template-columns: 1fr;
       }
       .stage-card-photo {
         min-height: 13rem;
+      }
+      .discovery-duo-capsule {
+        width: 100%;
+        flex-direction: column;
+        border-radius: 1rem;
+        padding: 0.3rem;
+        gap: 0.25rem;
+      }
+      .duo-capsule-divider {
+        display: none;
+      }
+      .discovery-duo-capsule .vault-lucky-btn,
+      .discovery-duo-capsule .vault-maker-btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .backbar-step-badge {
+        white-space: nowrap;
+        flex-shrink: 0;
       }
     }
 
@@ -911,9 +999,9 @@
       background: linear-gradient(160deg var(--in-oklab), var(--bg-granite-elevated), var(--bg-granite));
       border: 1px solid var(--border-stone);
       border-radius: 1.1rem;
-      overflow: hidden;
+      overflow: clip;
       box-shadow: var(--shadow-card);
-      scroll-margin-top: 5.5rem;
+      scroll-margin-top: 6.5rem;
       transition: border-color 0.25s ease;
     }
 
@@ -936,6 +1024,16 @@
       overflow: hidden;
     }
 
+    @media (min-width: 861px) {
+      .card-visual {
+        align-self: start;
+        position: sticky;
+        top: 6.25rem;
+        height: clamp(24rem, 32vw, 29rem);
+        max-height: 30rem;
+      }
+    }
+
     .card-visual img {
       width: 100%;
       height: 100%;
@@ -955,6 +1053,31 @@
       pointer-events: none;
     }
 
+    .card-visual-badges {
+      position: absolute;
+      top: 0.8rem;
+      left: 0.8rem;
+      right: 0.8rem;
+      z-index: 3;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.4rem;
+      pointer-events: none;
+    }
+
+    .card-visual-badges > * {
+      pointer-events: auto;
+    }
+
+    .card-visual-badges .course-tag-overlay,
+    .card-visual-badges .provenance-badge,
+    .card-visual-badges .spec-view-toggle,
+    .card-visual-badges .lucky-pick-badge {
+      position: static;
+    }
+
     .course-tag-overlay {
       position: absolute;
       top: 1rem;
@@ -970,6 +1093,7 @@
       font-size: 0.72rem;
       color: var(--accent-lantern-glow);
       letter-spacing: 0.08em;
+      max-width: 100%;
     }
 
     .glassware-badge {
@@ -1108,14 +1232,9 @@
       color: var(--text-parchment);
     }
 
-    .card-title:focus {
-      outline: none;
-    }
-
+    .card-title:focus,
     .card-title:focus-visible {
-      outline: 2px solid var(--accent-lantern-glow);
-      outline-offset: 4px;
-      border-radius: 4px;
+      outline: none;
     }
 
     .card-story {
@@ -1265,17 +1384,27 @@
       color: var(--accent-lantern);
     }
 
-    /* Per-card Expand Button (visible in Guest mode) */
+    /* Per-card Expand & Copy Link Actions */
     .card-actions {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-top: 0.5rem;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      padding-top: 0.65rem;
       border-top: 1px solid var(--border-stone);
     }
 
-    body[data-mode="bartender"] .card-actions {
+    .card-actions .copy-link-btn {
+      margin-left: auto;
+    }
+
+    body[data-mode="bartender"] .toggle-spec-btn {
       display: none;
+    }
+
+    body[data-mode="bartender"] .card-actions {
+      justify-content: flex-end;
     }
 
     .toggle-spec-btn {
@@ -1642,7 +1771,7 @@
     /* Cellar Vault Section (Slide 3) */
     .archive-vault-section {
       padding-top: clamp(2.5rem, 5vw, 3.75rem);
-      scroll-margin-top: 4.5rem;
+      scroll-margin-top: 6.5rem;
     }
 
     .cellar-vault-header {
@@ -1673,14 +1802,9 @@
       flex-wrap: wrap;
     }
 
-    .archive-main-title:focus {
-      outline: none;
-    }
-
+    .archive-main-title:focus,
     .archive-main-title:focus-visible {
-      outline: 2px solid var(--accent-lantern-glow);
-      outline-offset: 4px;
-      border-radius: 4px;
+      outline: none;
     }
 
     .archive-main-title .amber-slash {
@@ -1750,10 +1874,31 @@
       transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
+    .archive-search-input::placeholder {
+      color: var(--text-slate);
+      opacity: 1;
+    }
+
     .archive-search-input:focus {
       outline: none;
       border-color: var(--accent-lantern);
       box-shadow: 0 0 14px rgba(232, 153, 58, 0.22);
+    }
+
+    .discovery-helper-note {
+      margin: -0.35rem 0 0;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: var(--text-slate);
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .discovery-helper-note strong {
+      color: var(--accent-lantern-glow);
+      font-weight: 600;
     }
 
     .search-icon {
@@ -2238,7 +2383,7 @@
     .card-match-ribbon.is-partial {
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--border-stone);
-      color: var(--text-slate);
+      color: var(--text-mist);
     }
 
     .ribbon-add-btn {
@@ -2519,6 +2664,234 @@
       border-radius: 999px;
     }
 
+    /* Larger Touch Targets for Narrow Viewports & Coarse Pointers */
+    @media (max-width: 760px), (pointer: coarse) {
+      .filter-pill,
+      .hint-chip,
+      .ribbon-add-btn,
+      .backbar-chip,
+      .reset-filters-btn,
+      .stage-this-session-btn,
+      .stage-jump-btn,
+      .copy-link-btn,
+      .scrubber-pill,
+      .scrubber-vault-btn,
+      .scrubber-up-next-btn,
+      .backbar-util-btn,
+      .toggle-spec-btn,
+      .stage-Action-link,
+      .spec-view-toggle {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .filter-group-row,
+      .backbar-chips-wrap {
+        gap: 0.5rem;
+      }
+    }
+
+    /* Mobile Card Stack for Bartender Prep Ledger */
+    @media (max-width: 720px) {
+      .prep-section {
+        padding: 1rem;
+      }
+      .table-scroll {
+        overflow-x: visible;
+      }
+      .prep-table {
+        min-width: 0;
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+      }
+      .prep-table thead {
+        display: none;
+      }
+      .prep-table,
+      .prep-table tbody,
+      .prep-table tr,
+      .prep-table td {
+        display: block;
+        width: 100%;
+      }
+      .prep-table tbody {
+        display: flex;
+        flex-direction: column;
+        gap: 0.9rem;
+      }
+      .prep-table tbody tr {
+        background: rgba(14, 10, 8, 0.72);
+        border: 1px solid rgba(232, 197, 158, 0.16);
+        border-radius: 0.75rem;
+        padding: 0.85rem 0.95rem;
+      }
+      .prep-table tbody tr td {
+        padding: 0.4rem 0;
+        border-bottom: 1px dashed rgba(232, 197, 158, 0.1);
+        overflow-wrap: anywhere;
+      }
+      .prep-table tbody tr td:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      .prep-table td[data-label]::before {
+        content: attr(data-label);
+        display: block;
+        font-family: var(--font-mono);
+        font-size: 0.65rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent-lantern);
+        margin-bottom: 0.18rem;
+      }
+      .prep-table td.prep-cocktail-name::before {
+        display: none;
+      }
+      .prep-table td.prep-cocktail-name {
+        font-size: 1.25rem;
+        padding-top: 0;
+        padding-bottom: 0.5rem;
+        border-bottom-style: solid;
+      }
+      .prep-table .technique-badge {
+        white-space: normal;
+        max-width: 100%;
+      }
+    }
+
+    /* Clean Print Stylesheet for On-the-Night Tasting Menus & Prep Ledger */
+    @media print {
+      @page {
+        margin: 0.55in;
+      }
+      body,
+      body[data-mode],
+      body[data-page-view] {
+        background: #ffffff !important;
+        background-image: none !important;
+        color: #14100e !important;
+        font-size: 10.5pt;
+        line-height: 1.45;
+      }
+      .top-bar,
+      .scrubber-bar,
+      .cellar-amber-divider,
+      #league-archive,
+      .bartender-toolbar,
+      .stage-meta-Controls,
+      .stage-card-actions,
+      .spec-view-toggle,
+      .stage-photo-shade,
+      .spec-diagram-wrap,
+      .site-footer,
+      #qr-dialog {
+        display: none !important;
+      }
+      #active-tasting-stage {
+        display: block !important;
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+      }
+      .stage-header {
+        border-bottom: 2px solid #14100e;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1rem;
+      }
+      .stage-kicker {
+        color: #6b3e11 !important;
+      }
+      .stage-heading,
+      #stage-session-name,
+      .stage-drink-title,
+      .stage-pane-title,
+      .prep-title,
+      .prep-cocktail-name {
+        color: #14100e !important;
+      }
+      .stage-session-subtitle,
+      .stage-pane-sub,
+      .stage-glass-note,
+      .prep-subtitle {
+        color: #4a3f38 !important;
+      }
+      .stage-cards-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.85rem;
+      }
+      .stage-split-card {
+        display: block;
+        background: #ffffff !important;
+        border: 1px solid #c5b8ac !important;
+        box-shadow: none !important;
+        min-height: 0;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+      .stage-card-photo {
+        height: auto;
+        min-height: 0;
+        background: transparent !important;
+        border-bottom: 1px solid #e0d6cc;
+      }
+      .stage-card-photo img {
+        display: none !important;
+      }
+      .stage-photo-caption {
+        position: static;
+        padding: 0.65rem 0.8rem 0.45rem;
+        background: #f8f4ef !important;
+      }
+      .stage-course-badge {
+        background: transparent !important;
+        border: 1px solid #9e6224 !important;
+        color: #6b3e11 !important;
+      }
+      .stage-card-pane {
+        background: #ffffff !important;
+        backdrop-filter: none !important;
+        border-left: none !important;
+        padding: 0.65rem 0.8rem;
+        color: #14100e !important;
+      }
+      .stage-spec-lines,
+      .stage-oz,
+      .stage-garnish-line,
+      .prep-ingredient-name,
+      .prep-measure {
+        color: #14100e !important;
+      }
+      .prep-section {
+        background: #ffffff !important;
+        border: 1px solid #9b8c7f !important;
+        box-shadow: none !important;
+        margin-top: 1.25rem;
+        padding: 0.85rem;
+        break-inside: avoid;
+      }
+      .prep-table {
+        min-width: 0;
+        font-size: 9pt;
+      }
+      .prep-table th {
+        background: #f3ede6 !important;
+        color: #14100e !important;
+        border-bottom: 1.5px solid #14100e;
+      }
+      .prep-table td {
+        color: #14100e !important;
+        border-bottom: 1px solid #d8cec4;
+      }
+      .technique-badge {
+        background: transparent !important;
+        color: #14100e !important;
+        border-color: #7c6f64 !important;
+      }
+    }
+
   </style>
 </head>
 <body data-mode="guest" data-page-view="session">
@@ -2657,6 +3030,8 @@
         </p>
       </div>
       <div class="stage-meta-Controls">
+        <button type="button" class="stage-Action-link" id="stage-copy-session-btn" title="Copy a shareable link for this tasting session">🔗 Share Session</button>
+        <button type="button" class="stage-Action-link" id="stage-print-btn" title="Print a clean paper menu for tonight's tasting">🖨 Print Menu</button>
         <a href="#prep-summary" class="stage-Action-link stage-prep-link" id="stage-prep-link">Session Prep Ledger ↓</a>
       </div>
     </div>
@@ -2787,6 +3162,9 @@
             <button type="button" class="hint-chip" data-quick-search="quinn">Quinn</button>
           </div>
         </div>
+        <p class="discovery-helper-note">
+          <span>🥃 <strong>What Can I Make?</strong> Pick your bottles, see what you can pour — or roll the dice with <strong>I'm Feeling Lucky</strong>.</span>
+        </p>
 
         <!-- Progressive "What Can I Make?" Backbar Ingredient Matcher Drawer -->
         <div class="backbar-drawer" id="backbar-drawer" hidden role="region" aria-label="What Can I Make ingredient matcher">

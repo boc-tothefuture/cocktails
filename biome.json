@@ -4,7 +4,14 @@
     "enabled": false
   },
   "files": {
-    "includes": ["src/**/*.ts", "package.json", "tsconfig.json", "biome.json"]
+    "includes": [
+      "src/**/*.ts",
+      "scripts/**/*.mjs",
+      "test/**/*.mjs",
+      "package.json",
+      "tsconfig.json",
+      "biome.json"
+    ]
   },
   "formatter": {
     "enabled": true,

@@ -871,7 +871,8 @@ export function attachSpecViewToggle(visualContainer: Element): void {
       toggleBtn.textContent = '📷 Photo View';
     }
   });
-  visualContainer.appendChild(toggleBtn);
+  const targetContainer = visualContainer.querySelector('.card-visual-badges') ?? visualContainer;
+  targetContainer.appendChild(toggleBtn);
 }
 
 /**

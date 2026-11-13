@@ -1,4 +1,5 @@
 import { scrollIntoViewAsync } from './dom-utils.ts';
+import { parseHash } from './route.ts';
 import { initScalingAndAccordions } from './scaler.ts';
 import {
   initFeatureSessionBanners,
@@ -16,24 +17,21 @@ import type {
 } from './types.ts';
 import { initVaultAndBackbar } from './vault-matcher.ts';
 
-const DEFAULT_SESSION_ID = 'session-alley-26-2026';
-
-const TOP_THREE_SESSIONS: readonly string[] = [
-  'session-alley-26-2026',
-  'session-matts-fall-festival-2025',
-  'session-maligned-drinks-uplifted-2025'
-];
-
 /**
- * Splits location.hash on `&` so compound fragments such as `#vault&bartender`
- * or `#session-id&bartender` preserve both navigation target and bartender mode.
+ * Session ids pinned in the top timeline, read from the scrubber markup (newest first).
+ * The first one doubles as the default landing session.
  */
+const TOP_SESSION_IDS: readonly string[] = Array.from(
+  document.querySelectorAll<HTMLElement>('.scrubber-pill[data-stage-session]')
+)
+  .map((pill) => pill.getAttribute('data-stage-session') ?? '')
+  .filter(Boolean);
+
+const DEFAULT_SESSION_ID: string =
+  TOP_SESSION_IDS[0] ?? document.querySelector('.archive-session')?.id ?? '';
+
 function parseLocationHash(): HashRouteInfo {
-  const raw = window.location.hash.replace(/^#/, '');
-  const parts = raw ? raw.split('&').filter(Boolean) : [];
-  const hasBartender = parts.includes('bartender');
-  const target = parts.find((part) => part !== 'bartender') ?? '';
-  return { raw, parts, target, hasBartender };
+  return parseHash(window.location.hash);
 }
 
 async function revealVaultCard(cardId: string, prefersReduced: boolean): Promise<void> {
@@ -58,6 +56,81 @@ async function revealVaultCard(cardId: string, prefersReduced: boolean): Promise
   }, 3000);
 }
 
+const copyResetTimers = new WeakMap<HTMLButtonElement, number>();
+
+function getAppBaseUrl(): string {
+  const cleanPath = window.location.pathname.replace(/index\.html$/, '');
+  const normalizedPath = cleanPath.endsWith('/') ? cleanPath : `${cleanPath}/`;
+  return `${window.location.origin}${normalizedPath}`;
+}
+
+async function copyUrlWithFeedback(button: HTMLButtonElement, url: string): Promise<void> {
+  const defaultLabel = button.getAttribute('data-default-label') ?? button.textContent.trim();
+  button.setAttribute('data-default-label', defaultLabel);
+
+  let copied: boolean;
+  try {
+    await navigator.clipboard.writeText(url);
+    copied = true;
+  } catch {
+    copied = false;
+  }
+
+  button.textContent = copied ? '✓ Link Copied!' : url;
+  button.classList.add('is-copied');
+  const prevTimer = copyResetTimers.get(button);
+  if (prevTimer !== undefined) window.clearTimeout(prevTimer);
+  const timerId = window.setTimeout(() => {
+    button.textContent = defaultLabel;
+    button.classList.remove('is-copied');
+    copyResetTimers.delete(button);
+  }, 1800);
+  copyResetTimers.set(button, timerId);
+}
+
+function initCardVisualBadgeGroups(): void {
+  for (const visual of document.querySelectorAll(
+    '.vault-card:not(.vault-missing-card) .card-visual'
+  )) {
+    if (visual.querySelector('.card-visual-badges')) continue;
+    const badgeRow = document.createElement('div');
+    badgeRow.className = 'card-visual-badges';
+    const overlay = visual.querySelector('.card-visual-overlay');
+    if (overlay) {
+      overlay.after(badgeRow);
+    } else {
+      visual.appendChild(badgeRow);
+    }
+    for (const selector of ['.course-tag-overlay', '.provenance-badge', '.spec-view-toggle']) {
+      const child = visual.querySelector(selector);
+      if (child) badgeRow.appendChild(child);
+    }
+  }
+}
+
+function initVaultCopyLinkButtons(): void {
+  for (const card of document.querySelectorAll<HTMLElement>(
+    '.vault-card:not(.vault-missing-card)'
+  )) {
+    if (!card.id || card.querySelector('.copy-link-btn')) continue;
+    let actions = card.querySelector('.card-actions');
+    if (!actions) {
+      const body = card.querySelector('.card-body') ?? card;
+      actions = document.createElement('div');
+      actions.className = 'card-actions';
+      body.appendChild(actions);
+    }
+    const title = (card.querySelector('.card-title')?.textContent ?? 'this cocktail').trim();
+    const copyBtn = document.createElement('button');
+    copyBtn.type = 'button';
+    copyBtn.className = 'copy-link-btn';
+    copyBtn.setAttribute('data-copy-card', card.id);
+    copyBtn.title = `Copy direct link to ${title}`;
+    copyBtn.textContent = '🔗 Copy Link';
+    actions.appendChild(copyBtn);
+  }
+}
+
 function bootstrapApp(): void {
   const body = document.body;
   const btnGuest = document.getElementById('btn-guest');
@@ -75,23 +148,25 @@ function bootstrapApp(): void {
     currentSessionId: DEFAULT_SESSION_ID
   };
 
-  function setMode(mode: ViewMode): void {
+  function setMode(mode: ViewMode, persist = true): void {
     body.setAttribute('data-mode', mode);
     const isBartender = mode === 'bartender';
     btnGuest?.setAttribute('aria-pressed', String(!isBartender));
     btnBartender?.setAttribute('aria-pressed', String(isBartender));
-    try {
-      localStorage.setItem('hcc_menu_mode', mode);
-    } catch {
-      // Ignore storage failures in restricted contexts
+    if (persist) {
+      try {
+        localStorage.setItem('hcc_menu_mode', mode);
+      } catch {
+        // Ignore storage failures in restricted contexts
+      }
     }
   }
 
   btnGuest?.addEventListener('click', () => {
-    setMode('guest');
+    setMode('guest', true);
   });
   btnBartender?.addEventListener('click', () => {
-    setMode('bartender');
+    setMode('bartender', true);
   });
 
   const initialHashInfo = parseLocationHash();
@@ -101,10 +176,14 @@ function bootstrapApp(): void {
   } catch {
     // Ignore storage failures in restricted contexts
   }
-  if (initialHashInfo.hasBartender || savedMode === 'bartender') {
-    setMode('bartender');
+  if (initialHashInfo.hasBartender) {
+    setMode('bartender', false);
+  } else if (savedMode === 'bartender') {
+    setMode('bartender', false);
   }
 
+  initCardVisualBadgeGroups();
+  initVaultCopyLinkButtons();
   initScalingAndAccordions(state, mountVaultCardSpecDiagram);
   initFeatureSessionBanners();
   initLazyVaultDiagrams();
@@ -141,8 +220,8 @@ function bootstrapApp(): void {
 
       if (historyMode !== 'none') {
         try {
-          const modeSuffix = body.getAttribute('data-mode') === 'bartender' ? '&bartender' : '';
-          const nextHash = `#vault${modeSuffix}`;
+          const keepBartender = historyMode === 'replace' && parseLocationHash().hasBartender;
+          const nextHash = `#vault${keepBartender ? '&bartender' : ''}`;
           if (historyMode === 'push') {
             if (window.location.hash !== nextHash) {
               history.pushState(null, '', nextHash);
@@ -164,9 +243,9 @@ function bootstrapApp(): void {
 
     renderActiveStageSession(state.currentSessionId, state, false);
 
-    const isTopThree = TOP_THREE_SESSIONS.includes(state.currentSessionId);
+    const isTopSession = TOP_SESSION_IDS.includes(state.currentSessionId);
     if (dynamicSessionPill) {
-      if (isTopThree) {
+      if (isTopSession) {
         dynamicSessionPill.style.display = 'none';
       } else {
         dynamicSessionPill.style.display = 'inline-flex';
@@ -199,8 +278,8 @@ function bootstrapApp(): void {
 
     if (historyMode !== 'none') {
       try {
-        const modeSuffix = body.getAttribute('data-mode') === 'bartender' ? '&bartender' : '';
-        const nextHash = `#${state.currentSessionId}${modeSuffix}`;
+        const keepBartender = historyMode === 'replace' && parseLocationHash().hasBartender;
+        const nextHash = `#${state.currentSessionId}${keepBartender ? '&bartender' : ''}`;
         if (historyMode === 'push') {
           if (window.location.hash !== nextHash) {
             history.pushState(null, '', nextHash);
@@ -233,7 +312,7 @@ function bootstrapApp(): void {
   function routeFromHash(historyMode: HistoryMode = 'replace'): void {
     const { target, hasBartender } = parseLocationHash();
     if (hasBartender) {
-      setMode('bartender');
+      setMode('bartender', false);
     }
 
     let targetView: PageView = 'session';
@@ -275,6 +354,31 @@ function bootstrapApp(): void {
   stagePrepLink?.addEventListener('click', (e) => {
     e.preventDefault();
     document.getElementById('prep-summary')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  const stagePrintBtn = document.getElementById('stage-print-btn');
+  if (stagePrintBtn instanceof HTMLButtonElement) {
+    stagePrintBtn.addEventListener('click', () => {
+      window.print();
+    });
+  }
+
+  const stageCopySessionBtn = document.getElementById('stage-copy-session-btn');
+  if (stageCopySessionBtn instanceof HTMLButtonElement) {
+    stageCopySessionBtn.addEventListener('click', () => {
+      const shareUrl = `${getAppBaseUrl()}s/${encodeURIComponent(state.currentSessionId)}/`;
+      void copyUrlWithFeedback(stageCopySessionBtn, shareUrl);
+    });
+  }
+
+  document.addEventListener('click', (e) => {
+    if (!(e.target instanceof Element)) return;
+    const copyBtn = e.target.closest<HTMLButtonElement>('.copy-link-btn[data-copy-card]');
+    if (!copyBtn) return;
+    const cardId = copyBtn.getAttribute('data-copy-card');
+    if (!cardId) return;
+    const cardUrl = `${getAppBaseUrl()}#${encodeURIComponent(cardId)}`;
+    void copyUrlWithFeedback(copyBtn, cardUrl);
   });
 
   stageCardsGridEl?.addEventListener('click', (e) => {

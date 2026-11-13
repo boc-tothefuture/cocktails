@@ -38,20 +38,32 @@ export const CANONICAL_INGREDIENT_RULES: readonly IngredientRule[] = [
 
   // Specific cream/liqueur modifiers that share base-spirit words (must precede whiskey rules)
   {
-    id: 'coffee_cream',
+    id: 'irish_cream',
     shelf: 'modifiers',
-    label: '☕ Coffee Liqueur & Cream',
-    shortLabel: 'Coffee Liqueur & Cream',
-    keywords: [
-      'coffee liqueur',
-      'baileys',
-      'irish cream',
-      'bourbon cream',
-      'pumpkin spice creamer',
-      'half-and-half',
-      'heavy cream',
-      'peppermint schnapps'
-    ]
+    label: '🥛 Irish & Bourbon Cream',
+    shortLabel: 'Irish / Bourbon Cream',
+    keywords: ['baileys', 'irish cream', 'bourbon cream']
+  },
+  {
+    id: 'coffee_liqueur',
+    shelf: 'modifiers',
+    label: '☕ Coffee Liqueur',
+    shortLabel: 'Coffee Liqueur',
+    keywords: ['coffee liqueur']
+  },
+  {
+    id: 'peppermint_schnapps',
+    shelf: 'modifiers',
+    label: '🍬 Peppermint Schnapps',
+    shortLabel: 'Peppermint Schnapps',
+    keywords: ['peppermint schnapps']
+  },
+  {
+    id: 'dairy_cream',
+    shelf: 'pantry',
+    label: '🥛 Cream & Half-and-Half',
+    shortLabel: 'Cream / Half & Half',
+    keywords: ['half-and-half', 'heavy cream', 'pumpkin spice creamer', 'whipped cream']
   },
 
   // Shelf 1: Base Spirits (check specific whiskeys before generic whiskey)
@@ -311,6 +323,24 @@ export const CANONICAL_INGREDIENT_RULES: readonly IngredientRule[] = [
   }
 ];
 
+/**
+ * Returns the first canonical rule whose keyword appears as a whole word in `lowName`.
+ * First match wins, so specific rules must stay above generic ones.
+ */
+export function matchCanonicalRule(lowName: string): IngredientRule | undefined {
+  return CANONICAL_INGREDIENT_RULES.find((rule) =>
+    rule.keywords.some((kw) => {
+      const escaped = kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      return new RegExp(`\\b${escaped}\\b`, 'i').test(lowName);
+    })
+  );
+}
+
+/** Default shelf for an ingredient no canonical rule recognises. */
+export function inferAutoShelf(lowName: string): BackbarShelf {
+  return /\b(syrup|juice|soda|bitters|cordial)\b/i.test(lowName) ? 'pantry' : 'modifiers';
+}
+
 function parseExplicitShelf(rawShelf: string | null): BackbarShelf | null {
   if (rawShelf === 'spirits' || rawShelf === 'modifiers' || rawShelf === 'pantry') {
     return rawShelf;
@@ -453,28 +483,21 @@ export function initVaultAndBackbar(
     if (!cleanName) return { id: '_optional', shelf: 'optional' };
     const low = cleanName.toLowerCase();
 
-    for (const rule of CANONICAL_INGREDIENT_RULES) {
-      for (const kw of rule.keywords) {
-        const escaped = kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        const pattern = new RegExp(`\\b${escaped}\\b`, 'i');
-        if (pattern.test(low)) {
-          return (
-            ingredientCatalog.get(rule.id) ?? {
-              ...rule,
-              recipeIds: new Set<string>()
-            }
-          );
+    const matchedRule = matchCanonicalRule(low);
+    if (matchedRule) {
+      return (
+        ingredientCatalog.get(matchedRule.id) ?? {
+          ...matchedRule,
+          recipeIds: new Set<string>()
         }
-      }
+      );
     }
 
     const slug = `auto_${low.replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '')}`;
     const existingAuto = ingredientCatalog.get(slug);
     if (existingAuto) return existingAuto;
 
-    const inferredShelf: BackbarShelf = /\b(syrup|juice|soda|bitters|cordial)\b/i.test(low)
-      ? 'pantry'
-      : 'modifiers';
+    const inferredShelf = inferAutoShelf(low);
     const explicitShelf = parseExplicitShelf(li.getAttribute('data-shelf')) ?? inferredShelf;
     const autoRule: CatalogIngredient = {
       id: slug,
@@ -784,7 +807,12 @@ export function initVaultAndBackbar(
           if (!evalInfo?.matchesSpirit) {
             backbarMatch = false;
           } else {
-            const effectiveSmart = backbarMatchMode === 'smart' && readyCount + almostCount > 0;
+            const hasPickedAnyModifierOrPantry =
+              selectedBackbarModifiers.size > 0 || selectedBackbarPantry.size > 0;
+            const effectiveSmart =
+              backbarMatchMode === 'smart' &&
+              hasPickedAnyModifierOrPantry &&
+              readyCount + almostCount > 0;
             backbarMatch = effectiveSmart
               ? evalInfo.status === 'ready' || evalInfo.status === 'almost'
               : true;
@@ -866,7 +894,11 @@ export function initVaultAndBackbar(
         archiveCountEl.removeAttribute('data-filtered');
       }
       if (isBackbarActive) {
-        archiveCountEl.textContent = `What Can I Make: Showing ${visibleCocktails} matching cocktail${visibleCocktails === 1 ? '' : 's'} (${readyCount} Ready to Pour · ${almostCount} Just 1 Bottle Away)`;
+        const hasPickedAnyModifierOrPantry =
+          selectedBackbarModifiers.size > 0 || selectedBackbarPantry.size > 0;
+        archiveCountEl.textContent = hasPickedAnyModifierOrPantry
+          ? `What Can I Make: Showing ${visibleCocktails} matching cocktail${visibleCocktails === 1 ? '' : 's'} (${readyCount} Ready to Pour · ${almostCount} Just 1 Bottle Away)`
+          : `What Can I Make: Showing all ${visibleCocktails} cocktails for your selected spirit${selectedBackbarSpirits.size === 1 ? '' : 's'} (${readyCount} Ready · ${almostCount} 1 Ingredient Away — pick mixers & liqueurs above to narrow down)`;
       } else {
         const missingSuffix =
           visibleMissing > 0
@@ -972,6 +1004,7 @@ export function initVaultAndBackbar(
 
     const cardVisual = pickedCard.querySelector('.card-visual');
     if (cardVisual) {
+      const badgesTarget = cardVisual.querySelector('.card-visual-badges') ?? cardVisual;
       const badge = document.createElement('div');
       badge.className = 'lucky-pick-badge';
       badge.setAttribute('aria-label', "Tonight's Lucky Pour");
@@ -986,7 +1019,7 @@ export function initVaultAndBackbar(
         </svg>
         <span>Tonight's Lucky Pour</span>
       `;
-      cardVisual.appendChild(badge);
+      badgesTarget.appendChild(badge);
     }
 
     const drinkTitle = pickedCard.querySelector('.card-title')?.textContent ?? 'Cocktail';

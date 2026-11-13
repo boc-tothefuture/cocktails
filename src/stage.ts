@@ -3,7 +3,20 @@ import { applyScaleToContainer, formatNumber, pluralizeUnit } from './scaler.ts'
 import { attachSpecViewToggle, buildCocktailSpecSvg } from './svg-diagram.ts';
 import type { AppState } from './types.ts';
 
-const HOST_ROTATION = ['Doug', 'Brian', 'Matt', 'Jason', 'Quinn'] as const;
+const FALLBACK_HOST_ROTATION: readonly string[] = ['Doug', 'Brian', 'Matt', 'Jason', 'Quinn'];
+
+/** Host cycle order, read once from the rotation list markup before it is re-rendered. */
+let hostRotation: readonly string[] | null = null;
+
+function getHostRotation(): readonly string[] {
+  hostRotation ??= (() => {
+    const names = Array.from(document.querySelectorAll('#rotation-steps-list .step-name'))
+      .map((el) => el.textContent.trim())
+      .filter(Boolean);
+    return names.length > 0 ? names : FALLBACK_HOST_ROTATION;
+  })();
+  return hostRotation;
+}
 
 let currentFeaturedHost = 'Doug';
 
@@ -38,12 +51,13 @@ export function initFeatureSessionBanners(): void {
 export function updateHostRotation(hostText?: string): void {
   if (hostText) currentFeaturedHost = hostText;
   const norm = currentFeaturedHost.toLowerCase();
-  let currentIdx = HOST_ROTATION.findIndex((host) => norm.includes(host.toLowerCase()));
+  const rotation = getHostRotation();
+  let currentIdx = rotation.findIndex((host) => norm.includes(host.toLowerCase()));
   if (currentIdx === -1) {
     currentIdx = 0;
   }
-  const nextIdx = (currentIdx + 1) % HOST_ROTATION.length;
-  const nextHost = HOST_ROTATION[nextIdx] ?? 'Doug';
+  const nextIdx = (currentIdx + 1) % rotation.length;
+  const nextHost = rotation[nextIdx] ?? 'Doug';
 
   const upNextNameEl = document.getElementById('up-next-name');
   if (upNextNameEl) {
@@ -52,19 +66,20 @@ export function updateHostRotation(hostText?: string): void {
 
   const stepsList = document.getElementById('rotation-steps-list');
   if (stepsList) {
-    stepsList.innerHTML = HOST_ROTATION.map((name, i) => {
-      const isCurrent = i === currentIdx;
-      const isNext = i === nextIdx;
-      let rowClass = 'rotation-step-row';
-      let tagHtml = '';
-      if (isCurrent) {
-        rowClass += ' is-current';
-        tagHtml = '<span class="step-tag">CURRENT HOST</span>';
-      } else if (isNext) {
-        rowClass += ' is-next';
-        tagHtml = '<span class="step-tag">UP NEXT</span>';
-      }
-      return `
+    stepsList.innerHTML = rotation
+      .map((name, i) => {
+        const isCurrent = i === currentIdx;
+        const isNext = i === nextIdx;
+        let rowClass = 'rotation-step-row';
+        let tagHtml = '';
+        if (isCurrent) {
+          rowClass += ' is-current';
+          tagHtml = '<span class="step-tag">CURRENT HOST</span>';
+        } else if (isNext) {
+          rowClass += ' is-next';
+          tagHtml = '<span class="step-tag">UP NEXT</span>';
+        }
+        return `
         <li class="${rowClass}">
           <div class="step-left">
             <span class="step-idx">${i + 1}.</span>
@@ -73,7 +88,8 @@ export function updateHostRotation(hostText?: string): void {
           ${tagHtml}
         </li>
       `;
-    }).join('');
+      })
+      .join('');
   }
 }
 
@@ -275,8 +291,11 @@ export function renderActiveStageSession(
           <div>
             ${garnishText ? `<div class="stage-garnish-line">Garnish: ${escapeMarkup(garnishText)}</div>` : ''}
             <div class="stage-card-footer">
-              <span style="font-family: var(--font-mono); font-size: 0.66rem; color: var(--text-slate);">${escapeMarkup(glasswareText)}</span>
-              <a href="#${escapeMarkup(cardId)}" class="stage-jump-btn">Full Recipe ↓</a>
+              <span class="stage-glass-note" style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-slate);">${escapeMarkup(glasswareText)}</span>
+              <div class="stage-card-actions">
+                <button type="button" class="copy-link-btn" data-copy-card="${escapeMarkup(cardId)}" title="Copy direct link to ${escapeMarkup(drinkTitle)}">🔗 Copy Link</button>
+                <a href="#${escapeMarkup(cardId)}" class="stage-jump-btn">Full Recipe ↓</a>
+              </div>
             </div>
           </div>
         </div>
@@ -327,11 +346,11 @@ export function renderActiveStageSession(
 
       const tr = document.createElement('tr');
       tr.innerHTML = `
-        <td class="prep-cocktail-name"><a href="#${escapeMarkup(card.id)}" style="color: inherit; text-decoration: none;">${escapeMarkup(drinkTitle)}</a></td>
-        <td style="color: var(--text-mist); font-size: 0.84rem;">${escapeMarkup(glasswareText)}</td>
-        <td><ul class="prep-build-list">${buildLinesHtml}</ul></td>
-        <td style="font-size: 0.82rem; color: var(--text-mist);">${garnishText ? `<strong>Garnish:</strong> ${escapeMarkup(garnishText)}<br>` : ''}<span style="color: var(--text-slate);">${escapeMarkup(chips)}</span></td>
-        <td><span class="technique-badge">${escapeMarkup(techniqueText)}</span></td>
+        <td class="prep-cocktail-name" data-label="Cocktail"><a href="#${escapeMarkup(card.id)}" style="color: inherit; text-decoration: none;">${escapeMarkup(drinkTitle)}</a></td>
+        <td data-label="Glassware & Ice" style="color: var(--text-mist); font-size: 0.84rem;">${escapeMarkup(glasswareText)}</td>
+        <td data-label="Proportions & Build"><ul class="prep-build-list">${buildLinesHtml}</ul></td>
+        <td data-label="Garnish & Profile" style="font-size: 0.82rem; color: var(--text-mist);">${garnishText ? `<strong>Garnish:</strong> ${escapeMarkup(garnishText)}<br>` : ''}<span style="color: var(--text-slate);">${escapeMarkup(chips)}</span></td>
+        <td data-label="Technique"><span class="technique-badge">${escapeMarkup(techniqueText)}</span></td>
       `;
       prepLedgerTbodyEl.appendChild(tr);
     }
