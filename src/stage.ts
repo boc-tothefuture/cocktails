@@ -74,7 +74,7 @@ export function updateHostRotation(hostText?: string): void {
         let tagHtml = '';
         if (isCurrent) {
           rowClass += ' is-current';
-          tagHtml = '<span class="step-tag">CURRENT HOST</span>';
+          tagHtml = '<span class="step-tag">LAST HOST</span>';
         } else if (isNext) {
           rowClass += ' is-next';
           tagHtml = '<span class="step-tag">UP NEXT</span>';
@@ -143,7 +143,9 @@ export function initHostRotationDropdown(): void {
     }
   });
 
-  updateHostRotation('Doug');
+  const latestHostText =
+    document.querySelector('.archive-session .session-host')?.textContent.trim() ?? 'Doug';
+  updateHostRotation(latestHostText);
 }
 
 /**
@@ -184,8 +186,6 @@ export function renderActiveStageSession(
     const servingText = state.currentScale === 1 ? '1 SERVING' : `${state.currentScale} SERVINGS`;
     prepSessionLabelEl.innerHTML = `${escapeMarkup(titleText.toUpperCase())} · BATCH LEDGER · <span class="scale-indicator">${servingText}</span>`;
   }
-
-  updateHostRotation(hostText);
 
   const cards = Array.from(sessionEl.querySelectorAll('.vault-card:not(.vault-missing-card)'));
 
