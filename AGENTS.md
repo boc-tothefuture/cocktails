@@ -12,13 +12,28 @@ The site is hosted as a static website on **GitHub Pages** with a custom domain 
 
 ## Architecture & Project Structure
 
-The project is intentionally dependency-free and build-free. There are no bundlers, transpilers, or node dependencies.
+The project uses zero runtime dependencies and zero bundlers: static markup/styles live in [index.html](file:///Users/broconne/src/cocktails/index.html), and all client-side application logic is authored in strict TypeScript under `src/` and compiled to native ES modules in `dist/` via `tsc` (dev-only tooling: TypeScript, Biome, and ESLint with `typescript-eslint`). Compiled `dist/` output is gitignored and built automatically in CI by [deploy.yml](file:///Users/broconne/src/cocktails/.github/workflows/deploy.yml) before deploying to GitHub Pages.
 
 ```text
 .
+├── .github/workflows/     # GitHub Actions CI check, tsc build, and Pages deploy
+│   └── deploy.yml
 ├── AGENTS.md              # This guide
 ├── CNAME                  # GitHub Pages custom domain (hortonscreekcocktails.com)
-├── index.html             # Complete single-page application (HTML, CSS, JS)
+├── index.html             # Single-page markup & CSS; loads dist/main.js as an ES module
+├── package.json           # Build, typecheck, Biome, and ESLint scripts
+├── tsconfig.json          # Strict TypeScript compiler configuration (ES2024, erasableSyntaxOnly)
+├── biome.json             # Biome formatting & linting configuration
+├── eslint.config.mjs      # ESLint strictTypeChecked + stylisticTypeChecked config
+├── src/                   # TypeScript source modules
+│   ├── types.ts           # Shared domain unions, interfaces, and Window augmentation
+│   ├── dom-utils.ts       # Shared DOM extraction, escaping, and async scroll helpers
+│   ├── scaler.ts          # Batch scaler (1x-6x) and guest spec accordion controls
+│   ├── svg-diagram.ts     # Proportional SVG diagram generator and lazy IntersectionObserver
+│   ├── stage.ts           # Active tasting stage renderer and host rotation tracker
+│   ├── vault-matcher.ts   # Cellar Vault search, filters, 404 Easter egg, Backbar, and Lucky picker
+│   └── main.ts            # Application entry point, hash routing, mode toggle, and QR modal
+├── dist/                  # Gitignored build output emitted by `npm run build` (for local preview & CI)
 └── assets/                # Menu artwork, icons, and static QR code
     ├── archive/           # 51 historical cocktail photos & AI illustrations (2020–2026)
     ├── favicon.svg        # Site favicon
@@ -27,7 +42,7 @@ The project is intentionally dependency-free and build-free. There are no bundle
 
 ### Key Technical Characteristics
 
-- **Single-File Delivery**: All markup, styling, and client-side logic reside in [index.html](file:///Users/broconne/src/cocktails/index.html).
+- **Static Delivery + Native ES Modules**: Markup and CSS live in [index.html](file:///Users/broconne/src/cocktails/index.html), which loads `<script type="module" src="dist/main.js"></script>` with zero runtime framework or bundler overhead.
 - **Design System & Typography**:
   - **Midnight Bourbon Cellar & Moody Lounge** dark-mode palette with charred oak, smoked glass, and candlelit whiskey amber CSS variables (`--bg-abyss: #0b0807`, `--bg-granite: #14100e`, `--accent-lantern: #e8993a`, `--accent-lantern-glow: #f5b563`).
   - Fonts via Google Fonts: `Cormorant Garamond` (display serif), `Plus Jakarta Sans` (body sans-serif), and `JetBrains Mono` (spec/numerical monospace).
@@ -40,7 +55,7 @@ The project is intentionally dependency-free and build-free. There are no bundle
 
 ## Interactive Features & Data Model
 
-The client-side JavaScript in `index.html` implements several key interactive features:
+The client-side TypeScript modules under `src/` (compiled to `dist/`) implement several key interactive features:
 
 1. **Dual Viewing Modes (`Guest` vs. `Bartender`)**:
    - Controlled by the `data-mode` attribute on `<body>` (`guest` or `bartender`).
@@ -117,20 +132,31 @@ When adding or updating cocktail recipes in [index.html](file:///Users/broconne/
 
 ## Local Development & Testing
 
-No compilation or build step is necessary. Serve the directory locally using any static web server:
+Install dev tooling once (`npm install`), then rebuild `dist/` after editing TypeScript under `src/` and run static checks before committing:
 
 ```bash
+# Compile src/*.ts -> dist/*.js
+npm run build
+
+# Run typechecking (tsc --noEmit), Biome, and ESLint (strictTypeChecked)
+npm run check
+
+# Format and lint with Biome
+npm run format
+
 # Start a local static server
 python3 -m http.server 8000
 ```
 
-Then preview in your browser:
+Then preview in your browser (ES modules require serving over HTTP/HTTPS, not `file://`):
 - **Guest View**: `http://localhost:8000`
 - **Bartender View**: `http://localhost:8000/#bartender`
 
 ### Validation Checklist
 
 Before committing changes:
+- Run `npm run check` (`tsc --noEmit`, `biome check .`, and `eslint .`) cleanly with zero errors.
+- Rebuild locally (`npm run build`) when previewing in the browser (`dist/` is gitignored and built by GitHub Actions on push to `main`).
 - Verify both **Guest** and **Bartender** modes.
 - Test the **batch scaler** across all recipes to confirm numbers and units update cleanly without `NaN` or layout breaking.
 - Test the native `<dialog>` QR modal (open, close button, backdrop click, Escape key).
