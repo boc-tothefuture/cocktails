@@ -866,6 +866,7 @@
 
     .scale-controls {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       gap: 0.4rem;
     }
@@ -1522,6 +1523,10 @@
         grid-template-columns: 1fr;
       }
 
+      .cocktail-card > * {
+        min-width: 0;
+      }
+
       .cocktail-card:nth-child(even) .card-visual {
         order: 0;
       }
@@ -1911,14 +1916,17 @@
     /* Unified Discovery Duo Capsule ("I'm Feeling Lucky" + "What Can I Make?") */
     .discovery-duo-capsule {
       display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: center;
       align-items: stretch;
+      max-width: 100%;
       background: rgba(14, 10, 8, 0.92);
       border: 1px solid rgba(232, 153, 58, 0.45);
-      border-radius: 999px;
+      border-radius: 1.5rem;
       padding: 0.2rem;
       box-shadow: 0 0 18px rgba(232, 153, 58, 0.14);
       gap: 0.15rem;
-      flex-shrink: 0;
+      flex-shrink: 1;
     }
 
     .discovery-duo-capsule .vault-lucky-btn {
@@ -2584,7 +2592,7 @@
             <path d="M7 12h10"/>
             <path d="M7 16h6"/>
           </svg>
-          <span>The Vault (51 Cocktails)</span>
+          <span id="nav-vault-label">The Vault (51 Cocktails)</span>
         </button>
       </div>
 
@@ -2653,6 +2661,16 @@
       </div>
     </div>
 
+    <noscript>
+      <style>
+        body[data-page-view="session"] #league-archive { display: block !important; }
+        body[data-page-view="session"] .cellar-amber-divider { display: block !important; }
+      </style>
+      <p style="margin: 1rem 0; padding: 1rem 1.25rem; border: 1px solid rgba(232, 153, 58, 0.35); border-radius: 0.75rem; background: rgba(20, 16, 14, 0.85); color: var(--text-mist);">
+        JavaScript is disabled, so the interactive Tasting Stage cards and Session Prep Ledger cannot populate dynamically. Scroll down to read the full Cellar Vault archive below.
+      </p>
+    </noscript>
+
     <!-- Dynamically populated split smoked-glass cards for the active session -->
     <div class="stage-cards-grid" id="stage-cards-grid" aria-live="polite"></div>
 
@@ -2712,10 +2730,10 @@
           <h2 class="archive-main-title" id="archive-heading">
             <span>The Cellar Vault</span>
             <span class="amber-slash">//</span>
-            <span>51 Cocktails</span>
+            <span id="vault-count-heading">51 Cocktails</span>
           </h2>
           <p class="archive-lead">
-            Every pour from 12 sessions (2020–2026)—complete with Guest &amp; Bartender Spec modes, dynamic batch scaling, and quick session switching.
+            Every pour from <span id="vault-session-count">12</span> sessions (2020–2026)—complete with Guest &amp; Bartender Spec modes, dynamic batch scaling, and quick session switching.
           </p>
         </div>
         <div class="provenance-legend" aria-label="Image provenance key">
@@ -2737,7 +2755,7 @@
               type="search"
               id="archive-search"
               class="archive-search-input"
-              placeholder="Search 54 cocktails, spirits, ingredients, hosts, or try &quot;Doug&quot; / &quot;Quinn&quot;..."
+              placeholder="Search 51 cocktails, spirits, ingredients, hosts, or try &quot;Doug&quot; / &quot;Quinn&quot;..."
               aria-label="Search cellar vault cocktails"
             >
           </div>
@@ -8478,7 +8496,7 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-crest">The League of Extraordinary Cocktails</div>
-      <p>Founded August 2020 · 51 Cocktails across 12 Sessions (2020–2026)</p>
+      <p>Founded August 2020 · <span id="footer-cocktail-count">51</span> Cocktails across <span id="footer-session-count">12</span> Sessions (2020–2026)</p>
       <button type="button" class="qr-trigger-btn" id="open-qr-modal">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <rect x="3" y="3" width="7" height="7"/>
@@ -8497,7 +8515,7 @@
     <p>Scan to open <strong>hortonscreekcocktails.com</strong> on your phone.</p>
     <div class="qr-frame">
       <img
-        src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&color=0b0807&bgcolor=f5efe8&data=https%3A%2F%2Fhortonscreekcocktails.com"
+        src="assets/qr-hortons-creek.svg"
         alt="QR code for hortonscreekcocktails.com"
         width="180"
         height="180"
@@ -8516,6 +8534,14 @@
       const scaleBtns = document.querySelectorAll('.scale-btn');
       let currentScale = 1;
 
+      function parseLocationHash() {
+        const raw = window.location.hash.replace(/^#/, '');
+        const parts = raw ? raw.split('&').filter(Boolean) : [];
+        const hasBartender = parts.includes('bartender');
+        const target = parts.find((part) => part !== 'bartender') || '';
+        return { raw, parts, target, hasBartender };
+      }
+
       function setMode(mode) {
         body.setAttribute('data-mode', mode);
         const isBartender = mode === 'bartender';
@@ -8530,17 +8556,22 @@
       btnBartender.addEventListener('click', () => setMode('bartender'));
 
       // Check URL hash or saved preference
+      const initialHashInfo = parseLocationHash();
+      let savedMode = null;
       try {
-        const saved = localStorage.getItem('hcc_menu_mode');
-        if (window.location.hash === '#bartender' || saved === 'bartender') {
-          setMode('bartender');
-        }
+        savedMode = localStorage.getItem('hcc_menu_mode');
       } catch (_) {}
+      if (initialHashInfo.hasBartender || savedMode === 'bartender') {
+        setMode('bartender');
+      }
 
       // Individual card expand/collapse in Guest Mode
       cardToggleBtns.forEach((btn) => {
         btn.addEventListener('click', () => {
           const card = btn.closest('.cocktail-card');
+          if (card && card.classList.contains('vault-card') && typeof mountVaultCardSpecDiagram === 'function') {
+            mountVaultCardSpecDiagram(card);
+          }
           const expanded = card.getAttribute('data-expanded') === 'true';
           const nextState = !expanded;
           card.setAttribute('data-expanded', String(nextState));
@@ -9303,8 +9334,8 @@
         visualContainer.appendChild(toggleBtn);
       }
 
-      // Mount "Regarding Cocktails" SVG diagrams into all 51 Cellar Vault cards
-      document.querySelectorAll('.vault-card:not(.vault-missing-card)').forEach((card) => {
+      // Mount "Regarding Cocktails" SVG diagrams lazily for Cellar Vault cards
+      function mountVaultCardSpecDiagram(card) {
         const visualEl = card.querySelector('.card-visual');
         if (!visualEl || visualEl.querySelector('.spec-diagram-wrap')) return;
         const wrap = document.createElement('div');
@@ -9312,7 +9343,26 @@
         wrap.innerHTML = buildCocktailSpecSvg(card, 'vault', false);
         visualEl.appendChild(wrap);
         attachSpecViewToggle(visualEl);
-      });
+      }
+
+      const vaultDiagramCards = document.querySelectorAll('.vault-card:not(.vault-missing-card)');
+      if ('IntersectionObserver' in window) {
+        const diagramObserver = new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              mountVaultCardSpecDiagram(entry.target);
+              observer.unobserve(entry.target);
+            });
+          },
+          { rootMargin: '400px 0px' }
+        );
+        vaultDiagramCards.forEach((card) => diagramObserver.observe(card));
+      } else if ('requestIdleCallback' in window) {
+        requestIdleCallback(() => vaultDiagramCards.forEach(mountVaultCardSpecDiagram));
+      } else {
+        setTimeout(() => vaultDiagramCards.forEach(mountVaultCardSpecDiagram), 0);
+      }
 
       // ============================================================
       // Minimalist Host Rotation Tracker Engine
@@ -9627,6 +9677,7 @@
         currentPageView = view;
         body.setAttribute('data-page-view', view);
         const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const historyMode = options.history || 'replace';
 
         if (view === 'vault') {
           if (navVaultBtn) navVaultBtn.setAttribute('aria-pressed', 'true');
@@ -9648,10 +9699,13 @@
             setTimeout(async () => {
               const card = document.getElementById(options.targetCardId);
               if (card) {
+                if (card.classList.contains('vault-card') && !card.classList.contains('vault-missing-card')) {
+                  mountVaultCardSpecDiagram(card);
+                }
                 const parentSession = card.closest('.archive-session');
                 if (parentSession) parentSession.hidden = false;
                 card.hidden = false;
-                archiveSessions.forEach((s) => (s.style.contentVisibility = 'visible'));
+                document.querySelectorAll('.archive-session').forEach((s) => (s.style.contentVisibility = 'visible'));
                 await scrollIntoViewAsync(card, { behavior: prefersReduced ? 'auto' : 'smooth', block: 'center' });
                 card.classList.add('is-lucky-pick');
                 setTimeout(() => card.classList.remove('is-lucky-pick'), 3000);
@@ -9659,10 +9713,19 @@
             }, 80);
           }
 
-          try {
-            const modeSuffix = body.getAttribute('data-mode') === 'bartender' ? '&bartender' : '';
-            history.replaceState(null, '', `#vault${modeSuffix}`);
-          } catch (_) {}
+          if (historyMode !== 'none') {
+            try {
+              const modeSuffix = body.getAttribute('data-mode') === 'bartender' ? '&bartender' : '';
+              const nextHash = `#vault${modeSuffix}`;
+              if (historyMode === 'push') {
+                if (window.location.hash !== nextHash) {
+                  history.pushState(null, '', nextHash);
+                }
+              } else {
+                history.replaceState(null, '', nextHash);
+              }
+            } catch (_) {}
+          }
         } else {
           if (navVaultBtn) navVaultBtn.setAttribute('aria-pressed', 'false');
           if (options.sessionId) {
@@ -9700,19 +9763,30 @@
             stageHeading.focus({ preventScroll: true });
           }
 
-          try {
-            const modeSuffix = body.getAttribute('data-mode') === 'bartender' ? '&bartender' : '';
-            history.replaceState(null, '', `#${currentSessionId}${modeSuffix}`);
-          } catch (_) {}
+          if (historyMode !== 'none') {
+            try {
+              const modeSuffix = body.getAttribute('data-mode') === 'bartender' ? '&bartender' : '';
+              const nextHash = `#${currentSessionId}${modeSuffix}`;
+              if (historyMode === 'push') {
+                if (window.location.hash !== nextHash) {
+                  history.pushState(null, '', nextHash);
+                }
+              } else {
+                history.replaceState(null, '', nextHash);
+              }
+            } catch (_) {}
+          }
         }
       }
 
       function transitionPageView(view, options = {}) {
-        const update = () => setPageView(view, options);
+        const update = () => setPageView(view, { history: 'push', ...options });
         if (!document.startViewTransition || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
           update();
         } else {
-          document.startViewTransition(update);
+          const vt = document.startViewTransition(update);
+          vt.ready.catch(() => {});
+          vt.finished.catch(() => {});
         }
       }
 
@@ -9784,17 +9858,48 @@
         });
       });
 
-      // Initialize from URL Hash or default to Alley 2.6 Session
-      const rawHash = window.location.hash.replace(/^#/, '');
-      const hashParts = rawHash.split('&');
-      const primaryHash = hashParts[0];
-      if (primaryHash === 'vault' || primaryHash === 'league-archive') {
-        setPageView('vault', { scroll: false });
-      } else if (primaryHash && document.getElementById(primaryHash)?.classList.contains('archive-session')) {
-        setPageView('session', { sessionId: primaryHash, scroll: false });
-      } else {
-        setPageView('session', { sessionId: 'session-alley-26-2026', scroll: false });
+      // Initialize from URL Hash (or default to Alley 2.6 Session) and keep Back/Forward/hash edits in sync
+      let hasRoutedInitialHash = false;
+      function routeFromHash(historyMode = 'replace') {
+        const { target, hasBartender } = parseLocationHash();
+        if (hasBartender) {
+          setMode('bartender');
+        }
+
+        let targetView = 'session';
+        let targetSessionId = 'session-alley-26-2026';
+        let targetCardId = null;
+
+        if (target === 'vault' || target === 'league-archive') {
+          targetView = 'vault';
+        } else if (target && document.getElementById(target)?.classList.contains('archive-session')) {
+          targetView = 'session';
+          targetSessionId = target;
+        } else if (target && document.getElementById(target)?.classList.contains('vault-card')) {
+          targetView = 'vault';
+          targetCardId = target;
+        }
+
+        if (
+          hasRoutedInitialHash &&
+          !targetCardId &&
+          targetView === currentPageView &&
+          (targetView === 'vault' || targetSessionId === currentSessionId)
+        ) {
+          return;
+        }
+
+        hasRoutedInitialHash = true;
+        if (targetView === 'vault') {
+          setPageView('vault', { scroll: false, history: historyMode, targetCardId });
+        } else {
+          setPageView('session', { sessionId: targetSessionId, scroll: false, history: historyMode });
+        }
       }
+
+      routeFromHash('replace');
+      window.addEventListener('popstate', () => routeFromHash('none'));
+      window.addEventListener('hashchange', () => routeFromHash('none'));
 
       // ============================================================
       // Cellar Vault Filtering, Search & Doug/Quinn 404 Easter Egg
@@ -9823,9 +9928,13 @@
       // Automatically parses .spec-list items from all .vault-card
       // elements on boot (and auto-discovers any future ingredients).
       // ============================================================
+      // First match wins; keep specific rules above generic ones.
       const CANONICAL_INGREDIENT_RULES = [
         // Theatrical / non-blocking elements (automatically treated as optional like garnishes)
         { id: '_optional', shelf: 'optional', label: 'Optional', shortLabel: 'Optional', keywords: ['smoke', 'mist', 'boiling hot water', 'filtered water', 'sidecar dropper', 'whipped cream', 'ground cinnamon', 'candied ginger', 'vanilla extract', 'roasted coffee beans', 'grapefruit peel', 'rosemary sprig', 'fire tincture'] },
+
+        // Specific cream/liqueur modifiers that share base-spirit words (must precede whiskey rules)
+        { id: 'coffee_cream', shelf: 'modifiers', label: '☕ Coffee Liqueur & Cream', shortLabel: 'Coffee Liqueur & Cream', keywords: ['coffee liqueur', 'baileys', 'irish cream', 'bourbon cream', 'pumpkin spice creamer', 'half-and-half', 'heavy cream', 'peppermint schnapps'] },
 
         // Shelf 1: Base Spirits (check specific whiskeys before generic whiskey)
         { id: 'irish_whiskey', shelf: 'spirits', label: '🍀 Irish Whiskey', shortLabel: 'Irish Whiskey', keywords: ['irish whiskey', 'tullamore', 'bushmills', 'pot still irish'] },
@@ -9850,7 +9959,6 @@
         { id: 'amaro_nonino', shelf: 'modifiers', label: '🌿 Amaro Nonino', shortLabel: 'Amaro Nonino', keywords: ['nonino'] },
         { id: 'dark_amaro', shelf: 'modifiers', label: '🌱 Cynar / Averna / Amaro', shortLabel: 'Cynar / Amaro', keywords: ['cynar', 'averna', 'gentian amaro', 'strega'] },
         { id: 'absinthe', shelf: 'modifiers', label: '🧚 Absinthe', shortLabel: 'Absinthe', keywords: ['absinthe', 'herbsaint'] },
-        { id: 'coffee_cream', shelf: 'modifiers', label: '☕ Coffee Liqueur & Cream', shortLabel: 'Coffee Liqueur & Cream', keywords: ['coffee liqueur', 'baileys', 'irish cream', 'bourbon cream', 'pumpkin spice creamer', 'half-and-half', 'heavy cream', 'peppermint schnapps'] },
         { id: 'cherry_berry', shelf: 'modifiers', label: '🍒 Cherry Heering / Chambord', shortLabel: 'Cherry Heering / Chambord', keywords: ['chambord', 'heering'] },
         { id: 'amaretto', shelf: 'modifiers', label: '🌰 Amaretto', shortLabel: 'Amaretto', keywords: ['amaretto'] },
         { id: 'floral_liqueur', shelf: 'modifiers', label: '🌸 St-Germain / Crème de Violette', shortLabel: 'St-Germain / Violette', keywords: ['st-germain', 'elderflower', 'violette'] },
@@ -9860,7 +9968,7 @@
         // Shelf 3: Citrus, Syrups, Bitters & Mixers (not assumed stocked)
         { id: 'lemon', shelf: 'pantry', label: '🍋 Lemon Juice', shortLabel: 'Lemon Juice', keywords: ['lemon juice'] },
         { id: 'lime', shelf: 'pantry', label: '🍈 Lime Juice', shortLabel: 'Lime Juice', keywords: ['lime juice', 'lime cordial', 'limeade'] },
-        { id: 'simple_syrup', shelf: 'pantry', label: '🍯 Simple / Demerara Syrup', shortLabel: 'Simple Syrup', keywords: ['simple syrup', 'demerara', 'sugar', 'grenadine', 'cinnamon syrup', 'spiced syrup', 'white chocolate syrup', 'chili syrup', 'passionfruit syrup'] },
+        { id: 'simple_syrup', shelf: 'pantry', label: '🍯 Simple / Demerara Syrup', shortLabel: 'Simple Syrup', keywords: ['simple syrup', 'demerara', 'sugar', 'grenadine', 'cinnamon syrup', 'spiced syrup', 'white chocolate syrup', 'chili syrup', 'passionfruit syrup', 'ginger syrup'] },
         { id: 'maple_honey_agave', shelf: 'pantry', label: '🍁 Maple, Honey & Agave', shortLabel: 'Maple / Honey / Agave', keywords: ['maple syrup', 'honey', 'agave'] },
         { id: 'bitters', shelf: 'pantry', label: "💧 Angostura & Peychaud's Bitters", shortLabel: 'Bitters', keywords: ['bitters'] },
         { id: 'soda_ginger', shelf: 'pantry', label: '🫧 Club Soda & Ginger Beer', shortLabel: 'Club Soda / Ginger Beer', keywords: ['club soda', 'ginger beer', 'ginger ale', 'monster energy'] },
@@ -9888,11 +9996,71 @@
 
       const ingredientCatalog = new Map();
       const cardIngredientMap = new Map(); // cardId -> { spiritIds: Set, modifierIds: Set, pantryIds: Set, requiredIds: Array }
+      const cardSearchMap = new Map(); // cardId -> normalized searchable text
       const selectedBackbarSpirits = new Set();
       const selectedBackbarModifiers = new Set();
       const selectedBackbarPantry = new Set();
       let backbarMatchMode = 'smart'; // 'smart' (Ready + 1-Away) | 'any' (All drinks with selected spirit)
       let backbarPantryCollapsed = false;
+      let totalVaultCocktails = 0;
+
+      function updateVaultCounts() {
+        totalVaultCocktails = document.querySelectorAll('.vault-card:not(.vault-missing-card)').length;
+        const totalMissingCards = document.querySelectorAll('.vault-card.vault-missing-card').length;
+        const totalVaultSessions = document.querySelectorAll('.archive-session').length;
+
+        const navVaultLabelEl = document.getElementById('nav-vault-label');
+        if (navVaultLabelEl) {
+          navVaultLabelEl.textContent = `The Vault (${totalVaultCocktails} Cocktails)`;
+        }
+        if (navVaultBtn) {
+          navVaultBtn.title = `Explore the full ${totalVaultCocktails}-cocktail Cellar Vault`;
+        }
+        const vaultCountHeadingEl = document.getElementById('vault-count-heading');
+        if (vaultCountHeadingEl) {
+          vaultCountHeadingEl.textContent = `${totalVaultCocktails} Cocktails`;
+        }
+        const vaultSessionCountEl = document.getElementById('vault-session-count');
+        if (vaultSessionCountEl) {
+          vaultSessionCountEl.textContent = String(totalVaultSessions);
+        }
+        if (searchInput) {
+          searchInput.placeholder = `Search ${totalVaultCocktails} cocktails, spirits, ingredients, hosts, or try "Doug" / "Quinn"...`;
+        }
+        const footerCocktailEl = document.getElementById('footer-cocktail-count');
+        if (footerCocktailEl) {
+          footerCocktailEl.textContent = String(totalVaultCocktails);
+        }
+        const footerSessionEl = document.getElementById('footer-session-count');
+        if (footerSessionEl) {
+          footerSessionEl.textContent = String(totalVaultSessions);
+        }
+        if (archiveCountEl && !archiveCountEl.dataset.filtered) {
+          const missingSuffix = totalMissingCards > 0 ? ` (+ ${totalMissingCards} missing cold cases)` : '';
+          archiveCountEl.textContent = `Showing all ${totalVaultCocktails} cocktails across ${totalVaultSessions} sessions${missingSuffix}`;
+        }
+      }
+
+      function buildCardSearchIndex() {
+        cardSearchMap.clear();
+        document.querySelectorAll('.vault-card').forEach((card) => {
+          const title = card.querySelector('.card-title')?.textContent || '';
+          const story = card.querySelector('.card-story')?.textContent || '';
+          const hostAttr = card.getAttribute('data-host') || '';
+          const hostEyebrow = card.querySelector('.course-eyebrow > span:first-child')?.textContent || '';
+          const sessionTitle = card.closest('.archive-session')?.querySelector('.session-title')?.textContent || '';
+          const specText = Array.from(card.querySelectorAll('.spec-list .spec-item .spec-name'))
+            .map((el) => el.textContent || '')
+            .join(' ');
+          const glassware = card.querySelector('.glassware-badge')?.textContent || '';
+          const combined = [title, story, hostAttr, hostEyebrow, sessionTitle, specText, glassware]
+            .join(' ')
+            .replace(/\s+/g, ' ')
+            .trim()
+            .toLowerCase();
+          cardSearchMap.set(card.id, combined);
+        });
+      }
 
       function cleanSpecItemName(li) {
         const nameEl = li.querySelector('.spec-name');
@@ -9927,7 +10095,8 @@
         // Auto-Discovery Fallback for brand-new ingredients in future cocktails
         const slug = 'auto_' + low.replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
         if (!ingredientCatalog.has(slug)) {
-          const explicitShelf = li.getAttribute('data-shelf') || 'modifiers';
+          const inferredShelf = /\b(syrup|juice|soda|bitters|cordial)\b/i.test(low) ? 'pantry' : 'modifiers';
+          const explicitShelf = li.getAttribute('data-shelf') || inferredShelf;
           const autoRule = {
             id: slug,
             shelf: explicitShelf,
@@ -9979,6 +10148,8 @@
           });
         });
 
+        updateVaultCounts();
+        buildCardSearchIndex();
         renderBackbarShelves();
       }
 
@@ -10235,7 +10406,8 @@
           const hostMatch = activeHost === 'all' || cardHost === activeHost;
           const spiritMatch = activeSpirit === 'all' || cardSpirit.includes(activeSpirit);
           const provMatch = activeProv === 'all' || cardProv === activeProv;
-          const textMatch = !q || card.textContent.toLowerCase().includes(q);
+          const searchableText = cardSearchMap.get(card.id) || '';
+          const textMatch = !q || searchableText.includes(q);
 
           let backbarMatch = true;
           const existingRibbon = card.querySelector('.card-match-ribbon');
@@ -10299,11 +10471,17 @@
         });
 
         if (archiveCountEl) {
+          const isFiltered = isBackbarActive || activeHost !== 'all' || activeSpirit !== 'all' || activeProv !== 'all' || Boolean(q);
+          if (isFiltered) {
+            archiveCountEl.dataset.filtered = 'true';
+          } else {
+            delete archiveCountEl.dataset.filtered;
+          }
           if (isBackbarActive) {
             archiveCountEl.textContent = `What Can I Make: Showing ${visibleCocktails} matching cocktail${visibleCocktails === 1 ? '' : 's'} (${readyCount} Ready to Pour · ${almostCount} Just 1 Bottle Away)`;
           } else {
             const missingSuffix = visibleMissing > 0 ? ` (+ ${visibleMissing} missing cold case${visibleMissing > 1 ? 's' : ''})` : '';
-            archiveCountEl.textContent = `Showing ${visibleCocktails} of 51 cocktails${missingSuffix}`;
+            archiveCountEl.textContent = `Showing ${visibleCocktails} of ${totalVaultCocktails} cocktails${missingSuffix}`;
           }
         }
       }
@@ -10517,7 +10695,7 @@
 
         // Ensure Vault view is active so the lucky card is visible
         if (currentPageView !== 'vault') {
-          setPageView('vault', { scroll: false });
+          setPageView('vault', { scroll: false, history: 'push' });
         }
 
         // 2. Identify candidate cocktails (excluding missing cold case placeholders)
@@ -10534,13 +10712,13 @@
           }
         }
 
-        // If active filters or query hid all candidates, reset filters so all 51 are available
+        // Do not silently reset user's filters if nothing matches
         if (candidates.length === 0) {
-          if (resetBtn) resetBtn.click();
-          candidates = allCurrentCards.filter((c) => !c.classList.contains('vault-missing-card'));
+          if (archiveCountEl) {
+            archiveCountEl.textContent = 'No drinks match your filters. Clear them to roll from the full vault.';
+          }
+          return;
         }
-
-        if (candidates.length === 0) return;
 
         // 3. Pick random cocktail, avoiding immediate repetition if multiple exist
         let pool = candidates;
@@ -10559,6 +10737,7 @@
         const parentSession = pickedCard.closest('.archive-session');
         if (parentSession) parentSession.hidden = false;
         pickedCard.hidden = false;
+        mountVaultCardSpecDiagram(pickedCard);
 
         // 5. Expand specs in Guest Mode so full build steps & story are open
         if (body.getAttribute('data-mode') === 'guest') {
@@ -10616,7 +10795,14 @@
         const drinkTitle = (pickedCard.querySelector('.card-title') || {}).textContent || 'Cocktail';
         const sessionHeading = parentSession ? (parentSession.querySelector('.session-title') || {}).textContent || '' : '';
         if (archiveCountEl) {
-          archiveCountEl.innerHTML = `🎲 I'm Feeling Lucky selected: <strong>${drinkTitle.trim()}</strong>${sessionHeading ? ' (' + sessionHeading.trim() + ')' : ''}`;
+          archiveCountEl.textContent = '';
+          archiveCountEl.append("🎲 I'm Feeling Lucky selected: ");
+          const strong = document.createElement('strong');
+          strong.textContent = drinkTitle.trim();
+          archiveCountEl.appendChild(strong);
+          if (sessionHeading.trim()) {
+            archiveCountEl.append(` (${sessionHeading.trim()})`);
+          }
         }
 
         // 9. Move focus to card title with preventScroll
