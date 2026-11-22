@@ -1,0 +1,5 @@
+*.pdf
+node_modules/
+dist/
+_site/
+s/
