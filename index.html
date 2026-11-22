@@ -598,6 +598,9 @@
 
     .stage-Action-link {
       appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       background: rgba(28, 22, 19, 0.82);
       border: 1px solid var(--border-stone);
       color: var(--text-mist);
@@ -2686,12 +2689,18 @@
       .scrubber-pill,
       .scrubber-vault-btn,
       .scrubber-up-next-btn,
-      .backbar-util-btn,
+      .backbar-util-btn {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Preserve mode-specific display: none rules on conditional toggles/links */
       .toggle-spec-btn,
       .stage-Action-link,
       .spec-view-toggle {
         min-height: 44px;
-        display: inline-flex;
         align-items: center;
         justify-content: center;
       }
